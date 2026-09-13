@@ -10,7 +10,9 @@ See [PLAN.md](PLAN.md) for completed work, experiments, and the roadmap; [HANDOF
 - **Queenstown:** 520 × 424-unit estate and eight collectibles. Expanded district roads connect open void decks, covered paths, shops, court, market/community buildings, playground, greenery and an elevated station/train, with richer facades and street furniture.
 - **Raffles Place:** 580 × 399-unit city-core map and 11 collectibles. Plaza/MRT area, detailed office towers, quayside shophouses, heritage arcade, market hall/garden, river promenade and extended road loops. Each region has its own cached reference collection under `reconstruction/<region>/references/`.
 
-Select any of these locations to open its own walk/drive 3D mode. These are authored, compressed interpretations, not surveyed replicas. Tampines and Toa Payoh still use the older generic scaffold. The region games make no Google API calls while playing.
+Select any of these locations to open its own walk/drive 3D mode. These are authored, compressed interpretations, not surveyed replicas. Only the three developed worlds are listed. The region games make no Google API calls while playing.
+
+The location picker includes a compact Singapore locator map that highlights the selected region. It is an approximate orientation aid, not a navigation map, and requires no map API calls.
 
 The latest model-quality pass uses 75 newly cached Static reference images: finer Marina landmark framing and patterned shells, more articulated Raffles roofs/shutters/glazing, and deeper Queenstown gallery/station details with more varied trees. Material roughness is differentiated so glass, metal, paint and stone do not all read alike. These changes preserve each region's map extent and collectible routes.
 
@@ -62,7 +64,7 @@ Latest Marina pass adds reference-matched gray paving, blue glass, deeper water,
 - **Joyride:** drive a 240 m circuit through an original, procedurally built neighborhood. WASD / arrow keys accelerate, brake, and steer; Space brakes. Touch controls work too. Cross three gates to finish. The vehicle stays within the road; there is no traffic, vehicle model, or collision simulation yet.
 - **Target practice:** click / tap five targets in a fixed first-person view. This is a small NS-inspired arcade foundation, not a full FPS or an authentic equipment simulation. No enemies or real weapon mechanics are implemented.
 - **Street View:** a separate live viewer requiring a Maps key. Three starting viewpoints per location display imagery, with look left/right, step forward/backward, and recenter controls. Google's descriptions, image-date control, navigation arrows, and attribution remain available. The search finds nearby panoramas within 200 m; positions and outdoor classification are not guarantees. Loading, missing-key, request-error, authorization-error, and retry states are included.
-- Tampines, Toa Payoh, Queenstown, Marina Bay and Raffles Place presets. Each has approximate search coordinates and a distinct palette for the procedural demo. Street View availability and exact panorama positions depend on Google.
+- Queenstown, Marina Bay and Raffles Place presets. Each has approximate search coordinates and a distinct palette for the procedural demo. Street View availability and exact panorama positions depend on Google.
 - Start, pause, resume, reset, progress, timers, completion states, and responsive controls.
 
 Joyride and Target practice use fictional original layouts. **Marina 3D uses authored solid geometry**, with reference-informed waterfront details and deliberately compressed landmark placement. Displayed distances are game units treated as meters, not surveyed distances. The earlier four-photo depth experiment did not satisfy the desired game art style and is no longer mounted.
@@ -125,7 +127,7 @@ src/
   lib/google-maps.ts         Optional browser SDK loader
 ```
 
-The game and Google viewer are independent. Extend the original world without mixing Google imagery into custom 3D materials. Exercises run in memory. Armory currency, XP, ownership and equipped items persist in browser local storage. There is no backend, account system, synchronization or leaderboard.
+The game and Google viewer are independent. Extend the original world without mixing Google imagery into custom 3D materials. Exercises run in memory. Armory currency, XP, ownership and equipped items persist in browser local storage. No backend is required for local gameplay; the optional adventure companion uses the included server. There is no account system, synchronization or leaderboard.
 
 ## Deploy
 

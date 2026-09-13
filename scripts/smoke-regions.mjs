@@ -79,14 +79,15 @@ try {
   await page.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await page.send('Page.navigate', { url: origin });
   await mkdir('.cache/browser-checks', { recursive: true });
-  const regions = [['Marina Bay', 'Reset Marina position'], ['Queenstown', 'Reset Queenstown position']];
+  const regions = [['Marina Bay', 'Reset Marina adventure (clears stamps and conversation)'], ['Queenstown', 'Reset Queenstown progress (clears stamps)']];
   for (let attempt = 0; attempt < 100; attempt++) {
     if (await evaluate(`!!document.querySelector('.location-card')`)) break;
     await delay(100);
   }
   assert(await evaluate(`!!document.querySelector('.location-card')`), 'app is ready (check Vite import/build errors if absent)');
+  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('.location-card strong')).map(e=>e.textContent)`), ['Raffles Place', 'Queenstown', 'Marina Bay'], 'only developed regions are selectable');
   // Include the third region once its playable card has landed during parallel development.
-  if (await evaluate(`Array.from(document.querySelectorAll('.location-card')).some(b=>b.textContent.includes('Raffles Place'))`)) regions.push(['Raffles Place', 'Reset Raffles position']);
+  if (await evaluate(`Array.from(document.querySelectorAll('.location-card')).some(b=>b.textContent.includes('Raffles Place'))`)) regions.push(['Raffles Place', 'Reset Raffles progress (clears stamps)']);
   const rotation = async () => {
     const matrix = await evaluate('window.__smokeViewMatrix');
     assert.equal(matrix?.length, 16, 'camera view matrix observed');
@@ -113,6 +114,7 @@ try {
     }
     assert.equal(await evaluate(`document.querySelectorAll('.marina-viewport canvas').length`), 1, `${name}: one renderer`);
     assert(await evaluate(`!!document.querySelector('[aria-label=${JSON.stringify(resetLabel)}]')`), `${name}: correct region`);
+    assert.equal(await evaluate(`document.querySelector('[data-map-location][data-selected="true"]')?.getAttribute('data-map-location')`), name.toLowerCase().replaceAll(' ', '-'), `${name}: Singapore locator follows selection`);
     await evaluate(`document.querySelector('.marina-viewport canvas').focus()`);
     await page.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'w', code: 'KeyW' }); await delay(1000);
     await page.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'w', code: 'KeyW' }); await delay(180);
@@ -163,6 +165,15 @@ try {
     await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes(${JSON.stringify(name)})).click()`); await delay(300);
     assert(await evaluate(`document.documentElement.scrollWidth<=innerWidth`), `${name}: mobile width`);
   }
+  // Map controls use the same region selection action as the original cards.
+  await evaluate(`document.querySelector('[data-map-location="queenstown"]').dispatchEvent(new MouseEvent('click',{bubbles:true}))`); await delay(350);
+  assert.equal(await evaluate(`document.querySelector('.location-card[aria-pressed="true"] strong')?.textContent`), 'Queenstown', 'map click selects region');
+  await evaluate(`document.querySelector('[data-map-location="marina-bay"]').focus()`);
+  await page.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter' });
+  await page.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter' }); await delay(350);
+  assert.equal(await evaluate(`document.querySelector('.location-card[aria-pressed="true"] strong')?.textContent`), 'Marina Bay', 'map keyboard selection');
+  const mobileShot = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+  await writeFile('.cache/browser-checks/singapore-map-mobile.png', Buffer.from(mobileShot.data, 'base64'));
   assert.equal(googleRequests, 0, 'region games must not load Maps or Street View');
   assert.deepEqual(errors, [], 'no uncaught browser exceptions');
   console.log('PASS region switching, mobile width, zero Google Maps requests, no uncaught errors');

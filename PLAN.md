@@ -23,6 +23,8 @@ Details, limitations and reference links: [docs/ARMORY.md](docs/ARMORY.md). Demo
 
 Last updated: 2026-09-13 (Singapore time).
 
+Location picker cleanup: only the developed Marina Bay, Raffles Place and Queenstown worlds remain; removed the undeveloped Tampines and Toa Payoh presets. A lightweight Singapore locator highlights the active region, with a central-area inset for the closely spaced downtown locations. This is approximate orientation, not navigation or surveyed geography, and makes no Maps requests.
+
 ## Current feature: Change the adventure
 
 Educational companion added: eight source-linked learning topics cover Marina Bay water infrastructure, ArtScience Museum, SkyPark, Gardens by the Bay, Esplanade, Singapore Flyer, Raffles Place and Queenstown. From the Marina companion, ask about this stop, nearby places, highlights or a named topic by text or voice. Astra selects only a curated topic ID; the application supplies verified facts and a reflection prompt, not generated historical claims. Learning never applies an objective change or clears stamps. Unknown facts/current prices and hours receive an explicit knowledge-limit response. The world is labelled as a stylised interpretation of real places. 79 unit tests and production build pass. Future: extend the companion integration to the other playable regions, broaden reviewed learning cards, add multilingual narration and verify educational voice interaction with a human microphone.

@@ -110,3 +110,28 @@
 .companion-learning p { margin: 6px 0; }
 .companion-learning a { color: #155b78; text-decoration: underline; }
 .companion-learning small { display: block; margin-top: 6px; }
+/* Local SVG locator: no map service or imagery requests. */
+.singapore-locator{margin-top:16px;border:1px solid #d5dfd3;border-radius:9px;padding:10px;background:#eef4ee;min-width:0}
+.singapore-locator-heading{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:7px;letter-spacing:.8px;color:#53705c}
+.singapore-locator-heading strong{font-weight:600}.singapore-locator-heading span{font-size:9px;font-weight:700}
+.singapore-locator svg{display:block;width:100%;height:auto;margin:4px 0 0;overflow:visible}
+.singapore-island{fill:#ccdec6;stroke:#8aa98a;stroke-width:1.3;stroke-linejoin:round}.singapore-islets{fill:#d4e2cd}
+.singapore-map-country{font-size:10px;letter-spacing:2px;fill:#5c7a62;font-weight:600}
+.singapore-map-north{fill:#58735f;font-size:10px}.singapore-map-north path{stroke:#58735f;stroke-width:1.5;fill:none}
+.singapore-map-detail-box{fill:#fff7;stroke:#6b8574;stroke-width:1;stroke-dasharray:3 3}
+.singapore-map-zoom-line{fill:none;stroke:#a9bbab;stroke-width:1;stroke-dasharray:3 3}
+.singapore-map-dot{fill:#507660}.singapore-map-halo{fill:#8653cb24;stroke:#8044b9;stroke-width:1.5}
+.singapore-map-active .singapore-map-pin{fill:#7739b0;stroke:white;stroke-width:2}
+.singapore-map-inset{fill:#fbfcf6;stroke:#d3decc;stroke-width:1}.singapore-map-water{fill:#dceced}
+.singapore-map-caption{font-size:8px;letter-spacing:.8px;fill:#6b7e70}
+.singapore-map-stop{cursor:pointer;outline:none}.singapore-map-stop text{fill:#3e5947;font-size:12px;font-weight:600;pointer-events:none}
+.singapore-map-leader{fill:none;stroke:#8ba092;stroke-width:1.3}.singapore-map-pin{fill:#65816b;stroke:#fff;stroke-width:1.5}
+.singapore-map-callout{fill:#f1f5ec;stroke:#b9cbb5;stroke-width:1.2}
+.singapore-map-stop[data-selected=true] .singapore-map-callout{fill:#7540a8;stroke:#64328e}
+.singapore-map-stop[data-selected=true] text{fill:white}.singapore-map-stop[data-selected=true] .singapore-map-pin{fill:#7739b0}
+.singapore-map-stop[data-selected=true] .singapore-map-leader{stroke:#7739b0;stroke-width:2}
+.singapore-map-stop:hover .singapore-map-callout,.singapore-map-stop:focus-visible .singapore-map-callout{stroke:#d07639;stroke-width:3}
+.singapore-map-selection{display:flex;align-items:center;gap:5px;margin:10px 0 5px;font-size:10px;font-weight:600;color:#543275;flex-wrap:wrap}
+.singapore-map-selection>span{width:7px;height:7px;border-radius:50%;background:#7739b0;box-shadow:0 0 0 3px #8653cb24;margin-right:3px}
+.singapore-map-selection small{margin-left:auto;font-size:6px;letter-spacing:.7px;color:#715786}
+.singapore-map-note{margin:0;font-size:8px;line-height:1.5;color:#6d7c6c}

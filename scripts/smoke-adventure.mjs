@@ -50,6 +50,11 @@ try {
   };
   const waitFor = async expression => { for (let n = 0; n < 120; n++) { if (await evaluate(expression)) return; await sleep(250); } throw new Error('Condition timed out: '+expression); };
   assert.equal(await active(), 'waterfront');
+  await evaluate(`Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim()==='The idea').click()`);
+  assert.equal(await evaluate(`document.querySelector('dialog').textContent.includes('source-linked facts') && document.querySelector('dialog').textContent.includes('fullscreen')`), true);
+  await evaluate(`document.querySelector('[aria-label="Close dialog"]').click(); Array.from(document.querySelectorAll('footer button')).find(b=>b.textContent==='Privacy').click()`);
+  assert.equal(await evaluate(`document.querySelector('dialog').textContent.includes('switch regions') && document.querySelector('dialog').textContent.includes('local storage')`), true);
+  await evaluate(`document.querySelector('[aria-label="Close dialog"]').click()`);
   await submit('Tell me about the museum');
   await waitFor(`document.querySelector('[aria-label="Singapore learning card"]')?.textContent.includes('ArtScience Museum')`);
   assert.equal(await active(), 'waterfront');
@@ -78,7 +83,7 @@ try {
   // Force out-of-order completion, including an API transport ignoring abort.
   await submit('slow museum'); await submit('skip'); await sleep(400); const newest = await active();
   await evaluate('window.__pending.splice(0).forEach(resolve=>resolve())'); await sleep(400); assert.equal(await active(), newest);
-  await submit('slow museum'); await evaluate(`document.querySelector('[aria-label="Reset Marina position"]').click()`); await sleep(350);
+  await submit('slow museum'); await evaluate(`document.querySelector('[aria-label="Reset Marina adventure (clears stamps and conversation)"]').click()`); await sleep(350);
   await evaluate('window.__pending.splice(0).forEach(resolve=>resolve())'); await sleep(350); assert.equal(await active(), 'waterfront');
   await submit('slow museum'); await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes('Queenstown')).click()`); await sleep(700);
   await evaluate('window.__pending.splice(0).forEach(resolve=>resolve())'); await sleep(350);
@@ -118,5 +123,11 @@ try {
   await mkdir('.cache/browser-checks', { recursive: true });
   const shot = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
   await writeFile('.cache/browser-checks/adventure-mobile.png', Buffer.from(shot.data, 'base64'));
+  await evaluate(`Array.from(document.querySelectorAll('.mode-card')).find(b=>b.textContent.includes('Armory')).click()`); await sleep(300);
+  await evaluate(`document.querySelector('#shop-tab-vehicleSkin').click()`); await sleep(200);
+  assert.equal(await evaluate(`!!document.querySelector('.armory-vehicle-equipped') && !document.querySelector('.armory-equipped .armory-slot') && !document.querySelector('.armory-equipped .armory-rig-summary')`), true);
+  await evaluate(`document.querySelector('#shop-tab-weapon').click()`); await sleep(200);
+  assert.equal(await evaluate(`document.querySelectorAll('.armory-equipped .armory-slot').length`), 3);
+  console.log('PASS About/Privacy copy and separate vehicle/weapon loadouts');
   assert.deepEqual(errors, []); console.log('PASS mobile layout and no uncaught errors');
 } finally { page?.close(); if (target) await browser.send('Target.closeTarget', { targetId: target }); browser.close(); }
