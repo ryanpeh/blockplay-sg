@@ -2,8 +2,8 @@
   "imageAllowance": {
     "appliesTo": "Static API image downloads only; browser screenshots and Maps JavaScript events excluded, per user clarification 2026-09-13",
     "baselineStaticImageAttempts": 8,
-    "maxAdditionalImages": 50,
-    "scope": "Marina Bay detail/proportion pass, authorized 2026-09-13; includes the first 3 reference images"
+    "maxAdditionalImages": 65,
+    "scope": "Marina Bay detail/proportion pass; user renewed remaining allowance to 50 on 2026-09-13 after 15 used. Original baseline 8 and all attempts preserved (65 total additional authorized)."
   },
   "version": 1,
   "limit": 1000,
@@ -343,6 +343,174 @@
       "date": "2026-09-13T03:47:37.942Z",
       "kind": "browser-screenshot-south-palms",
       "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "703bdf4f-d70a-41d8-b7f4-030ed7039619",
+      "date": "2026-09-13T04:05:33.273Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e8c36f84-b9a7-4895-9bca-04245d6c78b4",
+      "date": "2026-09-13T04:05:33.460Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6f739ef3-14ff-4e58-926a-9f3d44021a16",
+      "date": "2026-09-13T04:05:33.613Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6df17b6c-c63f-4b9b-93ce-67d40a766786",
+      "date": "2026-09-13T04:05:33.767Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "29b79c23-cc7d-4da5-8661-5a01a38c0e85",
+      "date": "2026-09-13T04:05:54.200Z",
+      "kind": "browser-screenshot-merlion-waterfront-east",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8fc7d20d-5289-4cab-8865-3ee31b402d65",
+      "date": "2026-09-13T04:05:54.201Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f652e650-77b4-41ad-a173-03b50f9128a6",
+      "date": "2026-09-13T04:05:56.840Z",
+      "kind": "browser-screenshot-merlion-city-west",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "36968d9f-9c7b-4e90-af33-dbf78d7a2258",
+      "date": "2026-09-13T04:05:59.302Z",
+      "kind": "browser-screenshot-esplanade-shells-east",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b58006d0-1f0c-426f-a5ef-0dbf3db64666",
+      "date": "2026-09-13T04:05:59.302Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9e19ed36-aa04-47c6-b74b-de4179755030",
+      "date": "2026-09-13T04:06:01.950Z",
+      "kind": "browser-screenshot-esplanade-bay-south",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "52a5f560-58bc-428e-b899-e87d05f06de7",
+      "date": "2026-09-13T04:06:04.415Z",
+      "kind": "browser-screenshot-bayfront-gardens-east",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a70aa863-bd04-419f-b363-edf1198d5e3c",
+      "date": "2026-09-13T04:06:04.416Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c75fe356-e125-4a5f-b09a-be8527471f97",
+      "date": "2026-09-13T04:06:07.297Z",
+      "kind": "browser-screenshot-bayfront-sands-west",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ab0a974d-8069-4636-a402-6681123d0a4b",
+      "date": "2026-09-13T04:06:09.953Z",
+      "kind": "browser-screenshot-south-promenade-north",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "38f315f6-3c06-4207-971a-cbe404bb1088",
+      "date": "2026-09-13T04:06:09.954Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b402b31c-b616-4a20-a5d3-40a7fe64e911",
+      "date": "2026-09-13T04:06:12.638Z",
+      "kind": "browser-screenshot-south-city-west",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "369797f9-15ca-4e8e-8ad6-45476695ea0a",
+      "date": "2026-09-13T04:06:52.173Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "61d1edb2-08ad-4021-bbe1-44947cfb8bea",
+      "date": "2026-09-13T04:06:52.338Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9add8071-749a-4eda-bbc3-926ede859366",
+      "date": "2026-09-13T04:07:15.689Z",
+      "kind": "browser-screenshot-station-east",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7ad802f5-737a-426b-a331-be0458320214",
+      "date": "2026-09-13T04:07:15.690Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1393885e-a525-4ac9-a883-a02210c08bc4",
+      "date": "2026-09-13T04:07:19.246Z",
+      "kind": "browser-screenshot-station-west",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8838ef18-ea99-4349-ab2d-720caf5d708f",
+      "date": "2026-09-13T04:07:21.721Z",
+      "kind": "browser-screenshot-estate-north",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "44f396cc-45ed-4ea6-a341-15187adfe283",
+      "date": "2026-09-13T04:07:21.722Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ddcaa4eb-7dad-4f3a-9d11-1ce25d55f747",
+      "date": "2026-09-13T04:07:24.586Z",
+      "kind": "browser-screenshot-estate-south",
+      "location": "queenstown",
       "result": "HTTP 200"
     }
   ]

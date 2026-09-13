@@ -1,20 +1,21 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { parseEnv } from 'node:util';
 import { withBudget } from './api-budget.mjs';
-import { directory, sha256, prepareViews, checkAllowance } from './browser-capture-plan.mjs';
+import { planDirectory, parsePlanArgs, sha256, prepareViews, checkAllowance } from './browser-capture-plan.mjs';
 
 // Default single view, or --batch for the editable reviewed Marina plan.
 // No Static API access. Keep Google attribution/date in the screenshot.
 async function main() {
   const started = performance.now();
-  if (process.argv.slice(2).some(arg => !['--batch', '--dry-run'].includes(arg))) throw new Error('Supported options: --batch, --dry-run.');
-  const plan = process.argv.includes('--batch') ? JSON.parse(await readFile('reconstruction/marina-browser-plan.json', 'utf8')) : {
+  const args = parsePlanArgs(process.argv.slice(2));
+  const plan = args.batch || args.planFile ? JSON.parse(await readFile(args.planFile || 'reconstruction/marina-browser-plan.json', 'utf8')) : {
     name: 'marina-single-view', width: 1280, height: 900, maxNewImages: 1,
     views: [{ id: 'north-bay-browser-h160-p15-z1', source: 'north-bay.json', heading: 160, pitch: 15, zoom: 1, purpose: 'Sands and museum waterfront' }],
   };
+  const directory = planDirectory(plan);
   const views = await prepareViews(plan), preflight = checkAllowance(plan, views);
   console.log(JSON.stringify({ plan: plan.name, ...preflight }));
-  if (process.argv.includes('--dry-run')) return;
+  if (args.dryRun) return;
   const report = { plan: plan.name, startedAt: new Date().toISOString(), cached: preflight.cached, captured: 0, failed: 0, panoramaLoads: 0, staticApiRequests: 0, totalMs: 0, bytes: 0, views: [] };
   const saveReport = async () => {
     report.totalMs = Math.round(performance.now() - started);
@@ -141,7 +142,7 @@ async function main() {
       });
       } catch (error) { report.failed++; report.views.push({ id: view.id, status: 'failed', durationMs: Math.round(performance.now() - frameStarted), reason: 'Capture stopped; inspect setup/permissions/cache. No automatic retry.' }); throw error; }
       }
-    });
+    }, undefined, plan.region || 'marina-bay');
     report.staticApiRequests = staticRequests;
   } finally {
     page?.close();

@@ -1,0 +1,37 @@
+{
+  "plan": "queenstown-reference-batch-01",
+  "startedAt": "2026-09-13T04:07:15.604Z",
+  "cached": 0,
+  "captured": 4,
+  "failed": 0,
+  "panoramaLoads": 2,
+  "staticApiRequests": 0,
+  "totalMs": 11676,
+  "bytes": 7588214,
+  "views": [
+    {
+      "id": "station-east",
+      "status": "captured",
+      "durationMs": 3555,
+      "bytes": 2029363
+    },
+    {
+      "id": "station-west",
+      "status": "captured",
+      "durationMs": 2473,
+      "bytes": 1400380
+    },
+    {
+      "id": "estate-north",
+      "status": "captured",
+      "durationMs": 2863,
+      "bytes": 2267149
+    },
+    {
+      "id": "estate-south",
+      "status": "captured",
+      "durationMs": 2687,
+      "bytes": 1891322
+    }
+  ]
+}

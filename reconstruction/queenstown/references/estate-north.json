@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "estate.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "gY_r1NRK_VyR8P6kwpQwDw",
+  "position": {
+    "lat": 1.2960187839054864,
+    "lng": 103.80481803571564
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 15,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:07:24.584Z",
+  "file": "reconstruction/queenstown/references/estate-north.png",
+  "fingerprint": "1106044574661124b16bf2ff20d01fd650d6d4e073a7f52af7e9946f40d52e36",
+  "sha256": "3368ffe004e05718af9c495e31289cae86bef76d3ad956f2fa1fbcb518df82e3",
+  "bytes": 2267149,
+  "durationMs": 2863,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: mature tree canopy, low red tiled roof, gray-white towers and viaduct. Useful neighborhood context, not surveyed dimensions."
+}

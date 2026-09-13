@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "bayfront-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "qwGtYnxlpZaMiMb2lDhmPw",
+  "position": {
+    "lat": 1.2818916268533302,
+    "lng": 103.86029485394292
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 5,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Sheares Link, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:06:07.295Z",
+  "file": "reconstruction/marina-bay/references/bayfront-gardens-east.png",
+  "fingerprint": "e230336afbcc4e08c83f3443b6fb652c06a6e4b16b3b464a03e917fe2c373acf",
+  "sha256": "190fd01445cb932101835da4abfb7de528b17ae63cf63e20c12cd30c29b5d7d8",
+  "bytes": 2109273,
+  "durationMs": 2880,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: Sheares Link road, black-white curb, double-yellow lines, palms, rain trees and dense planting; not Gardens landmark coverage"
+}

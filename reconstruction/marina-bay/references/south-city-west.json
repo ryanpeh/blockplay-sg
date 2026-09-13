@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "south-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "fTcpC_mnbgxpy18jESH6Ug",
+  "position": {
+    "lat": 1.279855992355599,
+    "lng": 103.85422398739645
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 15,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:06:15.084Z",
+  "file": "reconstruction/marina-bay/references/south-city-west.png",
+  "fingerprint": "9eff1ee659e4e051d185dc8ab385865e30e37dbe83b28209129b300bdf94a284",
+  "sha256": "fdf549dd01b240d2afae838c3f92a5da0a55bb11ab5eb4aeef1b3802d29344ea",
+  "bytes": 2232949,
+  "durationMs": 2446,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: MBFC blue glass and silver horizontal fins, raised granite planters and road materials"
+}

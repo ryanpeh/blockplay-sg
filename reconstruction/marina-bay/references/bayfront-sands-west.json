@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "bayfront-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "qwGtYnxlpZaMiMb2lDhmPw",
+  "position": {
+    "lat": 1.2818916268533302,
+    "lng": 103.86029485394292
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 15,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Sheares Link, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:06:09.950Z",
+  "file": "reconstruction/marina-bay/references/bayfront-sands-west.png",
+  "fingerprint": "2431ac52b37d539cbf3e9f668f88c73cfae30f2f11844abe5a3c0179e2f454a0",
+  "sha256": "9cb1e347e692410cf211696e91b70b9c1a7b9849145fd43bbacbcc8c996b76a9",
+  "bytes": 1989436,
+  "durationMs": 2653,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: Sheares Link landscaped traffic island, palms, directional signs and facade edge; Sands towers not visible"
+}

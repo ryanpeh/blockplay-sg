@@ -23,7 +23,7 @@ export const locations = [
   },
   {
     id: 'queenstown', name: 'Queenstown', subtitle: 'A different kind of royalty', district: 'SOUTHWEST',
-    description: 'Slow down around the queen of estates. There’s a story around every corner, and room for yours.',
+    description: 'A walkable, driveable take on Queenstown: familiar estate blocks, sheltered paths and neighborhood stops. An authored low-poly region, not a surveyed map.',
     lat: 1.2942, lng: 103.8060, heading: 60, color: '#8eaaa0', block: 53,
     tags: ['Heritage estate', 'Green corridors'],
     viewpoints: [
@@ -34,7 +34,7 @@ export const locations = [
   },
   {
     id: 'marina-bay', name: 'Marina Bay', subtitle: 'The postcard route', district: 'DOWNTOWN',
-    description: 'Palm-lined paths, a skyline you know, and a whole bay to play. A low-poly take on Marina Bay, with five little discoveries along the way.',
+    description: 'Palm-lined paths, a skyline you know, and more bay to explore. Walk or drive a growing, reference-informed low-poly Marina Bay.',
     lat: 1.2867, lng: 103.8545, heading: 110, color: '#9bb9cc', block: 18,
     tags: ['Waterfront', 'City skyline'],
     viewpoints: [

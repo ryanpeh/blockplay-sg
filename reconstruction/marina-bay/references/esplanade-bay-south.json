@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "esplanade-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2020-02",
+  "pano_id": "C3lgWLKkN64AAARF7I6F4w",
+  "position": {
+    "lat": 1.2900298823449683,
+    "lng": 103.85509954070187
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Esplanade - Theatres on the Bay, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:06:04.414Z",
+  "file": "reconstruction/marina-bay/references/esplanade-bay-south.png",
+  "fingerprint": "ed16375115c61299b47cbfe951f36d5f06d79cbc4171d556f1dc2450724d93a1",
+  "sha256": "1bcecc47e0e4e099dd2e0c67612f82682c2330f6e89952ac1609fbeaf68c27ea",
+  "bytes": 1056696,
+  "durationMs": 2464,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "rejected for exterior modeling: indoor exhibition corridor, no bay visible"
+}

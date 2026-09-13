@@ -1,0 +1,14 @@
+{
+  "name": "queenstown-reference-batch-01", "region": "queenstown",
+  "width": 1280, "height": 900, "maxNewImages": 4,
+  "sources": {
+    "station.json": { "lat": 1.2942, "lng": 103.8060 },
+    "estate.json": { "lat": 1.2959, "lng": 103.8046 }
+  },
+  "views": [
+    { "id": "station-east", "source": "station.json", "heading": 90, "pitch": 10, "zoom": 1, "purpose": "Queenstown elevated station form, street width and material palette" },
+    { "id": "station-west", "source": "station.json", "heading": 270, "pitch": 8, "zoom": 1, "purpose": "Queenstown station viaduct and surrounding residential context" },
+    { "id": "estate-north", "source": "estate.json", "heading": 0, "pitch": 15, "zoom": 1, "purpose": "Nearby estate facade rhythm and public-space context" },
+    { "id": "estate-south", "source": "estate.json", "heading": 180, "pitch": 5, "zoom": 1, "purpose": "Estate greenery, covered paths and roads" }
+  ]
+}

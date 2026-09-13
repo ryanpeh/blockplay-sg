@@ -2,6 +2,18 @@
 
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
+## Current entry point: two region games
+
+**Latest allowance update:** user renewed the remaining Static allowance to **50 images**. The ledger preserves baseline 8 and all history, with `maxAdditionalImages: 65` (15 used + 50 remaining). PLAN.md is authoritative; older budget figures below are historical. README intentionally omits limits.
+
+The user explicitly expanded work to **Marina Bay and Queenstown** and requested subagents. Marina now spans 556 × 466 game units, with outer road connections and nine collectibles. Queenstown is a separate 368 × 288-unit estate with open void decks, station/train, shops, library-inspired garden and five collectibles. Both are authored compressed interpretations. Prior Marina-only scope notes below are superseded; Tampines/Toa Payoh are still future region maps.
+
+`App.tsx` uses `hasRegionGame`/`regionModeLabel` from `src/game/region-selection.ts` to open the corresponding `MarinaGame` or `QueenstownGame`. Queenstown owns `queenstown-scene.ts`/`queenstown-collision.ts`; Marina uses its expanded bounds/`MARINA_MAP_ROADS`. The Marina minimap is bounds-derived using `src/game/minimap.ts`; HUD stamp count is dynamic. Keyed region switching disposes the outgoing scene.
+
+New cached references: 8 Marina browser screenshots at four new positions; 4 Queenstown screenshots at two positions. Plans: `reconstruction/marina-expansion-browser-plan.json` and `reconstruction/queenstown-browser-plan.json`. Use `pnpm marina:browser-capture --plan <plan-path> --dry-run` before any capture; complete-cache reruns use no requests. Source directories remain `reconstruction/<region>/references/`; preserve metadata/galleries/reports. Budget events now carry the correct region, browser events remain excluded from Static limits, and **35 additional Static images remain**.
+
+Read `MARINA-EXPANSION.md` and `reconstruction/queenstown/REGION.md` for specifics, sources and limitations. `pnpm test:browser` checks both regions with local Vite/Chrome (loopback debugging port 9223 by default; `REGION_APP_ORIGIN`/`CHROME_DEBUG_ORIGIN` overrides). Tests use their own tab, do not load Google Maps, and place screenshots in `.cache/browser-checks/`. Keep checksums, secrets exclusions, pnpm11 and the strict14-day cooldown intact. No public deployment is implied.
+
 **Newest gameplay geometry pass:** cached screenshots now inform angular museum shells/supports/lily pond, Fullerton-inspired stone arcade, roof louvers/masts/stays, entrance canopy/blue fins/bollards, finer paving/rail braces, curved shade beams, benches and planting/shade trees. `reconstruction/marina-bay/references/GAME-DETAILS.md` maps observations to changes. Code: `src/game/marina-scene.ts`; static details remain batched and ground obstacles use existing collision handling. All 20 tests/build and browser movement/reset/mobile checks pass. No capture/API spending; Static allowance remains 35. Other locations remain future work, Marina-only focus unchanged.
 
 **Release handoff:** this milestone includes the game improvements, demo-key browser capture workflow, corrected Static-only budget accounting, batch plan, 15 cached reference JPEGs, 9 cached browser PNGs, metadata/checksums, galleries and benchmark reports. Clone/pull the repository to transfer these references; do not recapture. Private `.env`, model caches and older rejected/source captures remain excluded. The credential scan found no configured API-key values in the files prepared for commit. Remaining work: visual feedback, full collectible completion/actual-phone checks, then deployment/video; no public deployment yet.

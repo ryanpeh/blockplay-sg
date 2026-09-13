@@ -4,9 +4,18 @@ A hackathon starter for playable Singapore neighborhoods, built with React, Type
 
 See [PLAN.md](PLAN.md) for completed work, experiments, and the roadmap; [HANDOFF.md](HANDOFF.md) for continuing on another computer.
 
+## Current playable regions
+
+- **Marina Bay:** expanded to 556 × 466 game units, just over twice the previous area. Inner/outer road loops connect waterfront terraces, pavilion gardens, a greenway and southern garden court; nine collectible stamps. Eight new browser references from four nearby positions are cached in the Marina reference folder.
+- **Queenstown:** a distinct 368 × 288-unit estate with open void decks, covered paths, shops, court, library-inspired garden and an elevated station/train. Five collectibles. Four browser references around the station/estate are cached separately.
+
+Select either location to open its own walk/drive 3D mode. These are authored, compressed interpretations, not surveyed replicas. Tampines and Toa Payoh still use the older generic scaffold. Neither region makes Google API calls while playing.
+
+Run `pnpm test:browser` with Vite and local Chrome debugging active to check both regions' rendering, walk/drive, reset, switching and mobile width. The test uses its own tab, makes no live Maps requests, and saves diagnostic screenshots under ignored `.cache/browser-checks/`.
+
 **Target experience:** recognizable Singapore locations rendered as playable 3D game worlds in Joyride's low-poly style, using street-level images as references. The latest user clarification favors modeled game art, not photographs stretched onto depth meshes.
 
-**Marina Bay first:** solid modeled landmarks, palm promenade, city skyline, bay road loop, visible car, collisions, and five collectible stamps. The default scene needs no key or live image requests. It is an authored, compressed interpretation—not automatic photo reconstruction. The earlier depth experiment is retained, inactive, under `public/reconstruction/marina-bay/`. See [capture history and request budget](reconstruction/README.md). The [API ledger](reconstruction/api-usage.json) remains at 13 attempts, including 8 image downloads, under a 1,000-attempt cap.
+**Marina Bay:** solid modeled landmarks, palm promenade, city skyline, connected road loops, visible car, collisions, and nine collectible stamps. The default scene needs no key or live image requests. It is an authored, compressed interpretation—not automatic photo reconstruction. The earlier depth experiment is retained, inactive, under `public/reconstruction/marina-bay/`. See [capture history](reconstruction/README.md) and [project plan](PLAN.md).
 
 ## Run it
 
@@ -31,9 +40,9 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 
 ## What works
 
-Latest Marina pass adds reference-matched gray paving, blue glass, deeper water, silver railings, fuller palms, planting, lights and a detailed Shoppes roofline. Sands landmark proportions use published dimensions; the overall map remains compressed. **15 new reference images are cached** in [the reference folder](reconstruction/marina-bay/references/README.md), with 35 remaining in the approved 50-image allowance. Current ledger: **34 total attempts, 23 Static images**; use `pnpm marina:usage` for live counts (supersedes earlier milestone figures).
+Latest Marina pass adds reference-matched gray paving, blue glass, deeper water, silver railings, fuller palms, planting, lights and a detailed Shoppes roofline. Sands landmark proportions use published dimensions; the overall map remains compressed. Static and browser reference images are cached in [the reference folder](reconstruction/marina-bay/references/README.md); use `pnpm marina:usage` for live usage counts.
 
-- **Marina 3D:** the default low-poly game. Click the scene; WASD walks, drag looks, Shift runs. Drive switches to a visible car with a chase camera; W/S accelerate/reverse, A/D steer, Space brakes. Explore the whole modeled loop and collect five orange rings. Water/buildings block movement; reset clears progress. Arcade handling, not full vehicle physics. No Google requests while playing.
+- **Marina 3D / Queenstown 3D:** location-specific low-poly games. Click the scene; WASD walks, drag looks, Shift runs. Drive switches to a visible car with a chase camera; W/S accelerate/reverse, A/D steer, Space brakes. Collect nine orange rings in Marina or five in Queenstown. Water/buildings block movement; reset clears progress. Arcade handling, not full vehicle physics. No Google requests while playing.
 - **Joyride:** drive a 240 m circuit through an original, procedurally built neighborhood. WASD / arrow keys accelerate, brake, and steer; Space brakes. Touch controls work too. Cross three gates to finish. The vehicle stays within the road; there is no traffic, vehicle model, or collision simulation yet.
 - **Target practice:** click / tap five targets in a fixed first-person view. This is a small NS-inspired arcade foundation, not a full FPS or an authentic equipment simulation. No enemies or real weapon mechanics are implemented.
 - **Street View:** a separate live viewer requiring a Maps key. Three starting viewpoints per location display imagery, with look left/right, step forward/backward, and recenter controls. Google's descriptions, image-date control, navigation arrows, and attribution remain available. The search finds nearby panoramas within 200 m; positions and outdoor classification are not guarantees. Loading, missing-key, request-error, authorization-error, and retry states are included.
@@ -48,7 +57,7 @@ Optional separate browser credential: set `GOOGLE_MAPS_DEMO_API_KEY` in `.env` o
 
 `pnpm marina:browser-capture` captures one reviewed Marina view; add `--batch` for the editable eight-view workflow, or `--batch --dry-run` for a no-request preflight. Static endpoints are blocked. Requires local Vite plus Chrome remote debugging on loopback (default port 9223); complete cached reruns need neither browser nor credentials. See the [workflow and benchmark](reconstruction/marina-bay/references/WORKFLOW.md).
 
-**Budget correction:** the user's 50-image allowance applies to Static API downloads only: **15 used, 35 remain**. Browser screenshots/loads are tracked separately and excluded from both Static caps. Browser Street View can still have separate billing. The batch saved eight 1280×900 images in 21.8s; cache-only rerun took 33ms, with zero Static requests in either run.
+Browser screenshots/loads are tracked separately from Static downloads. Browser Street View can still have separate billing. The initial batch saved eight 1280×900 images in 21.8s; cache-only rerun took 33ms, with zero Static requests in either run.
 
 1. Create a Google Cloud project with billing and enable **Maps JavaScript API**.
 2. Create a browser API key, restrict its API access, and configure HTTP referrer restrictions for your localhost and deployment origins.

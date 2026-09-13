@@ -1,0 +1,20 @@
+{
+  "name": "marina-expansion-batch-02", "region": "marina-bay",
+  "width": 1280, "height": 900, "maxNewImages": 8,
+  "sources": {
+    "merlion-expansion.json": { "lat": 1.2868, "lng": 103.8545 },
+    "esplanade-expansion.json": { "lat": 1.2898, "lng": 103.8555 },
+    "bayfront-expansion.json": { "lat": 1.2819, "lng": 103.8603 },
+    "south-expansion.json": { "lat": 1.2799, "lng": 103.8544 }
+  },
+  "views": [
+    { "id": "merlion-waterfront-east", "source": "merlion-expansion.json", "heading": 90, "pitch": 0, "zoom": 1, "purpose": "Merlion waterfront terraces and bay edge" },
+    { "id": "merlion-city-west", "source": "merlion-expansion.json", "heading": 270, "pitch": 8, "zoom": 1, "purpose": "Fullerton architecture and surrounding street" },
+    { "id": "esplanade-shells-east", "source": "esplanade-expansion.json", "heading": 90, "pitch": 10, "zoom": 1, "purpose": "Esplanade shell silhouette and facade" },
+    { "id": "esplanade-bay-south", "source": "esplanade-expansion.json", "heading": 180, "pitch": 0, "zoom": 1, "purpose": "Esplanade waterfront and bridge approach" },
+    { "id": "bayfront-gardens-east", "source": "bayfront-expansion.json", "heading": 90, "pitch": 5, "zoom": 1, "purpose": "Eastern district landscape and paths" },
+    { "id": "bayfront-sands-west", "source": "bayfront-expansion.json", "heading": 270, "pitch": 15, "zoom": 1, "purpose": "Sands rear facade and road proportions" },
+    { "id": "south-promenade-north", "source": "south-expansion.json", "heading": 0, "pitch": 0, "zoom": 1, "purpose": "Southern promenade connections and paving" },
+    { "id": "south-city-west", "source": "south-expansion.json", "heading": 270, "pitch": 15, "zoom": 1, "purpose": "Southern district towers and landscape" }
+  ]
+}

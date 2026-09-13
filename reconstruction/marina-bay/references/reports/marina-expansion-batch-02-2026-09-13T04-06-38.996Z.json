@@ -1,0 +1,53 @@
+{
+  "plan": "marina-expansion-batch-02",
+  "startedAt": "2026-09-13T04:06:38.996Z",
+  "cached": 8,
+  "captured": 0,
+  "failed": 0,
+  "panoramaLoads": 0,
+  "staticApiRequests": 0,
+  "totalMs": 12,
+  "bytes": 0,
+  "views": [
+    {
+      "id": "merlion-waterfront-east",
+      "status": "cached",
+      "bytes": 1178909
+    },
+    {
+      "id": "merlion-city-west",
+      "status": "cached",
+      "bytes": 1762705
+    },
+    {
+      "id": "esplanade-shells-east",
+      "status": "cached",
+      "bytes": 1078760
+    },
+    {
+      "id": "esplanade-bay-south",
+      "status": "cached",
+      "bytes": 1056696
+    },
+    {
+      "id": "bayfront-gardens-east",
+      "status": "cached",
+      "bytes": 2109273
+    },
+    {
+      "id": "bayfront-sands-west",
+      "status": "cached",
+      "bytes": 1989436
+    },
+    {
+      "id": "south-promenade-north",
+      "status": "cached",
+      "bytes": 1587409
+    },
+    {
+      "id": "south-city-west",
+      "status": "cached",
+      "bytes": 2232949
+    }
+  ]
+}

@@ -2,6 +2,19 @@
 
 Last updated: 2026-09-13 (Singapore time).
 
+## Current milestone: expanded Marina and first Queenstown region
+
+The user requested parallel subagents for both regions, then authorized further delegation. Marina modeling and new viewpoint capture ran in parallel with Queenstown construction; shared capture/ledger operations were serialized. This explicitly expands the earlier Marina-only implementation focus to include Queenstown.
+
+**Current Static allowance: 50 further Marina Bay images**, renewed by the user after this expansion. All 23 image attempts and 7 metadata attempts remain recorded; the conservative total remains 30/1000. The ledger keeps baseline 8 and raises total additional authorization to 65 (15 already used + 50 remaining), without resetting history. Browser screenshots do not consume this allowance. Older allowance figures below are historical; README intentionally omits limits.
+
+- Marina bounds expanded from 396 × 316 to **556 × 466** game units (2.07× area), with inner/outer road loops, three connectors, four added districts and nine stamps. Minimap projects from current bounds and shared road paths; stamp HUD is dynamic. See `MARINA-EXPANSION.md` for scoped detail/reference notes.
+- Queenstown has a **distinct 368 × 288-unit** authored estate, open void decks, covered paths, elevated station/train, shops, court and library-inspired garden; five stamps. Region selection opens its own component, rather than a palette variant. See `reconstruction/queenstown/REGION.md`.
+- Captured **8 new Marina + 4 Queenstown browser screenshots** across 4 + 2 selected positions. They are cached with source identity, camera settings, attribution/date, checksums, galleries and run reports. No Static API requests. Ledger events identify their region. Two indoor Marina frames were rejected; one Queenstown frame is occluded/limited.
+- Browser smoke script included as source (`scripts/smoke-regions.mjs`, `pnpm test:browser`): both regions render, walk/drive/reset, switch and fit a 390px viewport with zero Maps/Street View requests or uncaught errors. Unit coverage includes region selection, minimap projection, both road loops/connectors, bounds and reachability of every stamp. Final verification: **29 tests passed, production build passed, browser checks passed**; nonblocking Three.js chunk-size warning remains. Credential scan and whitespace checks passed. Marina aerial/greenway and Queenstown station renders were visually reviewed.
+
+Next: user review of both region styles/layouts, more geographically coherent reference-informed geometry, actual-phone performance and a complete human-played objective run, then deployment/video. These remain compressed game maps, not automatic photogrammetry or measured navigation tools. Older Marina-only priorities/counts below are historical.
+
 ## Latest game improvement from cached screenshots
 
 Release contents: commit/push the refined game together with the portable capture workflow, corrected budget ledger, cached reference assets, metadata, galleries and performance reports. Private environment keys and inference caches stay excluded. Pre-commit credential scan passed; no new capture calls were needed for the game refinement. The current work remains Marina Bay first, with other location-specific maps planned after this approach is accepted.

@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, CarFront, Footprints, RotateCcw, Flag } from 'lucide-react';
-import { buildMarinaScene, MARINA_MAP_ROADS, MARINA_SPAWN, MARINA_STAMPS } from '../game/marina-scene';
-import { MARINA_BOUNDS, moveInMarina } from '../game/marina-collision';
-import { minimapProjection } from '../game/minimap';
+import { buildQueenstownScene, QUEENSTOWN_SPAWN, QUEENSTOWN_STAMPS } from '../game/queenstown-scene';
+import { moveInQueenstown } from '../game/queenstown-collision';
 
-const initialHud = { distance: 0, speed: 0, x: MARINA_SPAWN.x as number, z: MARINA_SPAWN.z as number, collected: [] as number[] };
-const map = minimapProjection(MARINA_BOUNDS);
+const initialHud = { distance: 0, speed: 0, x: QUEENSTOWN_SPAWN.x as number, z: QUEENSTOWN_SPAWN.z as number, collected: [] as number[] };
 
-export default function MarinaGame() {
+export default function QueenstownGame() {
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
   const [travel, setTravel] = useState<'walk' | 'drive'>('walk');
@@ -23,20 +21,20 @@ export default function MarinaGame() {
     let renderer: THREE.WebGLRenderer;
     try { renderer = new THREE.WebGLRenderer({ antialias: true }); }
     catch { setError('WebGL could not start. Try a browser with hardware acceleration enabled.'); return; }
-    const world = buildMarinaScene();
+    const world = buildQueenstownScene();
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.9;
     const canvas = renderer.domElement; canvas.tabIndex = 0; container.appendChild(canvas);
-    canvas.setAttribute('aria-label', 'Modeled Marina Bay game. Click and use WASD to move; drag to look.');
-    const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 1400); camera.rotation.order = 'YXZ';
-    let position = { x: MARINA_SPAWN.x as number, z: MARINA_SPAWN.z as number };
-    let yaw = MARINA_SPAWN.yaw, pitch = 0.14, speed = 0, distance = 0;
+    canvas.setAttribute('aria-label', 'Modeled Queenstown game. Click and use WASD to move; drag to look.');
+    const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 800); camera.rotation.order = 'YXZ';
+    let position = { x: QUEENSTOWN_SPAWN.x as number, z: QUEENSTOWN_SPAWN.z as number };
+    let yaw = QUEENSTOWN_SPAWN.yaw, pitch = 0.14, speed = 0, distance = 0;
     const collected = new Set<number>();
     const report = () => setHud({ distance, speed, ...position, collected: [...collected] });
     reset.current = () => {
-      position = { x: MARINA_SPAWN.x, z: MARINA_SPAWN.z }; yaw = MARINA_SPAWN.yaw; pitch = 0.14; speed = 0; distance = 0; collected.clear();
+      position = { x: QUEENSTOWN_SPAWN.x, z: QUEENSTOWN_SPAWN.z }; yaw = QUEENSTOWN_SPAWN.yaw; pitch = 0.14; speed = 0; distance = 0; collected.clear();
       world.stamps.forEach(stamp => { stamp.visible = true; }); keys.current.clear(); report();
     };
     let drag: { x: number; y: number; pointerId: number } | undefined;
@@ -73,7 +71,7 @@ export default function MarinaGame() {
         dx = (-Math.sin(yaw) * forward + Math.cos(yaw) * side) / normal * rate * dt;
         dz = (-Math.cos(yaw) * forward - Math.sin(yaw) * side) / normal * rate * dt;
       }
-      const next = moveInMarina(position, dx, dz, driving ? 1.35 : 0.65, world.obstacles);
+      const next = moveInQueenstown(position, dx, dz, driving ? 1.35 : 0.65, world.obstacles);
       const step = Math.hypot(next.x - position.x, next.z - position.z);
       if (driving && step < Math.hypot(dx, dz) * 0.2) speed = 0;
       distance += step; position = next;
@@ -84,7 +82,7 @@ export default function MarinaGame() {
       } else {
         camera.position.set(position.x, 1.75, position.z); camera.rotation.set(pitch, yaw, 0, 'YXZ');
       }
-      MARINA_STAMPS.forEach((stamp, i) => {
+      QUEENSTOWN_STAMPS.forEach((stamp, i) => {
         if (!collected.has(i) && Math.hypot(stamp.x - position.x, stamp.z - position.z) < 4) { collected.add(i); world.stamps[i].visible = false; }
       });
       world.animate(now / 1000); renderer.render(world.scene, camera);
@@ -100,27 +98,26 @@ export default function MarinaGame() {
     };
   }, []);
 
-  return <div className="marina-reconstruction marina-game">
+  return <div className="marina-reconstruction marina-game queenstown-game">
     <div className="viewport marina-viewport"><div ref={host} className="world" />
       {error ? <div className="viewer-message" role="alert"><p>{error}</p></div> : <>
-        <div className="scene-top"><span className="scene-badge"><span className="status-dot" /> MARINA BAY · GAME WORLD</span><span className="marina-stamp-count"><Flag size={14} />{hud.collected.length} / {MARINA_STAMPS.length} stamps</span></div>
-        <div className="marina-map" aria-label="Game map showing player position and collectible stamps"><span>THE BAY & GARDENS</span>
+        <div className="scene-top"><span className="scene-badge"><span className="status-dot" /> QUEENSTOWN · GAME WORLD</span><span className="marina-stamp-count"><Flag size={14} />{hud.collected.length} / 5 stamps</span></div>
+        <div className="marina-map" aria-label="Game map showing player position and collectible stamps"><span>THE ESTATE LOOP</span>
           <svg viewBox="0 0 200 160" role="img" aria-label="Schematic game map">
             <rect x="6" y="6" width="188" height="148" rx="5" fill="#d7dfc8" />
-            <g transform={map.transform}>
-              {MARINA_MAP_ROADS.map((road, index) => <polyline key={index} points={road.points.map(point => `${point.x},${point.z}`).join(' ')} fill="none" stroke="#929f8d" strokeWidth="15" />)}
-              <rect x="-80" y="-90" width="160" height="140" fill="#7db5b3" />
-              {[-65,-15,35].map(z => <rect key={z} x="139" y={z - 15} width="24" height="30" fill="#eee7ce" />)}
-              <rect x="141" y="-107" width="20" height="184" rx="4" fill="#819872" />
-            </g>
-            {MARINA_STAMPS.map((stamp, i) => <circle key={stamp.name} cx={map.x(stamp.x)} cy={map.y(stamp.z)} r="3" fill={hud.collected.includes(i) ? '#4f7960' : '#d78853'} />)}
-            <circle cx={map.x(hud.x)} cy={map.y(hud.z)} r="4" stroke="#fffdf0" strokeWidth="2" fill="#244832" />
+            <path d="M38 35 H162 V131 H38 Z M38 94 H162" fill="none" stroke="#929f8d" strokeWidth="7" />
+            <path d="M26 94 H174" stroke="#ddd5c5" strokeWidth="4" />
+            <rect x="83" y="89" width="35" height="10" fill="#498877" />
+            {[[54,48],[122,48],[54,112],[122,112]].map(([x,y]) => <rect key={x + y} x={x} y={y} width="23" height="9" fill="#eee7ce" />)}
+            <rect x="34" y="44" width="5" height="80" fill="#5d9b57" />
+            {QUEENSTOWN_STAMPS.map((stamp, i) => <circle key={stamp.name} cx={100 + stamp.x * 0.44} cy={85 + stamp.z * 0.4} r="3" fill={hud.collected.includes(i) ? '#4f7960' : '#d78853'} />)}
+            <circle cx={100 + hud.x * 0.44} cy={85 + hud.z * 0.4} r="4" stroke="#fffdf0" strokeWidth="2" fill="#244832" />
           </svg>
         </div>
-        <div className="marina-objective">{hud.collected.length === MARINA_STAMPS.length ? 'All stamps collected. Shiok! Keep exploring or reset to play again.' : `Find the orange rings · Explore Marina Bay and collect ${MARINA_STAMPS.length} stamps.`}</div>
+        <div className="marina-objective">{hud.collected.length === 5 ? 'All five stamps. Shiok! Keep exploring or reset to play again.' : 'Find the orange rings · Explore the estate and collect 5 stamps.'}</div>
       </>}
     </div>
-    <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon">{travel === 'walk' ? <Footprints size={20} /> : <CarFront size={20} />}</span><div><h3>Marina Bay · waterfront & gardens</h3><p>Expanded low-poly map · inner and outer road loops</p></div></div><div className="toolbar-actions"><button className="session-button" aria-pressed={travel === 'walk'} onClick={() => setTravel('walk')}>Walk</button><button className="session-button" aria-pressed={travel === 'drive'} onClick={() => setTravel('drive')}>Drive</button><button className="icon-button" aria-label="Reset Marina position" onClick={() => reset.current()}><RotateCcw size={16} /></button></div></div>
-    <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · Drag to look · {travel === 'walk' ? 'Shift to run' : `${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Marina ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
+    <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon">{travel === 'walk' ? <Footprints size={20} /> : <CarFront size={20} />}</span><div><h3>Queenstown · the neighborhood loop</h3><p>Low-poly game map · authored heritage-inspired neighborhood</p></div></div><div className="toolbar-actions"><button className="session-button" aria-pressed={travel === 'walk'} onClick={() => setTravel('walk')}>Walk</button><button className="session-button" aria-pressed={travel === 'drive'} onClick={() => setTravel('drive')}>Drive</button><button className="icon-button" aria-label="Reset Queenstown position" onClick={() => reset.current()}><RotateCcw size={16} /></button></div></div>
+    <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · Drag to look · {travel === 'walk' ? 'Shift to run' : `${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Queenstown ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
   </div>;
 }

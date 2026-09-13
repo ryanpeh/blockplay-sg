@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "merlion-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-07",
+  "pano_id": "16W5kHHJYUdeYcEDblMr-Q",
+  "position": {
+    "lat": 1.2867612659229497,
+    "lng": 103.85442860998917
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:05:56.837Z",
+  "file": "reconstruction/marina-bay/references/merlion-waterfront-east.png",
+  "fingerprint": "4d65f6bd9fec878f95a09f44e206724dc60717969d6b32a784e610d5327bceb7",
+  "sha256": "7e393ed47a9242a8f5e5ec747c774b4dd30b1998f1c91d07c703e8d5070d4197",
+  "bytes": 1178909,
+  "durationMs": 2637,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: outdoor Merlion paving, circular planter, ivory statue and blue plinth; people obscure parts, not metric geometry"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "h3P6D4OMJLL-JgPLFFQVfg",
+  "location": {
+    "lat": 1.2942940203704458,
+    "lng": 103.80608981116512
+  },
+  "description": "301 Commonwealth Ave, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.2942,
+    "lng": 103.806
+  },
+  "selectedGoogle": true
+}

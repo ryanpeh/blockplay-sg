@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "C3lgWLKkN64AAARF7I6F4w",
+  "location": {
+    "lat": 1.2900298823449683,
+    "lng": 103.85509954070187
+  },
+  "description": "Esplanade - Theatres on the Bay, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2020-02",
+  "requested": {
+    "lat": 1.2898,
+    "lng": 103.8555
+  },
+  "selectedGoogle": true
+}

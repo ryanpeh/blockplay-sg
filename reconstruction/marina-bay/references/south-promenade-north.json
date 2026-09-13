@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "south-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "fTcpC_mnbgxpy18jESH6Ug",
+  "position": {
+    "lat": 1.279855992355599,
+    "lng": 103.85422398739645
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 0,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:06:12.637Z",
+  "file": "reconstruction/marina-bay/references/south-promenade-north.png",
+  "fingerprint": "984172b1dfee940dad8cd02bc12a70bd86b699ea137014642c14582b0ef646a6",
+  "sha256": "670bf9d0eab38b49b0dc0cf75f1217daaa4b5d24368c1572acf8343933bbee16",
+  "bytes": 1587409,
+  "durationMs": 2684,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted for MBFC entrance materials only: glass canopy, bollards, granite paving; not promenade coverage"
+}

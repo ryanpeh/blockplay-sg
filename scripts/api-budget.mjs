@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 
 export const isStaticAttempt = kind => kind.startsWith('image') || kind.startsWith('metadata');
 
-export async function withBudget(task, ledgerPath = resolve('reconstruction/api-usage.json')) {
+export async function withBudget(task, ledgerPath = resolve('reconstruction/api-usage.json'), location = 'marina-bay') {
   const lockPath = `${ledgerPath}.lock`;
   let lock;
   try { lock = await open(lockPath, 'wx'); }
@@ -22,7 +22,7 @@ export async function withBudget(task, ledgerPath = resolve('reconstruction/api-
         const images = ledger.attempts.filter(entry => isCapture(entry.kind)).length;
         if (images - baselineStaticImageAttempts >= maxAdditionalImages) throw new Error('Approved additional-image allowance exhausted.');
       }
-      const entry = { id: randomUUID(), date: new Date().toISOString(), kind, location: 'marina-bay', result: 'attempt reserved; outcome unknown' };
+      const entry = { id: randomUUID(), date: new Date().toISOString(), kind, location, result: 'attempt reserved; outcome unknown' };
       ledger.attempts.push(entry);
       await save(); // Count BEFORE the request, even if interrupted or rejected.
       try {

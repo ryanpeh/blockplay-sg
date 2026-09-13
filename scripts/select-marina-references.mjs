@@ -1,11 +1,17 @@
 // Optional selection helper. Requires Vite and a local Chrome debug session.
 // Selection uses the app's configured Maps key without exposing it to this script.
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { withBudget } from './api-budget.mjs';
+import { parsePlanArgs, planDirectory, validatePlan } from './browser-capture-plan.mjs';
+const args = parsePlanArgs(process.argv.slice(2));
+const plan = JSON.parse(await readFile(args.planFile || 'reconstruction/marina-browser-plan.json', 'utf8'));
+validatePlan(plan);
+const directory = planDirectory(plan);
+const sources = [...new Set(plan.views.map(view => view.source))].filter(source => source !== 'original-waterfront');
+await mkdir(directory, { recursive: true });
 const debugOrigin = process.env.CHROME_DEBUG_ORIGIN || 'http://127.0.0.1:9223';
 const appOrigin = process.env.MARINA_APP_ORIGIN || 'http://127.0.0.1:5173';
-const pages = await (await fetch(`${debugOrigin}/json`)).json();
-const page = pages.find(p => p.type === 'page');
+const page = await (await fetch(`${debugOrigin}/json/new?about:blank`, { method: 'PUT' })).json();
 if (!page) throw new Error('Open a local Chrome debugging tab first.');
 const socket = new WebSocket(page.webSocketDebuggerUrl);
 await new Promise(resolve => socket.addEventListener('open', resolve, { once: true }));
@@ -16,13 +22,19 @@ socket.onmessage = event => {
 };
 const send = (method, params = {}) => new Promise((resolve, reject) => { const next = ++id; pending.set(next, { resolve, reject }); socket.send(JSON.stringify({ id: next, method, params })); });
 try {
-  await send('Page.navigate', { url: appOrigin });
+  await send('Network.enable');
+  await send('Network.setBlockedURLs', { urls: ['https://maps.googleapis.com/maps/api/streetview*'] });
+  await send('Page.navigate', { url: `${appOrigin}/capture-streetview.html` });
   await new Promise(resolve => setTimeout(resolve, 1500));
   await withBudget(async request => {
-    for (const name of ['west-bay', 'north-bay', 'museum-promenade']) {
-      const file = `reconstruction/marina-bay/references/${name}.json`;
-      const previous = JSON.parse(await readFile(file, 'utf8'));
+    for (const name of sources) {
+      const file = `${directory}/${name}`;
+      let previous;
+      try { previous = JSON.parse(await readFile(file, 'utf8')); }
+      catch (error) { if (error.code !== 'ENOENT') throw error; previous = { requested: plan.sources?.[name] }; }
       if (previous.selectedGoogle) continue;
+      if (!Number.isFinite(previous.requested?.lat) || !Number.isFinite(previous.requested?.lng) || previous.requested.lat < 1.2 || previous.requested.lat > 1.5 || previous.requested.lng < 103.6 || previous.requested.lng > 104.1) throw new Error('Invalid Singapore source coordinates.');
+      if (args.dryRun) { console.log(`Would select ${name}`); continue; }
       await request('maps-javascript-reference-selection', async () => {
         const { lat, lng } = previous.requested;
         const result = await send('Runtime.evaluate', { expression: `(async()=>{
@@ -38,5 +50,5 @@ try {
         return new Response('Selected', { status: 200 });
       });
     }
-  });
-} finally { socket.close(); }
+  }, undefined, plan.region || 'marina-bay');
+} finally { socket.close(); await fetch(`${debugOrigin}/json/close/${page.id}`); }

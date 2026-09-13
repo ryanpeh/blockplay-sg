@@ -1,14 +1,30 @@
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 export const directory = 'reconstruction/marina-bay/references';
+export const planDirectory = plan => `reconstruction/${plan.region || 'marina-bay'}/references`;
+export function parsePlanArgs(args) {
+  let planFile, batch = false, dryRun = false;
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--batch') batch = true;
+    else if (args[i] === '--dry-run') dryRun = true;
+    else if (args[i] === '--plan' && !planFile) {
+      planFile = args[++i];
+      if (!/^reconstruction\/[a-z0-9][a-z0-9-]*\.json$/.test(planFile || '')) throw new Error('Plan must be a JSON file directly inside reconstruction.');
+    } else throw new Error('Supported options: --batch, --plan reconstruction/name.json, --dry-run.');
+  }
+  if (batch && planFile) throw new Error('Choose --batch or --plan.');
+  return { planFile, batch, dryRun };
+}
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 export function validatePlan(plan) {
   const safe = value => typeof value === 'string' && /^[a-z0-9][a-z0-9-]{0,79}$/.test(value);
+  if (plan.region && !['marina-bay', 'queenstown'].includes(plan.region)) throw new Error('Unapproved region.');
   if (!safe(plan?.name) || !Number.isInteger(plan.width) || !Number.isInteger(plan.height) || plan.width < 640 || plan.width > 1920 || plan.height < 480 || plan.height > 1080) throw new Error('Invalid plan name or viewport.');
   if (!Number.isInteger(plan.maxNewImages) || plan.maxNewImages < 0 || plan.maxNewImages > 50 || !Array.isArray(plan.views) || !plan.views.length || plan.views.length > 50) throw new Error('Invalid plan image limits.');
   const ids = new Set();
   for (const view of plan.views) {
-    if (!safe(view.id) || ids.has(view.id) || !['north-bay.json', 'west-bay.json', 'museum-promenade.json', 'original-waterfront'].includes(view.source)) throw new Error('Invalid/duplicate view or unreviewed source.');
+    if (!safe(view.id) || ids.has(view.id) || !(view.source === 'original-waterfront' || /^[a-z0-9][a-z0-9-]{0,79}\.json$/.test(view.source))) throw new Error('Invalid/duplicate view or unreviewed source.');
+    if (view.source === 'original-waterfront' && plan.region && plan.region !== 'marina-bay') throw new Error('Waterfront source belongs to Marina Bay.');
     if (!Number.isFinite(view.heading) || view.heading < 0 || view.heading >= 360 || !Number.isFinite(view.pitch) || Math.abs(view.pitch) > 80 || !Number.isFinite(view.zoom) || view.zoom < 0 || view.zoom > 3) throw new Error('Invalid camera settings.');
     ids.add(view.id);
   }
@@ -16,10 +32,12 @@ export function validatePlan(plan) {
 }
 export async function prepareViews(plan) {
   validatePlan(plan);
+  const directory = planDirectory(plan);
   const result = [];
   for (const view of plan.views) {
     const source = JSON.parse(await readFile(view.source === 'original-waterfront' ? 'reconstruction/marina-bay.capture.json' : `${directory}/${view.source}`, 'utf8'));
     if (!source.pano_id || source.status !== 'OK') throw new Error('Missing reviewed panorama.');
+    if (view.source !== 'original-waterfront' && source.selectedGoogle !== true) throw new Error('Source requires Google-owned panorama selection.');
     const stem = `${directory}/${view.id}`, imageFile = `${stem}.png`, manifestFile = `${stem}.json`;
     const fingerprint = sha256(JSON.stringify({ pano: source.pano_id, heading: view.heading, pitch: view.pitch, zoom: view.zoom, width: plan.width, height: plan.height }));
     let bytes, cached;

@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "estate.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "gY_r1NRK_VyR8P6kwpQwDw",
+  "position": {
+    "lat": 1.2960187839054864,
+    "lng": 103.80481803571564
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 5,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:07:27.273Z",
+  "file": "reconstruction/queenstown/references/estate-south.png",
+  "fingerprint": "a6078fb1a4215ed2f0d254b71ef51e9343dbb5a9a01272ba11a6b799191724eb",
+  "sha256": "0656a96e921fae56993819b57301b621b8429b1ccff2730683ccea4d68137121",
+  "bytes": 1891322,
+  "durationMs": 2687,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: cream slab columns, pale-gray gallery parapets, coral trim, open void deck, brick-paved parking and double yellow edge lines."
+}

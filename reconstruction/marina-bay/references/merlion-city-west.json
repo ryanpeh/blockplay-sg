@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "merlion-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-07",
+  "pano_id": "16W5kHHJYUdeYcEDblMr-Q",
+  "position": {
+    "lat": 1.2867612659229497,
+    "lng": 103.85442860998917
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:05:59.300Z",
+  "file": "reconstruction/marina-bay/references/merlion-city-west.png",
+  "fingerprint": "0d219ab4be5c8bdfa73b42b8b68f7eba00d5e7c925c230f5e5ec3861d40d3379",
+  "sha256": "f6937b4cc3895b9344e028e6d73521898912c44416bcf5bff3424e47f0054e1d",
+  "bytes": 1762705,
+  "durationMs": 2461,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: outdoor Merlion garden paving, grates, broadleaf trees and benches; Fullerton mostly screened by foliage"
+}

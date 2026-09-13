@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "station.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "h3P6D4OMJLL-JgPLFFQVfg",
+  "position": {
+    "lat": 1.2942940203704458,
+    "lng": 103.80608981116512
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 10,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "301 Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:07:19.244Z",
+  "file": "reconstruction/queenstown/references/station-east.png",
+  "fingerprint": "4e7bc1e701ee77820f98e5d4f2cadaf5e57216bfe5e09106adee5a1c6691a738",
+  "sha256": "149c37554d8612a5053e17d9135c469c3d886736f0c13f319cb1af3e508529c5",
+  "bytes": 2029363,
+  "durationMs": 3555,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: exterior station close-up; blue cladding, exposed concrete pier, horizontal louvers, planting and bollards. Does not establish whole roof shape or geographic scale."
+}

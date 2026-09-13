@@ -1,7 +1,15 @@
 import { expect, it } from 'vitest';
 // @ts-expect-error Shared capture-tool JavaScript module.
-import { validatePlan, checkAllowance, prepareViews } from '../../scripts/browser-capture-plan.mjs';
+import { validatePlan, checkAllowance, prepareViews, parsePlanArgs, planDirectory } from '../../scripts/browser-capture-plan.mjs';
 const plan = { name: 'test-plan', width: 1280, height: 900, maxNewImages: 1, views: [{ id: 'test-view', source: 'north-bay.json', heading: 160, pitch: 15, zoom: 1 }] };
+it('accepts explicit local plans and rejects traversal and ambiguous flags', () => {
+  expect(parsePlanArgs(['--plan', 'reconstruction/queenstown-browser-plan.json', '--dry-run'])).toEqual({ planFile: 'reconstruction/queenstown-browser-plan.json', batch: false, dryRun: true });
+  expect(() => parsePlanArgs(['--plan', '../secret.json'])).toThrow();
+  expect(() => parsePlanArgs(['--plan', 'reconstruction/ok.json', '--batch'])).toThrow();
+  expect(() => validatePlan({ ...plan, region: '../secret' })).toThrow();
+  expect(() => validatePlan({ ...plan, views: [{ ...plan.views[0], source: '../secret.json' }] })).toThrow();
+  expect(planDirectory({ region: 'queenstown' })).toBe('reconstruction/queenstown/references');
+});
 it('validates safe output IDs, unique views and bounded camera settings', () => {
   expect(validatePlan(plan)).toBe(plan);
   expect(() => validatePlan({ ...plan, views: [{ ...plan.views[0], id: '../secret' }] })).toThrow();

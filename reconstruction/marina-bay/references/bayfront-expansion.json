@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "qwGtYnxlpZaMiMb2lDhmPw",
+  "location": {
+    "lat": 1.2818916268533302,
+    "lng": 103.86029485394292
+  },
+  "description": "Sheares Link, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2819,
+    "lng": 103.8603
+  },
+  "selectedGoogle": true
+}

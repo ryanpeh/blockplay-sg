@@ -1,15 +1,15 @@
 export interface Obstacle { minX: number; maxX: number; minZ: number; maxZ: number }
 export interface Position2D { x: number; z: number }
-export const MARINA_BOUNDS = { minX: -268, maxX: 288, minZ: -258, maxZ: 208 };
+export const QUEENSTOWN_BOUNDS = { minX: -184, maxX: 184, minZ: -144, maxZ: 144 };
 
 export function canOccupy(x: number, z: number, radius: number, obstacles: readonly Obstacle[]) {
-  const b = MARINA_BOUNDS;
+  const b = QUEENSTOWN_BOUNDS;
   if (x - radius < b.minX || x + radius > b.maxX || z - radius < b.minZ || z + radius > b.maxZ) return false;
   return !obstacles.some(o => x + radius > o.minX && x - radius < o.maxX && z + radius > o.minZ && z - radius < o.maxZ);
 }
 
 /** Small steps prevent tunnelling; separate axes let the player slide along walls. */
-export function moveInMarina(position: Position2D, dx: number, dz: number, radius: number, obstacles: readonly Obstacle[]) {
+export function moveInQueenstown(position: Position2D, dx: number, dz: number, radius: number, obstacles: readonly Obstacle[]) {
   let { x, z } = position;
   const steps = Math.max(1, Math.ceil(Math.hypot(dx, dz) / 0.4));
   for (let i = 0; i < steps; i++) {

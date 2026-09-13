@@ -5,12 +5,23 @@ export const MARINA_SPAWN = { x: -44, z: 67, yaw: -0.82 };
 // Landmark scale 0.54: SkyPark 340 × 38m, elevation 200m (Arup/MBS).
 // Ground layout is still compressed independently for gameplay.
 export const MARINA_LANDMARKS = { towerHeight: 108, skyParkLength: 183.6, skyParkWidth: 20.52, museumHeight: 32.4 };
+export const MARINA_MAP_ROADS = [
+  { points: [{ x: -103, z: 94 }, { x: 103, z: 94 }, { x: 103, z: -112 }, { x: -103, z: -112 }, { x: -103, z: 94 }] },
+  { points: [{ x: -223, z: 164 }, { x: 238, z: 164 }, { x: 238, z: -218 }, { x: -223, z: -218 }, { x: -223, z: 164 }] },
+  { points: [{ x: -103, z: 94 }, { x: -103, z: 164 }] },
+  { points: [{ x: 103, z: 94 }, { x: 103, z: 164 }] },
+  { points: [{ x: 103, z: -112 }, { x: 103, z: -218 }] },
+];
 export const MARINA_STAMPS = [
   { name: 'Waterfront', x: 45, z: 65 },
   { name: 'City skyline', x: -103, z: 15 },
   { name: 'Bay crossing', x: -20, z: -112 },
   { name: 'Lotus museum', x: 103, z: -77 },
   { name: 'SkyPark', x: 126, z: 65 },
+  { name: 'Waterfront terraces', x: -191, z: 95 },
+  { name: 'Esplanade gardens', x: -25, z: -185 },
+  { name: 'Bayfront greenway', x: 214, z: 17 },
+  { name: 'Southern gardens', x: 25, z: 140 },
 ];
 
 /** Authored, compressed game map. Photos inform the promenade; geometry is not surveyed. */
@@ -21,7 +32,7 @@ export function buildMarinaScene() {
   const sun = new THREE.DirectionalLight('#fff5e7', 2.1);
   sun.position.set(-120, 190, 90); sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
-  Object.assign(sun.shadow.camera, { left: -220, right: 220, top: 220, bottom: -220, near: 1, far: 550 });
+  Object.assign(sun.shadow.camera, { left: -310, right: 310, top: 290, bottom: -290, near: 1, far: 700 });
   sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.3; scene.add(sun);
   const geometries: THREE.BufferGeometry[] = [], materials: THREE.Material[] = [];
   const obstacles: Obstacle[] = [{ minX: -80, maxX: 80, minZ: -90, maxZ: 50 }];
@@ -44,7 +55,7 @@ export function buildMarinaScene() {
     const mesh = box(middle.x, middle.y, middle.z, width, from.distanceTo(to), width, material, scene, true);
     mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), to.clone().sub(from).normalize()); return mesh;
   }
-  box(0, -0.6, -20, 430, 1, 360, mat('#687d4e'));
+  box(10, -0.6, -25, 590, 1, 510, mat('#687d4e'));
   box(0, -0.18, -20, 188, 0.35, 168, sand);
   box(0, -0.05, -20, 160, 0.15, 140, water);
   // The road completes a continuous loop around the bay.
@@ -262,6 +273,102 @@ export function buildMarinaScene() {
   for (let i = 0; i < 6; i++) tower(-148 - i % 2 * 22, -100 + i * 38, 22, [76, 109, 64, 92, 62, 84][i], 25, i);
   for (let i = 0; i < 8; i++) tower(-130 + i * 36, -153, 19 + i % 3 * 3, 30 + (i * 17) % 48, 20, i);
 
+  // New connected district circuit: original bay retained, with a longer route
+  // behind the skyline and Sands. Distances remain compressed for game pacing.
+  const asphaltEdge = mat('#70726e'), gardenSoil = mat('#746957');
+  for (const route of MARINA_MAP_ROADS.slice(1)) for (let i = 1; i < route.points.length; i++) {
+    const a = route.points[i - 1], b = route.points[i], horizontal = a.z === b.z;
+    const length = Math.abs(horizontal ? b.x - a.x : b.z - a.z);
+    const x = (a.x + b.x) / 2, z = (a.z + b.z) / 2;
+    box(x, -0.025, z, horizontal ? length + 16 : 22, 0.1, horizontal ? 22 : length + 16, asphaltEdge);
+    box(x, 0.035, z, horizontal ? length + 16 : 16, 0.08, horizontal ? 16 : length + 16, road);
+    for (let step = 10; step < length - 8; step += 12) {
+      const t = step / length;
+      box(a.x + (b.x - a.x) * t, 0.085, a.z + (b.z - a.z) * t, horizontal ? 5 : 0.16, 0.015, horizontal ? 0.16 : 5, white);
+    }
+  }
+  // Bayfront greenway: broad stone cycle path between the hotel and new road.
+  box(212, 0.015, -15, 19, 0.12, 320, sand);
+  box(218, 0.09, -15, 3.2, 0.03, 315, mat('#9f665b'));
+  for (let z = -165; z <= 135; z += 20) {
+    palm(198, z, 10 + Math.abs(z % 3));
+    box(198, 0.12, z, 3, 0.25, 3, gardenSoil);
+    box(225, 3.7, z, 0.15, 7.4, 0.15, steel);
+    box(224.5, 7.4, z, 1.2, 0.15, 0.5, dark);
+    collider(225, z, 0.4, 0.4);
+    if (z % 40 === 15) { box(204, 0.7, z, 1, 0.25, 4, wood); collider(204, z, 1, 4); }
+  }
+  // Sheares Link reference: alternating black/white curbs, double yellow
+  // roadside lines, dense planting and a broad rain-tree canopy.
+  const yellow = mat('#d4b549');
+  for (let z = -170; z < 142; z += 3) box(229, 0.2, z, 0.45, 0.4, 2.9, z % 2 ? white : dark);
+  for (const x of [230.2, 230.6]) box(x, 0.09, -14, 0.12, 0.025, 311, yellow);
+  for (let z = -158; z <= 122; z += 28) {
+    box(201, 0.35, z, 3, 0.7, 15, hedge);
+    for (let i = 0; i < 3; i++) {
+      const tree = new THREE.Mesh(shrubGeo, leaf); tree.position.set(258 + i * 2.4, 9 + i % 2 * 2, z + i * 1.6); tree.scale.set(7, 3.5, 6); tree.castShadow = true; scene.add(tree);
+    }
+    box(260, 4.5, z, 0.8, 9, 0.8, trunk); collider(260, z, 1, 1);
+  }
+  box(221, 3, 42, 0.15, 6, 0.15, steel); collider(221, 42, 0.4, 0.4);
+  box(221, 5.5, 42, 0.18, 2.5, 5, mat('#246d55'));
+  for (const y of [5, 5.7, 6.2]) box(221.11, y, 42, 0.02, 0.1, 3.8, white);
+  // Southern garden court and west-side waterfront terraces. The stepped
+  // plinths are decorative, with a flat clear public path alongside them.
+  box(0, 0.015, 135, 180, 0.13, 25, sand);
+  for (let x = -75; x <= 75; x += 25) {
+    palm(x, 118, 10);
+    box(x, 0.5, 117, 9, 1, 5, cream); box(x, 1.05, 117, 8.5, 0.25, 4.5, hedge); collider(x, 117, 9, 5);
+    box(x, 0.65, 149, 5, 0.22, 1, wood); collider(x, 149, 5, 1);
+  }
+  box(-188, 0.01, 93, 38, 0.12, 52, sand);
+  for (let i = 0; i < 4; i++) {
+    box(-182, 0.2 + i * 0.25, 108 + i * 2, 30, 0.4 + i * 0.5, 2, cream);
+    collider(-182, 108 + i * 2, 30, 2);
+  }
+  for (const x of [-207, -169]) for (const z of [73, 123]) palm(x, z, 10);
+  // Merlion-side reference: blue tiled base, cream sculptural silhouette and
+  // a curved hedge planter. This is an intentionally simplified game statue.
+  const tileBlue = mat('#386a9a');
+  const statue = new THREE.Group(); statue.position.set(-87, 0, -40); scene.add(statue); collider(-87, -40, 4, 4);
+  const pedestal = new THREE.Mesh(geo(new THREE.CylinderGeometry(2.2, 2.8, 0.9, 12)), tileBlue); pedestal.position.y = 0.45; statue.add(pedestal);
+  const fish = new THREE.Mesh(geo(new THREE.CylinderGeometry(0.85, 1.5, 4.5, 9)), pale); fish.position.y = 3; statue.add(fish);
+  const lion = new THREE.Mesh(geo(new THREE.IcosahedronGeometry(1.25, 1)), cream); lion.position.set(0, 6.1, 0); statue.add(lion);
+  box(0.95, 5.85, 0, 1.1, 0.6, 0.95, pale, statue);
+  for (const z of [-0.48, 0.48]) box(0.83, 6.35, z, 0.12, 0.14, 0.1, dark, statue);
+  for (let row = 0; row < 8; row++) for (let i = 0; i < 9; i++) {
+    const a = i / 9 * Math.PI * 2 + row % 2 * 0.3, r = 1.44 - row * 0.067;
+    const scale = box(Math.cos(a) * r, 1.2 + row * 0.48, Math.sin(a) * r, 0.52, 0.12, 0.35, cream, statue); scale.rotation.y = -a;
+  }
+  const jet = new THREE.QuadraticBezierCurve3(new THREE.Vector3(-85.5, 5.8, -40), new THREE.Vector3(-78, 7, -40), new THREE.Vector3(-75, 0.12, -40));
+  scene.add(new THREE.Mesh(geo(new THREE.TubeGeometry(jet, 24, 0.1, 5, false)), mat('#c6e1df', { transparent: true, opacity: 0.75 })));
+
+  // Park pavilions extend the northern district beyond the original skyline.
+  // Their radial roof fins are a stylized architectural motif, not a measured
+  // reconstruction of the Esplanade shells.
+  box(-25, 0.01, -190, 137, 0.12, 32, sand);
+  const pavilionGeo = geo(new THREE.SphereGeometry(1, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2));
+  for (const x of [-60, 10]) {
+    const dome = new THREE.Mesh(pavilionGeo, mat('#899996', { roughness: 0.5, metalness: 0.18 }));
+    dome.position.set(x, 1, -183); dome.scale.set(21, 12, 13); scene.add(dome); collider(x, -183, 42, 26);
+    for (let i = 0; i < 18; i++) {
+      const angle = i / 18 * Math.PI * 2;
+      beam(new THREE.Vector3(x + Math.cos(angle) * 21, 1, -183 + Math.sin(angle) * 13), new THREE.Vector3(x + Math.cos(angle) * 10, 11.5, -183 + Math.sin(angle) * 6), 0.45, cream);
+    }
+  }
+  for (const x of [-88, -27, 43]) { palm(x, -202, 9); box(x, 0.5, -202, 6, 1, 3, hedge); collider(x, -202, 6, 3); }
+  // Additional city blocks put an inhabited edge around the expanded route.
+  for (let i = 0; i < 4; i++) tower(-251, -160 + i * 73, 18, 35 + i * 13, 28, i);
+  for (let i = 0; i < 5; i++) tower(-150 + i * 74, -245, 26, 32 + i % 3 * 14, 18, i);
+  // MBFC entrance reference: transparent-looking blue glazing, dark canopy
+  // beams and a line of silver cylindrical bollards outside the drop-off.
+  box(-239, 5, 59, 8, 0.18, 18, glass);
+  for (const z of [51, 59, 67]) {
+    box(-239, 4.9, z, 8, 0.3, 0.25, dark);
+    const bollard = new THREE.Mesh(bollardGeo, steel); bollard.position.set(-234, 0.5, z); scene.add(bollard); collider(-234, z, 0.4, 0.4);
+  }
+  box(-242, 2.5, 59, 0.3, 5, 18, glass);
+
   // Fullerton-side stone arcade: arched openings, cornices and planted frontage
   // observed in fullerton-materials.png, compressed into the city-side block.
   const stone = mat('#b3b6b4'), insetGlass = mat('#273f4a', { roughness: 0.4 });
@@ -277,7 +384,7 @@ export function buildMarinaScene() {
     box(-117, 0.35, z, 1.5, 0.7, 4.5, cream); box(-117, 1, z, 1.2, 0.9, 4.2, hedge); collider(-117, z, 1.5, 4.5);
   }
   // Record which reviewed images informed authored features (not photogrammetry).
-  scene.userData.referenceFeatures = ['museum-shell', 'bay-skyline', 'fullerton-materials', 'fullerton-glazing', 'sands-canopy', 'sands-streetscape', 'south-waterfront', 'south-palms'];
+  scene.userData.referenceFeatures = ['museum-shell', 'bay-skyline', 'fullerton-materials', 'fullerton-glazing', 'sands-canopy', 'sands-streetscape', 'south-waterfront', 'south-palms', 'merlion-waterfront-east', 'bayfront-gardens-east', 'south-promenade-north'];
 
   const waves: THREE.Mesh[] = [];
   const foam = mat('#b6d9d0', { transparent: true, opacity: 0.4 });
@@ -298,17 +405,18 @@ export function buildMarinaScene() {
   box(0, 0.72, -2.23, 2.1, 0.2, 0.12, pale, car); box(0, 0.75, 2.23, 2.1, 0.2, 0.12, orange, car);
   const wheelGeo = geo(new THREE.CylinderGeometry(0.48, 0.48, 0.3, 10));
   for (const x of [-1.15, 1.15]) for (const z of [-1.35, 1.35]) { const wheel = new THREE.Mesh(wheelGeo, dark); wheel.rotation.z = Math.PI / 2; wheel.position.set(x, 0.5, z); car.add(wheel); }
-  // Thousands of façade/paving/railing details share a handful of draw calls.
-  // Leave moving waves and child meshes (car/boat) alone.
+  // Repeated façade/paving/railing and palm details share batched draw calls.
+  // Leave unique landmark geometry, moving waves and car/boat children alone.
   const batches = new Map<string, THREE.Mesh[]>();
   for (const child of [...scene.children]) {
-    if (!(child instanceof THREE.Mesh) || child instanceof THREE.InstancedMesh || child.geometry !== boxGeo || waves.includes(child)) continue;
-    const material = child.material as THREE.Material, key = `${material.uuid}:${child.castShadow}`;
+    if (!(child instanceof THREE.Mesh) || child instanceof THREE.InstancedMesh || Array.isArray(child.material) || waves.includes(child)) continue;
+    const material = child.material as THREE.Material, key = `${child.geometry.uuid}:${material.uuid}:${child.castShadow}`;
     const batch = batches.get(key) || []; batch.push(child); batches.set(key, batch);
   }
   const instances: THREE.InstancedMesh[] = [pavers];
   for (const batch of batches.values()) {
-    const mesh = new THREE.InstancedMesh(boxGeo, batch[0].material, batch.length);
+    if (batch.length < 2) continue;
+    const mesh = new THREE.InstancedMesh(batch[0].geometry, batch[0].material, batch.length);
     mesh.castShadow = batch[0].castShadow; mesh.receiveShadow = true;
     batch.forEach((item, i) => { item.updateMatrix(); mesh.setMatrixAt(i, item.matrix); scene.remove(item); });
     mesh.computeBoundingSphere(); scene.add(mesh); instances.push(mesh);

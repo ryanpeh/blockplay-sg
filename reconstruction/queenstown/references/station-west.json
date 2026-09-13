@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "station.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "h3P6D4OMJLL-JgPLFFQVfg",
+  "position": {
+    "lat": 1.2942940203704458,
+    "lng": 103.80608981116512
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "301 Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:07:21.719Z",
+  "file": "reconstruction/queenstown/references/station-west.png",
+  "fingerprint": "17ad4926577546503c744ccdd34ca9ebfb5ddef11a327b23a84b146ad8f42ef2",
+  "sha256": "db213a32abc7fb6b9d123eff4fbf2a48d1459c9b1ac2f17834c7631bd340ec67",
+  "bytes": 1400380,
+  "durationMs": 2473,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "limited: foreground bus occludes most street; use only upper cream/coral slab facade and blue covered-walkway supports visible at right. Not a sizing reference."
+}
