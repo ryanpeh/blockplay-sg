@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   return {
   plugins: [react()],
   server: { proxy: { '/api/adventure': 'http://127.0.0.1:3001' } },
-  define: demo ? { 'import.meta.env.VITE_GOOGLE_MAPS_API_KEY': JSON.stringify(demo) } : {},
+  define: mode === 'sites' ? { 'import.meta.env.VITE_GOOGLE_MAPS_API_KEY': JSON.stringify('') } : demo ? { 'import.meta.env.VITE_GOOGLE_MAPS_API_KEY': JSON.stringify(demo) } : {},
   build: {
     rollupOptions: {
       output: { manualChunks: { three: ['three'] } },

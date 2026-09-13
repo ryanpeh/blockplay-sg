@@ -47,6 +47,10 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 
 ## What works
 
+- **Change the adventure (Marina 3D):** type or say “give me something closer”, “take me to the museum”, or “skip this stop”. The companion changes an existing collectible objective, updates the HUD, and highlights it with a purple minimap marker and in-world beacon. Collected stamps are preserved. “Closer” uses straight-line game distance, not a navigable route.
+
+- **Educational companions (all three regional 3D modes):** ask about a stop, local history or regional highlights. Eighteen curated learning cards include source links and reflection prompts. Queenstown and Raffles Place have education-only guides; they do not change objectives or stamps. These panels are not available in FPS, Open world or LAN arena. Text interpretation uses Luna and voice uses GPT-Live-1; see setup below.
+
 - **Open world expedition:** explore connected Marina Bay, Raffles Place and Queenstown zones. Pick up randomized weapons, plates, ammo and medical supplies with E; cross checkpoints with T. The CBD has tougher patrols and better elite weapon odds. Field equipment and collected loot survive zone travel; permanent Armory purchases remain separate. See [zones and loot](docs/WORLD-ZONES.md).
 
 - **LAN arena and bots:** run `pnpm lan`, open **LAN arena**, and host or join using the room code. Supports up to four humans, six bots, Armory loadouts, assault/tank/sniper compositions, respawns and a shared scoreboard. Solo bots also work with `pnpm dev`. See [LAN setup and role plugins](docs/LAN-ARENA.md).
@@ -108,7 +112,7 @@ Terms and privacy disclosures are available from the footer. Review them for you
 
 The FPS UI is `src/components/FpsGame.tsx`; rendering/input/resource cleanup live in `src/game/fps-engine.ts`. `fps-rules.ts` handles ammo/cadence/reloading and normalized movement, and `fps-raycast.ts` filters visible, nearest surface hits. Six original GLBs are included under `public/models/field-kit/`; no Blender installation is needed to run the app. Editable art sources and the standalone inspection viewer are under `asset-pack/` in the working copy.
 
-The close-up weapons have approximately 18k/21k triangles. A separate viewmodel camera prevents clipping into world geometry. Pixel ratio is capped at 1.35 and dynamic shadows are disabled in FPS mode for the VM. These choices do not guarantee a particular frame rate. Jumping is ground-plane motion: buildings remain solid at all heights, with no climbing, slopes or interiors. Optional target counter-fire now supplies a player/armor damage loop. There are no skeletal hands, navigating enemy AI or multiplayer yet; aiming uses an overlay because the GLB optic lenses are opaque.
+The close-up weapons have approximately 18k/21k triangles. A separate viewmodel camera prevents clipping into world geometry. Pixel ratio is capped at 1.35 and dynamic shadows are disabled in FPS mode for the VM. These choices do not guarantee a particular frame rate. Jumping is ground-plane motion: buildings remain solid at all heights, with no climbing, slopes or interiors. Optional target counter-fire supplies a player/armor damage loop in practice; Open world and LAN arena add moving role-based bots, and LAN arena supports multiplayer. Bots use local movement and sight checks, not a general route-finding system. There are no skeletal hands; aiming uses an overlay because the GLB optic lenses are opaque.
 
 Run `pnpm test` and `pnpm build`. The portable browser smoke test requires a running app and an isolated Chrome debugging session on loopback. It defaults to app port 5175 and Chrome port 9224; override with `FPS_APP_ORIGIN` and `FPS_CHROME_ORIGIN`. Then run `pnpm test:fps` (Node 22.12+ with built-in WebSocket support). If your VPN proxies localhost, use `NO_PROXY=127.0.0.1,localhost pnpm test:fps`. Screenshots go to ignored `.cache/fps-smoke/`. The script checks loading, center-target hits, ammo/reload, pause, weapon switching, movement, aiming, all-eight-target completion, reset, mobile layout, mode cleanup and zero map requests. It uses the isolated browser's DevTools endpoint; do not point it at a personal browser profile.
 
@@ -119,21 +123,53 @@ src/
   App.tsx                    Experience selection, session state, interface
   styles.css                 Responsive visual system
   data/locations.ts          Singapore presets and mode types
-  game/World.tsx             Original Three.js scene and game loop
-  game/marina-scene.ts       Modeled Marina landmarks, road loop, car, stamps
-  game/marina-collision.ts   Bounds, obstacle collision, wall sliding
-  components/MarinaGame.tsx  Default Marina walk/drive game and HUD
-  game/physics.ts            Speed and checkpoint rules
-  game/physics.test.ts       Core driving behavior checks
+  components/SingaporeMap.tsx Island locator and expedition route selection
+  components/MarinaGame.tsx  Marina walk/drive, stamps and objective HUD
+  components/QueenstownGame.tsx / RafflesGame.tsx  Other regional games
+  game/*-scene.ts            Authored district geometry and collectibles
+  game/*-collision.ts        Regional bounds, obstacles and wall sliding
+  components/AdventureCompanion.tsx  Shared text/voice companion panel
+  components/RegionGuide.tsx Read-only Queenstown/Raffles guide adapter
+  data/*-guide.ts            Curated educational topics and source links
+  game/adventure.ts          Validated objectives and session guards
+  components/FpsGame.tsx     Practice and arena HUDs
+  components/ExpeditionGame.tsx  Connected-district expedition
+  components/LanLobby.tsx    Solo bots and LAN host/join
+  game/fps-engine.ts         Shared FPS rendering and local simulation
+  game/world-zones.ts        District graph and checkpoint routes
+  game/arena-*.ts            Role-based bots, match rules and authority
   components/StreetView.tsx  Official panorama viewer
   lib/google-maps.ts         Optional browser SDK loader
+server/                     Private companion API and static-file server
+scripts/lan-server.mjs       Separate LAN signaling and static-file server
 ```
 
-The game and Google viewer are independent. Extend the original world without mixing Google imagery into custom 3D materials. Exercises run in memory. Armory currency, XP, ownership and equipped items persist in browser local storage. No backend is required for local gameplay; the optional adventure companion uses the included server. There is no account system, synchronization or leaderboard.
+The game and Google viewer are independent. Extend the authored worlds without mixing Google imagery into custom 3D materials. Region stamps, conversations, expedition loot and arena scores are session-only. Armory currency, XP, ownership and equipped items persist in browser local storage. Local solo gameplay needs no backend. LAN matches synchronize gameplay and show a session scoreboard, but there are no accounts, cloud saves or persistent online leaderboards.
 
 ## Deploy
 
-The game can be hosted statically, but the **Change the adventure** companion and regional educational guides require a server. See [ADVENTURE.md](ADVENTURE.md) for text/voice setup, testing and deployment. Run `pnpm server` alongside `pnpm dev`, with private `OPENAI_API_KEY` in `.env`. The companions use GPT-5.6 Luna and GPT-Live-1; ordinary exploration remains local. Queenstown and Raffles Place each have six sourced learning cards linked to their game stops. Ask about the nearest stop, local history, the Queenstown library or Boat Quay. Their guides do not change objectives or stamps.
+### GPT Sites playable demo
+
+`pnpm build:sites` creates the game-only build for GPT Sites; `.openai/hosting.json` selects `dist` as the static output. It includes the three walk/drive regions, stamps, Marina FPS/armory, Open world and solo bots. AI companions and multiplayer host/join are explicitly unavailable. Street View is not configured in this deployment, and the build deliberately excludes the local Google browser key. No server secrets or `.env` files belong in the deployment archive. Local `pnpm dev` and normal `pnpm build` retain the full optional integrations.
+
+Sites deployment starts owner-private. Publishing or changing its audience is a separate action from pushing to GitHub. The source and packaged output must match the same saved revision; see the Sites hosting workflow when updating the deployed game.
+
+### Other deployments and optional services
+
+Solo gameplay can be hosted statically. The optional companions and LAN host/join need separate server capabilities:
+
+| Feature | Local setup | Deployment requirement |
+| --- | --- | --- |
+| Regional exploration, Marina FPS, Open world, solo bots | `pnpm dev` | Static `dist` files; no API key |
+| Text/voice companions | `pnpm server` alongside `pnpm dev` | Companion server and same-origin `/api/adventure/*` routing |
+| LAN host/join | `pnpm lan` (builds and serves on port 4173) | LAN signaling server; trusted-network WebRTC connectivity |
+| Live Street View | Optional Google browser key, then `pnpm dev` | Browser key restricted to the deployed origin |
+
+For companions, put private `OPENAI_API_KEY` in `.env` or `.env.local`, never in a `VITE_*` variable. The key must have access to **gpt-5.6-luna** for interpretation and **gpt-live-1** for voice. Restart `pnpm server` after changing credentials; restart Vite if its API proxy is stale. Microphone access requires localhost or HTTPS, not plain HTTP at another computer’s LAN address. Text remains usable if audio fails.
+
+`pnpm build` followed by `pnpm server` serves both `dist` and companion endpoints on `127.0.0.1:3001`. For shared deployment, use an HTTPS reverse proxy, authentication/access control and an explicit `ADVENTURE_ALLOWED_ORIGINS` value. The built-in origin and rate checks are not authentication. See [ADVENTURE.md](ADVENTURE.md) for testing and deployment details.
+
+The companion and LAN servers do not automatically proxy one another. `pnpm lan` alone does not enable the educational guides; `pnpm server` alone does not enable LAN host/join. Serving both features at one origin requires routing `/api/adventure/*` to the companion server and `/api/lan/*` to the LAN server. See [LAN setup](docs/LAN-ARENA.md) for networking limitations.
 
 For a game-only static deployment, import the repository into Vercel, Netlify, or your static host:
 
@@ -167,6 +203,6 @@ NO_PROXY=127.0.0.1,localhost pnpm test:vehicles
 NO_PROXY=127.0.0.1,localhost pnpm test:fullscreen
 ```
 
-Both scripts default to `http://127.0.0.1:5175`; set `FPS_APP_ORIGIN` and `FPS_CHROME_ORIGIN` if needed. Use a separate Chrome `--user-data-dir`: the checks reset the demo armory save on the test origin. Screenshots go to `.cache/fps-smoke/` and `.cache/armory-smoke/`. No browser-testing dependencies were added.
+All four scripts default to `http://127.0.0.1:5175`; set `FPS_APP_ORIGIN` and `FPS_CHROME_ORIGIN` if needed. Run them serially with a separate Chrome `--user-data-dir`: the checks reset the demo armory save on the test origin. Screenshots go to their respective ignored `.cache/*-smoke/` folders. No browser-testing dependencies were added.
 
 Desktop FPS starts only after the browser captures the pointer. Escape releases it and pauses; Resume recaptures it. Capture denial leaves the exercise stopped and displays a retry message. Touch devices retain drag-look.

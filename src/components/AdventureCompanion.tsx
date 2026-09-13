@@ -4,8 +4,15 @@ import type { AdventureGame } from '../game/adventure';
 import { createAdventureClient } from '../lib/adventure-client';
 import { LiveVoice, type VoiceState } from '../lib/live-voice';
 import type { LearningTopic } from '../data/singapore-guide';
+import { IS_STATIC_SITE } from '../lib/deployment';
 
-export default function AdventureCompanion({ game, educationOnly = false, regionName = 'Marina Bay' }: { game: AdventureGame; educationOnly?: boolean; regionName?: string }) {
+type Props = { game: AdventureGame; educationOnly?: boolean; regionName?: string };
+export default function AdventureCompanion(props: Props) {
+  if (IS_STATIC_SITE) return <section className="adventure-companion" aria-label="Companion availability"><strong>Explore at your own pace</strong><p>AI text and voice companions are unavailable in this playable demo. Walk, drive and collect stamps as usual.</p></section>;
+  return <ConnectedCompanion {...props} />;
+}
+
+function ConnectedCompanion({ game, educationOnly = false, regionName = 'Marina Bay' }: Props) {
   const [learning, setLearning] = useState<LearningTopic | null>(null);
   const [client] = useState(() => createAdventureClient(game, undefined, setLearning));
   const [text, setText] = useState('');

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Bot, Check, Copy, Crosshair, LoaderCircle, Radio, Shield, Users, Wifi } from 'lucide-react';
 import { createSoloSession, hostLan, joinLan, lanServerAvailable, type LanSession } from '../game/lan-peer';
 import './lan-lobby.css';
+import { IS_STATIC_SITE } from '../lib/deployment';
 
 type Mode = 'host' | 'join' | 'solo';
 type Squad = 'mixed' | 'assault' | 'tank' | 'sniper';
@@ -12,7 +13,7 @@ function invitedRoom() {
 }
 
 export default function LanLobby({ onLaunch, onBack }: { onLaunch: (session: LanSession, bots: number, squad: Squad) => void; onBack: () => void }) {
-  const [mode, setMode] = useState<Mode>(() => invitedRoom() ? 'join' : 'host');
+  const [mode, setMode] = useState<Mode>(() => IS_STATIC_SITE ? 'solo' : invitedRoom() ? 'join' : 'host');
   const [name, setName] = useState('Operator');
   const [room, setRoom] = useState(invitedRoom);
   const [bots, setBots] = useState(3);
@@ -30,7 +31,7 @@ export default function LanLobby({ onLaunch, onBack }: { onLaunch: (session: Lan
   useEffect(() => {
     alive.current = true;
     let ignore = false;
-    void lanServerAvailable().then(available => { if (!ignore) setServer(available); }).catch(() => { if (!ignore) setServer(false); });
+    if (!IS_STATIC_SITE) void lanServerAvailable().then(available => { if (!ignore) setServer(available); }).catch(() => { if (!ignore) setServer(false); });
     return () => { ignore = true; alive.current = false; attempt.current++; owned.current?.close(); owned.current = null; };
   }, []);
 
@@ -47,6 +48,7 @@ export default function LanLobby({ onLaunch, onBack }: { onLaunch: (session: Lan
     setSession(null); setPeers([]); setBusy(false); setError(''); setNotice('');
   };
   const chooseMode = (next: Mode) => {
+    if (IS_STATIC_SITE && next !== 'solo') return;
     if (next === mode) return;
     disconnect(); setMode(next);
     if (next === 'solo') setBots(value => Math.max(1, value));
@@ -59,6 +61,7 @@ export default function LanLobby({ onLaunch, onBack }: { onLaunch: (session: Lan
     const displayName = name.trim().slice(0, 20);
     if (!displayName) { setError('Choose a display name before deploying.'); return; }
     if (mode === 'solo') { deploy(createSoloSession(displayName), Math.max(1, bots)); return; }
+    if (IS_STATIC_SITE) { setError('Multiplayer host/join is unavailable in this playable demo. Choose Solo vs bots.'); return; }
     if (mode === 'join' && !/^[A-Z0-9]{6}$/.test(room)) { setError('Enter the six-character room code shared by your host.'); return; }
     const token = ++attempt.current;
     setBusy(true); setError(''); setNotice('');
@@ -84,11 +87,11 @@ export default function LanLobby({ onLaunch, onBack }: { onLaunch: (session: Lan
   const canEnter = session?.role === 'host' || (session?.role === 'guest' && peers.length > 0);
 
   return <section className="lan-lobby" aria-label="Multiplayer lobby">
-    <header className="lan-header"><div><span className="lan-kicker">BLOCKPLAY / LOCAL OPERATIONS</span><h2>Never deploy alone.</h2><p>Marina Bay. Your squad. A few uninvited bots.</p></div><span className="lan-network-badge"><Wifi size={15} /> P2P / LAN</span></header>
+    <header className="lan-header"><div><span className="lan-kicker">BLOCKPLAY / LOCAL OPERATIONS</span><h2>{IS_STATIC_SITE ? 'Take on the bots.' : 'Never deploy alone.'}</h2><p>{IS_STATIC_SITE ? 'Solo matches are ready. Multiplayer host/join is unavailable in this playable demo.' : 'Marina Bay. Your squad. A few uninvited bots.'}</p></div><span className="lan-network-badge"><Wifi size={15} /> {IS_STATIC_SITE ? 'SOLO' : 'P2P / LAN'}</span></header>
     <div className="lan-layout">
       <main className="lan-main">
         <div className="lan-mode-picker" aria-label="Connection mode">
-          {([{ id: 'host', icon: Radio, title: 'Host LAN', detail: 'Create a room' }, { id: 'join', icon: Users, title: 'Join LAN', detail: 'Enter a room code' }, { id: 'solo', icon: Bot, title: 'Solo vs bots', detail: 'No connection needed' }] as const).map(option => <button key={option.id} aria-pressed={mode === option.id} onClick={() => chooseMode(option.id)}><option.icon size={23} /><strong>{option.title}</strong><small>{option.detail}</small></button>)}
+          {([{ id: 'host', icon: Radio, title: 'Host LAN', detail: 'Create a room' }, { id: 'join', icon: Users, title: 'Join LAN', detail: 'Enter a room code' }, { id: 'solo', icon: Bot, title: 'Solo vs bots', detail: 'No connection needed' }] as const).map(option => <button key={option.id} disabled={IS_STATIC_SITE && option.id !== 'solo'} aria-pressed={mode === option.id} onClick={() => chooseMode(option.id)}><option.icon size={23} /><strong>{option.title}</strong><small>{IS_STATIC_SITE && option.id !== 'solo' ? 'Unavailable in this demo' : option.detail}</small></button>)}
         </div>
         <div className="lan-briefing"><span className="lan-kicker">{mode === 'solo' ? 'TRAINING OPERATION' : 'SQUAD CONNECTION'}</span><h3>{session ? 'Room secured.' : mode === 'host' ? 'Rally your squad.' : mode === 'join' ? 'Find your host.' : 'Sharpen your instincts.'}</h3><p>{mode === 'solo' ? 'Patrolling opponents, live firefights and respawns. Choose your bot count and bring your equipped loadout.' : mode === 'host' ? 'Start a room, share its code and keep this tab open. Your computer runs the match and the bots.' : 'Open the same host address as your squad, then enter the room code. Your equipped gear deploys with you.'}</p></div>
         <label className="lan-field"><span>DISPLAY NAME <small>20 characters max</small></span><input value={name} maxLength={20} autoComplete="nickname" spellCheck={false} disabled={busy || !!session} onChange={event => setName(event.target.value)} placeholder="Your callsign" /></label>

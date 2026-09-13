@@ -8,6 +8,7 @@
     "server": "node --experimental-strip-types --env-file-if-exists=.env --env-file-if-exists=.env.local server/index.ts",
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
+    "build:sites": "tsc -b && vite build --mode sites",
     "preview": "vite preview --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
