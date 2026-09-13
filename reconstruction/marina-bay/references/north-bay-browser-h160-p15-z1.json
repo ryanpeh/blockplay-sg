@@ -1,0 +1,28 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "north-bay.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2012-02",
+  "pano_id": "NW_EPdX4uxkA1vEg0-ENsg",
+  "position": {
+    "lat": 1.2861001034091848,
+    "lng": 103.85885553989067
+  },
+  "pov": {
+    "heading": 160,
+    "pitch": 15,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:40:58.106Z",
+  "file": "reconstruction/marina-bay/references/north-bay-browser-h160-p15-z1.png",
+  "sha256": "448ae04ca9eade6a25853e66388685aef0605bc0ed27b38b3cecfad77350ab03",
+  "bytes": 1342117,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: three Sands towers, Shoppes, museum pond and promenade visible; no configuration dialog or development watermark; Google attribution and image date retained."
+}

@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "museum-promenade.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-02",
+  "pano_id": "k01iDZdJc_E073cUVGRGbg",
+  "position": {
+    "lat": 1.2832654952564388,
+    "lng": 103.8596409722749
+  },
+  "pov": {
+    "heading": 160,
+    "pitch": -5,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:35.210Z",
+  "file": "reconstruction/marina-bay/references/sands-streetscape.png",
+  "fingerprint": "35c76f5f846ff36beaabc74b5c0a05a187edd7ca21bb2a4792f6f439562bbb5d",
+  "sha256": "5cc4f7b86d8f2cfde80d8d4eb96cc52a992be8bc606ab3eb349a730af0d806e7",
+  "bytes": 1842693,
+  "durationMs": 2508,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Clear curb/road/planting details; central column partly occludes road. Attribution/date retained; no development warning or blank frame."
+}

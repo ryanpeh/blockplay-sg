@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "original-waterfront",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2012-02",
+  "pano_id": "fFrcWOguLLAaql_bDCPSVw",
+  "position": {
+    "lat": 1.281178653223573,
+    "lng": 103.85655765865478
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:40.418Z",
+  "file": "reconstruction/marina-bay/references/south-palms.png",
+  "fingerprint": "2032d31c0c67d6ea4888b5e8ec66c6f1fe83a1d5ae8af5cd62a48ab26d99704e",
+  "sha256": "d8a2d57fbc6626e5045f58d478bcc8327a57d2e48341a3d2779b7681bf15422c",
+  "bytes": 1539051,
+  "durationMs": 2476,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Clear palms, tree pits and shade framework; bright sun affects colors. Attribution/date retained; no development warning or blank frame."
+}

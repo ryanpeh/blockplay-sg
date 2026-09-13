@@ -2,7 +2,34 @@
 
 Last updated: 2026-09-13 (Singapore time).
 
+## Latest game improvement from cached screenshots
+
+Release contents: commit/push the refined game together with the portable capture workflow, corrected budget ledger, cached reference assets, metadata, galleries and performance reports. Private environment keys and inference caches stay excluded. Pre-commit credential scan passed; no new capture calls were needed for the game refinement. The current work remains Marina Bay first, with other location-specific maps planned after this approach is accepted.
+
+Used the cached browser references to improve actual game geometry: angular museum shells/supports/pond detail; Fullerton-inspired stone arcade; Shoppes roof louvers/masts/stays; entrance canopy/blue fins/bollards; finer granite paving, inclined railing braces, bench details, curved shade frames and denser planting/shade trees. See `reconstruction/marina-bay/references/GAME-DETAILS.md` for image-to-feature mapping and limitations. No new source images, API calls or dependencies. Repeated box details remain instanced; road loop, spawn and collectible positions remain clear. **20 tests + build and browser walk/drive/reset/mobile checks pass.** Geography is still a compressed authored map, not a surveyed reconstruction. Prior notes saying no game geometry changed apply only to the earlier capture workflow pass.
+
+## Latest workflow and budget correction
+
+The user clarified that screenshots **do not count against Static API limits**. Implemented this for both the 50-additional-image allowance and the 1,000-Static-attempt cap, preserving all historical ledger entries. Current Static allowance: **15/50 used, 35 remaining**. Static attempts: 23 images + 7 metadata = 30/1000 (970 remaining, metadata conservatively included). Browser events are separate: 9 screenshots, 5 panorama loads/changes, 4 selections; 48 total ledger events are not 48 Static calls. Any older shared-allowance figures below are superseded.
+
+Completed the editable browser batch workflow (`reconstruction/marina-browser-plan.json`, `pnpm marina:browser-capture --batch`, `--dry-run`): grouped panorama reuse, per-run bounds, preflight cache validation, no silent overwrites/retries, Static endpoint blocking, PNG/metadata/checksum cache, timing reports and local review gallery. Tested **8 captures / 4 panorama loads / 0 failures / 0 Static calls in 21.826s**, ~11.4 MiB output. Cache-only rerun: **8 hits in 33ms**, no browser/network. All eight images reviewed; detailed reference views are useful, but dates/occlusions prevent claims of calibrated reconstruction. **20 tests and build pass**. See `reconstruction/marina-bay/references/WORKFLOW.md` for commands, reports, limitations and next steps. No game geometry changed in this workflow pass.
+
 ## Current milestone: modeled Marina game
+
+### Latest color/detail and sizing pass
+
+**Subsequent browser-capture pass:** `GOOGLE_MAPS_DEMO_API_KEY` now takes precedence for the live browser viewer via an explicit Vite mapping; Static scripts retain the original `VITE_GOOGLE_MAPS_API_KEY`. Added `pnpm marina:browser-capture` with a dedicated capture page, separate Chrome tab, Static endpoint blocking, demo-key verification without exposing its value, readiness checks and a cached PNG/manifest. One 1280×900 screenshot was visually accepted; attribution/date retained, no development warning. Rerun used zero network calls. Build and 17 tests passed, including shared allowance enforcement across Static images and browser screenshots. No game geometry changed in this capture-only pass.
+
+Current totals supersede the figures below: **36 ledger entries = 23 Static images + 7 Static metadata + 4 Maps JS selections + 1 browser panorama load + 1 screenshot reservation**. **16/50 new images used; 34 remain.** Browser rendering has separate billing; screenshots are local operations recorded conservatively, not additional Google API calls. The 1,000-entry local cap remains (964 left).
+
+- User authorized up to **50 additional Marina Bay images**, cached for reuse. Captured **15**, leaving **35**; stored with panorama metadata/frame settings/checksums in `reconstruction/marina-bay/references/`, now eligible for version control and cross-machine transfer. Original source/rejected-image folders remain ignored.
+- The live ledger now records **34 attempts = 23 Static images + 7 Static metadata + 4 Maps JavaScript selections**, leaving 966 under the original conservative cap. These figures supersede historical counts below. A separate persisted 50-image allowance (baseline 8) is enforced before every new image request. No further captures are needed to play.
+- Replaced the beige/green wash with gray granite, blue-gray glazing, deeper water, silver railings and greener planting. Added slab variation, wood waterfront edge, finer railings, bent palm fronds, lights, bins, crosswalks, planters, Shoppes podium/roof ribs, museum pond/supports, finer tower facades and roof equipment.
+- Refined Sands proportions using published 340 × 38m SkyPark dimensions and 200m elevation at a consistent 0.54 landmark scale. Ground geography remains compressed; this is not a metric reconstruction. Source links/observations are in the reference README.
+- Static box details are instanced to reduce draw calls; camera starts farther back at a 1.75-unit eye height for a clearer landmark view.
+- **17 tests and production build pass**. New tests check the additional-image cap, full road-loop clearance, spawn/stamp clearance, landmark proportions and detail batching. Browser walk/drive/reset/mobile checks passed with no uncaught errors or live Static requests. Both reference commands were rerun against the complete cache with zero additional requests. Full five-stamp gameplay completion and actual-phone performance remain open.
+
+### Prior modeled milestone
 
 The latest user clarification requests **Joyride-style low-poly 3D game art**, not photographs or stretched photo-depth meshes. The default scene now uses authored solid geometry informed by saved waterfront images. Geography and scale are deliberately compressed; this is not automatic or surveyed reconstruction.
 

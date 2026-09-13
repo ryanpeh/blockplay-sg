@@ -1,0 +1,18 @@
+{
+  "plan": "marina-single-view",
+  "startedAt": "2026-09-13T03:48:04.251Z",
+  "cached": 1,
+  "captured": 0,
+  "failed": 0,
+  "panoramaLoads": 0,
+  "staticApiRequests": 0,
+  "totalMs": 8,
+  "bytes": 0,
+  "views": [
+    {
+      "id": "north-bay-browser-h160-p15-z1",
+      "status": "cached",
+      "bytes": 1342117
+    }
+  ]
+}

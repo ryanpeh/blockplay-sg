@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "west-bay.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-10",
+  "pano_id": "HbXJAgZaTdFV0U6_FKAWHg",
+  "position": {
+    "lat": 1.2837526197255138,
+    "lng": 103.85316354657934
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 12,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:29.980Z",
+  "file": "reconstruction/marina-bay/references/fullerton-glazing.png",
+  "fingerprint": "36e27ae631517f5038014045980c490701fe807596764e277492fafbb5ff4666",
+  "sha256": "ac863ed433d0ece034720b928600456121e7827c9622a28d6878f985772c93fb",
+  "bytes": 1817040,
+  "durationMs": 2943,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Clear facade, columns and planting reference. Attribution/date retained; no development warning or blank frame."
+}

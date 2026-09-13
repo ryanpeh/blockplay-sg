@@ -1,0 +1,61 @@
+{
+  "status": "OK",
+  "pano_id": "NW_EPdX4uxkA1vEg0-ENsg",
+  "location": {
+    "lat": 1.2861001034091848,
+    "lng": 103.85885553989067
+  },
+  "description": "",
+  "copyright": "© 2026 Google",
+  "date": "2012-02",
+  "requested": {
+    "id": "north-bay",
+    "lat": 1.2861,
+    "lng": 103.858,
+    "heading": 190,
+    "pitch": 5
+  },
+  "selectedGoogle": true,
+  "frames": [
+    {
+      "heading": 190,
+      "pitch": 5,
+      "file": "reconstruction/marina-bay/references/north-bay.jpg",
+      "horizontalFov": 90,
+      "bytes": 54746,
+      "sha256": "ca8c24a20d833b828bfca06a901560da615a272517645cc05c706308fc4c2444"
+    },
+    {
+      "heading": 0,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/north-bay-0.jpg",
+      "horizontalFov": 90,
+      "bytes": 49036,
+      "sha256": "6401010c935c713bc8c8139e294f4b192a88574e9f9662e37d7f0268c72d3025"
+    },
+    {
+      "heading": 90,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/north-bay-90.jpg",
+      "horizontalFov": 90,
+      "bytes": 64139,
+      "sha256": "90e9ad4bca3353f098af6e74e7921bb1e042613cd9b71696800764c43e580bb5"
+    },
+    {
+      "heading": 180,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/north-bay-180.jpg",
+      "horizontalFov": 90,
+      "bytes": 57489,
+      "sha256": "504dd6f4086169d309a801963af0c83c68321df9370f07ce48e23e96063ed51e"
+    },
+    {
+      "heading": 270,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/north-bay-270.jpg",
+      "horizontalFov": 90,
+      "bytes": 52813,
+      "sha256": "099ca2c6198932f703ae75c6335c97be03debd9ad6e11aa38293df76d2f1f5e0"
+    }
+  ]
+}

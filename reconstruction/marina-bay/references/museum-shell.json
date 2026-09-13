@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "north-bay.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2012-02",
+  "pano_id": "NW_EPdX4uxkA1vEg0-ENsg",
+  "position": {
+    "lat": 1.2861001034091848,
+    "lng": 103.85885553989067
+  },
+  "pov": {
+    "heading": 75,
+    "pitch": 18,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:21.425Z",
+  "file": "reconstruction/marina-bay/references/museum-shell.png",
+  "fingerprint": "accfb746ce731fdd1b85c4eb2257959b8b1b6beecef8ca21d7a66e628395c59c",
+  "sha256": "14f6ec7ca552ec81be04aa81ae49dd27c856b7906e495b2975a87fe2eba5d326",
+  "bytes": 1332443,
+  "durationMs": 2747,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Useful museum underside/columns/pond; close-up does not show full lotus silhouette. Attribution/date retained; no development warning or blank frame."
+}

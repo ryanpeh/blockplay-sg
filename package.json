@@ -11,6 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "marina:capture": "node scripts/capture-marina.mjs",
+    "marina:references": "node scripts/capture-marina-references.mjs",
+    "marina:browser-capture": "node scripts/capture-marina-browser.mjs",
     "marina:reconstruct": "node scripts/reconstruct-marina.mjs",
     "marina:usage": "node scripts/api-usage.mjs"
   },

@@ -1,4 +1,10 @@
 {
+  "imageAllowance": {
+    "appliesTo": "Static API image downloads only; browser screenshots and Maps JavaScript events excluded, per user clarification 2026-09-13",
+    "baselineStaticImageAttempts": 8,
+    "maxAdditionalImages": 50,
+    "scope": "Marina Bay detail/proportion pass, authorized 2026-09-13; includes the first 3 reference images"
+  },
   "version": 1,
   "limit": 1000,
   "scope": "Conservative local capture attempt count: Static images, Static metadata (including failures), and one explicit Maps JavaScript panorama selection. Earlier interactive Maps JavaScript viewer traffic, other machines, and Cloud-console usage are not included. No automatic reset. Static metadata does not consume Google's image quota, but counts toward this stricter local cap.",
@@ -91,6 +97,251 @@
       "id": "72b5efce-f008-4fe5-96ee-235f3fa1f821",
       "date": "2026-09-13T03:07:02.465Z",
       "kind": "image-heading-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "84993c8c-4e2a-4ccc-8814-ed718528d523",
+      "date": "2026-09-13T03:31:20.833Z",
+      "kind": "metadata",
+      "location": "marina-bay",
+      "result": "OK (HTTP 200)"
+    },
+    {
+      "id": "9f1e6074-efef-42b2-84b2-dcdf2717a430",
+      "date": "2026-09-13T03:31:21.069Z",
+      "kind": "metadata",
+      "location": "marina-bay",
+      "result": "OK (HTTP 200)"
+    },
+    {
+      "id": "b88a1bb0-934e-44af-9306-11fc0d22fb81",
+      "date": "2026-09-13T03:31:21.182Z",
+      "kind": "metadata",
+      "location": "marina-bay",
+      "result": "OK (HTTP 200)"
+    },
+    {
+      "id": "9b59c395-80c2-49c2-b5cb-270a560af4bb",
+      "date": "2026-09-13T03:31:47.057Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7c4cc8e0-9dde-411e-853f-5fde0cfe709a",
+      "date": "2026-09-13T03:31:47.301Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "84b0f10c-bfdc-48a8-85f9-9657242eec06",
+      "date": "2026-09-13T03:31:47.402Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "058134f3-cc6d-4a50-bbe9-b0dd94e03e40",
+      "date": "2026-09-13T03:31:47.618Z",
+      "kind": "image-reference-west-bay",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "59d9bc24-26a7-4824-9fd2-01cd2187e5eb",
+      "date": "2026-09-13T03:31:47.886Z",
+      "kind": "image-reference-north-bay",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7c30bfee-3c5f-40a5-b18a-95bf673ea82b",
+      "date": "2026-09-13T03:31:48.083Z",
+      "kind": "image-reference-museum-promenade",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4b379cdc-1ade-4cf9-882c-a89b1e83ecf3",
+      "date": "2026-09-13T03:33:05.808Z",
+      "kind": "image-reference-west-bay-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "238faacb-48ee-4f9d-9403-3565dc4768a6",
+      "date": "2026-09-13T03:33:06.018Z",
+      "kind": "image-reference-west-bay-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "41c2afed-d13b-4675-974d-68aea8026a9b",
+      "date": "2026-09-13T03:33:06.143Z",
+      "kind": "image-reference-west-bay-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7b9e3e0c-794c-4416-bca7-6c848d30046e",
+      "date": "2026-09-13T03:33:06.274Z",
+      "kind": "image-reference-west-bay-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8927445e-35f4-4d1b-9235-613aa9e5c710",
+      "date": "2026-09-13T03:33:06.394Z",
+      "kind": "image-reference-north-bay-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "5a858cb2-9589-44e3-a6b5-91451a1bdc8e",
+      "date": "2026-09-13T03:33:06.524Z",
+      "kind": "image-reference-north-bay-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2f1160f1-af9e-4544-9d5f-914ecf0bb74b",
+      "date": "2026-09-13T03:33:06.591Z",
+      "kind": "image-reference-north-bay-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "495e6e11-d4ae-45ac-86e4-cc05cc271278",
+      "date": "2026-09-13T03:33:06.689Z",
+      "kind": "image-reference-north-bay-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "69b4570f-39dd-46ce-8458-2c35f295268c",
+      "date": "2026-09-13T03:33:06.891Z",
+      "kind": "image-reference-museum-promenade-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "cff8cb9c-3281-45e7-a275-e82328a181e2",
+      "date": "2026-09-13T03:33:07.061Z",
+      "kind": "image-reference-museum-promenade-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9978bd73-da1e-42fa-bc6b-02ea5cc94500",
+      "date": "2026-09-13T03:33:07.162Z",
+      "kind": "image-reference-museum-promenade-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1d944f8c-8be5-4b72-92c9-f012ab6845a5",
+      "date": "2026-09-13T03:33:07.253Z",
+      "kind": "image-reference-museum-promenade-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0540e2c7-1bae-4f5a-8855-dad1c8871b19",
+      "date": "2026-09-13T03:40:55.400Z",
+      "kind": "browser-screenshot-north-bay",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d6edfdc6-b515-44bf-becb-96896548c608",
+      "date": "2026-09-13T03:40:55.402Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c5f422d4-e574-413e-b161-8e6ba6cdd802",
+      "date": "2026-09-13T03:47:18.678Z",
+      "kind": "browser-screenshot-museum-shell",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "89cc401e-b0d7-466e-bca7-287521734aa3",
+      "date": "2026-09-13T03:47:18.679Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6321a896-2641-414a-bc88-8d76d07f9d5a",
+      "date": "2026-09-13T03:47:21.427Z",
+      "kind": "browser-screenshot-bay-skyline",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "5fc464ca-d93a-4885-8185-ae57a9cc1ee2",
+      "date": "2026-09-13T03:47:23.961Z",
+      "kind": "browser-screenshot-fullerton-materials",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1049fc0e-0437-4a99-a9bb-0d078609accb",
+      "date": "2026-09-13T03:47:23.962Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4b24042d-5b4f-4c69-bc61-0d6c7c30047a",
+      "date": "2026-09-13T03:47:27.037Z",
+      "kind": "browser-screenshot-fullerton-glazing",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3482d3f2-10e4-43ce-b3fc-691c43289bcf",
+      "date": "2026-09-13T03:47:29.994Z",
+      "kind": "browser-screenshot-sands-canopy",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0f3cf74b-77c5-490f-9c31-b2b5b3abc625",
+      "date": "2026-09-13T03:47:29.996Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "25452530-4e3b-47ba-8cd1-9d48c348e25b",
+      "date": "2026-09-13T03:47:32.702Z",
+      "kind": "browser-screenshot-sands-streetscape",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "730c9a83-6710-41fa-9a82-b8425ff4eef2",
+      "date": "2026-09-13T03:47:35.214Z",
+      "kind": "browser-screenshot-south-waterfront",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b2cf5d26-7269-40f3-8121-0ab582359650",
+      "date": "2026-09-13T03:47:35.214Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7b1f1621-bd65-4263-9e16-8fb8d66c1b31",
+      "date": "2026-09-13T03:47:37.942Z",
+      "kind": "browser-screenshot-south-palms",
       "location": "marina-bay",
       "result": "HTTP 200"
     }

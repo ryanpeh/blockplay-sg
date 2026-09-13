@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "original-waterfront",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2012-02",
+  "pano_id": "fFrcWOguLLAaql_bDCPSVw",
+  "position": {
+    "lat": 1.281178653223573,
+    "lng": 103.85655765865478
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 5,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:37.940Z",
+  "file": "reconstruction/marina-bay/references/south-waterfront.png",
+  "fingerprint": "aee308e5a4531639fe1b04a27b265f5014fda55e3b973ed65d5a19f2a5c88447",
+  "sha256": "f6ad36084944ba17f09a59fed1927278d17c60635328dac5198af1d37e5956a2",
+  "bytes": 1254082,
+  "durationMs": 2727,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Clear promenade, railings and broad waterfront skyline. Attribution/date retained; no development warning or blank frame."
+}

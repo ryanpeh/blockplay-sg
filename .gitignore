@@ -7,5 +7,6 @@ dist/
 *.tsbuildinfo
 .DS_Store
 .cache/
-reconstruction/marina-bay/
+reconstruction/marina-bay/*
+!reconstruction/marina-bay/references/
 reconstruction/api-usage.json.lock

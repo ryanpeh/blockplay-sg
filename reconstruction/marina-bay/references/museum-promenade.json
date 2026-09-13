@@ -1,0 +1,61 @@
+{
+  "status": "OK",
+  "pano_id": "k01iDZdJc_E073cUVGRGbg",
+  "location": {
+    "lat": 1.2832654952564388,
+    "lng": 103.8596409722749
+  },
+  "description": "Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2022-02",
+  "requested": {
+    "id": "museum-promenade",
+    "lat": 1.2833,
+    "lng": 103.859,
+    "heading": 135,
+    "pitch": 10
+  },
+  "selectedGoogle": true,
+  "frames": [
+    {
+      "heading": 135,
+      "pitch": 10,
+      "file": "reconstruction/marina-bay/references/museum-promenade.jpg",
+      "horizontalFov": 90,
+      "bytes": 90510,
+      "sha256": "54961ba0072eeceb01ceb174cbba99fe588f03580c59a4632fd8097dfd56dc07"
+    },
+    {
+      "heading": 0,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/museum-promenade-0.jpg",
+      "horizontalFov": 90,
+      "bytes": 75305,
+      "sha256": "240a2a130329618a7ad744b74b29947aa2c937a63cc5314ff2ae1ba87695b6b7"
+    },
+    {
+      "heading": 90,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/museum-promenade-90.jpg",
+      "horizontalFov": 90,
+      "bytes": 94478,
+      "sha256": "f1c5a4d8872371a855bd5b0645ee0b4ed68e0be40916c0bc755a9703825d1da3"
+    },
+    {
+      "heading": 180,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/museum-promenade-180.jpg",
+      "horizontalFov": 90,
+      "bytes": 87255,
+      "sha256": "46c5b4f9673f328842a554b3901565301af2f6901be608a18de8ea32754587ca"
+    },
+    {
+      "heading": 270,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/museum-promenade-270.jpg",
+      "horizontalFov": 90,
+      "bytes": 72718,
+      "sha256": "ef68038ce32958c5127ef996f3c559f55090009dd0bfc58c228204e230419705"
+    }
+  ]
+}

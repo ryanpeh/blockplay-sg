@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "west-bay.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-10",
+  "pano_id": "HbXJAgZaTdFV0U6_FKAWHg",
+  "position": {
+    "lat": 1.2837526197255138,
+    "lng": 103.85316354657934
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:27.034Z",
+  "file": "reconstruction/marina-bay/references/fullerton-materials.png",
+  "fingerprint": "d33a742a1d291ecbe960236e6336aa20662c9590a1ac0716810a5c0aa18982c7",
+  "sha256": "109e8b005576678c6d73b41236b0ef22c4ef092f01b5399cb4a021cb15118e17",
+  "bytes": 1332414,
+  "durationMs": 3073,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Clear paving and stone/glass material reference; not a bay-wide view. Attribution/date retained; no development warning or blank frame."
+}

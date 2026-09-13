@@ -31,6 +31,8 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 
 ## What works
 
+Latest Marina pass adds reference-matched gray paving, blue glass, deeper water, silver railings, fuller palms, planting, lights and a detailed Shoppes roofline. Sands landmark proportions use published dimensions; the overall map remains compressed. **15 new reference images are cached** in [the reference folder](reconstruction/marina-bay/references/README.md), with 35 remaining in the approved 50-image allowance. Current ledger: **34 total attempts, 23 Static images**; use `pnpm marina:usage` for live counts (supersedes earlier milestone figures).
+
 - **Marina 3D:** the default low-poly game. Click the scene; WASD walks, drag looks, Shift runs. Drive switches to a visible car with a chase camera; W/S accelerate/reverse, A/D steer, Space brakes. Explore the whole modeled loop and collect five orange rings. Water/buildings block movement; reset clears progress. Arcade handling, not full vehicle physics. No Google requests while playing.
 - **Joyride:** drive a 240 m circuit through an original, procedurally built neighborhood. WASD / arrow keys accelerate, brake, and steer; Space brakes. Touch controls work too. Cross three gates to finish. The vehicle stays within the road; there is no traffic, vehicle model, or collision simulation yet.
 - **Target practice:** click / tap five targets in a fixed first-person view. This is a small NS-inspired arcade foundation, not a full FPS or an authentic equipment simulation. No enemies or real weapon mechanics are implemented.
@@ -41,6 +43,12 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 Joyride and Target practice use fictional original layouts. **Marina 3D uses authored solid geometry**, with reference-informed waterfront details and deliberately compressed landmark placement. Displayed distances are game units treated as meters, not surveyed distances. The earlier four-photo depth experiment did not satisfy the desired game art style and is no longer mounted.
 
 ## Enable real Street View
+
+Optional separate browser credential: set `GOOGLE_MAPS_DEMO_API_KEY` in `.env` or `.env.local`. Vite prefers it for the live viewer and browser screenshots, falling back to `VITE_GOOGLE_MAPS_API_KEY` when absent. Static capture scripts still use `VITE_GOOGLE_MAPS_API_KEY` only. Both are browser credentials; the demo key is explicitly exposed to the client. Restart Vite/reload after changes.
+
+`pnpm marina:browser-capture` captures one reviewed Marina view; add `--batch` for the editable eight-view workflow, or `--batch --dry-run` for a no-request preflight. Static endpoints are blocked. Requires local Vite plus Chrome remote debugging on loopback (default port 9223); complete cached reruns need neither browser nor credentials. See the [workflow and benchmark](reconstruction/marina-bay/references/WORKFLOW.md).
+
+**Budget correction:** the user's 50-image allowance applies to Static API downloads only: **15 used, 35 remain**. Browser screenshots/loads are tracked separately and excluded from both Static caps. Browser Street View can still have separate billing. The batch saved eight 1280×900 images in 21.8s; cache-only rerun took 33ms, with zero Static requests in either run.
 
 1. Create a Google Cloud project with billing and enable **Maps JavaScript API**.
 2. Create a browser API key, restrict its API access, and configure HTTP referrer restrictions for your localhost and deployment origins.

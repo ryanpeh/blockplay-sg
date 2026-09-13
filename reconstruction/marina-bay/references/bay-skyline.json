@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "north-bay.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2012-02",
+  "pano_id": "NW_EPdX4uxkA1vEg0-ENsg",
+  "position": {
+    "lat": 1.2861001034091848,
+    "lng": 103.85885553989067
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:23.959Z",
+  "file": "reconstruction/marina-bay/references/bay-skyline.png",
+  "fingerprint": "bc647bef25ea14cc651ee2e64d76711c521cc5afa1942f39721add9aa1d2800e",
+  "sha256": "a1d2589d69dccd609266157fc7495640648c6166bee33c5a334a101d60d7b05f",
+  "bytes": 1266722,
+  "durationMs": 2532,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Useful CBD silhouettes and pergola/railing; foreground obscures some skyline. Attribution/date retained; no development warning or blank frame."
+}

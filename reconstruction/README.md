@@ -1,10 +1,14 @@
 # Marina Bay reconstruction and API budget
 
+**Latest budget correction:** browser screenshots, Maps JS panorama loads and selections are recorded but excluded from both Static limits. Static allowance remains **15/50 additional images used, 35 left**; local Static cap is **30/1000 attempts** (23 images + 7 metadata conservatively included). Historical totals below predate this separation. See [browser batch workflow and benchmark](marina-bay/references/WORKFLOW.md).
+
 **Historical experiment:** the default Marina 3D mode now uses authored low-poly geometry in `src/game/marina-scene.ts`, following the user's Joyride-style clarification. It does not load these photo-depth assets. The pipeline and assets below are retained for reference, not the active rendering path. No recapture or inference is needed to run the game.
 
 The owner has confirmed permission to use the source Street View imagery for this project. Current scope: **Marina Bay only**.
 
 ## Request ledger
+
+**Latest pass:** 15 additional cached references now exist in [marina-bay/references](marina-bay/references/README.md). Ledger is **34 total attempts: 23 images, 7 Static metadata, 4 Maps JS selections**. The user's additional 50-image allowance has 35 left; this is enforced alongside the original 1,000-attempt cap. These totals supersede the historical first-capture figures below. No new images are fetched while playing the modeled scene.
 
 `api-usage.json` is the source of truth for Static API attempts made by the capture script. It has a hard maximum of **1,000**, with no automatic reset. Every attempt is reserved on disk before making the request; failures and interrupted requests still count conservatively. HTTP-successful metadata errors are recorded by their API status.
 

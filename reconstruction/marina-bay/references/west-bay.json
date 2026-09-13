@@ -1,0 +1,61 @@
+{
+  "status": "OK",
+  "pano_id": "HbXJAgZaTdFV0U6_FKAWHg",
+  "location": {
+    "lat": 1.2837526197255138,
+    "lng": 103.85316354657934
+  },
+  "description": "Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2021-10",
+  "requested": {
+    "id": "west-bay",
+    "lat": 1.2836,
+    "lng": 103.8531,
+    "heading": 105,
+    "pitch": 8
+  },
+  "selectedGoogle": true,
+  "frames": [
+    {
+      "heading": 105,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/west-bay.jpg",
+      "horizontalFov": 90,
+      "bytes": 58014,
+      "sha256": "929349734b5bc5ec061e7e7a0d2f4e66d0a94ea49b3aa885f05d159edb1f71f2"
+    },
+    {
+      "heading": 0,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/west-bay-0.jpg",
+      "horizontalFov": 90,
+      "bytes": 86223,
+      "sha256": "749aded5b14227f1a7406073b98c6096fa21fb2e19f6fb02f1aedba44fd4dbe3"
+    },
+    {
+      "heading": 90,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/west-bay-90.jpg",
+      "horizontalFov": 90,
+      "bytes": 55584,
+      "sha256": "902082e4fd0dd71ab762716db96200dbd87bad873d1225b4836d3df3a7599ac6"
+    },
+    {
+      "heading": 180,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/west-bay-180.jpg",
+      "horizontalFov": 90,
+      "bytes": 84607,
+      "sha256": "f9e5f3032dcf74f3f4d4a371545bfddb0c60fe9026279c098cb0dce092a6803c"
+    },
+    {
+      "heading": 270,
+      "pitch": 8,
+      "file": "reconstruction/marina-bay/references/west-bay-270.jpg",
+      "horizontalFov": 90,
+      "bytes": 86005,
+      "sha256": "0c680e798f331b1c6202433fc43415901033da735061467b6859f2d5c894a8f4"
+    }
+  ]
+}

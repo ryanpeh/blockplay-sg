@@ -1,0 +1,61 @@
+{
+  "plan": "marina-detail-batch-01",
+  "startedAt": "2026-09-13T03:47:18.597Z",
+  "cached": 0,
+  "captured": 8,
+  "failed": 0,
+  "panoramaLoads": 4,
+  "staticApiRequests": 0,
+  "totalMs": 21826,
+  "bytes": 11954805,
+  "views": [
+    {
+      "id": "museum-shell",
+      "status": "captured",
+      "durationMs": 2747,
+      "bytes": 1332443
+    },
+    {
+      "id": "bay-skyline",
+      "status": "captured",
+      "durationMs": 2532,
+      "bytes": 1266722
+    },
+    {
+      "id": "fullerton-materials",
+      "status": "captured",
+      "durationMs": 3073,
+      "bytes": 1332414
+    },
+    {
+      "id": "fullerton-glazing",
+      "status": "captured",
+      "durationMs": 2943,
+      "bytes": 1817040
+    },
+    {
+      "id": "sands-canopy",
+      "status": "captured",
+      "durationMs": 2706,
+      "bytes": 1570360
+    },
+    {
+      "id": "sands-streetscape",
+      "status": "captured",
+      "durationMs": 2508,
+      "bytes": 1842693
+    },
+    {
+      "id": "south-waterfront",
+      "status": "captured",
+      "durationMs": 2727,
+      "bytes": 1254082
+    },
+    {
+      "id": "south-palms",
+      "status": "captured",
+      "durationMs": 2476,
+      "bytes": 1539051
+    }
+  ]
+}

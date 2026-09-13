@@ -25,16 +25,16 @@ export default function MarinaGame() {
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.9;
     const canvas = renderer.domElement; canvas.tabIndex = 0; container.appendChild(canvas);
     canvas.setAttribute('aria-label', 'Modeled Marina Bay game. Click and use WASD to move; drag to look.');
     const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 800); camera.rotation.order = 'YXZ';
     let position = { x: MARINA_SPAWN.x as number, z: MARINA_SPAWN.z as number };
-    let yaw = MARINA_SPAWN.yaw, pitch = 0.05, speed = 0, distance = 0;
+    let yaw = MARINA_SPAWN.yaw, pitch = 0.14, speed = 0, distance = 0;
     const collected = new Set<number>();
     const report = () => setHud({ distance, speed, ...position, collected: [...collected] });
     reset.current = () => {
-      position = { x: MARINA_SPAWN.x, z: MARINA_SPAWN.z }; yaw = MARINA_SPAWN.yaw; pitch = 0.05; speed = 0; distance = 0; collected.clear();
+      position = { x: MARINA_SPAWN.x, z: MARINA_SPAWN.z }; yaw = MARINA_SPAWN.yaw; pitch = 0.14; speed = 0; distance = 0; collected.clear();
       world.stamps.forEach(stamp => { stamp.visible = true; }); keys.current.clear(); report();
     };
     let drag: { x: number; y: number; pointerId: number } | undefined;
@@ -80,7 +80,7 @@ export default function MarinaGame() {
         camera.position.set(position.x + Math.sin(yaw) * 8, 4.8 + pitch * 2, position.z + Math.cos(yaw) * 8);
         camera.lookAt(position.x - Math.sin(yaw) * 12, 1.3 + pitch * 9, position.z - Math.cos(yaw) * 12);
       } else {
-        camera.position.set(position.x, 2.6, position.z); camera.rotation.set(pitch, yaw, 0, 'YXZ');
+        camera.position.set(position.x, 1.75, position.z); camera.rotation.set(pitch, yaw, 0, 'YXZ');
       }
       MARINA_STAMPS.forEach((stamp, i) => {
         if (!collected.has(i) && Math.hypot(stamp.x - position.x, stamp.z - position.z) < 4) { collected.add(i); world.stamps[i].visible = false; }

@@ -2,7 +2,31 @@
 
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
+**Newest gameplay geometry pass:** cached screenshots now inform angular museum shells/supports/lily pond, Fullerton-inspired stone arcade, roof louvers/masts/stays, entrance canopy/blue fins/bollards, finer paving/rail braces, curved shade beams, benches and planting/shade trees. `reconstruction/marina-bay/references/GAME-DETAILS.md` maps observations to changes. Code: `src/game/marina-scene.ts`; static details remain batched and ground obstacles use existing collision handling. All 20 tests/build and browser movement/reset/mobile checks pass. No capture/API spending; Static allowance remains 35. Other locations remain future work, Marina-only focus unchanged.
+
+**Release handoff:** this milestone includes the game improvements, demo-key browser capture workflow, corrected Static-only budget accounting, batch plan, 15 cached reference JPEGs, 9 cached browser PNGs, metadata/checksums, galleries and benchmark reports. Clone/pull the repository to transfer these references; do not recapture. Private `.env`, model caches and older rejected/source captures remain excluded. The credential scan found no configured API-key values in the files prepared for commit. Remaining work: visual feedback, full collectible completion/actual-phone checks, then deployment/video; no public deployment yet.
+
+## Most recent: batch workflow and corrected limits
+
+**Screenshots do not consume Static API allowances**, per the user's explicit clarification. `api-budget.mjs` and usage reporting now separate them. Static: 15/50 additional images used, **35 remaining**; 23 total images + 7 metadata = 30/1000 conservative Static attempts. Browser: 9 screenshots, 5 panorama loads/changes, 4 selections, separately tracked. Historical shared-limit figures below are superseded; never reset the ledger.
+
+`pnpm marina:browser-capture --batch --dry-run` validates the editable `reconstruction/marina-browser-plan.json` without requests. `--batch` resumes eight configured views across four reviewed centers, reusing panoramas by source, caching PNG/metadata/checksums and generating timing reports/contact sheet. Per-run screenshot bounds are operational safeguards, not Static quota. Cache mismatch stops; use a new view ID for changed camera settings. Fresh captures require local Vite + Chrome debugging; complete-cache reruns are offline. Details in `reconstruction/marina-bay/references/WORKFLOW.md`.
+
+Measured: 8/8 screenshots in 21.826s, four panorama loads/changes, zero Static calls/failures, ~11.4 MiB. Cache rerun: 33ms, eight hits, zero browser/network. All images visually reviewed and metadata annotated; source dates span 2012/2021/2022. **20 tests + build pass**. Keep the reference folder, reports, gallery and plan together for cross-machine reuse. No new game geometry in this pass.
+
 ## Latest steering — read first
+
+**Browser/demo-key capture now verified:** Vite explicitly maps `GOOGLE_MAPS_DEMO_API_KEY` to the existing frontend browser-key slot when set; otherwise uses `VITE_GOOGLE_MAPS_API_KEY`. This exposes only the intended browser credential, not all `.env` variables. Static scripts continue using the original key. Restart/reload on key changes; do not print keys.
+
+Run `pnpm marina:browser-capture` for the single configured north-bay view. It uses `capture-streetview.html` served by Vite and a separate local Chrome debugging tab; blocks Static endpoints; caches a 1280×900 PNG plus metadata/checksum; leaves attribution/date intact. A fresh capture needs Vite and Chrome debug port 9223 (configurable `MARINA_APP_ORIGIN` / `CHROME_DEBUG_ORIGIN`); a cached rerun needs neither a browser nor credentials. Screenshot was visually checked with the demo key and cache rerun made zero requests. No new dependencies. Build/17 tests passed.
+
+**Latest counters:** 36 conservative ledger entries; 23 Static images unchanged; 1 browser panorama load and 1 screenshot reservation newly recorded. Additional-image allowance **16/50 used, 34 remaining** across both capture paths. These override earlier counts below. Screenshot reservations are not Google API calls; Dynamic Street View loads may be billed independently. Cached screenshots are in the same portable reference folder.
+
+**Latest detail pass:** colors and materials now follow reviewed references; Sands proportions use published dimensions at 0.54 landmark scale (ground layout still compressed). More detailed paving/railings/palms/planting/lights, Shoppes podium/roof, tower facades and museum pond/supports are implemented. Static box details are instanced. Current verification: **17 tests + build**, browser movement/reset/mobile smoke; full road clearance and spawn/stamp clearance are unit-tested.
+
+**New capture authority/cache:** up to 50 additional Marina Bay images authorized; **15 used, 35 remain**. All 15 JPEGs and per-view JSON are saved in `reconstruction/marina-bay/references/`, intentionally eligible for Git/transfer (not public runtime assets). Include this folder on the next commit or cross-machine transfer so agents do not re-query it. Each frame has heading/pitch/FOV, size and SHA-256. The reference README explains actual coverage and source dates (2012, 2021, 2022).
+
+**Updated budget:** `pnpm marina:usage` now reports **34 total attempts, 23 Static images**, 966 conservative attempts remaining. `api-usage.json.imageAllowance` enforces a separate 50-image cap from baseline 8, including the first three previews. This supersedes the older 13-attempt figures below; never reset either counter. `pnpm marina:references` and `pnpm marina:references --surroundings` reuse the complete cache with zero requests, but may fetch missing files—transfer the cache first. No key is needed to play the game.
 
 The user clarified: **3D game rendering of Marina Bay in Joyride's low-poly art style**, not photographs or depth-warped imagery. The active default is now `src/components/MarinaGame.tsx`, using authored solid geometry in `src/game/marina-scene.ts`. Saved photos informed waterfront details, but the map is compressed and authored, **not automatically reconstructed or surveyed**.
 

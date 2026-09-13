@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "museum-promenade.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-02",
+  "pano_id": "k01iDZdJc_E073cUVGRGbg",
+  "position": {
+    "lat": 1.2832654952564388,
+    "lng": 103.8596409722749
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 15,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T03:47:32.700Z",
+  "file": "reconstruction/marina-bay/references/sands-canopy.png",
+  "fingerprint": "dc0dc21b30fd665168d25b6ca1c997f6e95e6591c5c9fd71f5face6535e8d43a",
+  "sha256": "438bbf39270a409d95c5632dbcd0fd8f29216e41490b2b8a70acd4b366077231",
+  "bytes": 1570360,
+  "durationMs": 2706,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "Reviewed 2026-09-13: Clear entrance canopy, vertical fins and material detail. Attribution/date retained; no development warning or blank frame."
+}
