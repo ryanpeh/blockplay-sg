@@ -1,17 +1,9 @@
 import * as THREE from 'three';
+import { RAFFLES_STAMPS } from '../data/region-stamps.ts';
 import type { Obstacle } from './raffles-collision';
 
 export const RAFFLES_SPAWN = { x: 0, z: 52, yaw: 0 };
-export const RAFFLES_STAMPS = [
-  { name: 'Raffles square', x: 0, z: -20 }, { name: 'MRT entrance', x: 34, z: 12 },
-  { name: 'Battery promenade', x: 145, z: -117 }, { name: 'Boat Quay lane', x: -140, z: -113 },
-  { name: 'Market arcade', x: 107, z: 45 }, { name: 'Cecil street', x: -75, z: 96 },
-  { name: 'River lookout', x: 0, z: -122 },
-  { name: 'Cross Street arcade', x: -242, z: 85 },
-  { name: 'Telok market garden', x: -112, z: 214 },
-  { name: 'Robinson colonnade', x: 100, z: 222 },
-  { name: 'Collyer boulevard', x: 247, z: 16 },
-];
+export { RAFFLES_STAMPS } from '../data/region-stamps.ts';
 export const RAFFLES_MAP_ROADS = [
   ...[-115,45,135].map(z=>({points:[{x:-170,z},{x:170,z}]})),
   ...[-170,-75,80,170].map(x=>({points:[{x,z:-115},{x,z:135}]})),

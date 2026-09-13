@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { MARINA_STAMPS } from '../data/region-stamps.ts';
 import type { Obstacle } from './marina-collision';
 
 export const MARINA_SPAWN = { x: -44, z: 67, yaw: -0.82 };
@@ -17,22 +18,7 @@ export const MARINA_MAP_ROADS = [
   { points: [{ x: 103, z: -218 }, { x: 103, z: -295 }] },
   { points: [{ x: 0, z: 164 }, { x: 0, z: 252 }] },
 ];
-export const MARINA_STAMPS = [
-  { name: 'Waterfront', x: 45, z: 65 },
-  { name: 'City skyline', x: -103, z: 15 },
-  { name: 'Bay crossing', x: -20, z: -112 },
-  { name: 'Lotus museum', x: 103, z: -77 },
-  { name: 'SkyPark', x: 126, z: 65 },
-  { name: 'Waterfront terraces', x: -191, z: 95 },
-  { name: 'Esplanade gardens', x: -25, z: -185 },
-  { name: 'Bayfront greenway', x: 214, z: 17 },
-  { name: 'Southern gardens', x: 25, z: 140 },
-  { name: 'Garden canopy walk', x: 320, z: 135 },
-  { name: 'Conservatory avenue', x: 326, z: -130 },
-  { name: 'Observation wheel', x: 246, z: -265 },
-  { name: 'Harbour promenade', x: 85, z: 228 },
-  { name: 'Civic arcade', x: -280, z: 130 },
-];
+export { MARINA_STAMPS } from '../data/region-stamps.ts';
 
 /** Authored, compressed game map. Photos inform the promenade; geometry is not surveyed. */
 export function buildMarinaScene() {

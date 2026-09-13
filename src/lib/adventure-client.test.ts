@@ -4,6 +4,14 @@ import { createAdventureClient } from './adventure-client';
 const make = () => createAdventure([{ id: 'a', name: 'A', x: 100, z: 0 }, { id: 'b', name: 'B', x: 10, z: 0 }, { id: 'c', name: 'C', x: 20, z: 0 }], { x: 0, z: 0 });
 const response = (id: string) => new Response(JSON.stringify({ decision: { intent: 'named', destinationId: id } }));
 const lesson = (topicId: string | null) => new Response(JSON.stringify({ decision: { intent: 'learn', destinationId: null, topicId } }));
+it('explains rejected and throttled requests without applying changes or clearing stamps', async () => {
+  for (const status of [400, 413, 422, 429]) {
+    const game = make(); game.collect('c'); const before = game.read();
+    const client = createAdventureClient(game, vi.fn().mockResolvedValue(new Response('', { status })));
+    await expect(client.send('request')).rejects.toThrow('objective is unchanged');
+    expect(game.read()).toEqual(before);
+  }
+});
 it('explains a missing dev proxy instead of blaming the model', async () => {
   const game = make();
   const client = createAdventureClient(game, vi.fn().mockResolvedValue(new Response('', { status: 404 })));

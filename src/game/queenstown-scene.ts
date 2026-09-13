@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { QUEENSTOWN_STAMPS } from '../data/region-stamps.ts';
 import type { Obstacle } from './queenstown-collision';
 
 export const QUEENSTOWN_SPAWN = { x: -18, z: 83, yaw: -0.35 };
@@ -12,16 +13,7 @@ export const QUEENSTOWN_MAP_ROADS = [
   { points: [{x:150,z:22},{x:235,z:22}] },
   { points: [{x:-235,z:-122},{x:-140,z:-122}] },
 ];
-export const QUEENSTOWN_STAMPS = [
-  { name: 'Queenstown station', x: 0, z: 41 },
-  { name: 'Void deck', x: -73, z: -44 },
-  { name: 'Community court', x: 85, z: -40 },
-  { name: 'Library garden', x: 34, z: -88 },
-  { name: 'Green corridor', x: -157, z: 65 },
-  { name: 'Commonwealth gardens', x: -193, z: -135 },
-  { name: 'Dawson courtyard', x: 182, z: 139 },
-  { name: 'Neighbourhood gateway', x: 0, z: -162 },
-];
+export { QUEENSTOWN_STAMPS } from '../data/region-stamps.ts';
 
 /** Compressed heritage-inspired estate, not a surveyed model or exact present-day streets. */
 export function buildQueenstownScene() {

@@ -62,6 +62,8 @@ If pnpm is unavailable, use `npx --yes pnpm@11.22.0 install` and `npx --yes pnpm
 
 ### Optional AI companions
 
+Read [companion abuse protections](COMPANION-SECURITY.md) before exposing an AI endpoint publicly. Validation and process-local rate limits do not replace authentication or durable spending controls.
+
 These are **not enabled in the public game-only demo**.
 
 Set private `OPENAI_API_KEY` in `.env` or `.env.local`, then run `pnpm server` alongside `pnpm dev`. The server reads those files; Vite proxies `/api/adventure/*` to `127.0.0.1:3001`. Restart the server after changing credentials and restart Vite if its proxy configuration is stale.

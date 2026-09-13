@@ -17,8 +17,11 @@ export function createAdventureClient(game: AdventureGame, fetcher: typeof fetch
         });
         if (current !== sequence || signal?.aborted) return null;
         if (!response.ok) {
+          if (response.status === 422) throw new Error('I can help with Singapore facts and game objectives, but not instruction overrides or secret requests. Your objective is unchanged.');
+          if (response.status === 429) throw new Error('The companion is busy or you have sent too many requests. Wait a minute and try again. Your objective is unchanged.');
+          if (response.status === 400 || response.status === 413) throw new Error('Please send a short, plain-text question about the game or Singapore. If this continues, reload the game. Your objective is unchanged.');
           if (response.status === 404) throw new Error('The companion API was not found. Restart pnpm dev and pnpm server; a static-only host cannot run the companion. Your objective is unchanged.');
-          if (response.status === 503) throw new Error('Set OPENAI_API_KEY on the companion server. You can keep exploring.');
+          if (response.status === 503) throw new Error('The companion is unavailable or disabled. The operator can check OPENAI_API_KEY and the server settings. You can keep exploring.');
           throw new Error('The companion could not process that request. Your objective is unchanged; try again.');
         }
         const body = await response.json();

@@ -1,5 +1,7 @@
 # Adventure and educational companions
 
+Security hardening: see [companion abuse protections](docs/COMPANION-SECURITY.md) for trusted destination validation, prompt-override checks, request/voice quotas, emergency switches and remaining public-deployment requirements. Older verification notes below describe earlier versions.
+
 Luna migration check: the initial live browser failure was traced to a stale Vite process returning HTTP 404 for `/api/adventure/change`, while the backend returned HTTP 200. Restarting `pnpm dev` loaded the existing proxy configuration. Live Luna browser questions for museum/Queenstown and closer/museum/skip objective changes now pass. The client explains missing API routes explicitly. 109 unit tests and production build pass. GPT-Live transport remains unchanged; physical microphone quality still needs human checking.
 
 Current model override (13 September 2026): the user requested **GPT-5.6 Luna (`gpt-5.6-luna`)** for text interpretation, including delegated voice transcripts. GPT-Live-1 remains the speech model. Earlier Astra verification below is historical; the endpoint, structured schema and local validation are unchanged. Restart `pnpm server` after updating. Official model reference: https://developers.openai.com/api/docs/models/gpt-5.6-luna.
