@@ -25,6 +25,9 @@ export function createFpsVehicles(scene: THREE.Scene, obstacles: Obstacle[], ski
     const ctx = canvas.getContext('2d')!; ctx.fillStyle = '#15231fdd'; ctx.fillRect(0, 0, 512, 96); ctx.fillStyle = '#ebdfb4'; ctx.font = 'bold 32px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(kind === 'car' ? 'UTILITY 01 · DRIVE' : 'FALCON 01 · PILOT', 256, 61);
     const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace;
     const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, depthWrite: false })); sprite.scale.set(4.5, .85, 1); labels[kind] = sprite; root.add(sprite);
+    // Floating labels are UI, not cover. Sprite raycasts also require a camera,
+    // which target-to-player counter-fire rays intentionally do not have.
+    sprite.raycast = () => {};
   }
   function footObstacles(except?: VehicleKind) {
     return [...obstacles, ...(['car', 'helicopter'] as const).filter(kind => kind !== except && states[kind].y < 2).map(kind => vehicleBounds(states[kind]))];
