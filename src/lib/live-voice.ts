@@ -1,3 +1,5 @@
+import { randomUuid } from './random-id';
+
 export type VoiceState = 'off' | 'connecting' | 'listening' | 'processing' | 'speaking' | 'closing';
 type Transcript = { delta: string; start_ms: number; end_ms: number };
 type LiveEvent = { type: string; event_id?: string; delta?: string; start_ms?: number; end_ms?: number; offset_ms?: number; delegation?: { id: string; target: string }; client_event_id?: string };
@@ -123,7 +125,7 @@ export class LiveVoice {
     this.callbacks.state('processing'); this.assistantText = '';
     void this.callbacks.request(text.slice(-1200), controller.signal).then(message => {
       if (this.stopped || current !== this.generation || !message) return;
-      this.playbackEvent = crypto.randomUUID();
+      this.playbackEvent = randomUuid();
       this.turnTimer = setTimeout(() => this.fail('Voice reply did not arrive. Check the objective HUD; text is still available.'), 15000);
       this.send({ type: 'session.commentary.append', event_id: this.playbackEvent, delegation_id: id, content: message });
     }).catch(() => { if (!this.stopped && current === this.generation) this.fail('Voice request failed. Try typing.'); });

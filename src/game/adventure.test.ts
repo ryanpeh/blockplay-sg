@@ -1,9 +1,21 @@
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { alternatives, createAdventure, destinationId } from './adventure';
 import { MARINA_SPAWN, MARINA_STAMPS } from './marina-scene';
 
 const destinations = MARINA_STAMPS.map(d => ({ ...d, id: destinationId(d.name) }));
 const make = () => createAdventure(destinations, MARINA_SPAWN);
+it('starts and resets on LAN HTTP without crypto.randomUUID', () => {
+  const getRandomValues = crypto.getRandomValues.bind(crypto);
+  vi.stubGlobal('crypto', { getRandomValues });
+  try {
+    const game = make(), ticket = game.begin();
+    expect(game.read().activeId).toBe('waterfront');
+    expect(ticket.snapshot.sessionId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
+    game.reset();
+    expect(game.read().sessionId).not.toBe(ticket.snapshot.sessionId);
+    expect(game.apply(ticket, { intent: 'named', destinationId: 'lotus-museum' }).applied).toBe(false);
+  } finally { vi.unstubAllGlobals(); }
+});
 it('establishes an existing objective and deterministically selects a closer alternative', () => {
   const game = make(); const before = game.read();
   expect(before.activeId).toBe('waterfront');

@@ -29,6 +29,10 @@ Select Marina Bay → Marina FPS → Enter range. Practice against eight targets
 
 WASD moves, mouse looks, left mouse fires, right mouse aims, R reloads and 1/2 switches weapons. Shift sprints, C crouches and Space jumps. Escape pauses and releases the pointer. Desktop play requires pointer capture; touch devices use drag-look controls.
 
+Hold right mouse for a smooth transition into the visible 3D reflex optic. Reloads animate a magazine swap and gloved hands; empty reloads add a chambering gesture. Sustained fire builds real shot spread and widens the hip-fire crosshair. Releasing the trigger lets accuracy recover; aiming and crouching tighten the cone. White hit markers confirm hits; amber marks confirm eliminations.
+
+In the ready/pause menu, open **Debug survival** for 1×, 5× or 10× maximum health, a health refill, and optional regeneration (10% of maximum HP per second after three seconds without damage). These tab-local settings persist through zone changes and apply to practice, solo bots and expeditions. Network rooms keep their normal health rules.
+
 Use Fullscreen or F for immersive play. A denied fullscreen request falls back to an expanded viewport.
 
 Approach Utility 01 or Falcon 01 and press E to enter or exit. Drive with WASD and Space brake; fly with WASD, Space climb, C/Ctrl descend and Shift boost. Land before leaving the helicopter.
@@ -41,7 +45,7 @@ The armory is accessed from Marina FPS, not regional exploration. It includes eq
 
 **Solo arena** runs locally against up to six bots with mixed, assault, tank or sniper compositions. The full local build labels this entry **LAN arena**; choose **Solo vs bots** inside it. Multiplayer host/join requires the separate LAN server.
 
-FPS modes do not currently share the regional collectible minimap or companions. Expedition and arena modes are infantry-only; cars and helicopters are available in FPS practice. See [mode comparison](FEATURE-PARITY.md).
+FPS modes share a lightweight local minimap using regional road data: practice shows targets and parked vehicles, expeditions show loot/checkpoints, and LAN hides opponents. Regional collectible maps and companions remain separate. Expedition and arena modes are infantry-only; cars and helicopters are available in FPS practice. See [mode comparison](FEATURE-PARITY.md).
 
 ## Local setup
 
@@ -117,6 +121,8 @@ Run captures serially and keep the capture tab foregrounded. Do not run browser 
 See [capture history](../reconstruction/README.md) and the [Marina workflow](../reconstruction/marina-bay/references/WORKFLOW.md). Static authorization and usage limits belong in [PLAN.md](../PLAN.md) and the usage ledger.
 
 ## Testing
+
+FPS handling checks use an isolated Chrome with remote debugging on port 9228 and Vite on 5175: `pnpm test:fps:handling` and `pnpm test:fps:survival`. Set `FPS_APP_ORIGIN` to the VM’s HTTP LAN address to verify startup outside localhost. The survival check creates a zero-bot fixture through the engine’s public API, then verifies authoritative boosted health, regeneration, refill and reset.
 
 ```sh
 pnpm test

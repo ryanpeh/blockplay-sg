@@ -16,6 +16,10 @@ The sidebar locator retains its normal click/keyboard region selection outside e
 
 The selected destination displays threat, loot tier, patrol count, the route and the next checkpoint's local coordinates. The expedition HUD prioritizes that checkpoint's distance. Map selection never calls travel: the existing living-player/proximity validation and T interaction still govern transitions. Arriving updates the route from the new district and retains the planned destination. These island-map links represent compressed district connections, not street routing or a live local minimap.
 
+## Local FPS minimap
+
+While playing, the upper-left minimap follows the operator in the current district using its authored roads and collision bounds. The arrow points in the view direction; the map keeps north up. Nearby remaining loot appears as green squares. Gold diamonds show checkpoints; outlined diamonds on the map edge indicate distant exits. The planned route's next checkpoint is highlighted. Loot markers disappear on collection and update from the cached remaining supplies when returning to a district. Each zone uses the same SVG component with different map data; no additional renderer or Google request is created.
+
 ## Random supplies
 
 Each expedition gets a fresh seed. Each district rolls its contents and positions once; re-entry reuses the same remaining crates. Weapon rarity is rolled per crate:

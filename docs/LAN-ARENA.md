@@ -50,7 +50,9 @@ Import the plugin at startup before creating an arena, then pass its ID as `crea
 
 ## Mouse capture
 
-Desktop FPS play uses standard relative pointer lock for VM compatibility. Raw input is not requested by default because some VM input devices accept capture but stop delivering movement. Mouse look consumes `movementX`/`movementY`, never absolute screen position; horizontal turning is unlimited. Escape pauses and releases capture.
+LAN HTTP startup supports browsers without `crypto.randomUUID`; session IDs fall back to `crypto.getRandomValues`. Test the actual LAN address, since localhost exposes secure-context APIs that a plain HTTP IP address does not. An HTTP 200 from curl alone does not verify that React starts.
+
+Mouse FPS play uses standard relative pointer lock for VM compatibility. Actual pointer events select the input mode: only touch/pen can use unlocked drag-look. The CSS primary-pointer media query is no longer allowed to bypass capture, since a virtual tablet or touch laptop can still deliver mouse events. Switching from touch to mouse pauses for a fresh capture gesture. A frame guard also pauses mouse play if lock disappears without its normal browser event. The HUD shows MOUSE LOCKED or TOUCH LOOK beside health/armor. Raw input is not requested by default because some VM input devices accept capture but stop delivering movement. Mouse look consumes `movementX`/`movementY`, never absolute screen position; horizontal turning is unlimited. Escape pauses and releases capture.
 
 If turning still stops at the **physical host screen edge** while the browser reports capture, check the VM/remote-desktop client's relative mouse or gaming capture setting. A web page cannot recenter the operating system cursor or recover movement that the VM never sends. The input implementation follows the browser's [raw pointer-lock API](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock).
 

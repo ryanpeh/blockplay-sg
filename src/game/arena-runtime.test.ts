@@ -55,6 +55,8 @@ describe('arena runtime authority and renderer bridge', () => {
     const guest = createArenaRuntime({ scene: guestScene, session: guestSession, obstacles: [], botCount: 0 });
     try {
       const first = host.update(0.02, input(200, 200)); expect(first.spawn).toBe(true); expect(first.self?.x).toBe(-44);
+      expect(host.setHealthMultiplier(10)).toBe(false);
+      expect(guest.setHealthMultiplier(10)).toBe(false);
       const joining = guest.update(0.02, input(200, 200, true));
       expect(joining.spawn).toBe(true); expect(joining.self?.x).not.toBe(200); expect(joining.started).toBe(false);
       vi.advanceTimersByTime(500); expect(host.update(0.02, input()).snapshot?.elapsed).toBe(0);

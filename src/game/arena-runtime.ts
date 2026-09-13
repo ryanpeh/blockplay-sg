@@ -230,11 +230,15 @@ export function createArenaRuntime(options: ArenaRuntimeOptions) {
     if (disposed || session.role !== 'solo' || !simulation) return false;
     simulation.setPlayerVitals(session.id, vitals); publish(); return true;
   }
+  function setHealthMultiplier(multiplier: 1 | 5 | 10) {
+    if (disposed || session.role !== 'solo' || !simulation) return false;
+    simulation.setPlayerHealthMultiplier(session.id, multiplier); publish(); return true;
+  }
   function dispose() {
     if (disposed) return; disposed = true; clearInterval(timer); unsubscribe(); unsubscribePeers();
     for (const avatar of avatars.values()) { scene.remove(avatar.root); avatar.resources.forEach(resource => resource.dispose()); }
     avatars.clear();
   }
-  return { update, shoot, reload, reset, dispose, updateLoadout, setVitals };
+  return { update, shoot, reload, reset, dispose, updateLoadout, setVitals, setHealthMultiplier };
 }
 export type ArenaRuntime = ReturnType<typeof createArenaRuntime>;

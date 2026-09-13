@@ -1,11 +1,25 @@
 # Blockplay project plan
 
+## Completed: prevent unlocked FPS mouse play (2026-09-13)
+
+- Removed the media-query shortcut that allowed mouse play without pointer lock on devices reporting a coarse primary pointer.
+- Actual touch/pen input retains drag-look; mouse/unknown input requires native capture. Touch-to-mouse handoff pauses for a new gesture, and entry/frame guards catch missing capture even if the browser event is delayed.
+- Visible MOUSE LOCKED / TOUCH LOOK status in practice, arena and expedition HUDs.
+- 168 tests pass. Browser regression covers coarse pointer reporting with real mouse capture, denial, touch drag, mouse handoff, suppressed lock-loss notification and multiple revolutions; expedition/fullscreen/mobile passes. Physical UTM input still requires user verification.
+
+## Completed: local minimaps for FPS (2026-09-13)
+
+- One SVG component for FPS practice, expeditions and LAN, using each district's existing roads/bounds and the projection shared with regional driving.
+- Local 180m map window, north-up view-direction arrow, 25m scale; remaining targets and parked vehicles in practice; loot/checkpoints/planned exits in expeditions. Off-map exits remain indicated at the map edge. LAN hides opponents.
+- Position and markers use the existing HUD update cadence; no extra WebGL renderer, dependency or live map request.
+- 167 unit tests and production build pass. Browser checks verify continuous turns/position, target disappearance, expedition markers/fullscreen and mobile layout. The full FPS drill, car driving and helicopter takeoff/cruise/landing checks pass; mobile minimap screenshots were visually reviewed. Two-browser LAN gameplay passes with both clients showing their own marker and zero opponent/practice markers. Regional map rendering remains unchanged.
+
 ## Completed: upstream locator and expedition integration (2026-09-13)
 
 - Rebased LAN multiplayer, role bots, loot, connected districts and pointer fixes onto `dbeb858`, preserving upstream's companion, locator and simplified navigation. Armory remains accessible from the FPS menu.
 - Connected the Singapore locator to actual expedition arrivals. Map/card selections preview graph-derived routes and destination threat/loot; they do not unload the current district. New expeditions start in the selected district.
 - Kept checkpoint proximity validation and one-scene rendering. Health/armor/ammo/loadout and collected supplies still carry across travel.
-- Compared regional Walk/Drive and FPS features in [docs/FEATURE-PARITY.md](docs/FEATURE-PARITY.md). Local minimaps exist in the regional views only; the new locator is district-level navigation. Shared minimap extraction is recommended next, not yet implemented.
+- Compared regional Walk/Drive and FPS features in [docs/FEATURE-PARITY.md](docs/FEATURE-PARITY.md). Local minimaps exist in the regional views only; the new locator is district-level navigation. The following pass added a shared FPS minimap, described above.
 - Verification: 163 tests and production build pass. Browser expedition checks cover route selection, keyboard map access, selected-district starts, session preservation, capture/fullscreen/mobile and cleanup; the engine travel check passes all four links with loot/vitals persistence. Upstream three-region walk/drive/map/mobile checks and two-browser LAN gameplay also pass. LAN smoke observes death/respawn DOM transitions so slow VM polling cannot miss them, and waits for Chrome exit before removing test profiles.
 
 ## Completed: integrated rebase and immersive screen mode

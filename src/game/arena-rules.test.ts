@@ -29,6 +29,22 @@ function pair(armor = 0, absorption = 0, damage = 36) {
   return arena;
 }
 
+it('applies debug health to actual damage, refill caps and respawns', () => {
+  const arena = pair();
+  arena.setPlayerHealthMultiplier('two', 5);
+  expect(actor(arena, 'two').health).toBe(500);
+  expect(fireAt(arena).damage).toBe(36);
+  expect(actor(arena, 'two').health).toBe(464);
+  arena.setPlayerHealthMultiplier('two', 10);
+  expect(actor(arena, 'two').health).toBe(928);
+  arena.setPlayerVitals('two', { health: 5000 });
+  expect(actor(arena, 'two').health).toBe(1000);
+  arena.setPlayerVitals('two', { health: 0 }); advance(arena, 3.1);
+  expect(actor(arena, 'two')).toMatchObject({ health: 1000, alive: true });
+  arena.setPlayerHealthMultiplier('two', 1);
+  expect(actor(arena, 'two').health).toBe(100);
+});
+
 describe('expedition arena environments', () => {
   it('uses zone bounds, valid candidate spawns and delegated collision for players and bots', () => {
     const environment = distantEnvironment(); const movement = vi.fn(environment.move); environment.move = movement;

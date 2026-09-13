@@ -54,12 +54,14 @@ try {
   await key('Escape','Escape'); await wait(phase('paused')); const parked = await evaluate(number('playerX')); await delay(700); assert.equal(await evaluate(number('playerX')),parked,'Pause freezes vehicle physics');
   await click(button('Resume exercise')); await wait(phase('playing')); await key(' ','Space',600); await key('e','KeyE'); await wait(vehicle('on-foot'));
   assert(await evaluate('!!document.pointerLockElement'),'Dismount retains pointer capture');
-  // Reset leaves both vehicles parked. Walk to the helicopter through normal player input.
+  assert(await evaluate(`!!document.querySelector('[data-minimap-marker=car]')`),'Parked car returns to the map after driving');
+  assert(await evaluate(`Math.abs(Number(document.querySelector('[data-minimap-player]').dataset.worldX)-Number(document.querySelector('.fps-game').dataset.playerX))<.01`),'Minimap follows vehicle movement and dismount');
+  // Approach around the south side of the car, range barriers and helicopter collider.
   await key('Escape','Escape'); await wait(phase('paused')); await click(`document.querySelector('[aria-label="Reset FPS exercise"]')`); await wait(phase('ready'));
   await click(button('Enter range')); await wait(phase('playing'));
-  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'w',code:'KeyW'}); await wait(`${number('playerZ')}<65.3`); await send('Input.dispatchKeyEvent',{type:'keyUp',key:'w',code:'KeyW'});
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'s',code:'KeyS'}); await wait(`${number('playerZ')}>77`); await send('Input.dispatchKeyEvent',{type:'keyUp',key:'s',code:'KeyS'});
   await send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA'}); await wait(`${number('playerX')}<-61.5`); await send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA'});
-  await wait(`document.querySelector('.fps-interact-prompt')?.textContent.includes('Pilot')`); await key('e','KeyE');
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'w',code:'KeyW'});await wait(`document.querySelector('.fps-interact-prompt')?.textContent.includes('Pilot')`);await send('Input.dispatchKeyEvent',{type:'keyUp',key:'w',code:'KeyW'}); await key('e','KeyE');
   await wait(vehicle('helicopter')); await screenshot('helicopter-ground');
   await key(' ','Space',2100); await delay(200); assert(await evaluate(number('altitude'))>5,'Helicopter takes off');
   await key('e','KeyE'); assert(await evaluate(vehicle('helicopter')),'Airborne dismount is prevented');

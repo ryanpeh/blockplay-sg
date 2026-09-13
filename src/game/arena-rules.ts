@@ -140,6 +140,12 @@ export function createArena(obstacles: readonly Obstacle[], botCount: number, co
     }
     if (Number.isFinite(vitals.armor)) entry.actor.armor = clamp(vitals.armor!, 0, entry.armorMax);
   }
+  function setPlayerHealthMultiplier(id: string, multiplier: 1 | 5 | 10) {
+    const entry = members.get(id); if (!entry || entry.actor.bot || ![1, 5, 10].includes(multiplier)) return;
+    const fraction = entry.actor.health / entry.healthMax;
+    entry.healthMax = 100 * multiplier;
+    entry.actor.health = entry.healthMax * fraction;
+  }
   function setPlayerLoadout(id: string, armor: number, absorption: number, weapons: readonly ArenaWeapon[]) {
     const entry = members.get(id); if (!entry || entry.actor.bot) return;
     entry.armorMax = Number.isFinite(armor) ? clamp(armor, 0, 150) : entry.armorMax;
@@ -278,7 +284,7 @@ export function createArena(obstacles: readonly Obstacle[], botCount: number, co
     const entry = members.get(id)!; entry.role = role; entry.healthMax = role.health;
     Object.assign(entry.actor, { bot: true, role: role.id, weapon: role.weaponIndex }); spawn(entry);
   }
-  return { addPlayer, removePlayer, setInput, reloadPlayer, shoot, step, snapshot, reset, setPlayerLoadout, setPlayerVitals };
+  return { addPlayer, removePlayer, setInput, reloadPlayer, shoot, step, snapshot, reset, setPlayerLoadout, setPlayerVitals, setPlayerHealthMultiplier };
 }
 
 export type ArenaSimulation = ReturnType<typeof createArena>;

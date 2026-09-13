@@ -1,4 +1,10 @@
 /** Standard relative capture is the compatibility default for virtual machines. */
+export function requiresFpsPointerLock(pointerType: string) {
+  // Media queries describe a device's primary pointer, not the current input.
+  // Virtual tablets and touch laptops can still deliver real mouse events.
+  return pointerType !== 'touch' && pointerType !== 'pen';
+}
+
 export async function requestFpsPointerLock(
   target: Pick<HTMLElement, 'requestPointerLock'>,
   stillWanted: () => boolean = () => true,

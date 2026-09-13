@@ -1,0 +1,38 @@
+.fps-weapon-hud{position:absolute;inset:0;pointer-events:none;--fps-aim:0}
+.fps-scope.fps-sight-vignette{background:radial-gradient(ellipse at center,transparent 15%,#06100c12 40%,#06100c85 100%);box-shadow:none;opacity:var(--fps-aim)}
+.fps-weapon-hud .fps-crosshair{transition:opacity .12s,filter .12s}
+.fps-weapon-hud .fps-crosshair i{opacity:calc(1 - var(--fps-aim));transition:opacity .10s;background:#ffffed}
+.fps-weapon-hud .fps-crosshair b{background:#fff;transition:background .12s,box-shadow .12s}
+.fps-weapon-hud[data-aiming=true] .fps-crosshair b{background:#ff4a39;box-shadow:0 0 5px #ff3523b3;width:3px;height:3px}
+.fps-weapon-hud[data-reloading=true] .fps-crosshair{opacity:.15}
+.fps-weapon-hud .fps-crosshair.hit i{opacity:1;background:#ffd489}
+.fps-weapon-hud .fps-ammo{padding:12px 15px;border-right:2px solid #e8c58d;background:linear-gradient(90deg,transparent,#0c151bbe);min-width:182px}
+.fps-weapon-hud .fps-ammo>span{font-size:10px;letter-spacing:1.5px}
+.fps-weapon-hud .fps-ammo strong{font-size:46px;line-height:1.2;letter-spacing:-2px}
+.fps-weapon-hud .fps-ammo strong small{letter-spacing:0;font-size:14px;color:#b6c5c0}
+.fps-weapon-hud .fps-ammo p{font-size:8px;letter-spacing:.7px;color:#c9d4ca}
+.fps-weapon-hud .fps-ammo.is-empty{border-color:#e98265}
+.fps-weapon-hud .fps-ammo.is-empty strong{color:#ffc5ab}
+.fps-reload-cue{position:absolute;left:50%;top:calc(50% + 62px);transform:translateX(-50%);width:112px;text-align:center;font:8px monospace;letter-spacing:2px;color:#f0d3a4;text-shadow:0 1px 4px #000}
+.fps-reload-cue>div{height:2px;margin-top:8px;background:#ffffff30}
+.fps-reload-cue i{display:block;height:100%;background:#f0d3a4;transition:width .1s linear}
+.fps-weapon-hud .fps-tactical-crosshair{width:48px;height:48px;filter:drop-shadow(0 0 1px #000);--gap:var(--fps-spread,6px)}
+.fps-weapon-hud .fps-tactical-crosshair i{background:#f2f7f2;box-shadow:0 0 0 1px #08140b80;border-radius:1px;transition:opacity .1s,top .1s,left .1s,bottom .1s,right .1s}
+.fps-weapon-hud .fps-tactical-crosshair i:nth-child(1){width:2px;height:7px;left:23px;top:calc(24px - var(--gap) - 7px);bottom:auto}
+.fps-weapon-hud .fps-tactical-crosshair i:nth-child(2){width:2px;height:7px;left:23px;top:auto;bottom:calc(24px - var(--gap) - 7px)}
+.fps-weapon-hud .fps-tactical-crosshair i:nth-child(3){height:2px;width:7px;top:23px;left:calc(24px - var(--gap) - 7px);right:auto}
+.fps-weapon-hud .fps-tactical-crosshair i:nth-child(4){height:2px;width:7px;top:23px;left:auto;right:calc(24px - var(--gap) - 7px)}
+.fps-weapon-hud .fps-tactical-crosshair b{top:23px;left:23px;width:2px;height:2px;box-shadow:0 0 0 1px #09110c80}
+.fps-weapon-hud[data-aiming=true] .fps-tactical-crosshair b{top:22.5px;left:22.5px;width:3px;height:3px}
+.fps-ads-dot-ring{position:absolute;left:19px;top:19px;width:10px;height:10px;border:1px solid #ff493b60;border-radius:50%;opacity:var(--fps-aim)}
+.fps-impact-marker{position:absolute;width:30px;height:30px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);color:#f8faf2;filter:drop-shadow(0 1px 1px #000);animation:fps-impact-in .18s ease-out}
+.fps-impact-marker i{position:absolute;background:currentColor;border-radius:1px}
+.fps-impact-marker i:nth-child(1){left:14px;top:0;width:2px;height:8px}
+.fps-impact-marker i:nth-child(2){left:14px;bottom:0;width:2px;height:8px}
+.fps-impact-marker i:nth-child(3){left:0;top:14px;width:8px;height:2px}
+.fps-impact-marker i:nth-child(4){right:0;top:14px;width:8px;height:2px}
+.fps-impact-marker.is-kill{color:#ffb566;filter:drop-shadow(0 0 3px #a84d17);animation:fps-kill-impact .22s ease-out}
+@keyframes fps-impact-in{from{transform:translate(-50%,-50%) rotate(45deg) scale(1.3);opacity:.4}to{transform:translate(-50%,-50%) rotate(45deg) scale(1);opacity:1}}
+@keyframes fps-kill-impact{from{transform:translate(-50%,-50%) rotate(45deg) scale(1.6)}to{transform:translate(-50%,-50%) rotate(45deg) scale(1)}}
+@media(max-width:720px){.fps-weapon-hud .fps-ammo{min-width:150px;padding:8px 10px}.fps-weapon-hud .fps-ammo strong{font-size:34px}.fps-weapon-hud .fps-ammo p{font-size:7px}.fps-weapon-hud .fps-ammo>span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.fps-weapon-hud *{transition:none!important;animation:none!important}}

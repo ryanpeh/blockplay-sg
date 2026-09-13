@@ -1,3 +1,5 @@
+import { randomUuid } from '../lib/random-id';
+
 export type Destination = { id: string; name: string; x: number; z: number };
 export type GuideRegion = 'marina-bay' | 'raffles-place' | 'queenstown';
 export type AdventureSnapshot = {
@@ -34,7 +36,7 @@ export function createAdventure(destinations: Destination[], spawn: { x: number;
   let state: AdventureSnapshot, request = 0, alive = true;
   const reset = () => {
     request++;
-    state = { sessionId: crypto.randomUUID(), revision: 0, region: 'marina-bay', position: { ...spawn },
+    state = { sessionId: randomUuid(), revision: 0, region: 'marina-bay', position: { ...spawn },
       activeId: destinations[0]?.id ?? null, destinations, collected: [] };
     changed();
   };

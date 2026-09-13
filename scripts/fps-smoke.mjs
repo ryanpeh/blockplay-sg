@@ -27,6 +27,7 @@ const phase = value => `document.querySelector('.fps-game')?.dataset.phase===${J
 const ammo = `Number(document.querySelector('.fps-ammo strong')?.firstChild.textContent)`;
 try {
   await send('Runtime.enable'); await send('Network.enable'); await send('Page.enable');
+  await send('Emulation.setFocusEmulationEnabled', { enabled: true }); await send('Page.bringToFront');
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
   await wait(`!![...document.querySelectorAll('button')].find(b=>b.textContent.includes('Marina FPS'))`);
   await evaluate(`localStorage.removeItem('blockplay.armory.v1');location.reload()`);
@@ -43,6 +44,7 @@ try {
   await wait(`document.querySelector('.fps-score').textContent.startsWith('1 /')`);
   await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...firePoint, button: 'left', clickCount: 1 });
   assert(await evaluate(`document.querySelector('.fps-score').textContent.startsWith('1 /')`), 'Initial crosshair shot must hit the center target');
+  assert.equal(await evaluate(`document.querySelectorAll('[data-marker-kind=target]').length`),7,'Cleared targets disappear from minimap');
   await key('r', 'KeyR'); await wait(`!!document.querySelector('.fps-reload-track')`);
   await key('Escape', 'Escape'); await wait(phase('paused'));
   const pausedTime = await evaluate(`document.querySelector('.fps-score b').textContent`); await delay(2000);
@@ -61,10 +63,21 @@ try {
   assert(await evaluate(`document.querySelector('.fps-score').textContent.startsWith('0 /')`));
   await click(button('Enter range')); await wait(phase('playing'));
   assert(await evaluate('!!document.pointerLockElement'), 'Full drill uses captured mouse input');
+  await key('1', 'Digit1'); await wait(`${ammo}===30`);
+  await evaluate(`window.sawKillChain=false;window.killChainObserver=new MutationObserver(()=>{if(document.querySelector('.fps-kill-callout'))window.sawKillChain=true});window.killChainObserver.observe(document.querySelector('.fps-viewport'),{childList:true,subtree:true})`);
+  await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 700, y: 550, button: 'right', clickCount: 1 });
+  await wait(`Number(document.querySelector('.fps-viewport canvas').dataset.aimProgress)>.98`);
   let yaw = 0, pitch = -0.03, cleared = 0;
   for (const [x, z] of [[-44,56],[-50,57],[-38,57],[-56,62],[-32,62],[-60,55],[-26,55],[-14,64]]) {
+    // Real spread rewards aiming; leave enough ammunition for a short burst at each target.
+    if (await evaluate(ammo) < 8) {
+      await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 700, y: 550, button: 'right', clickCount: 1 });
+      await key('r', 'KeyR'); await wait(`${ammo}===30`);
+      await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 700, y: 550, button: 'right', clickCount: 1 });
+      await wait(`Number(document.querySelector('.fps-viewport canvas').dataset.aimProgress)>.98`);
+    }
     const nextYaw = Math.atan2(-(x + 44), -(z - 68)), nextPitch = Math.atan2(-0.32, Math.hypot(x + 44, z - 68));
-    const dx = -(nextYaw - yaw) / 0.0023, dy = -(nextPitch - pitch) / 0.0023;
+    const dx = -(nextYaw - yaw) / 0.0013, dy = -(nextPitch - pitch) / 0.0013;
     // Send look deltas through the same document input listener, without altering game state.
     await evaluate(`(()=>{const event=new MouseEvent('mousemove');Object.defineProperties(event,{movementX:{value:${dx}},movementY:{value:${dy}}});document.dispatchEvent(event)})()`);
     yaw = nextYaw; pitch = nextPitch; await delay(250);
@@ -77,7 +90,8 @@ try {
   await wait(phase('complete')); await screenshot('range-complete');
   assert(await evaluate(`JSON.parse(localStorage.getItem('blockplay.armory.v1')).xp>=300`), 'Kills and completion award persisted XP');
   assert(await evaluate(`!!document.querySelector('.fps-level-up')`), 'Completed drill announces level up');
-  assert(await evaluate(`!!document.querySelector('.fps-final-callout')`), 'Rapid target eliminations announce multi-kills');
+  assert(await evaluate(`window.sawKillChain || !!document.querySelector('.fps-final-callout')`), 'Rapid target eliminations announce multi-kills, even when a later reload breaks the chain');
+  await evaluate('window.killChainObserver.disconnect()');
   assert(await evaluate(`document.querySelector('.fps-start-card h2').textContent==='Eight for eight.'`));
   await click(button('Reset exercise')); await wait(phase('ready'));
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });

@@ -1,7 +1,11 @@
 import { describe, expect, it, vi } from 'vitest';
-import { requestFpsPointerLock, turnFpsLook } from './fps-pointer';
+import { requestFpsPointerLock, requiresFpsPointerLock, turnFpsLook } from './fps-pointer';
 
 describe('FPS relative pointer input', () => {
+  it('requires capture for mouse and unknown inputs; only actual touch or pen can drag', () => {
+    for (const type of ['mouse', '', 'unknown']) expect(requiresFpsPointerLock(type)).toBe(true);
+    for (const type of ['touch', 'pen']) expect(requiresFpsPointerLock(type)).toBe(false);
+  });
   it('uses standard capture by default for VM compatibility', async () => {
     const requestPointerLock = vi.fn().mockResolvedValue(undefined);
     await requestFpsPointerLock({ requestPointerLock });

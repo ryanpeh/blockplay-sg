@@ -50,6 +50,7 @@ try{
   await guest.click(button('Enter match'));await guest.wait(phase('playing'));
   await host.wait(`window.lastArenaSnapshot?.actors.length===2`);
   assert(await guest.evaluate(`${game}.dataset.arenaConnected==='true'`));
+  for(const p of [host,guest]){assert(await p.evaluate(`!!document.querySelector('[data-minimap-player]')`));assert.equal(await p.evaluate(`document.querySelectorAll('[data-minimap-marker]').length`),0,'LAN map never shows opponents or practice markers');}
   // The guest's keyboard movement must appear in a host-owned outgoing snapshot.
   const before=await guest.evaluate(position);await guest.key('w','KeyW',1400);await delay(350);const after=await guest.evaluate(position);
   assert(after.z<before.z-.3,'Guest moved using keyboard');

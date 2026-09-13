@@ -49,6 +49,9 @@ try {
   await screenshot('expedition-ready');
   await click(button('Enter district')); await wait(phase('playing'));
   assert(await evaluate('!!document.pointerLockElement'),'Entry captures pointer');
+  assert.equal(await evaluate(`document.querySelector('.fps-minimap').dataset.mapZone`),'marina-bay');
+  assert(await evaluate(`!!document.querySelector('[data-marker-kind=loot]')`));
+  assert(await evaluate(`!!document.querySelector('[data-marker-kind=checkpoint][data-active=true]')`));
   const before = await evaluate(`({...document.querySelector('.expedition-game').dataset})`);
   await key('w','KeyW',500);
   const after = await evaluate(`({...document.querySelector('.expedition-game').dataset})`);
@@ -65,6 +68,7 @@ try {
   assert(await evaluate(`document.querySelector('.expedition-game').getBoundingClientRect().width>=innerWidth-1`));
   await screenshot('expedition-fullscreen-menu');
   await click(button('Resume expedition')); await wait(phase('playing'));
+  assert(await evaluate(`document.fullscreenElement.contains(document.querySelector('.fps-minimap'))`));
   await screenshot('expedition-fullscreen-playing');
   await key('f','KeyF'); await wait(phase('paused')); await wait(`!document.fullscreenElement`);
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
@@ -91,6 +95,14 @@ try {
   await key('Enter','Enter');
   await wait(`document.querySelector('.singapore-route-details').textContent.includes('Queenstown → Raffles Place → Marina Bay')`);
   assert.equal(await evaluate(`document.querySelector('.expedition-game').dataset.zone`),'queenstown','Keyboard route selection preserves the active district');
+  await click(button('Enter district'));await wait(phase('playing'));
+  assert.equal(await evaluate(`document.querySelector('.fps-minimap').dataset.mapZone`),'queenstown');
+  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await evaluate(`document.querySelector('.fps-viewport').scrollIntoView({block:'center'})`);
+  await screenshot('minimap-mobile-playing');
+  assert(await evaluate(`(()=>{const r=document.querySelector('.fps-minimap').getBoundingClientRect(),c=document.querySelector('.fps-crosshair').getBoundingClientRect();return r.right<c.left && document.documentElement.scrollWidth<=innerWidth+1})()`),'Mobile minimap fits without covering the crosshair');
+  await key('Escape','Escape');await wait('!document.pointerLockElement');
+  await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
   assert.equal(await evaluate(`document.querySelectorAll('canvas').length`),1);
   assert.equal(await evaluate(`localStorage.getItem('blockplay.armory.v1')`),saved);
   await click(`[...document.querySelectorAll('button')].find(b=>b.querySelector('strong')?.textContent==='LAN arena')`);

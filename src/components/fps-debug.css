@@ -1,0 +1,12 @@
+.fps-debug-panel{margin:12px 0;border:1px solid #b5c2aa;border-radius:5px;padding:10px 12px;background:#e5ebdc;color:#31432c;text-align:left}
+.fps-debug-panel summary{cursor:pointer;font:600 11px system-ui;display:list-item}
+.fps-debug-panel summary span{float:right;font:9px monospace;color:#67744f}
+.fps-debug-options{display:flex;gap:6px;margin:12px 0}
+.fps-debug-options button{flex:1;padding:8px;border:1px solid #a6b79b;border-radius:4px;background:#f7f8f1;color:#344b32;font:600 13px system-ui}
+.fps-debug-options button[aria-pressed=true]{background:#314c35;color:#fff;border-color:#314c35}
+.fps-debug-options small{display:block;font:9px monospace;margin-top:3px}
+.fps-debug-panel label{display:flex;align-items:center;gap:7px;font-size:11px;cursor:pointer}
+.fps-debug-panel input{accent-color:#314c35}
+.fps-start-card .fps-debug-panel p{font-size:10px;line-height:1.45;margin:8px 0}
+.fps-debug-heal{border:1px solid #adba9e;background:#f6f7ee;border-radius:4px;padding:8px 10px;color:#31432c;font:600 11px system-ui;width:100%}
+.fps-debug-panel>small{display:block;font:8px monospace;margin-top:8px;color:#66775b}

@@ -1,0 +1,4 @@
+.fps-minimap{position:absolute;top:108px;left:18px;width:166px;padding:7px;background:#14251ee8;border:1px solid #a8bd9655;border-radius:7px;pointer-events:none;color:#e0ead5;z-index:2;box-shadow:0 3px 12px #0003}
+.fps-minimap-heading{display:flex;justify-content:space-between;gap:5px;font:9px sans-serif;line-height:1.3}.fps-minimap-heading strong{font-weight:600}.fps-minimap-heading span{color:#ebd591;white-space:nowrap}
+.fps-minimap svg{display:block;width:100%;height:auto}.fps-minimap-legend{font:8px sans-serif;color:#c3d3ba;text-align:center;line-height:1.4}
+@media(max-width:700px){.fps-minimap{top:106px;left:10px;width:112px;padding:5px}.fps-minimap-heading{font-size:8px}.fps-minimap-legend{font-size:7px}.fps-minimap-heading span{font-size:8px}}
