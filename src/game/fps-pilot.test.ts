@@ -44,7 +44,10 @@ it('lines up before ADS and holds the sight through a brief transition without f
   expect(pilot.decide(observation({ contacts: [contact] })).action.aim).toBe(false);
   expect(pilot.decide(observation({ time: 1.1, contacts: [{ ...contact, yawError: 0 }] })).action.aim).toBe(true);
   expect(pilot.decide(observation({ time: 1.2, aiming: true })).action).toMatchObject({ aim: true, fire: false });
-  expect(pilot.decide(observation({ time: 1.7, aiming: true })).action.aim).toBe(false);
+  expect(pilot.decide(observation({ time: 1.3, aiming: true, contacts: [{ ...contact, id: 'peripheral', yawError: .5 }] })).action).toMatchObject({ aim: true, fire: false, lookX: 0 });
+  expect(pilot.decide(observation({ time: 1.8, aiming: true })).action.aim).toBe(false);
+  expect(pilot.decide(observation({ time: 1.9, contacts: [{ ...contact, yawError: 0 }] })).action.aim).toBe(false);
+  expect(pilot.decide(observation({ time: 2.4, contacts: [{ ...contact, yawError: 0 }] })).action).toMatchObject({ aim: false, fire: true });
 });
 
 it('walks past unusable medical supplies instead of repeatedly pressing pickup', () => {

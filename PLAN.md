@@ -4,6 +4,13 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 
 # Blockplay project plan
 
+## Completed: Encik callouts and comms history (2026-09-13)
+
+- 48 local Encik lines; human and AI action events share cooldowns, priority, subtitles and optional installed-voice speech.
+- Shared 100-entry speech/kill/system history, filters, expansion, scroll retention and district carry. Voice mute preserves text.
+- Fixed the reproduced ADS target-switch loop with transition hold and temporary hip-fire reacquisition. Browser radio regression completes all eight targets after pause/resume, checks muted speech history and filters, and verifies mobile width.
+- 213 unit tests and production build pass. Browser checks also verified local voice invocation/mute, fullscreen bounds and district history carry. No dependencies or API keys added.
+
 ## Completed: player AI pilot and strategy plugins (2026-09-13)
 
 - Added Watch AI play / Take control / Stop AI in FPS and expeditions, with shared human action functions and restricted visible-contact/HUD observations.

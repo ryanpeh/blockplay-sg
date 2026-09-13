@@ -9,6 +9,8 @@ import FpsMinimap from './FpsMinimap';
 import FpsWeaponHud from './FpsWeaponHud';
 import FpsDebugPanel from './FpsDebugPanel';
 import FpsPilotPanel from './FpsPilotPanel';
+import FpsCommsLog from './FpsCommsLog';
+import FpsRadio, { FpsRadioVoice } from './FpsRadio';
 import type { MinimapMarker } from '../game/minimap';
 import './expedition.css';
 
@@ -72,6 +74,7 @@ export default function ExpeditionGame({ profile, onExit, suspended = false, ini
       <div className="fps-top"><span className="fps-badge"><span className="status-dot" /> {zone.name.toUpperCase()} / EXPEDITION</span><span className={`expedition-risk risk-${zone.risk}`}>{zone.risk.toUpperCase()} THREAT</span></div>
       {fullscreen.immersive && <div className="fps-immersive-hint">F · FULLSCREEN <span>ESC · MENU & RELEASE MOUSE</span></div>}
       {fullscreen.immersive && !playing && <button className="fps-leave-screen" onClick={() => { void fullscreen.toggle(); }}><Minimize size={14} /> Exit fullscreen</button>}
+      <FpsRadio hud={hud} />
       {hud.pilotEnabled && playing && <div className="fps-pilot-indicator">AI PILOT · {hud.pilotStatus} · ESC TO STOP</div>}
       {playing && <>
         <FpsMinimap zone={scene.zone} player={hud} markers={mapMarkers} mode="expedition" />
@@ -93,6 +96,7 @@ export default function ExpeditionGame({ profile, onExit, suspended = false, ini
         {!['loading', 'error'].includes(hud.phase) && <p className="fps-armor-note">{equipment.rigName} · {equipment.plateName}<br />{zone.botCount} defenders · {zone.composition} roles · No match timer</p>}
         {hud.message && hud.phase !== 'error' && <p className="fps-capture-error" role="alert">{hud.message}</p>}
         <FpsDebugPanel hud={hud} engine={engine.current} />
+        <FpsRadioVoice hud={hud} engine={engine.current} />
         <FpsPilotPanel hud={hud} engine={engine.current} suspended={suspended} />
         <button className="primary-button" disabled={hud.phase === 'loading' || suspended} onClick={() => hud.phase === 'error' ? setScene(current => ({ ...current, revision: current.revision + 1 })) : engine.current?.start()}><Play size={16} />{hud.phase === 'loading' ? 'Loading…' : hud.phase === 'error' ? 'Retry district' : hud.phase === 'paused' ? 'Resume expedition' : 'Enter district'}<ArrowRight size={17} /></button>
         <button className="fps-shop-link" onClick={onExit}>Leave expedition →</button>
@@ -104,6 +108,8 @@ export default function ExpeditionGame({ profile, onExit, suspended = false, ini
       <button className="session-button" aria-label={fullscreen.immersive ? 'Exit expedition fullscreen' : 'Fullscreen expedition'} onClick={() => { void fullscreen.toggle(); }}>{fullscreen.immersive ? <Minimize size={16} /> : <Maximize size={16} />} Fullscreen</button>
       <button className="session-button" disabled={['loading', 'error'].includes(hud.phase) || suspended} onClick={() => playing ? engine.current?.pause() : engine.current?.start()}>{playing ? <Pause size={15} /> : <Play size={15} />}{playing ? 'Menu' : 'Resume'}</button>
     </div></div>
+    <FpsCommsLog entries={hud.comms} />
+    <FpsRadioVoice hud={hud} engine={engine.current} />
     <FpsPilotPanel hud={hud} engine={engine.current} suspended={suspended} />
     <div className="fps-loadout" aria-label="Field loadout">{equipment.weapons.map((item, index) => <button key={index} disabled={!canFight} aria-pressed={index === hud.weapon} onClick={() => engine.current?.switchWeapon(index)}><kbd>{index + 1}</kbd><span>{item.name}<small>{item.role}</small></span><span className="fps-selected">{index === hud.weapon ? 'EQUIPPED' : 'EQUIP'}</span></button>)}</div>
     <div className="fps-inputs" aria-label="Expedition touch controls">

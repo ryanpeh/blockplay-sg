@@ -33,6 +33,10 @@ Hold right mouse to aim. The issued SAR 21 uses its integrated 1.5× picture-in-
 
 In the ready/pause menu, open **Debug survival** for 1×, 5× or 10× maximum health, a health refill, and optional regeneration (10% of maximum HP per second after three seconds without damage). These tab-local settings persist through zone changes and apply to practice, solo bots and expeditions. Network rooms keep their normal health rules.
 
+**Encik radio** adds Singaporean callouts for combat, reloads, low health/ammo, supplies and AI movement. The pilot can request contact and stuck callouts through its action interface. Voice uses an installed local English voice (Singapore English preferred); **Encik on/off** mutes only speech, with subtitles retained. The existing sound mute silences speech too. No API key is needed.
+
+The **Comms log** retains the latest 100 speech, kill and supply/travel entries. Filter All / Speech / Kills / System, expand to browse history, or scroll up without incoming messages pulling you back down. Expedition travel carries the log into the next district; restarting a round clears it. It is a local session log, not player text chat.
+
 Use Fullscreen or F for immersive play. A denied fullscreen request falls back to an expanded viewport.
 
 **Watch AI play** lets a local controller operate your character in practice, solo arena or expeditions. **Take control** returns to mouse capture; **Stop AI** or Escape pauses it. Choose Local planner for offline play, or LLM strategist for optional server-backed goals. Select an expedition destination on the island map to give it a checkpoint route. See [AI pilot and strategy plugins](AI-PILOT.md) for setup and limitations.

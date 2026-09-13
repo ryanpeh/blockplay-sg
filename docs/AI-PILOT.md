@@ -4,7 +4,7 @@ The pilot controls the player's infantry slot in practice, arenas and expedition
 
 ## Local and LLM strategies
 
-**Local planner** works offline. It chooses combat, resupply, travel or exploration from current observations. A 10 Hz controller turns, aims, shoots, reloads, switches weapons, moves and interacts through the same engine functions as human input. ADS engages after alignment and uses separate entry/exit thresholds to avoid repeated scope toggling.
+**Local planner** works offline. It chooses combat, resupply, travel or exploration from current observations. A 10 Hz controller turns, aims, shoots, reloads, switches weapons, moves and interacts through the same engine functions as human input. ADS engages after alignment, retains the current visible target and holds steady while the sight rises. If the scope continues hiding the target, the controller reacquires at hip level and suppresses ADS for three seconds so it can complete a burst without cycling the sight. It never fires or tracks a target while that target is hidden.
 
 **LLM strategist** chooses a high-level goal and optional known waypoint. The local controller keeps running while requests are pending and handles immediate visible threats. Requests are throttled to one per ten seconds with one outstanding request. Plans expire after twenty seconds; missing waypoints, errors and unavailable service fall back to local planning. Pause, respawn, strategy changes and zone disposal cancel outstanding plans.
 
@@ -16,7 +16,7 @@ The server uses the Responses API with [Structured Outputs](https://developers.o
 
 `fps-pilot-perception.ts` exposes on-screen, line-of-sight checked contact bearings and apparent size, accounting for scene occlusion and the weapon's viewing aperture. It does not expose enemy world coordinates, health, hidden actors or collision maps. Own vitals/ammo/pose, current prompts and waypoints already shown on the HUD/minimap are available. This is structured game perception, not a screenshot vision model.
 
-`PilotAction` permits held movement/aim/fire, bounded relative look deltas, reload, jump, weapon selection, pickup and checkpoint interaction. It cannot teleport, grant ammo or directly apply damage. The server independently whitelists observation fields before sending a strategy request.
+`PilotAction` permits held movement/aim/fire, bounded relative look deltas, reload, jump, weapon selection, pickup and checkpoint interaction. The pilot may also request `contact`, `moving` or `stuck` radio callouts; the shared radio director applies cooldowns and selects an Encik line. Reload, kill and other action events produce the same radio feedback as human actions. It cannot teleport, grant ammo or directly apply damage. The server independently whitelists observation fields before sending a strategy request.
 
 ## Extension points
 

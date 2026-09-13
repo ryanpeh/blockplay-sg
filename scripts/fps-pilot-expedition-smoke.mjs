@@ -51,10 +51,16 @@ try {
   await send('Runtime.enable');await send('Page.enable');await send('Emulation.setFocusEmulationEnabled',{enabled:true});
   await wait(`window.hud?.phase==='ready' && window.hud.arenaSelf && window.hud.weapon===1`);
   assert.equal(await evaluate('hud.health'),64);assert.equal(await evaluate('hud.armor'),21);assert.equal(await evaluate('hud.magazine'),11);
+  await evaluate('engine.toggleEncikVoice()');
   await click(`document.querySelector('#enter')`);
   await wait(`zone==='raffles-place' && hud.phase==='playing' && hud.pilotEnabled`,30000);
   assert.equal(await evaluate('!!document.pointerLockElement'),false);
   assert.equal(await evaluate('transfers.length'),1);
+  assert.equal(await evaluate('hud.encikVoice'),false,'Encik voice preference carries across districts');
+  assert(await evaluate('hud.comms.some(e=>e.channel==="radio" && e.source==="Encik · AI")'),'Muted AI speech stays in history');
+  assert(await evaluate('hud.comms.some(e=>e.channel==="system" && e.source==="Supplies")'),'Collected loot is recorded');
+  assert(await evaluate('hud.comms.some(e=>e.channel==="system" && e.source==="Travel")'),'Travel is retained in the arrival log');
+  assert(await evaluate('new Set(hud.comms.map(e=>e.id)).size===hud.comms.length'),'Carried and new messages have unique IDs');
   assert.equal(await evaluate('transfers[0].state.pilot'),true);
   assert.equal(await evaluate('transfers[0].state.pilotStrategy'),'local');
   assert.equal(await evaluate('document.querySelectorAll("canvas").length'),1);

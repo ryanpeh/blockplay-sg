@@ -23,6 +23,8 @@ import { DEFAULT_FPS_DEBUG, FPS_REGEN_DELAY, normalizeFpsDebug, readFpsDebug, re
 import { createWeaponHandling } from './fps-viewmodel';
 import { createScopeRenderer, getWeaponSight } from './weapon-optics';
 import { reloadMotion, reloadStage, smoothStep } from './fps-weapon-motion';
+import { createFpsComms, type CommsEntry } from './fps-comms';
+import { createEncikRadio, type EncikCallout, type EncikEvent } from './fps-callouts';
 import { createPlayerPilot, normalizePilotAction, PILOT_INTERVAL, type PilotObservation, type PilotGoal, type PlayerPilot } from './fps-pilot';
 import { visiblePilotContacts, type PilotSubject } from './fps-pilot-perception';
 import { createStrategyPlanner, llmPilotStrategy } from './pilot-strategy';
@@ -30,7 +32,7 @@ import { findWorldRoute } from './world-zones';
 import { advanceBloom, createWeaponBloom, recordBloomShot, sampleShotSpread, weaponSpread } from './fps-accuracy';
 
 export interface FpsArenaOptions { session: LanSession; botCount: number; composition?: string; profile: ArmoryProfile; environment?: ArenaEnvironment; initialVitals?: Partial<ArenaVitals> }
-export interface FpsCheckpoint { health: number; armor: number; weapon: number; ammunition: WeaponState[]; pilot?: boolean; pilotStrategy?: 'local' | 'llm' }
+export interface FpsCheckpoint { health: number; armor: number; weapon: number; ammunition: WeaponState[]; pilot?: boolean; pilotStrategy?: 'local' | 'llm'; encikVoice?: boolean; comms?: readonly CommsEntry[] }
 export interface FpsExpeditionOptions {
   zone: WorldZoneId; spawn?: ZoneSpawn; checkpoint?: FpsCheckpoint; profile: ArmoryProfile; loot: ExpeditionLoot;
   onTravel: (transition: WorldTransition, checkpoint: FpsCheckpoint) => void; onEquipment: (profile: ArmoryProfile) => void;
@@ -38,6 +40,7 @@ export interface FpsExpeditionOptions {
 const randomRoundId = () => globalThis.crypto?.randomUUID?.() ?? `round-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 
 export interface FpsHud {
+  encikCallout: EncikCallout | null; encikVoice: boolean; comms: readonly CommsEntry[];
   pilotStrategy: 'local' | 'llm'; pilotPlan: string;
   pilotEnabled: boolean; pilotStatus: string; pilotGoal: PilotGoal | null; pilotContacts: number;
   debug: FpsDebugSettings; debugAvailable: boolean; maxHealth: number;
@@ -51,7 +54,7 @@ export interface FpsHud {
   arena: ArenaSnapshot | null; arenaSelf: ArenaActor | null; arenaConnected: boolean; arenaStarted: boolean;
   expeditionZone: WorldZoneId | null; lootPrompt: string; travelPrompt: string; lootNotice: string; fieldLoot: FieldLoot[];
 }
-export const initialFpsHud: FpsHud = { pilotStrategy: 'local', pilotPlan: 'Local utility planner', pilotEnabled: false, pilotStatus: 'Player controls', pilotGoal: null, pilotContacts: 0, crosshairSpread: 6, hitKind: 'hit', aimProgress: 0, reloadEmpty: false, debug: { ...DEFAULT_FPS_DEBUG }, debugAvailable: true, maxHealth: 100, phase: 'loading', weapon: 0, magazine: 30, reserve: 120, reloading: 0, hits: 0, shots: 0, landed: 0, health: 100, armor: 0, incoming: false, hurt: false, lastDamage: 0, earned: 0, earnedXp: 0, callout: '', chain: 0, elapsed: 0, aiming: false, hit: false, vehicle: 'on-foot', vehicleSpeed: 0, altitude: 0, interact: '', vehicleNotice: '', carDistance: 0, helicopterDistance: 0, locked: false, message: '', muted: false, x: FPS_SPAWN.x, z: FPS_SPAWN.z, yaw: FPS_SPAWN.yaw, mapMarkers: [], arena: null, arenaSelf: null, arenaConnected: true, arenaStarted: false, expeditionZone: null, lootPrompt: '', travelPrompt: '', lootNotice: '', fieldLoot: [] };
+export const initialFpsHud: FpsHud = { encikCallout: null, encikVoice: true, comms: [], pilotStrategy: 'local', pilotPlan: 'Local utility planner', pilotEnabled: false, pilotStatus: 'Player controls', pilotGoal: null, pilotContacts: 0, crosshairSpread: 6, hitKind: 'hit', aimProgress: 0, reloadEmpty: false, debug: { ...DEFAULT_FPS_DEBUG }, debugAvailable: true, maxHealth: 100, phase: 'loading', weapon: 0, magazine: 30, reserve: 120, reloading: 0, hits: 0, shots: 0, landed: 0, health: 100, armor: 0, incoming: false, hurt: false, lastDamage: 0, earned: 0, earnedXp: 0, callout: '', chain: 0, elapsed: 0, aiming: false, hit: false, vehicle: 'on-foot', vehicleSpeed: 0, altitude: 0, interact: '', vehicleNotice: '', carDistance: 0, helicopterDistance: 0, locked: false, message: '', muted: false, x: FPS_SPAWN.x, z: FPS_SPAWN.z, yaw: FPS_SPAWN.yaw, mapMarkers: [], arena: null, arenaSelf: null, arenaConnected: true, arenaStarted: false, expeditionZone: null, lootPrompt: '', travelPrompt: '', lootNotice: '', fieldLoot: [] };
 
 function disposeAssets(roots: THREE.Object3D[]) {
   const geometries = new Set<THREE.BufferGeometry>(), materials = new Set<THREE.Material>(), textures = new Set<THREE.Texture>();
@@ -122,6 +125,8 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   const markers = expedition ? createExpeditionMarkers(world.scene, expedition.zone, hud.fieldLoot) : null;
   let checkpointPending = expedition?.checkpoint;
   let travelPending = false, lootNoticeTime = 0;
+  const encik = createEncikRadio(), comms = createFpsComms(expedition?.checkpoint?.comms);
+  hud.encikVoice = expedition?.checkpoint?.encikVoice ?? true;
   let killChain: KillChain = { count: 0, lastAt: -Infinity }, calloutTime = 0;
   let roundId = randomRoundId(), attackTimer = 3, hurtTime = 0;
   let pendingAttack: { target: number; remaining: number; aim: THREE.Vector3 } | null = null;
@@ -147,7 +152,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   const publish = () => {
     if (disposed) return;
     const state = loadout[hud.weapon];
-    onHud({ ...hud, pilotEnabled, aimProgress, reloadEmpty: emptyReload[hud.weapon], ...(!options.arena ? vehicles.hud(position) : {}), magazine: state.magazine, reserve: state.reserve, reloading: state.reloadRemaining / specs[hud.weapon].reload, aiming: actualAim, hit: hitTime > 0, locked: document.pointerLockElement === canvas, x: position.x, z: position.z, yaw,
+    onHud({ ...hud, comms: comms.snapshot(), pilotEnabled, aimProgress, reloadEmpty: emptyReload[hud.weapon], ...(!options.arena ? vehicles.hud(position) : {}), magazine: state.magazine, reserve: state.reserve, reloading: state.reloadRemaining / specs[hud.weapon].reload, aiming: actualAim, hit: hitTime > 0, locked: document.pointerLockElement === canvas, x: position.x, z: position.z, yaw,
       mapMarkers: options.arena ? [] : [
         ...FPS_TARGETS.flatMap((point, index): MinimapMarker[] => targets[index]?.alive ? [{ ...point, id: `target-${index}`, kind: 'target', label: `Target ${index + 1}` }] : []),
         ...(['car', 'helicopter'] as const).filter(kind => kind !== vehicles.active).map((kind): MinimapMarker => ({ id: kind, kind, label: kind === 'car' ? 'Utility 01' : 'Falcon 01', x: vehicles.states[kind].x, z: vehicles.states[kind].z })),
@@ -170,7 +175,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     pilotEnabled = false; pilot.reset(); strategicPlanner?.reset(); hud.pilotStatus = 'Player controls'; hud.pilotGoal = null; hud.pilotContacts = 0;
     capturePending = false;
     if (hud.phase !== 'playing') return;
-    hud.phase = 'paused'; clearInput(); stopVoice();
+    hud.phase = 'paused'; clearInput(); stopVoice(); encik.clear(); hud.encikCallout = null;
     if (document.pointerLockElement === canvas) document.exitPointerLock();
     publish();
   }
@@ -203,30 +208,44 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     source.connect(filter).connect(gain).connect(audio.destination); source.start();
     source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
   }
-  let speaking = false;
-  function stopVoice() { if (speaking && 'speechSynthesis' in window) { speechSynthesis.cancel(); speaking = false; } }
-  function announce(label: string, count: number) {
-    if (hud.muted) return;
-    if (audio?.state === 'running') {
-      const context = audio;
-      [0, .09, .18].forEach((offset, i) => {
-        const tone = context.createOscillator(), gain = context.createGain(); tone.type = 'triangle';
-        tone.frequency.value = 330 + count * 35 + i * 110;
-        gain.gain.setValueAtTime(.075, context.currentTime + offset); gain.gain.exponentialRampToValueAtTime(.001, context.currentTime + offset + .20);
-        tone.connect(gain).connect(context.destination); tone.start(context.currentTime + offset); tone.stop(context.currentTime + offset + .22);
-        tone.onended = () => { tone.disconnect(); gain.disconnect(); };
-      });
-    }
-    // Only use an installed local English voice; the visual callout and audio stinger always remain available.
-    if ('speechSynthesis' in window) {
-      const voice = speechSynthesis.getVoices().find(v => v.localService && v.lang.startsWith('en'));
-      if (voice) { stopVoice(); const utterance = new SpeechSynthesisUtterance(label.toLowerCase()); utterance.voice = voice; utterance.rate = 1.05; utterance.pitch = .75; utterance.volume = .65; speaking = true; utterance.onend = () => { speaking = false; }; speechSynthesis.speak(utterance); }
-    }
+  let utterance: SpeechSynthesisUtterance | null = null;
+  function stopVoice() {
+    if (utterance && 'speechSynthesis' in window) { utterance = null; speechSynthesis.cancel(); }
+  }
+  function radioCall(event: EncikEvent) {
+    if (disposed || !['playing', 'complete', 'defeated'].includes(hud.phase)) return;
+    const line = encik.emit(event, performance.now() / 1000); if (!line) return;
+    hud.encikCallout = line;
+    comms.add('radio', pilotEnabled ? 'Encik · AI' : 'Encik', line.text);
+    if (hud.muted || !hud.encikVoice || !('speechSynthesis' in window)) return;
+    // Prefer an installed Singapore English voice; no network TTS or accent imitation.
+    try {
+      const voices = speechSynthesis.getVoices().filter(v => v.localService && /^en(?:-|_)/i.test(v.lang));
+      const voice = voices.find(v => /^en[-_]SG$/i.test(v.lang)) ?? voices[0];
+      if (!voice) return;
+      stopVoice();
+      const next = new SpeechSynthesisUtterance(line.text); utterance = next;
+      next.voice = voice; next.rate = 1.02; next.pitch = .85; next.volume = .7;
+      next.onend = next.onerror = () => { if (utterance === next) utterance = null; };
+      speechSynthesis.speak(next);
+    } catch { stopVoice(); }
+  }
+  function announce(_label: string, count: number) {
+    radioCall(count >= 4 ? 'multi' : count === 3 ? 'triple' : count === 2 ? 'double' : 'kill');
+    if (hud.muted || audio?.state !== 'running') return;
+    const context = audio;
+    [0, .09, .18].forEach((offset, i) => {
+      const tone = context.createOscillator(), gain = context.createGain(); tone.type = 'triangle';
+      tone.frequency.value = 330 + count * 35 + i * 110;
+      gain.gain.setValueAtTime(.075, context.currentTime + offset); gain.gain.exponentialRampToValueAtTime(.001, context.currentTime + offset + .20);
+      tone.connect(gain).connect(context.destination); tone.start(context.currentTime + offset); tone.stop(context.currentTime + offset + .22);
+      tone.onended = () => { tone.disconnect(); gain.disconnect(); };
+    });
   }
   function enterPlay() {
     if (disposed || !['ready', 'paused'].includes(hud.phase)) return;
     if (!pilotEnabled && inputMode === 'mouse' && document.pointerLockElement !== canvas) { captureFailed(); return; }
-    capturePending = false; hud.phase = 'playing'; hud.message = ''; lastTime = performance.now(); clearInput(); canvas.focus(); initAudio(); publish();
+    capturePending = false; hud.phase = 'playing'; hud.message = ''; lastTime = performance.now(); clearInput(); canvas.focus(); initAudio(); radioCall('start'); publish();
   }
   function captureFailed() {
     if (disposed) return;
@@ -251,6 +270,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (hud.phase === 'playing') canvas.focus({ preventScroll: true });
     if (hud.phase === 'playing' && (!options.arena || hud.arenaSelf?.alive) && !vehicles.active && beginReload(loadout[hud.weapon], hud.weapon, specs)) {
       emptyReload[hud.weapon] = loadout[hud.weapon].magazine === 0;
+      radioCall('reload');
       arenaRuntime?.reload(hud.weapon); ads = false; touchAim = false; actualAim = false; lastReloadStage = ''; publish();
     }
   }
@@ -269,7 +289,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     arenaRuntime?.reset();
     capturePending = false; hud.phase = 'ready'; hud.hits = 0; hud.shots = 0; hud.landed = 0; hud.elapsed = 0; hud.message = '';
     hud.health = hud.maxHealth; hud.armor = equipment.armor; hud.incoming = false; hud.hurt = false; hud.earned = 0; hud.earnedXp = 0; hud.lastDamage = 0; hud.callout = ''; hud.chain = 0;
-    killChain = { count: 0, lastAt: -Infinity }; calloutTime = 0; stopVoice();
+    killChain = { count: 0, lastAt: -Infinity }; calloutTime = 0; stopVoice(); encik.reset(); comms.clear(); hud.encikCallout = null;
     roundId = randomRoundId(); attackTimer = 3; pendingAttack = null; hurtTime = 0;
     if (document.pointerLockElement === canvas) document.exitPointerLock();
     vehicles.reset(); loadout = createLoadout(specs); position = { x: FPS_SPAWN.x, z: FPS_SPAWN.z }; yaw = FPS_SPAWN.yaw; pitch = FPS_SPAWN.pitch;
@@ -328,6 +348,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       const before = hud.health; hud.health = Math.min(hud.maxHealth, hud.health + collected.amount); arenaRuntime.setVitals({ health: hud.health });
       hud.lootNotice = `Recovered ${Math.round(hud.health - before)} health.`;
     }
+    comms.add('system', 'Supplies', hud.lootNotice); radioCall('pickup');
     markers?.remove(collected.id); hud.fieldLoot = expedition.loot.remaining(expedition.zone); lootNoticeTime = 4;
     updateExpeditionPrompts(); canvas.focus({ preventScroll: true }); publish();
   }
@@ -335,7 +356,8 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (!expedition || travelPending || hud.phase !== 'playing' || !hud.arenaSelf?.alive || vehicles.active) return;
     const gateway = findWorldGateway(expedition.zone, position); if (!gateway) return;
     const transition = resolveWorldTransition(expedition.zone, gateway.id, position); if (!transition) return;
-    const checkpoint: FpsCheckpoint = { pilot: pilotEnabled, pilotStrategy: strategyMode, health: hud.health, armor: hud.armor, weapon: hud.weapon, ammunition: loadout.map(state => ({ ...state, cooldown: 0, reloadRemaining: 0 })) };
+    comms.add('system', 'Travel', `Moving to ${getWorldZone(transition.to).name}.`);
+    const checkpoint: FpsCheckpoint = { comms: comms.snapshot(), pilot: pilotEnabled, pilotStrategy: strategyMode, encikVoice: hud.encikVoice, health: hud.health, armor: hud.armor, weapon: hud.weapon, ammunition: loadout.map(state => ({ ...state, cooldown: 0, reloadRemaining: 0 })) };
     travelPending = true; pause(); expedition.onTravel(transition, checkpoint);
   }
   function jump() { if (hud.phase === 'playing' && (!options.arena || hud.arenaSelf?.alive)) { canvas.focus({ preventScroll: true }); if (!vehicles.active && vertical === 0 && !keys.has('c')) velocityY = 5.2; } }
@@ -480,6 +502,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       hud.pilotPlan = strategicPlanner?.status() ?? 'Local utility planner';
       hud.pilotGoal = decision.goal; hud.pilotStatus = decision.status; hud.pilotContacts = lastPilotObservation.contacts.length;
       if (!lastPilotObservation.alive) { clearInput(); return; }
+      if (action.callout) radioCall(action.callout);
       for (const [key, held] of [['w', action.forward], ['s', action.backward], ['a', action.left], ['d', action.right], ['shift', action.sprint], ['c', action.crouch]] as const) setInput(key, held === true);
       setInput('fire', action.fire === true);
       look(action.lookX ?? 0, action.lookY ?? 0);
@@ -560,7 +583,8 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
           hud.callout = chain.label;
           calloutTime = hud.callout ? 2.4 : 0; hud.earnedXp += ELIMINATION_XP;
           options.onElimination?.(`${roundId}:kill:${hud.hits}`);
-          if (hud.callout) announce(hud.callout, killChain.count); }
+          comms.add('kills', pilotEnabled ? 'AI pilot' : 'You', `Target ${hit.object.userData.fpsTarget + 1} eliminated${chain.label ? ' · ' + chain.label : ''}.`);
+          announce(hud.callout, killChain.count); }
       }
     }
     const end = hit?.point ?? ray.ray.at(180, new THREE.Vector3());
@@ -571,7 +595,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     tracer.visible = true; impactActive = !!hit; impact.visible = impactActive; impact.position.copy(end); effectTime = 0.055;
     kick = Math.min(kick + specs[hud.weapon].recoil, 0.10); flashTime = 0.045; flash.visible = true;
     if (!options.arena && hud.hits === FPS_TARGETS.length) {
-      hud.phase = 'complete'; hud.incoming = false; clearInput();
+      hud.phase = 'complete'; hud.incoming = false; clearInput(); radioCall('complete');
       const reward = { id: roundId, hits: hud.hits, shots: hud.shots, landed: hud.landed, elapsed: hud.elapsed, combat: !!options.combat };
       hud.earned = rewardAmount(reward); hud.earnedXp += completionXp(reward); options.onComplete?.(reward);
       if (document.pointerLockElement === canvas) document.exitPointerLock();
@@ -597,7 +621,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
         if (hasLineOfSight(attack.target) && playerPoint().distanceTo(attack.aim) < .75) {
           const damage = applyArmorDamage(hud.health, hud.armor, 18, equipment.absorption);
           hud.health = damage.health; hud.armor = damage.armor; hurtTime = .35; recoveryDelay = FPS_REGEN_DELAY;
-          if (hud.health <= 0) { hud.phase = 'defeated'; clearInput(); if (document.pointerLockElement === canvas) document.exitPointerLock(); }
+          if (hud.health <= 0) { hud.phase = 'defeated'; clearInput(); radioCall('death'); if (document.pointerLockElement === canvas) document.exitPointerLock(); }
           publish();
         }
       }
@@ -623,7 +647,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (newRound) {
       hud.phase = 'ready'; hud.shots = hud.landed = hud.earned = hud.earnedXp = hud.chain = 0;
       hud.callout = ''; hud.message = ''; calloutTime = 0; killChain = { count: 0, lastAt: -Infinity };
-      clearInput(); loadout = createLoadout(specs);
+      clearInput(); stopVoice(); encik.reset(); comms.clear(); hud.encikCallout = null; loadout = createLoadout(specs);
       if (document.pointerLockElement === canvas) document.exitPointerLock();
     }
     hud.arena = frame.snapshot; hud.arenaSelf = frame.self; hud.arenaConnected = frame.connected; hud.arenaStarted = frame.started;
@@ -631,8 +655,9 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (frame.self) {
       hud.hits = frame.self.kills; hud.health = frame.self.health; hud.armor = frame.self.armor;
       if (previousSelf && frame.self.health < previousSelf.health) { hurtTime = .4; recoveryDelay = FPS_REGEN_DELAY; }
-      if (!frame.self.alive && previousSelf?.alive) { clearInput(); killChain = { count: 0, lastAt: -Infinity }; hud.chain = 0; hud.callout = ''; calloutTime = 0; }
+      if (!frame.self.alive && previousSelf?.alive) { radioCall('death'); clearInput(); killChain = { count: 0, lastAt: -Infinity }; hud.chain = 0; hud.callout = ''; calloutTime = 0; }
       if (frame.spawn) {
+        if (previousSelf && !previousSelf.alive) radioCall('respawn');
         pilot.reset(); strategicPlanner?.reset();
         position = { x: frame.self.x, z: frame.self.z }; vertical = Math.max(0, frame.self.y - 1.75); velocityY = 0;
         yaw = frame.self.yaw; pitch = frame.self.pitch; loadout = createLoadout(specs); clearInput();
@@ -656,6 +681,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     }
     if (frame.hit?.hitId) { hud.landed++; hud.lastDamage = frame.hit.damage; hitTime = .2; hud.hitKind = frame.hit.killed ? 'kill' : 'hit'; }
     for (const event of frame.feed) {
+      comms.add('kills', 'Arena', event.text);
       if (event.killerId !== options.arena!.session.id) continue;
       const chain = registerElimination(killChain, hud.elapsed); killChain = chain; hud.chain = chain.count;
       hud.callout = chain.label || 'ELIMINATION'; calloutTime = 2.4; announce(hud.callout, chain.count);
@@ -665,7 +691,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       if (hud.phase === 'playing') pause();
     }
     if (frame.snapshot?.finished && hud.phase !== 'complete') {
-      hud.phase = 'complete'; clearInput(); hud.incoming = false;
+      hud.phase = 'complete'; clearInput(); hud.incoming = false; radioCall('complete');
       if (document.pointerLockElement === canvas) document.exitPointerLock();
       publish();
     }
@@ -727,6 +753,13 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       motorGain.gain.setTargetAtTime(active ? .035 : 0, audio.currentTime, .08);
       motor.frequency.setTargetAtTime(vehicles.active === 'helicopter' ? 54 + Math.sin(hud.elapsed * 24) * 8 : 35 + Math.abs(vehicles.mounted?.speed || 0) * 4, audio.currentTime, .05);
     }
+    if (hud.phase === 'playing' && hud.health > 0 && hud.arenaSelf?.alive !== false) {
+      if (hud.health < hud.maxHealth * .3) radioCall('medical');
+      else if (hurtTime > 0) radioCall('hurt');
+      else if (hud.incoming) radioCall('contact');
+      else if (loadout[hud.weapon].reserve < 20) radioCall('lowAmmo');
+    }
+    hud.encikCallout = encik.current(now / 1000);
     world.animate(hud.elapsed);
     const scopeActive = scopeRenderer.render(world.scene, camera, viewCamera, weapons[hud.weapon] ? getWeaponSight(weapons[hud.weapon]) : undefined, aimProgress > .85 && rig.visible && !vehicles.active && hud.phase === 'playing');
     canvas.dataset.scopeActive = String(scopeActive);
@@ -777,6 +810,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     setPilotDestination(destination?: WorldZoneId) { pilotDestination = destination; },
     getPilotObservation() { return lastPilotObservation ? structuredClone(lastPilotObservation) : null; },
     toggleAim() { if (hud.phase === 'playing' && !vehicles.active) { touchAim = !touchAim; canvas.focus({ preventScroll: true }); publish(); } },
+    toggleEncikVoice() { hud.encikVoice = !hud.encikVoice; if (!hud.encikVoice) stopVoice(); publish(); },
     toggleSound() { hud.muted = !hud.muted; if (hud.muted) stopVoice(); if (hud.phase === 'playing') { canvas.focus({ preventScroll: true }); if (!hud.muted) initAudio(); } publish(); },
     dispose() {
       disposed = true; pilot.reset(); strategicPlanner?.reset(); stopVoice(); cancelAnimationFrame(frame); observer.disconnect(); clearInput();

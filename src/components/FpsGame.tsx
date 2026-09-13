@@ -11,6 +11,8 @@ import FpsMinimap from './FpsMinimap';
 import FpsWeaponHud from './FpsWeaponHud';
 import FpsDebugPanel from './FpsDebugPanel';
 import FpsPilotPanel from './FpsPilotPanel';
+import FpsCommsLog from './FpsCommsLog';
+import FpsRadio, { FpsRadioVoice } from './FpsRadio';
 import './arena-hud.css';
 
 type ArenaOptions = { session: LanSession; botCount: number; composition: string };
@@ -62,6 +64,7 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
       {fullscreen.immersive && !playing && <button className="fps-leave-screen" onClick={() => { void fullscreen.toggle(); }}><Minimize size={14} /> Exit fullscreen</button>}
       <div className="fps-top"><span className="fps-badge"><span className="status-dot" /> MARINA BAY / {isArena ? 'ARENA' : 'FIELD RANGE'}</span><span className="fps-score">{isArena ? `${hud.arenaSelf?.kills || 0} K / ${hud.arenaSelf?.deaths || 0} D` : `${hud.hits} / ${FPS_TARGETS.length} TARGETS`} <b>{isArena ? arenaClock : `${hud.elapsed.toFixed(1)}s`}</b></span></div>
       {isArena && playing && <><div className="arena-kill-feed" aria-label="Elimination feed">{hud.arena?.feed.slice(-4).map(event => <p key={event.id} className={event.killerId === arenaOptions.session.id ? 'own-kill' : event.victimId === arenaOptions.session.id ? 'own-death' : ''}>{event.text}</p>)}</div>{hud.arenaSelf && !hud.arenaSelf.alive && <div className="arena-respawn" role="status"><span>ELIMINATED</span><strong>Back in {Math.ceil(hud.arenaSelf.respawnIn)}s</strong><small>Armor and ammunition replenish on respawn.</small></div>}{!hud.arenaStarted && !disconnected && <div className="arena-waiting" role="status">Waiting for the host to start the match.</div>}</>}
+      <FpsRadio hud={hud} />
       {hud.pilotEnabled && playing && <div className="fps-pilot-indicator">AI PILOT · {hud.pilotStatus} · ESC TO STOP</div>}
       {playing && <>
         <FpsMinimap zone="marina-bay" player={hud} markers={isArena ? [] : hud.mapMarkers} mode={isArena ? 'arena' : 'practice'} />
@@ -85,6 +88,7 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
         {!['loading', 'error', 'complete'].includes(hud.phase) && !disconnected && <p className="fps-armor-note">{equipment.rigName} · {equipment.plateName} · {equipment.armor} AP<br />{guest ? 'The host runs the match and the bots.' : `${arenaOptions.botCount} bots · ${arenaOptions.composition} squad · Infantry combat`}</p>}
         {hud.message && hud.phase !== 'error' && !disconnected && <p className="fps-capture-error" role="alert">{hud.message}</p>}
         <FpsDebugPanel hud={hud} engine={engine.current} />
+        <FpsRadioVoice hud={hud} engine={engine.current} />
         <FpsPilotPanel hud={hud} engine={engine.current} suspended={suspended} />
         {hud.phase === 'complete' && hud.arena && <Scoreboard snapshot={hud.arena} selfId={arenaOptions.session.id} />}
         {!disconnected && <button className="primary-button" disabled={hud.phase === 'loading' || suspended || (guest && hud.phase === 'complete')} onClick={() => { if (hud.phase === 'error') setEpoch(n => n + 1); else if (hud.phase === 'complete') resetExercise(); else engine.current?.start(); }}>
@@ -102,6 +106,7 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
         {['ready', 'complete', 'defeated'].includes(hud.phase) && <div className="fps-drill-choice"><button aria-pressed={!combat} onClick={() => chooseDrill(false)}>Practice</button><button aria-pressed={combat} onClick={() => chooseDrill(true)}>Counter-fire · +100 CR</button></div>}
         {hud.message && hud.phase !== 'error' && <p className="fps-capture-error" role="alert">{hud.message}</p>}
         <FpsDebugPanel hud={hud} engine={engine.current} />
+        <FpsRadioVoice hud={hud} engine={engine.current} />
         <FpsPilotPanel hud={hud} engine={engine.current} suspended={suspended} />
         {hud.phase !== 'loading' && hud.phase !== 'error' && <p className="fps-armor-note">{equipment.rigName} · {equipment.plateName} · {equipment.armor} AP<br />{combat ? 'Targets return simulated fire. Move when warned to dodge.' : 'Practice mode: targets do not return fire.'}</p>}
         {hud.phase === 'complete' && <div className="fps-reward">+{hud.earned} CR · +{hud.earnedXp} XP earned{rank.level > startingLevel.current && <strong className="fps-level-up">LEVEL UP · LV {rank.level} {rank.rank.toUpperCase()}</strong>}{hud.callout && <span className="fps-final-callout">{hud.callout}</span>}</div>}
@@ -119,6 +124,8 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
       {!guest && <button className="icon-button" aria-label={isArena ? 'Reset arena match' : 'Reset FPS exercise'} disabled={hud.phase === 'loading' || hud.phase === 'error'} onClick={resetExercise}><RotateCcw size={16} /></button>}
       <button className="session-button" disabled={disconnected || hud.phase === 'loading' || hud.phase === 'error' || hud.phase === 'complete' || hud.phase === 'defeated' || suspended} onClick={() => playing ? engine.current?.pause() : engine.current?.start()}>{playing ? <Pause size={15} /> : <Play size={15} />}{playing ? isArena ? 'Menu' : 'Pause' : hud.phase === 'ready' ? 'Start' : 'Resume'}</button>
     </div></div>
+    <FpsCommsLog entries={hud.comms} />
+    <FpsRadioVoice hud={hud} engine={engine.current} />
     <FpsPilotPanel hud={hud} engine={engine.current} suspended={suspended} />
     <div className="fps-loadout" aria-label="Weapon selection">{equipment.weapons.map((w, i) => <button key={w.id} aria-pressed={i === hud.weapon} disabled={hud.phase === 'loading' || hud.phase === 'error'} onClick={() => engine.current?.switchWeapon(i)}><kbd>{i + 1}</kbd><span>{w.name}<small>{w.role}</small></span><span className="fps-selected">{i === hud.weapon ? 'EQUIPPED' : 'EQUIP'}</span></button>)}<div className="fps-accuracy"><span>ACCURACY</span><strong>{accuracy}%</strong></div></div>
     <div className="fps-inputs" aria-label="On-screen FPS controls">

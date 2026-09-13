@@ -1,0 +1,13 @@
+.fps-comms{margin:0 0 10px;border:1px solid #42534b;border-radius:5px;background:#14211fec;color:#d3dfd7;overflow:hidden;font:11px/1.5 system-ui}
+.fps-comms>header{display:flex;align-items:center;gap:12px;padding:6px 10px;border-bottom:1px solid #ffffff14;background:#21332c}
+.fps-comms>header>strong{font-size:9px;letter-spacing:1.2px;white-space:nowrap}.fps-comms>header>div{display:flex;gap:4px;flex:1}
+.fps-comms button{border:0;border-radius:3px;background:transparent;color:#aebfb3;padding:3px 7px;font:10px system-ui;cursor:pointer}
+.fps-comms button[aria-pressed=true]{color:#ffe6aa;background:#ffffff12}.fps-comms button:focus-visible{outline:2px solid #d5b16c}
+.fps-comms-entries{height:82px;overflow:auto;overscroll-behavior:contain;padding:5px 10px;scrollbar-width:thin;scrollbar-color:#65806b transparent}
+.fps-comms.is-expanded .fps-comms-entries{height:220px}.fps-comms-entry{display:flex;gap:7px;align-items:baseline;margin:3px 0;overflow-wrap:anywhere}
+.fps-comms-entry time{font:9px monospace;color:#8ca393;flex-shrink:0}.fps-comms-entry b{font-size:10px;flex-shrink:0;color:#ddc084}.fps-comms-entry span{min-width:0}
+.fps-comms-entry.channel-kills b{color:#efad92}.fps-comms-entry.channel-system b{color:#9fc9de}.fps-comms-empty{margin:5px 0;color:#95a79a;font-size:10px}
+.fps-game.is-immersive>.fps-comms{position:absolute;bottom:230px;left:16px;width:min(360px,40%);z-index:4;margin:0}
+.fps-game.is-immersive>.fps-comms .fps-comms-entry{display:block}.fps-game.is-immersive>.fps-comms .fps-comms-entry time,.fps-game.is-immersive>.fps-comms .fps-comms-entry b{margin-right:6px}
+.fps-game.is-immersive>.fps-radio-voice{display:none}
+@media(max-width:720px){.fps-comms>header{gap:6px;padding:6px}.fps-comms button{padding:3px 5px}.fps-comms-entry{display:block;font-size:10px}.fps-comms-entry time,.fps-comms-entry b{margin-right:6px}.fps-game.is-immersive>.fps-comms{width:calc(100% - 24px);left:12px;bottom:235px}.fps-game.is-immersive>.fps-comms .fps-comms-entries{height:56px}.fps-game.is-immersive>.fps-comms.is-expanded .fps-comms-entries{height:150px}}
