@@ -1,4 +1,4 @@
-// One free-tier Voice Design audition. Dry run by default; never retries a generation.
+// One Voice Design audition on the user's paid plan. Dry run by default; never retries a generation.
 import fs from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -20,9 +20,9 @@ export async function generateAudition({ key, directory = outputDirectory, fetch
     const response = await fetcher('https://api.elevenlabs.io/v1/user/subscription', { headers, signal: AbortSignal.timeout(30000) });
     if (!response.ok) throw new Error(`Subscription check failed (HTTP ${response.status}). Check key permissions for User read access.`);
     const data = await response.json();
-    if (data.tier !== 'free') throw new Error('This audition is restricted to the Free tier. No generation sent.');
+    if (!data.tier || data.tier === 'free') throw new Error('Voice Design through the API requires a paid plan. No generation sent.');
     if (!Number.isFinite(data.character_count) || !Number.isFinite(data.character_limit)) throw new Error('Could not verify remaining credits.');
-    return { used: data.character_count, limit: data.character_limit };
+    return { tier: data.tier, used: data.character_count, limit: data.character_limit };
   };
   await fs.mkdir(directory, { recursive: true });
   // A permanent attempt marker also stops accidental retries after a timeout.
@@ -30,7 +30,7 @@ export async function generateAudition({ key, directory = outputDirectory, fetch
   try { await fs.access(marker); throw new Error('This audition was already attempted. Review its cached results/status before spending more credits.'); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
   const before = await subscription();
-  if (before.limit - before.used < audition.text.length * 3) throw new Error('Not enough free credits reserved for this audition. No generation sent.');
+  if (before.limit - before.used < audition.text.length * 3) throw new Error('Not enough included credits reserved for this audition. No generation sent.');
   const attempt = { status: 'submitted', startedAt: new Date().toISOString(), before, request: audition };
   await fs.writeFile(marker, JSON.stringify(attempt, null, 2), { flag: 'wx' });
   let response;

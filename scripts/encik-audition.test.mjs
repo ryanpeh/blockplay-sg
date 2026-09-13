@@ -4,20 +4,20 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { audition, generateAudition } from './encik-audition.mjs';
-const free = { tier: 'free', character_count: 0, character_limit: 10000 };
+const paid = { tier: 'starter', character_count: 0, character_limit: 40000 };
 const json = value => new Response(JSON.stringify(value));
 async function temporary(run) {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'encik-audition-test-'));
   try { await run(directory); } finally { await fs.rm(directory, { recursive: true, force: true }); }
 }
-test('keeps preview text to two short lines and refuses missing keys, paid accounts and exhausted credits', async () => {
+test('keeps preview text to two short lines and refuses missing keys, free accounts and exhausted credits', async () => {
   assert.equal(audition.text.split('\n').length, 2); assert(audition.text.length >= 100 && audition.text.length < 150);
   assert.equal(audition.auto_generate_text, false);
   await temporary(async directory => {
     await assert.rejects(generateAudition({ directory, fetcher: () => { throw Error('must not request'); } }), /API_KEY/);
-    for (const subscription of [{ ...free, tier: 'starter' }, { ...free, character_count: 9999 }]) {
+    for (const subscription of [{ ...paid, tier: 'free' }, { ...paid, character_count: 39999 }, { ...paid, character_limit: null }]) {
       let posts = 0;
-      await assert.rejects(generateAudition({ directory, key: 'test-key', fetcher: async (_url, options) => { if (options.method === 'POST') posts++; return json(subscription); } }), /Free tier|free credits/);
+      await assert.rejects(generateAudition({ directory, key: 'test-key', fetcher: async (_url, options) => { if (options.method === 'POST') posts++; return json(subscription); } }), /paid plan|included credits|verify remaining credits/);
       assert.equal(posts, 0);
     }
   });
@@ -26,7 +26,7 @@ test('saves previews from one request, measures usage and blocks accidental rege
   await temporary(async directory => {
     let posts = 0;
     const fetcher = async (_url, options) => {
-      if (options.method !== 'POST') return json({ ...free, character_count: posts ? 118 : 0 });
+      if (options.method !== 'POST') return json({ ...paid, character_count: posts ? 118 : 0 });
       posts++; assert.equal(JSON.parse(options.body).text, audition.text);
       return json({ previews: [{ audio_base_64: Buffer.from('test fixture').toString('base64'), generated_voice_id: 'test-id', duration_secs: 8 }] });
     };
@@ -42,7 +42,7 @@ test('saves previews from one request, measures usage and blocks accidental rege
 test('a timed-out generation remains blocked from automatic retries', async () => {
   await temporary(async directory => {
     let posts = 0;
-    const fetcher = async (_url, options) => { if (options.method === 'POST') { posts++; throw Error('timeout'); } return json(free); };
+    const fetcher = async (_url, options) => { if (options.method === 'POST') { posts++; throw Error('timeout'); } return json(paid); };
     await assert.rejects(generateAudition({ directory, key: 'test-key', fetcher }), /will not retry/);
     await assert.rejects(generateAudition({ directory, key: 'test-key', fetcher }), /already attempted/);
     assert.equal(posts, 1);
@@ -52,7 +52,7 @@ test('preserves a provider plan restriction without logging credentials', async 
   await temporary(async directory => {
     const fetcher = async (_url, options) => options.method === 'POST'
       ? new Response(JSON.stringify({ detail: { status: 'feature_unavailable', message: 'Paid plan required. test-key' } }), { status: 403 })
-      : json(free);
+      : json(paid);
     await assert.rejects(generateAudition({ directory, key: 'test-key', fetcher }), /feature_unavailable/);
     const saved = await fs.readFile(path.join(directory, 'attempt.json'), 'utf8');
     assert.equal(JSON.parse(saved).errorCode, 'feature_unavailable');

@@ -1,16 +1,14 @@
 # Two-line Encik audition
 
-**Verified restriction (2026-09-13):** the free account passed the subscription check, but Voice Design returned HTTP 403 `feature_unavailable`: “Creating a voice through the API is only available on a paid plan.” The account quota remained at zero after the first denial. Do not repeat the API audition to fix this; changing key permissions cannot lift the plan restriction.
+The user upgraded to a paid plan and authorized retrying the same two-line audition on 2026-09-13. The API verified Starter with 40,000 included credits and overage disabled. Free-plan API attempts previously returned HTTP 403 `feature_unavailable`; those confirmed denials are archived in the ignored cache.
 
-For the free audition, use the ElevenLabs website: **Voices → My Voices → Add a new voice → Voice Design**. Paste the description printed by `pnpm voice:audition` and the two lines below into its preview text field. Generate one set of previews, then compare them before spending credits on additional attempts. No voice needs to be saved or shipped yet.
-
-The API tooling below remains as a documented experiment; it currently cannot generate this preview on the Free plan. Browser automation from this workspace was blocked by pending macOS Accessibility and Screen Recording permissions.
+**Result (2026-09-13):** one request generated three playable MP3 candidates (7.4s, 8.8s, 7.8s), available at `.cache/encik-audition/93f198a2b596/index.html`. The follow-up subscription check reports **118 / 40,000 credits used**. The immediate post-generation check was still zero, so `usage-followup.json` preserves the later reading. Awaiting the user’s preferred candidate.
 
 This is a standalone voice audition; it does not alter game audio or generate the full pack.
 
-1. Create a free ElevenLabs account and put `ELEVENLABS_API_KEY` in the ignored `.env.local`. The key needs access to Voice Design and reading the user subscription. Never use a `VITE_` prefix or paste the key into chat.
+1. Use a paid ElevenLabs account and put `ELEVENLABS_API_KEY` in the ignored `.env.local`. The key needs access to Voice Design and reading the user subscription. Never use a `VITE_` prefix or paste the key into chat.
 2. `pnpm voice:audition` prints the exact prompt and 118-character, two-line script without network calls.
-3. `pnpm voice:audition --generate` checks the free subscription and available quota, then submits one Voice Design v3 request. It downloads the returned candidate previews into `.cache/encik-audition/<request-hash>/` and creates an `index.html` listening page.
+3. `pnpm voice:audition --generate` checks the paid subscription and available included quota, then submits one Voice Design v3 request. It downloads the returned candidate previews into `.cache/encik-audition/<request-hash>/` and creates an `index.html` listening page.
 4. Audition the candidates before making further generations or saving a voice. The full callout pack remains on hold until a candidate is approved.
 
 Voice description:
@@ -25,7 +23,7 @@ The preview contains:
 
 The script saves a permanent attempt marker before submitting. Re-running the same request, including after a timeout, will stop instead of spending credits again. Inspect `attempt.json` and the ElevenLabs dashboard before explicitly deciding to retry. This is not an automatic retry or batch tool. The before/after account quota difference is recorded when available; concurrent account usage may affect that measurement. The quota reserve check is conservative, not a provider-enforced per-request credit cap.
 
-Preview audio and generated voice IDs stay in the ignored cache. No voice is automatically saved to the account, and no preview is shipped in the game. These free-tier outputs are for auditioning; review the provider’s licensing before publishing final assets.
+Preview audio and generated voice IDs stay in the ignored cache. No voice is automatically saved to the account, and no preview is shipped in the game. The full batch remains pending the user’s audition choice.
 
 References: [Voice Design API](https://elevenlabs.io/docs/api-reference/text-to-voice/design), [Voice Design guide](https://elevenlabs.io/docs/eleven-creative/voices/voice-design), [subscription API](https://elevenlabs.io/docs/api-reference/user/subscription/get).
 
