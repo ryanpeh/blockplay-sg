@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 export const audition = {
   model_id: 'eleven_ttv_v3',
-  voice_description: 'Native Singapore English, colloquial Singlish. Male, late forties. A gravelly, booming army warrant officer with a thick Singaporean accent. Clipped commands, expressive intonation, theatrical impatience and dry humour. Loud but intelligible. Clean studio recording.',
+  voice_description: 'Singaporean man in his forties speaking everyday colloquial Singapore English. Conversational, slightly nasal, dry and matter-of-fact. Familiar kopitiam conversation, with mild impatience. Understated delivery.',
   text: 'Eh, recruit! You fighting the enemy or fighting the wall? Go around lah!\nReloading, ah! Nobody say can take tea break.',
   auto_generate_text: false, should_enhance: false, stream_previews: false,
   guidance_scale: 25, seed: 21,

@@ -2,7 +2,9 @@
 
 The user upgraded to a paid plan and authorized retrying the same two-line audition on 2026-09-13. The API verified Starter with 40,000 included credits and overage disabled. Free-plan API attempts previously returned HTTP 403 `feature_unavailable`; those confirmed denials are archived in the ignored cache.
 
-**Result (2026-09-13):** one request generated three playable MP3 candidates (7.4s, 8.8s, 7.8s), available at `.cache/encik-audition/93f198a2b596/index.html`. The follow-up subscription check reports **118 / 40,000 credits used**. The immediate post-generation check was still zero, so `usage-followup.json` preserves the later reading. Awaiting the user’s preferred candidate.
+**Result (2026-09-13):** one request generated three playable MP3 candidates (7.4s, 8.8s, 7.8s), available at `.cache/encik-audition/93f198a2b596/index.html`. The follow-up subscription check reports **118 / 40,000 credits used**. The immediate post-generation check was still zero, so `usage-followup.json` preserves the later reading. User feedback: candidates 1 and 3 sounded British attempting Singaporean; candidate 2 sounded slightly Hong Kong-ish. No candidate was selected. The original files remain available for comparison.
+
+**Round 2:** one authorized request returned three valid MP3 previews (8.0s, 6.8s, 8.0s), at `.cache/encik-audition/7ce08f42e116/index.html`. That page links back to round 1. A later quota check confirmed 118 credits for round 2, 236/40000 total used. Awaiting user feedback on the revised accent.
 
 This is a standalone voice audition; it does not alter game audio or generate the full pack.
 
@@ -11,9 +13,9 @@ This is a standalone voice audition; it does not alter game audio or generate th
 3. `pnpm voice:audition --generate` checks the paid subscription and available included quota, then submits one Voice Design v3 request. It downloads the returned candidate previews into `.cache/encik-audition/<request-hash>/` and creates an `index.html` listening page.
 4. Audition the candidates before making further generations or saving a voice. The full callout pack remains on hold until a candidate is approved.
 
-Voice description:
+Round 2 voice description (user authorized one more set, retaining the same two lines, model, seed and guidance):
 
-> Native Singapore English, colloquial Singlish. Male, late forties. A gravelly, booming army warrant officer with a thick Singaporean accent. Clipped commands, expressive intonation, theatrical impatience and dry humour. Loud but intelligible. Clean studio recording.
+> Singaporean man in his forties speaking everyday colloquial Singapore English. Conversational, slightly nasal, dry and matter-of-fact. Familiar kopitiam conversation, with mild impatience. Understated delivery.
 
 The preview contains:
 
