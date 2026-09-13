@@ -129,7 +129,9 @@ The game and Google viewer are independent. Extend the original world without mi
 
 ## Deploy
 
-This is a static application. Import the repository into Vercel, Netlify, or your static host:
+The game can be hosted statically, but the Marina **Change the adventure** companion requires a server. See [ADVENTURE.md](ADVENTURE.md) for text/voice setup, testing and deployment. Run `pnpm server` alongside `pnpm dev`, with private `OPENAI_API_KEY` in `.env`. The companion uses GPT-6 Astra and GPT-Live-1; ordinary exploration remains local.
+
+For a game-only static deployment, import the repository into Vercel, Netlify, or your static host:
 
 - Install command: `pnpm install --frozen-lockfile`
 - Build command: `pnpm build`
@@ -143,7 +145,7 @@ Add your deployed origin to the Google key's allowed referrers. Rebuild after ch
 1. Get this scaffold running and deploy it early. Confirm Street View credentials on the deployed domain.
 2. Pick one hero experience: location-aware exploration, a much richer driving game, or a polished arcade training range.
 3. Add one memorable feature. For example, a mission director that chooses from approved locations and structured objective types, or original neighborhood props and vehicle visuals.
-4. If adding runtime Astra, put the model call behind a server endpoint, validate its structured output, and configure the model identifier and credentials supplied by the event. This scaffold uses Astra for engineering; it makes **no runtime model calls** and assumes no unreleased API signatures.
+4. Demo the Marina companion: use a typed or spoken request to change the actual objective. Runtime Astra calls and GPT-Live-1 session creation use server-only credentials; structured destination proposals are validated locally. See `ADVENTURE.md`.
 5. Use the last hour for deployed-browser checks and the 90-second video.
 
 Suggested video: show the neighborhood selection (10 s), complete the driving circuit (25 s), show target practice (15 s), explore a real neighborhood in Street View (20 s), and explain Astra's concrete engineering contributions and the next milestone (20 s).

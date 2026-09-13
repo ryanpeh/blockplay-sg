@@ -86,3 +86,27 @@
 @media(pointer:coarse) { .fps-game.is-immersive .fps-inputs { padding:8px 12px; background:#e8eddf; }.fps-game.is-immersive .fps-immersive-hint { display:none; }.fps-game.is-immersive .fps-toolbar { bottom:140px; }.fps-game.is-immersive .fps-overlay { padding-bottom:100px; } }
 @media(max-width:700px) { .fps-game.is-immersive .fps-toolbar .experience-title { display:none; }.fps-game.is-immersive .fps-toolbar { justify-content:center; }.fps-game.is-immersive .fps-start-card { max-width:340px; }.fps-leave-screen { top:88px; font-size:9px; padding:6px 8px; } }
 .fps-screen-notice { position:absolute; top:57px; left:50%; transform:translateX(-50%); z-index:4; background:#283a26ed; color:#d5dfc4; padding:7px 12px; font-size:10px; border:1px solid #99ab7940; border-radius:3px; }
+.adventure-companion { padding: 12px 16px; background: #faf8ef; border-top: 1px solid #d9dfd1; color: #244832; }
+.companion-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; }
+.companion-heading span { font-size: 11px; color: #60725e; }
+.companion-history { max-height: 108px; overflow-y: auto; margin: 8px 0; font-size: 12px; line-height: 1.45; }
+.companion-history p { margin: 5px 0; }
+.adventure-companion form { display: flex; gap: 6px; }
+.adventure-companion input { min-width: 0; flex: 1; border: 1px solid #b9c8b2; border-radius: 7px; padding: 9px 11px; background: white; font: inherit; font-size: 13px; color: #244832; }
+.adventure-companion button { display: grid; place-items: center; width: 38px; min-height: 38px; border: 1px solid #b9c8b2; border-radius: 7px; background: #e8edde; color: #244832; cursor: pointer; }
+.adventure-companion button[aria-pressed="true"] { background: #efd9c8; }
+.adventure-companion button:disabled { opacity: .45; cursor: default; }
+.adventure-companion small { display: block; margin-top: 6px; font-size: 10px; color: #60725e; }
+.companion-caption, .companion-error { margin: 6px 0; font-size: 12px; }
+.companion-error { color: #9c382c; }
+.marina-map .objective-map-label { display: block; color: #49318d; font-weight: 800; letter-spacing: 0; font-size: 10px; text-transform: none; margin-top: 3px; }
+.objective-map-halo { animation: objective-halo 2s ease-in-out infinite; }
+@keyframes objective-halo { 50% { opacity: .5; } }
+@media (prefers-reduced-motion: reduce) { .objective-map-halo { animation: none; } }
+.companion-suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.companion-suggestions button { width: auto; max-width: 100%; min-height: 32px; border: 1px solid #bccbd2; border-radius: 16px; padding: 6px 10px; background: #f0f7fa; color: #203946; font: inherit; font-size: 12px; cursor: pointer; }
+.companion-learning { border-left: 3px solid #317b71; background: #edf8f4; color: #203946; padding: 10px 12px; margin: 8px 0; font-size: 13px; line-height: 1.5; }
+.companion-learning ul { padding-left: 20px; margin: 6px 0; }
+.companion-learning p { margin: 6px 0; }
+.companion-learning a { color: #155b78; text-decoration: underline; }
+.companion-learning small { display: block; margin-top: 6px; }

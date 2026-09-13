@@ -5,9 +5,13 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, CarFront, Footprints, Rotate
 import { buildMarinaScene, MARINA_MAP_ROADS, MARINA_SPAWN, MARINA_STAMPS } from '../game/marina-scene';
 import { MARINA_BOUNDS, moveInMarina } from '../game/marina-collision';
 import { minimapProjection } from '../game/minimap';
+import { createAdventure, destinationId } from '../game/adventure';
+import AdventureCompanion from './AdventureCompanion';
+import { createObjectiveHighlight } from '../game/objective-highlight';
 
 const initialHud = { distance: 0, speed: 0, x: MARINA_SPAWN.x as number, z: MARINA_SPAWN.z as number, collected: [] as number[] };
 const map = minimapProjection(MARINA_BOUNDS);
+const destinations = MARINA_STAMPS.map(stamp => ({ ...stamp, id: destinationId(stamp.name) }));
 
 export default function MarinaGame() {
   const host = useRef<HTMLDivElement>(null);
@@ -16,7 +20,9 @@ export default function MarinaGame() {
   const travelRef = useRef(travel);
   const keys = useRef(new Set<string>());
   const reset = useRef(() => {});
-  const [hud, setHud] = useState(initialHud);
+  const [adventure] = useState(() => createAdventure(destinations, MARINA_SPAWN));
+  const [hud, setHud] = useState(() => ({ ...initialHud, activeId: adventure.read().activeId, sessionId: adventure.read().sessionId }));
+  const active = destinations.find(d => d.id === hud.activeId);
   useEffect(() => { travelRef.current = travel; keys.current.clear(); }, [travel]);
 
   useEffect(() => {
@@ -25,6 +31,9 @@ export default function MarinaGame() {
     try { renderer = new THREE.WebGLRenderer({ antialias: true }); }
     catch { setError('WebGL could not start. Try a browser with hardware acceleration enabled.'); return; }
     const world = buildMarinaScene();
+    const objectiveHighlight = createObjectiveHighlight(world.scene);
+    const selectHighlight = (id: string | null) => objectiveHighlight.select(world.stamps[destinations.findIndex(d => d.id === id)]);
+    selectHighlight(adventure.read().activeId);
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -37,10 +46,11 @@ export default function MarinaGame() {
     let driveLook = defaultDriveLook(), lastLookAt = 0;
     let lastTravel = travelRef.current;
     const collected = new Set<number>();
-    const report = () => setHud({ distance, speed, ...position, collected: [...collected] });
+    const report = () => { const state = adventure.read(); selectHighlight(state.activeId); setHud({ distance, speed, ...position, collected: [...collected], activeId: state.activeId, sessionId: state.sessionId }); };
     reset.current = () => {
       position = { x: MARINA_SPAWN.x, z: MARINA_SPAWN.z }; yaw = MARINA_SPAWN.yaw; pitch = 0.14; speed = 0; distance = 0; collected.clear();
       driveLook = defaultDriveLook(); drag = undefined; lastLookAt = 0;
+      adventure.reset();
       world.stamps.forEach(stamp => { stamp.visible = true; }); keys.current.clear(); report();
     };
     let drag: { x: number; y: number; pointerId: number } | undefined;
@@ -94,6 +104,7 @@ export default function MarinaGame() {
       const step = Math.hypot(next.x - position.x, next.z - position.z);
       if (driving && step < Math.hypot(dx, dz) * 0.2) speed = 0;
       distance += step; position = next;
+      adventure.move(position);
       world.car.visible = driving; world.car.position.set(position.x, 0.12, position.z); world.car.rotation.y = yaw;
       if (driving) {
         if (!drag && Math.abs(speed) > 0.5 && now - lastLookAt > 800) driveLook = settleDriveLook(driveLook, dt);
@@ -104,20 +115,21 @@ export default function MarinaGame() {
         camera.position.set(position.x, 1.75, position.z); camera.rotation.set(pitch, yaw, 0, 'YXZ');
       }
       MARINA_STAMPS.forEach((stamp, i) => {
-        if (!collected.has(i) && Math.hypot(stamp.x - position.x, stamp.z - position.z) < 4) { collected.add(i); world.stamps[i].visible = false; }
+        if (!collected.has(i) && Math.hypot(stamp.x - position.x, stamp.z - position.z) < 4) { collected.add(i); world.stamps[i].visible = false; adventure.collect(destinations[i].id); }
       });
-      world.animate(now / 1000); renderer.render(world.scene, camera);
+      world.animate(now / 1000); objectiveHighlight.update(now / 1000); renderer.render(world.scene, camera);
       if (now - lastReport > 150) { report(); lastReport = now; }
       frame = requestAnimationFrame(animate);
     };
     frame = requestAnimationFrame(animate);
     return () => {
       cancelAnimationFrame(frame); observer.disconnect(); keys.current.clear(); reset.current = () => {};
+      adventure.cancel();
       canvas.removeEventListener('pointerdown', pointerDown); canvas.removeEventListener('pointermove', pointerMove); canvas.removeEventListener('pointerup', pointerUp); canvas.removeEventListener('pointercancel', pointerUp); canvas.removeEventListener('lostpointercapture', pointerUp);
       canvas.removeEventListener('keydown', keyDown); canvas.removeEventListener('blur', blur); window.removeEventListener('keyup', keyUp); window.removeEventListener('blur', blur);
-      world.dispose(); renderer.dispose(); canvas.remove();
+      objectiveHighlight.dispose(); world.dispose(); renderer.dispose(); canvas.remove();
     };
-  }, []);
+  }, [adventure]);
 
   return <div className="marina-reconstruction marina-game">
     <div className="viewport marina-viewport"><div ref={host} className="world" />
@@ -132,13 +144,21 @@ export default function MarinaGame() {
               {[-65,-15,35].map(z => <rect key={z} x="139" y={z - 15} width="24" height="30" fill="#eee7ce" />)}
               <rect x="141" y="-107" width="20" height="184" rx="4" fill="#819872" />
             </g>
-            {MARINA_STAMPS.map((stamp, i) => <circle key={stamp.name} cx={map.x(stamp.x)} cy={map.y(stamp.z)} r="3" fill={hud.collected.includes(i) ? '#4f7960' : '#d78853'} />)}
+            {MARINA_STAMPS.map((stamp, i) => <circle key={stamp.name} data-destination-id={destinations[i].id} data-active={hud.activeId === destinations[i].id} aria-label={`${stamp.name}${hud.activeId === destinations[i].id ? ' · active objective' : ''}`} cx={map.x(stamp.x)} cy={map.y(stamp.z)} r={hud.activeId === destinations[i].id ? 5 : 3} stroke={hud.activeId === destinations[i].id ? '#fffdf0' : 'none'} strokeWidth="2" fill={hud.activeId === destinations[i].id ? '#493bad' : hud.collected.includes(i) ? '#4f7960' : '#d78853'} />)}
+            {active && <g className="objective-map-highlight" aria-label={`Highlighted objective: ${active.name}`} pointerEvents="none">
+              <line x1={map.x(hud.x)} y1={map.y(hud.z)} x2={map.x(active.x)} y2={map.y(active.z)} stroke="#6243cc" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.75"><title>Straight-line direction, not a walking route</title></line>
+              <circle className="objective-map-halo" cx={map.x(active.x)} cy={map.y(active.z)} r="12" fill="#8c65ff" opacity="0.25" />
+              <circle cx={map.x(active.x)} cy={map.y(active.z)} r="8" fill="#fff" stroke="#49318d" strokeWidth="1.5" />
+              <path transform={`translate(${map.x(active.x)} ${map.y(active.z)})`} d="M0 -6 L5 0 L0 6 L-5 0 Z" fill="#7045e2" />
+            </g>}
             <circle cx={map.x(hud.x)} cy={map.y(hud.z)} r="4" stroke="#fffdf0" strokeWidth="2" fill="#244832" />
           </svg>
+          {active && <span className="objective-map-label">◆ {active.name}</span>}
         </div>
-        <div className="marina-objective">{hud.collected.length === MARINA_STAMPS.length ? 'All stamps collected. Shiok! Keep exploring or reset to play again.' : `Find the orange rings · Explore Marina Bay and collect ${MARINA_STAMPS.length} stamps.`}</div>
+        <div className="marina-objective" data-active-objective={hud.activeId ?? ''}>{hud.collected.length === MARINA_STAMPS.length ? 'All stamps collected. Shiok! Keep exploring or reset to play again.' : active ? `◆ Next: ${active.name} · follow the purple beacon · ${Math.round(Math.hypot(active.x - hud.x, active.z - hud.z))} game units straight-line` : 'Choose your next adventure below.'}</div>
       </>}
     </div>
+    {!error && <AdventureCompanion key={hud.sessionId} game={adventure} />}
     <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon">{travel === 'walk' ? <Footprints size={20} /> : <CarFront size={20} />}</span><div><h3>Marina Bay · waterfront & gardens</h3><p>Expanded low-poly map · inner and outer road loops</p></div></div><div className="toolbar-actions"><button className="session-button" aria-pressed={travel === 'walk'} onClick={() => setTravel('walk')}>Walk</button><button className="session-button" aria-pressed={travel === 'drive'} onClick={() => setTravel('drive')}>Drive</button><button className="icon-button" aria-label="Reset Marina position" onClick={() => reset.current()}><RotateCcw size={16} /></button></div></div>
     <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · {travel === 'walk' ? 'Drag to look' : 'Drag to orbit · A/D steer'} · {travel === 'walk' ? 'Shift to run' : `${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Marina ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
   </div>;

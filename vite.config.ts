@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
   const demo = loadEnv(mode, process.cwd(), 'GOOGLE_MAPS_DEMO_API_KEY').GOOGLE_MAPS_DEMO_API_KEY?.trim();
   return {
   plugins: [react()],
+  server: { proxy: { '/api/adventure': 'http://127.0.0.1:3001' } },
   define: demo ? { 'import.meta.env.VITE_GOOGLE_MAPS_API_KEY': JSON.stringify(demo) } : {},
   build: {
     rollupOptions: {

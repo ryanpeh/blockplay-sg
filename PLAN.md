@@ -23,7 +23,19 @@ Details, limitations and reference links: [docs/ARMORY.md](docs/ARMORY.md). Demo
 
 Last updated: 2026-09-13 (Singapore time).
 
-## Completed current pass: targeted Static API references and model quality
+## Current feature: Change the adventure
+
+Educational companion added: eight source-linked learning topics cover Marina Bay water infrastructure, ArtScience Museum, SkyPark, Gardens by the Bay, Esplanade, Singapore Flyer, Raffles Place and Queenstown. From the Marina companion, ask about this stop, nearby places, highlights or a named topic by text or voice. Astra selects only a curated topic ID; the application supplies verified facts and a reflection prompt, not generated historical claims. Learning never applies an objective change or clears stamps. Unknown facts/current prices and hours receive an explicit knowledge-limit response. The world is labelled as a stylised interpretation of real places. 79 unit tests and production build pass. Future: extend the companion integration to the other playable regions, broaden reviewed learning cards, add multilingual narration and verify educational voice interaction with a human microphone.
+
+Objective visibility follow-up complete: larger white-rimmed purple minimap diamond, halo, name and straight-line guide; matching 3D light column, floating pointer, ground ring and purple active collectible. Decorations track objective changes and hide on collection, without changing collisions or arrival. Material restoration/resource cleanup tests added. **74 tests, production build and companion/three-region browser checks pass**; mobile minimap and museum-beacon renders visually reviewed.
+
+Implemented Marina-only typed/voice objective changes using existing collectible IDs and collision/arrival logic. A default Waterfront objective, named/closer/skip requests, purple minimap highlight, compact companion UI and collected-stamp preservation are in place. Rendering and completion remain local. Astra proposes structured IDs through a private server endpoint; GPT-Live-1 uses its documented WebRTC/client-delegation session API, not a substitute voice model. Request/session/revision guards reject old responses after newer requests, reset, collection or region switching. Closer uses straight-line game-coordinate distance, not route finding.
+
+Setup, module boundaries, test commands and deployment safeguards: `ADVENTURE.md`. No new packages; pnpm 11/two-week release age preserved. The user supplied `OPENAI_API_KEY` in private `.env`; both model access checks succeeded, and live Astra typed closer/museum/skip browser checks changed the HUD/minimap. Failure/race/denied-microphone checks passed with mocked transport. Final code: **72 tests and production build pass**. Live synthetic speech completed GPT-Live transcription, Astra selection, applied City skyline objective and GPT-Live spoken confirmation with non-silent output after playback approval. A real microphone/human listening-quality check is still needed. Initial synthetic tests stopped their audio clock; padding the input fixed the harness, with no voice-model substitution. No Google captures or allowance changes.
+
+The adventure feature also passed the final companion browser suite and existing three-region walk/drive/camera/mobile regression suite, with no uncaught errors or Google Maps requests.
+
+## Previous completed pass: targeted Static API references and model quality
 
 User authorized **25 new Static API images for each of Marina Bay, Raffles Place and Queenstown**, followed by model/world refinements using subagents. This supersedes the earlier 50-image remaining Marina allowance. All historical attempts and baseline 8 remain intact; aggregate additional authorization is now 90 (15 historical + 75 new), with independent regional caps starting at Marina 23, Raffles 0 and Queenstown 0 previous Static image attempts. Each region may make at most 25 new image attempts; failures count and are never silently refunded. The conservative 1,000-Static-attempt safeguard remains unchanged. README intentionally omits allowance limits.
 
