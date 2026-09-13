@@ -57,7 +57,7 @@ export default function AdventureCompanion({ game }: { game: AdventureGame }) {
     voice.current = session; void session.start();
   };
   return <section className="adventure-companion" aria-label="Change the adventure" onKeyDown={e => e.stopPropagation()} onKeyUp={e => e.stopPropagation()}>
-    <div className="companion-heading"><strong>Change the adventure</strong><span role="status">{processing ? 'Processing…' : voiceState === 'off' ? 'Astra · text / voice' : voiceState === 'speaking' ? 'Replying · microphone on' : `${voiceState}…`}</span></div>
+    <div className="companion-heading"><strong>Change the adventure</strong><span role="status">{processing ? 'Processing…' : voiceState === 'off' ? 'Luna · text / voice' : voiceState === 'speaking' ? 'Replying · microphone on' : `${voiceState}…`}</span></div>
     <div className="companion-history" role="log" aria-label="Companion conversation" aria-live="polite">
       {history.length ? history.map((item, i) => <p key={i}><b>{item.role}:</b> {item.text}</p>) : <p>Change your route or learn about Singapore. Try “something closer”, “tell me about this stop”, or “what makes Queenstown special?”. Your stamps stay collected.</p>}
     </div>

@@ -17,6 +17,7 @@ export function createAdventureClient(game: AdventureGame, fetcher: typeof fetch
         });
         if (current !== sequence || signal?.aborted) return null;
         if (!response.ok) {
+          if (response.status === 404) throw new Error('The companion API was not found. Restart pnpm dev and pnpm server; a static-only host cannot run the companion. Your objective is unchanged.');
           if (response.status === 503) throw new Error('Set OPENAI_API_KEY on the companion server. You can keep exploring.');
           throw new Error('The companion could not process that request. Your objective is unchanged; try again.');
         }

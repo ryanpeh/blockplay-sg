@@ -1,4 +1,4 @@
-// Uses an isolated Chrome tab. Default is mocked API/voice transport; --live tests Astra text.
+// Uses an isolated Chrome tab. Default is mocked API/voice transport; --live tests Luna text.
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 const origin = process.env.REGION_APP_ORIGIN || 'http://127.0.0.1:5173';
@@ -71,7 +71,7 @@ try {
   await submit('take me to the museum'); await waitFor(`document.querySelector('[data-active-objective]').dataset.activeObjective === 'lotus-museum'`);
   assert.equal(await evaluate(`document.querySelector('.objective-map-label').textContent.includes('Lotus museum')`), true);
   await submit('skip this stop'); await waitFor(`document.querySelector('[data-active-objective]').dataset.activeObjective !== 'lotus-museum'`);
-  console.log(`PASS ${live ? 'LIVE Astra' : 'mocked'} text: closer, museum, skip, HUD and minimap`);
+  console.log(`PASS ${live ? 'LIVE Luna' : 'mocked'} text: closer, museum, skip, HUD and minimap`);
   await evaluate('window.__mock()');
   const before = await active(); await submit('invalid'); await sleep(450); assert.equal(await active(), before);
   await submit('failure'); await waitFor(`!!document.querySelector('.companion-error')`); assert.equal(await active(), before);

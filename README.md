@@ -1,4 +1,4 @@
-# Blockplay — Singapore, playable.
+# blockplaySG — Singapore, playable.
 
 A hackathon starter for playable Singapore neighborhoods, built with React, TypeScript, Vite, and Three.js. The emphasis is on familiar HDB estates as well as the postcard locations.
 
@@ -133,7 +133,7 @@ The game and Google viewer are independent. Extend the original world without mi
 
 ## Deploy
 
-The game can be hosted statically, but the Marina **Change the adventure** companion requires a server. See [ADVENTURE.md](ADVENTURE.md) for text/voice setup, testing and deployment. Run `pnpm server` alongside `pnpm dev`, with private `OPENAI_API_KEY` in `.env`. The companion uses GPT-6 Astra and GPT-Live-1; ordinary exploration remains local.
+The game can be hosted statically, but the Marina **Change the adventure** companion requires a server. See [ADVENTURE.md](ADVENTURE.md) for text/voice setup, testing and deployment. Run `pnpm server` alongside `pnpm dev`, with private `OPENAI_API_KEY` in `.env`. The companion uses GPT-5.6 Luna and GPT-Live-1; ordinary exploration remains local.
 
 For a game-only static deployment, import the repository into Vercel, Netlify, or your static host:
 
@@ -149,7 +149,7 @@ Add your deployed origin to the Google key's allowed referrers. Rebuild after ch
 1. Get this scaffold running and deploy it early. Confirm Street View credentials on the deployed domain.
 2. Pick one hero experience: location-aware exploration, a much richer driving game, or a polished arcade training range.
 3. Add one memorable feature. For example, a mission director that chooses from approved locations and structured objective types, or original neighborhood props and vehicle visuals.
-4. Demo the Marina companion: use a typed or spoken request to change the actual objective. Runtime Astra calls and GPT-Live-1 session creation use server-only credentials; structured destination proposals are validated locally. See `ADVENTURE.md`.
+4. Demo the Marina companion: use a typed or spoken request to change the actual objective. Runtime Luna calls and GPT-Live-1 session creation use server-only credentials; structured destination proposals are validated locally. See `ADVENTURE.md`.
 5. Use the last hour for deployed-browser checks and the 90-second video.
 
 Suggested video: show the Singapore map (10 s), explore a region (20 s), change an objective with the companion (20 s), ask an educational question (15 s), show Marina FPS and its armory (10 s), and explain Astra’s contributions (15 s).

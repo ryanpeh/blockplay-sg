@@ -17,11 +17,11 @@ it('rejects invented lessons and mixed learning/travel decisions', async () => {
     await expect(interpret('explain', state, 'key', 'https://api.openai.com/v1', fetcher)).rejects.toThrow('invalid learning topic');
   }
 });
-it('uses Astra structured IDs and deterministic closer context without exposing the key', async () => {
+it('uses Luna structured IDs and deterministic closer context without exposing the key', async () => {
   const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ output: [{ content: [{ type: 'output_text', text: '{"intent":"closer","destinationId":"lotus-museum"}' }] }] })));
   expect(await interpret('closer', state, 'private-key', 'https://api.openai.com/v1', fetcher)).toEqual({ intent: 'closer', destinationId: 'lotus-museum' });
   const body = JSON.parse(fetcher.mock.calls[0][1].body);
-  expect(body.model).toBe('gpt-6-astra'); expect(JSON.parse(body.input).nearestCloserId).toBe('lotus-museum'); expect(body.store).toBe(false);
+  expect(body.model).toBe('gpt-5.6-luna'); expect(JSON.parse(body.input).nearestCloserId).toBe('lotus-museum'); expect(body.store).toBe(false);
   expect(body.text.format.strict).toBe(true); expect(JSON.stringify(body)).not.toContain('private-key');
 });
 it('rejects malformed snapshots and invalid model output', async () => {

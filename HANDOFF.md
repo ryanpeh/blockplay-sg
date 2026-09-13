@@ -4,6 +4,10 @@
 
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
+Latest model choice supersedes earlier Astra runtime instructions: use `gpt-5.6-luna` for companion text interpretation and delegated transcripts, as requested by the user. Speech stays `gpt-live-1`; no automatic fallback. UI and server tests identify Luna. Astra remains the build tool, and historical Astra test results below are not Luna verification.
+
+Luna browser failure resolved: a stale frontend returned 404 for API requests while backend port 3001 succeeded. Restart `pnpm dev` after proxy configuration changes (and `pnpm server` after server changes). Live Luna education/closer/named/skip now verified in browser; 109 unit tests and build pass. A missing-route error now gives explicit restart guidance instead of a generic model failure.
+
 Navigation simplification: Joyride and fixed-camera Target practice are removed from the app. Region Walk/Drive, Street View and Marina FPS remain. Armory is reachable only from the Marina FPS briefing/pause screen’s Open armory button, not the sidebar; FPS remains selected while shopping. Historical prototype source remains unmounted. Browser shop scripts enter FPS before opening the shop.
 
 Location/UI follow-up: only Marina Bay, Raffles Place and Queenstown remain selectable. `SingaporeMap.tsx` supplies a local SVG overview and central inset, linked to the same selection handler with click/keyboard controls; no Maps calls. Reset labels disclose stamp/history clearing, Privacy describes region/mode progress loss, The idea covers education/fullscreen, and Joyride is correctly labelled a 240 m checkpoint run. Motor Pool no longer exposes weapon attachment controls; level 50 has maximum-level copy. Tests cover the location list, map selection and keyboard access, About/Privacy, separate armory panels, and maximum-level wording.

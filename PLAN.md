@@ -31,6 +31,8 @@ Details, limitations and reference links: [docs/ARMORY.md](docs/ARMORY.md). Demo
 
 Last updated: 2026-09-13 (Singapore time).
 
+Latest user override: companion text interpretation now uses GPT-5.6 Luna (`gpt-5.6-luna`), including transcripts delegated from voice. GPT-Live-1 speech is unchanged. Earlier references to Astra as the runtime interpreter are historical; Astra was used for building.
+
 Location picker cleanup: only the developed Marina Bay, Raffles Place and Queenstown worlds remain; removed the undeveloped Tampines and Toa Payoh presets. A lightweight Singapore locator highlights the active region, with a central-area inset for the closely spaced downtown locations. This is approximate orientation, not navigation or surveyed geography, and makes no Maps requests.
 
 ## Current feature: Change the adventure
