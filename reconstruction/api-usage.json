@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "limit": 1000,
+  "scope": "Conservative local capture attempt count: Static images, Static metadata (including failures), and one explicit Maps JavaScript panorama selection. Earlier interactive Maps JavaScript viewer traffic, other machines, and Cloud-console usage are not included. No automatic reset. Static metadata does not consume Google's image quota, but counts toward this stricter local cap.",
+  "attempts": [
+    {
+      "id": "initial-marina-metadata-denied",
+      "date": "2026-09-13",
+      "kind": "metadata",
+      "location": "marina-bay",
+      "result": "REQUEST_DENIED: API not activated"
+    },
+    {
+      "id": "fac62572-3934-49d3-8d3d-e293c6d8e4fb",
+      "date": "2026-09-13T03:01:47.572Z",
+      "kind": "metadata",
+      "location": "marina-bay",
+      "result": "REQUEST_DENIED: API not activated (HTTP 200)"
+    },
+    {
+      "id": "a11ef197-250b-4ef7-a6b1-1a3eb06c4da2",
+      "date": "2026-09-13T03:04:20.517Z",
+      "kind": "metadata",
+      "location": "marina-bay",
+      "result": "OK (HTTP 200)"
+    },
+    {
+      "id": "f9226b2d-7c76-41ab-83a3-31e3978c4044",
+      "date": "2026-09-13T03:04:20.844Z",
+      "kind": "image-heading-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d6266819-c082-46ee-be95-488a0e11206f",
+      "date": "2026-09-13T03:04:21.559Z",
+      "kind": "image-heading-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c7dae590-934e-4880-8e7a-ee6f89bdc1ab",
+      "date": "2026-09-13T03:04:21.878Z",
+      "kind": "image-heading-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9a946168-503a-4977-8e3d-b3888582c32d",
+      "date": "2026-09-13T03:04:22.164Z",
+      "kind": "image-heading-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "cd543ed4-750d-4a48-b780-0353c8d0642e",
+      "date": "2026-09-13T03:05:32.141Z",
+      "kind": "metadata",
+      "location": "marina-bay",
+      "result": "OK (HTTP 200)"
+    },
+    {
+      "id": "ec29fd0f-6c54-4390-8313-c4f8303616a4",
+      "date": "2026-09-13T03:06:33.004Z",
+      "kind": "maps-javascript-metadata",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "591ac7f2-d34e-4f26-a401-1958071f6463",
+      "date": "2026-09-13T03:06:53.043Z",
+      "kind": "image-heading-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3488aae1-df2d-4caa-9d12-88d5ab402720",
+      "date": "2026-09-13T03:07:01.512Z",
+      "kind": "image-heading-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "259790e2-6c86-49e1-ba35-921139da2fa4",
+      "date": "2026-09-13T03:07:02.164Z",
+      "kind": "image-heading-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "72b5efce-f008-4fe5-96ee-235f3fa1f821",
+      "date": "2026-09-13T03:07:02.465Z",
+      "kind": "image-heading-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    }
+  ]
+}

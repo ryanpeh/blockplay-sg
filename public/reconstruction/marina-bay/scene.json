@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "id": "marina-bay",
+  "method": "monocular-depth-estimate",
+  "model": "onnx-community/depth-anything-v2-small",
+  "modelWeightsSha256": "fcf51f1b230362b28690bb9d1809bf0431f29cad20534e3f589bd7285547f20d",
+  "location": {
+    "lat": 1.281178653223573,
+    "lng": 103.85655765865478
+  },
+  "captureDate": "2012-02",
+  "copyright": "© 2026 Google",
+  "cameraHeight": 2.5,
+  "explorationRadius": 4,
+  "meshes": [
+    {
+      "geometry": "mesh-0.json",
+      "texture": "view-0.jpg"
+    },
+    {
+      "geometry": "mesh-90.json",
+      "texture": "view-90.jpg"
+    },
+    {
+      "geometry": "mesh-180.json",
+      "texture": "view-180.jpg"
+    },
+    {
+      "geometry": "mesh-270.json",
+      "texture": "view-270.jpg"
+    }
+  ],
+  "limitations": "Approximate relative depth; a single camera center; flat ground prior; no surveyed scale or unseen building backs. Small-area prototype, not a full district reconstruction."
+}

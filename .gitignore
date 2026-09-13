@@ -1,0 +1,11 @@
+node_modules/
+.pnpm-store/
+dist/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+.cache/
+reconstruction/marina-bay/
+reconstruction/api-usage.json.lock
