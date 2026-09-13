@@ -1,5 +1,7 @@
 # Blockplay: portable agent handoff
 
+**Current integration (2026-09-13):** rebased multiplayer/bot-role/expedition work onto `dbeb858`. SingaporeMap now previews checkpoint routes during expeditions and follows actual zone arrivals; outside expeditions it retains upstream region selection. New expeditions start in the selected district. App keeps a stable expedition component while `ExpeditionGame` owns per-zone scene replacement and persistent field loot. Route selection must never remount that session or invoke remote travel. 163 unit tests and build pass, along with expedition UI, four-direction travel, upstream three-region walk/drive/map/mobile and two-browser LAN gameplay checks. See [connected districts](docs/WORLD-ZONES.md), [LAN setup](docs/LAN-ARENA.md), [role plugins](docs/arena-plugins.md), and [feature parity audit](docs/FEATURE-PARITY.md). Region views have local minimaps; FPS views still do not. The entries below document earlier milestones and their then-current limitations.
+
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
 Navigation simplification: Joyride and fixed-camera Target practice are removed from the app. Region Walk/Drive, Street View and Marina FPS remain. Armory is reachable only from the Marina FPS briefing/pause screen’s Open armory button, not the sidebar; FPS remains selected while shopping. Historical prototype source remains unmounted. Browser shop scripts enter FPS before opening the shop.

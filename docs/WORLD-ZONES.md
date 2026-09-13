@@ -6,9 +6,15 @@ The design borrows the connected-area structure of survival shooters. Singapore 
 
 ## Playing the expedition
 
-Choose **Open world** in the sidebar, then **Enter district**. The expedition starts at Marina Bay with a copy of your equipped Armory loadout. WASD moves, Shift sprints, the mouse looks, left click fires, right click aims, and R reloads. E picks up nearby supplies; T crosses a nearby checkpoint. F toggles fullscreen and Escape opens the operator menu. Touch controls sit beneath the scene; drag the scene to look.
+Choose **Open world** in the sidebar, then **Enter district**. The expedition starts in the district selected on the Singapore locator, with a copy of your equipped Armory loadout. Marina Bay remains the default selection. WASD moves, Shift sprints, the mouse looks, left click fires, right click aims, and R reloads. E picks up nearby supplies; T crosses a nearby checkpoint. F toggles fullscreen and Escape opens the operator menu. Touch controls sit beneath the scene; drag the scene to look.
 
 The supply scanner lists the nearest remaining crates with their tier, distance and coordinates. The district network and checkpoint guide show connected destinations. Collecting a weapon equips its weapon slot for this expedition; purchased gear and permanent Armory progression remain separate. Leaving the expedition discards temporary gear and its loot seed. The initial expedition is solo; the existing LAN arena is a separate mode.
+
+## Singapore locator integration
+
+The sidebar locator retains its normal click/keyboard region selection outside expeditions. During an expedition, the location cards and map instead select a route destination without unmounting the current scene or clearing loot. The purple current-district marker follows actual checkpoint arrivals; an orange outline marks the planned destination. Dashed links derive from `WORLD_GATEWAYS`, and `findWorldRoute` chooses the fewest checkpoint crossings. Marina-to-Queenstown trips therefore pass through Raffles CBD.
+
+The selected destination displays threat, loot tier, patrol count, the route and the next checkpoint's local coordinates. The expedition HUD prioritizes that checkpoint's distance. Map selection never calls travel: the existing living-player/proximity validation and T interaction still govern transitions. Arriving updates the route from the new district and retains the planned destination. These island-map links represent compressed district connections, not street routing or a live local minimap.
 
 ## Random supplies
 

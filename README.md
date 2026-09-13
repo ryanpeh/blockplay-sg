@@ -12,7 +12,7 @@ See [PLAN.md](PLAN.md) for completed work, experiments, and the roadmap; [HANDOF
 
 Select any of these locations to open its own walk/drive 3D mode. These are authored, compressed interpretations, not surveyed replicas. Only the three developed worlds are listed. The region games make no Google API calls while playing.
 
-The location picker includes a compact Singapore locator map that highlights the selected region. It is an approximate orientation aid, not a navigation map, and requires no map API calls.
+The location picker includes a compact Singapore locator map that highlights the selected region. In Open world, it follows your current district and previews checkpoint routes, threat and loot tiers without resetting the expedition. New expeditions start in the selected district. It is an approximate orientation aid, not a navigation map, and requires no map API calls. See [connected districts](docs/WORLD-ZONES.md) and the [mode feature comparison](docs/FEATURE-PARITY.md).
 
 The latest model-quality pass uses 75 newly cached Static reference images: finer Marina landmark framing and patterned shells, more articulated Raffles roofs/shutters/glazing, and deeper Queenstown gallery/station details with more varied trees. Material roughness is differentiated so glass, metal, paint and stone do not all read alike. These changes preserve each region's map extent and collectible routes.
 
@@ -142,7 +142,7 @@ For a game-only static deployment, import the repository into Vercel, Netlify, o
 - Output directory: `dist`
 - Optional build-time variable: `VITE_GOOGLE_MAPS_API_KEY`
 
-Add your deployed origin to the Google key's allowed referrers. Rebuild after changing environment variables. No special client-route rewrites are needed. Google Fonts are loaded externally with local sans-serif fallbacks.
+Add your deployed origin to the Google key's allowed referrers. Rebuild after changing environment variables. No special client-route rewrites are needed. Typography uses local sans-serif fallbacks so LAN play does not wait on a font service.
 
 ## Five-hour build priorities
 

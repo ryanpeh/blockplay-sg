@@ -61,6 +61,21 @@ export function getWorldZone(id: WorldZoneId): WorldZone {
   return zone;
 }
 
+/** Fewest checkpoint crossings, using gameplay links rather than GPS distance. */
+export function findWorldRoute(from: WorldZoneId, to: WorldZoneId): readonly WorldGateway[] {
+  const queue: { zone: WorldZoneId; route: WorldGateway[] }[] = [{ zone: from, route: [] }];
+  const seen = new Set<WorldZoneId>([from]);
+  for (const current of queue) {
+    if (current.zone === to) return current.route;
+    for (const gateway of WORLD_GATEWAYS.filter(item => item.from === current.zone)) {
+      if (seen.has(gateway.to)) continue;
+      seen.add(gateway.to);
+      queue.push({ zone: gateway.to, route: [...current.route, gateway] });
+    }
+  }
+  return [];
+}
+
 /** Proximity alone advertises a prompt; the caller must explicitly request travel. */
 export function findWorldGateway(zone: WorldZoneId, position: ZonePosition): WorldGateway | null {
   if (!Number.isFinite(position.x) || !Number.isFinite(position.z)) return null;

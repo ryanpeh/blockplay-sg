@@ -1,5 +1,13 @@
 # Blockplay project plan
 
+## Completed: upstream locator and expedition integration (2026-09-13)
+
+- Rebased LAN multiplayer, role bots, loot, connected districts and pointer fixes onto `dbeb858`, preserving upstream's companion, locator and simplified navigation. Armory remains accessible from the FPS menu.
+- Connected the Singapore locator to actual expedition arrivals. Map/card selections preview graph-derived routes and destination threat/loot; they do not unload the current district. New expeditions start in the selected district.
+- Kept checkpoint proximity validation and one-scene rendering. Health/armor/ammo/loadout and collected supplies still carry across travel.
+- Compared regional Walk/Drive and FPS features in [docs/FEATURE-PARITY.md](docs/FEATURE-PARITY.md). Local minimaps exist in the regional views only; the new locator is district-level navigation. Shared minimap extraction is recommended next, not yet implemented.
+- Verification: 163 tests and production build pass. Browser expedition checks cover route selection, keyboard map access, selected-district starts, session preservation, capture/fullscreen/mobile and cleanup; the engine travel check passes all four links with loot/vitals persistence. Upstream three-region walk/drive/map/mobile checks and two-browser LAN gameplay also pass. LAN smoke observes death/respawn DOM transitions so slow VM polling cannot miss them, and waits for Chrome exit before removing test profiles.
+
 ## Completed: integrated rebase and immersive screen mode
 
 - Preserved the upstream three-region expansion and model refinement through `2f27af2`, resolving the handoff/scene conflicts and restoring the fullscreen autostash.

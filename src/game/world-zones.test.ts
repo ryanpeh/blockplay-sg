@@ -5,9 +5,24 @@ import { buildQueenstownScene, QUEENSTOWN_SPAWN } from './queenstown-scene';
 import { canOccupy as canMarina, moveInMarina } from './marina-collision';
 import { canOccupy as canRaffles, moveInRaffles } from './raffles-collision';
 import { canOccupy as canQueenstown, moveInQueenstown } from './queenstown-collision';
-import { WORLD_GATEWAYS, WORLD_ZONES, findWorldGateway, getWorldZone, isWorldZoneId, resolveWorldTransition } from './world-zones';
+import { WORLD_GATEWAYS, WORLD_ZONES, findWorldGateway, findWorldRoute, getWorldZone, isWorldZoneId, resolveWorldTransition } from './world-zones';
 
 describe('connected world travel', () => {
+  it('routes through the CBD instead of inventing a direct coast-to-estate checkpoint', () => {
+    expect(findWorldRoute('marina-bay', 'queenstown').map(step => step.id)).toEqual(['marina-to-raffles', 'raffles-to-queenstown']);
+    expect(findWorldRoute('queenstown', 'marina-bay').map(step => step.id)).toEqual(['queenstown-to-raffles', 'raffles-to-marina']);
+    expect(findWorldRoute('raffles-place', 'marina-bay')).toHaveLength(1);
+    expect(findWorldRoute('queenstown', 'queenstown')).toEqual([]);
+    for (const from of WORLD_ZONES) for (const to of WORLD_ZONES) {
+      let current = from.id;
+      for (const step of findWorldRoute(from.id, to.id)) {
+        expect(step.from).toBe(current);
+        expect(resolveWorldTransition(current, step.id, step.position)?.to).toBe(step.to);
+        current = step.to;
+      }
+      expect(current).toBe(to.id);
+    }
+  });
   it('links every district through reversible checkpoints without immediate return triggers', () => {
     const reached = new Set(['marina-bay']);
     for (let i = 0; i < WORLD_ZONES.length; i++) for (const gateway of WORLD_GATEWAYS) {

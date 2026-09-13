@@ -3,17 +3,19 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Compass, Maximize, Minimize,
 import { createFpsEngine, initialFpsHud, type FpsCheckpoint, type FpsEngine } from '../game/fps-engine';
 import { resolveLoadout, type ArmoryProfile } from '../game/armory-state';
 import { createExpeditionLoot } from '../game/expedition-loot';
-import { getWorldZone, WORLD_GATEWAYS, WORLD_ZONES, type WorldZoneId, type ZoneSpawn } from '../game/world-zones';
+import { findWorldRoute, getWorldZone, WORLD_GATEWAYS, WORLD_ZONES, type WorldZoneId, type ZoneSpawn } from '../game/world-zones';
 import { useFpsFullscreen } from '../game/use-fps-fullscreen';
 import './expedition.css';
 
 interface ExpeditionScene { zone: WorldZoneId; spawn?: ZoneSpawn; checkpoint?: FpsCheckpoint; revision: number }
 
-export default function ExpeditionGame({ profile, onExit, suspended = false }: { profile: ArmoryProfile; onExit: () => void; suspended?: boolean }) {
+export default function ExpeditionGame({ profile, onExit, suspended = false, initialZone = 'marina-bay', destination, onZoneChange }: { profile: ArmoryProfile; onExit: () => void; suspended?: boolean; initialZone?: WorldZoneId; destination?: WorldZoneId; onZoneChange?: (zone: WorldZoneId) => void }) {
   const [fieldProfile, setFieldProfile] = useState<ArmoryProfile>(() => structuredClone(profile));
   const fieldProfileRef = useRef(fieldProfile);
   const [loot] = useState(() => createExpeditionLoot(`${Date.now()}-${Math.random()}`));
-  const [scene, setScene] = useState<ExpeditionScene>({ zone: 'marina-bay', revision: 0 });
+  const [scene, setScene] = useState<ExpeditionScene>(() => ({ zone: initialZone, revision: 0 }));
+  const zoneChanged = useRef(onZoneChange); zoneChanged.current = onZoneChange;
+  useEffect(() => { zoneChanged.current?.(scene.zone); }, [scene.zone]);
   const [hud, setHud] = useState(initialFpsHud);
   const host = useRef<HTMLDivElement>(null), stage = useRef<HTMLDivElement>(null), engine = useRef<FpsEngine | null>(null);
   const fullscreen = useFpsFullscreen(stage, () => engine.current?.pause());
@@ -42,6 +44,8 @@ export default function ExpeditionGame({ profile, onExit, suspended = false }: {
   const playing = hud.phase === 'playing', alive = hud.arenaSelf?.alive !== false, canFight = playing && alive;
   const weapon = equipment.weapons[hud.weapon] ?? equipment.weapons[0];
   const gateways = WORLD_GATEWAYS.filter(gateway => gateway.from === scene.zone);
+  const plannedRoute = destination ? findWorldRoute(scene.zone, destination) : [];
+  const nextCheckpoint = plannedRoute[0];
   const nearbyLoot = [...(hud.fieldLoot ?? [])].sort((a, b) => Math.hypot(a.x - hud.x, a.z - hud.z) - Math.hypot(b.x - hud.x, b.z - hud.z)).slice(0, 5);
   const distance = (point: { x: number; z: number }) => Math.round(Math.hypot(point.x - hud.x, point.z - hud.z));
   const hold = (key: string) => ({
@@ -70,7 +74,7 @@ export default function ExpeditionGame({ profile, onExit, suspended = false }: {
         <div className="fps-ammo"><span>{weapon.name}</span><strong>{hud.magazine.toString().padStart(2, '0')}<small>/ {hud.reserve}</small></strong><p>{hud.reloading > 0 ? 'RELOADING…' : '1 / 2 SWITCH · R RELOAD'}</p></div>
         <div className="fps-objective">Explore. Find supplies. Reach the next district.<small>E · PICK UP & EQUIP / T · CROSS CHECKPOINT</small></div>
         <div className="expedition-prompts" role="status">{hud.lootPrompt && <strong>{hud.lootPrompt}</strong>}{hud.travelPrompt && <strong>{hud.travelPrompt}</strong>}{hud.lootNotice && <span>{hud.lootNotice}</span>}</div>
-        <div className="expedition-route-hud">{gateways.map(gateway => <span key={gateway.id}>{getWorldZone(gateway.to).name} <b>{distance(gateway.position)}m</b></span>)}</div>
+        <div className="expedition-route-hud">{nextCheckpoint && <strong>ROUTE TO {getWorldZone(destination!).name.toUpperCase()}</strong>}{(nextCheckpoint ? [nextCheckpoint] : gateways).map(gateway => <span key={gateway.id}>{getWorldZone(gateway.to).name} <b>{distance(gateway.position)}m</b></span>)}</div>
       </>}
       {!playing && <div className="fps-overlay"><div className="fps-start-card">
         <span className="eyebrow">SOLO EXPEDITION / {zone.risk.toUpperCase()} THREAT</span>
@@ -95,7 +99,7 @@ export default function ExpeditionGame({ profile, onExit, suspended = false }: {
     </div>
     <div className="expedition-intel">
       <section><h3>District network</h3><div className="expedition-network">{WORLD_ZONES.map(item => <div key={item.id} className={item.id === scene.zone ? 'current' : ''}><strong>{item.name}</strong><span className={`risk-${item.risk}`}>{item.risk} threat · Tier {item.lootTier}</span>{item.id === scene.zone && <small>YOU ARE HERE</small>}</div>)}</div><p>Queenstown ↔ Raffles Place ↔ Marina Bay</p><p>Raffles is the contested CBD: stronger patrols, better odds of elite weapons.</p></section>
-      <section><h3>Checkpoints</h3>{gateways.map(gateway => <p key={gateway.id}><strong>{getWorldZone(gateway.to).name} · {distance(gateway.position)}m</strong><br /><span>Head to X {gateway.position.x}, Z {gateway.position.z}. Press T within 4m.</span></p>)}<small>Your position: X {Math.round(hud.x)}, Z {Math.round(hud.z)}</small></section>
+      <section><h3>Checkpoints</h3>{destination && <p className="expedition-planned-route" role="status">{scene.zone === destination ? `You are in ${zone.name}.` : `Planned route: ${[zone.name, ...plannedRoute.map(step => getWorldZone(step.to).name)].join(" → ")}`}</p>}{gateways.map(gateway => <p key={gateway.id}><strong>{getWorldZone(gateway.to).name} · {distance(gateway.position)}m</strong><br /><span>Head to X {gateway.position.x}, Z {gateway.position.z}. Press T within 4m.</span></p>)}<small>Your position: X {Math.round(hud.x)}, Z {Math.round(hud.z)}</small></section>
       <section><h3>Supply scanner</h3>{nearbyLoot.length ? nearbyLoot.map(item => <p key={item.id}><strong>{item.name} · {distance(item)}m</strong><br /><span>{item.tier.toUpperCase()} · X {Math.round(item.x)}, Z {Math.round(item.z)}</span></p>) : <p>{hud.phase === 'loading' ? 'Scanning the district…' : 'No supplies remain nearby.'}</p>}<small>Ground crates: walk close and press E. Picked-up crates stay collected when you return.</small></section>
     </div>
     <div className="expedition-footer"><span>Field gear is temporary · Armory purchases stay saved</span><button onClick={onExit}>Leave expedition <ArrowRight size={14} /></button></div>

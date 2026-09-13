@@ -60,14 +60,16 @@ try{
   await guest.key('Escape','Escape');await guest.wait(phase('paused'));await guest.wait('!document.pointerLockElement');
   await host.key('Escape','Escape');await host.wait(phase('paused'));await host.wait('!document.pointerLockElement');
   await host.click(button('Resume match'));await host.wait(phase('playing'));
+  // Record DOM transitions as they happen; slow VM/CDP polling can miss a 3s respawn.
+  await guest.evaluate(`(()=>{window.arenaLifeEvents=[];const game=document.querySelector('.fps-game');const record=()=>{const alive=game.dataset.arenaAlive;if(window.arenaLifeEvents.at(-1)?.alive!==alive)window.arenaLifeEvents.push({alive,health:Number(game.dataset.health)});};record();window.arenaLifeObserver=new MutationObserver(record);window.arenaLifeObserver.observe(game,{attributes:true,attributeFilter:['data-arena-alive','data-health']});})()`);
   // Aim through normal mouse movement and fire at the actual guest position.
   const shooter=await host.evaluate(position),victim=await guest.evaluate(position);
   const yaw=Math.atan2(-(victim.x-shooter.x),-(victim.z-shooter.z));const pitch=Math.atan2(-.65,Math.hypot(victim.x-shooter.x,victim.z-shooter.z));
   await host.evaluate(`document.dispatchEvent(new MouseEvent('mousemove',{movementX:${-yaw/.0023},movementY:${-pitch/.0023}}))`);await delay(300);
   await host.send('Page.bringToFront');await host.send('Input.dispatchMouseEvent',{type:'mousePressed',x:700,y:550,button:'left',clickCount:1});
   await host.wait(`${game}.dataset.arenaKills==='1'`,10000);await host.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:700,y:550,button:'left',clickCount:1});
-  await guest.wait(`${game}.dataset.arenaAlive==='false'`);await guest.screenshot('guest-respawning');
-  await guest.wait(`${game}.dataset.arenaAlive==='true'`,7000);assert.equal(await guest.evaluate(`Number(${game}.dataset.health)`),100);
+  await guest.wait(`window.arenaLifeEvents.some(event=>event.alive==='false')`);
+  await guest.wait(`window.arenaLifeEvents.some((event,index)=>event.alive==='true' && window.arenaLifeEvents[index-1]?.alive==='false')`,7000);assert.equal(await guest.evaluate(`Number(${game}.dataset.health)`),100);await guest.screenshot('guest-respawned');await guest.evaluate('window.arenaLifeObserver.disconnect()');
   console.log('Kill and respawn verified');await host.key('Escape','Escape');await host.wait(phase('paused'));await host.wait('!document.pointerLockElement');await host.screenshot('host-scoreboard');
   assert(await host.evaluate(`document.querySelector('.arena-scoreboard').textContent.includes('Bravo')`));
   assert(await host.evaluate(`window.lastArenaSnapshot.actors.find(a=>a.name==='Bravo').deaths===1`));
@@ -80,4 +82,4 @@ try{
   for(const p of pages)assert.deepEqual(p.errors,[],'No browser errors');
   console.log('PASS: two real browser clients, host/join room, roster, shared movement, pointer capture, hitscan kill, guest death/respawn, scoreboard, shared reset and host disconnect. No state mutation used.');
 }catch(error){for(let i=0;i<pages.length;i++){console.log('Browser exceptions',i,pages[i].errors);console.log('Client diagnostic',i,await pages[i].evaluate('JSON.stringify({captureErrors:window.captureErrors,phase:document.querySelector(".fps-game")?.dataset.phase,lock:!!document.pointerLockElement,snapshot:window.lastArenaSnapshot})').catch(()=>null));await pages[i].screenshot(`failure-${i}`).catch(()=>{});}throw error;}
-finally{for(const p of pages)p.close();for(const b of browsers)b.kill('SIGTERM');server.closeAllConnections();await new Promise(resolve=>server.close(resolve));await delay(500);await rm(directory,{recursive:true,force:true});}
+finally{for(const p of pages)p.close();await Promise.all(browsers.map(b=>new Promise(resolve=>{if(b.exitCode!==null||b.signalCode!==null){resolve();return;}const timer=setTimeout(()=>{b.kill('SIGKILL');resolve();},5000);b.once('exit',()=>{clearTimeout(timer);resolve();});b.kill('SIGTERM');})));server.closeAllConnections();await new Promise(resolve=>server.close(resolve));await rm(directory,{recursive:true,force:true,maxRetries:10,retryDelay:300}).catch(error=>console.warn('Could not remove browser test profile:',error.code));}

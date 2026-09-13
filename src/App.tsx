@@ -5,6 +5,7 @@ import MarinaGame from './components/MarinaGame';
 import FpsGame from './components/FpsGame';
 import ExpeditionGame from './components/ExpeditionGame';
 import LanLobby from './components/LanLobby';
+import type { WorldZoneId } from './game/world-zones';
 import type { LanSession } from './game/lan-peer';
 import ArmoryShop from './components/ArmoryShop';
 import { useArmory } from './game/use-armory';
@@ -20,6 +21,8 @@ export default function App() {
   const [fpsOpen, setFpsOpen] = useState(false);
   const [armoryOpen, setArmoryOpen] = useState(false);
   const [expeditionOpen, setExpeditionOpen] = useState(false);
+  const [expeditionStart, setExpeditionStart] = useState<WorldZoneId>('marina-bay');
+  const [destination, setDestination] = useState<WorldZoneId | undefined>();
   const [lobbyOpen, setLobbyOpen] = useState(() => new URLSearchParams(window.location.search).has('room'));
   const [arena, setArena] = useState<{ session: LanSession; botCount: number; composition: string } | undefined>();
   const lanSession = useRef<LanSession | null>(null);
@@ -27,13 +30,13 @@ export default function App() {
   const armory = useArmory();
   const [dialog, setDialog] = useState<'about' | 'privacy' | 'terms' | null>(null);
   const leaveSession = () => { setExpeditionOpen(false); lanSession.current?.close(); lanSession.current = null; setArena(undefined); setLobbyOpen(false); };
-  const chooseLocation = (next: Location) => { leaveSession(); setLocation(next); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); };
+  const chooseLocation = (next: Location) => { if (expeditionOpen) { setDestination(next.id); return; } leaveSession(); setLocation(next); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); };
   const openStreetView = () => { leaveSession(); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); };
   const openArmory = () => { if (!fpsOpen || location.id !== 'marina-bay') return; leaveSession(); setRegionOpen(false); setArmoryOpen(true); };
   const openFps = () => { leaveSession(); setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setRegionOpen(false); setFpsOpen(true); };
 
   const openLobby = () => { leaveSession(); setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); setLobbyOpen(true); };
-  const openExpedition = () => { leaveSession(); setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); setExpeditionOpen(true); };
+  const openExpedition = () => { if (expeditionOpen) return; leaveSession(); setExpeditionStart(location.id); setDestination(undefined); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); setExpeditionOpen(true); };
   const launchArena = (session: LanSession, bots: number, squad: 'mixed' | 'assault' | 'tank' | 'sniper') => {
     setExpeditionOpen(false); lanSession.current?.close(); lanSession.current = session;
     setArena({ session, botCount: bots, composition: squad }); setLobbyOpen(false); setFpsOpen(true);
@@ -63,7 +66,7 @@ export default function App() {
             </button>)}
           </div>
 
-          <SingaporeMap selected={location} onSelect={chooseLocation} />
+          <SingaporeMap selected={location} onSelect={chooseLocation} expedition={expeditionOpen} destination={destination} />
 
           <div className="section-label mode-label"><span>02 / MAKE IT YOURS</span></div>
           <div className="mode-list">
@@ -79,7 +82,7 @@ export default function App() {
         </aside>
 
         <div className="experience">
-          {expeditionOpen ? <ExpeditionGame profile={armory.profile} onExit={openFps} suspended={dialog !== null} /> : lobbyOpen ? <LanLobby onLaunch={launchArena} onBack={openFps} /> : armoryOpen ? <ArmoryShop store={armory} onEnterRange={openFps} /> : fpsOpen ? <FpsGame key={arena?.session.id || 'practice'} arena={arena} onLeaveArena={openLobby} profile={armory.profile} onReward={armory.award} onElimination={armory.awardElimination} onOpenShop={openArmory} suspended={dialog !== null} /> : regionOpen && hasRegionGame(location.id) ? (location.id === 'raffles-place' ? <RafflesGame key={location.id} /> : location.id === 'queenstown' ? <QueenstownGame key={location.id} /> : <MarinaGame key={location.id} />) : <>
+          {expeditionOpen ? <ExpeditionGame initialZone={expeditionStart} destination={destination} onZoneChange={zone => setLocation(locations.find(place => place.id === zone)!)} profile={armory.profile} onExit={openFps} suspended={dialog !== null} /> : lobbyOpen ? <LanLobby onLaunch={launchArena} onBack={openFps} /> : armoryOpen ? <ArmoryShop store={armory} onEnterRange={openFps} /> : fpsOpen ? <FpsGame key={arena?.session.id || 'practice'} arena={arena} onLeaveArena={openLobby} profile={armory.profile} onReward={armory.award} onElimination={armory.awardElimination} onOpenShop={openArmory} suspended={dialog !== null} /> : regionOpen && hasRegionGame(location.id) ? (location.id === 'raffles-place' ? <RafflesGame key={location.id} /> : location.id === 'queenstown' ? <QueenstownGame key={location.id} /> : <MarinaGame key={location.id} />) : <>
           <div className="viewport"><StreetView key={location.id} location={location} /></div>
           <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon"><Globe2 size={22} /></span><div><h3>The real {location.name}</h3><p>Google Street View · Drag to look, use arrows to travel</p></div></div></div>
           </>}
