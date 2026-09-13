@@ -1,4 +1,4 @@
-import { randomUuid } from '../lib/random-id';
+import { randomUuid } from '../lib/random-id.ts';
 
 export type Destination = { id: string; name: string; x: number; z: number };
 export type GuideRegion = 'marina-bay' | 'raffles-place' | 'queenstown';
