@@ -4,7 +4,7 @@ The user selected **round 4 candidate 3** on 2026-09-13, ahead of round 4 #1 and
 
 The pack contains all **48 existing lines** in `src/game/fps-callouts.ts` (16 events, three variants each). It was generated with Eleven v3, natural stability 0.5, using the selected voice. The subtitle script was preserved exactly. The MP3s total **2,534,088 bytes** and approximately **157 seconds**, at mono 44.1kHz/128kbps. Each clip decoded successfully and passed non-silence and checksum checks; individual delivery remains subject to listening review.
 
-Listen to the complete pack at `/audio/encik/index.html` on the running game server, or open `public/audio/encik/index.html` locally. `manifest.json` records each event, variant, exact text, filename, size and SHA-256 checksum. Content hashes in filenames prevent stale browser audio after a clip is replaced.
+Listen to the complete pack at `/audio/encik/index.html` on the running game server, or open `public/audio/encik/index.html` locally. `src/audio/encik/manifest.json` records each event, variant, exact text, filename, size and SHA-256 checksum. Content hashes in filenames prevent stale browser audio after a clip is replaced.
 
 ## Game playback
 
@@ -17,7 +17,7 @@ The shared FPS engine uses these bundled recordings in practice, arena and exped
 - The approved selection is pinned in `scripts/encik-batch.mjs`, independently of future auditions. It is verified against the original cached audition before saving the voice.
 - Voice creation and every individual clip have permanent attempt markers. Complete clips are reused after checksum verification; failed or interrupted requests stop for inspection rather than automatically retrying. Requests have a five-minute network timeout.
 - The current batch cache is `.cache/encik-batch/01a0d406e267/`; saved voice metadata is in `.cache/encik-batch/voice-round4-candidate3.json`. Preserve these caches when resuming generation. They are intentionally ignored by Git and contain no API key.
-- Source audio is cached before publishing. The public manifest is written only when all 48 clips have completed. The public audio and manifest are committed so teammates need neither the private cache nor an ElevenLabs account to play.
+- Source audio is cached before publishing. The source manifest is written only when all 48 clips have completed. JavaScript imports this manifest from `src`; MP3s and the listening page are served by URL from `public`. The audio and manifest are committed so teammates need neither the private cache nor an ElevenLabs account to play.
 
 Observed batch cost: **776 credits**, matching the sum of the 48 response `character-cost` headers and the subscription delta. Account usage after the batch was **1,266 / 40,000**, including the four auditions. Before/after readings and per-request receipts are in the ignored cache. The quota reserve is an estimate, not a provider-enforced per-request spending cap.
 

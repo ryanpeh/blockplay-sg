@@ -14,6 +14,7 @@ export const batchId = hash(JSON.stringify({ selection, settings, lines })).slic
 const cacheRoot = path.join(root, '.cache/encik-batch');
 export const batchDirectory = path.join(cacheRoot, batchId);
 export const publicDirectory = path.join(root, 'public/audio/encik');
+export const manifestFile = path.join(root, 'src/audio/encik/manifest.json');
 const readJson = async file => { try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch (e) { if (e.code === 'ENOENT') return null; throw e; } };
 const writeJson = (file, data, options) => fs.writeFile(file, JSON.stringify(data, null, 2) + '\n', options);
 
@@ -88,7 +89,8 @@ async function generate(key) {
   await fs.mkdir(publicDirectory, { recursive: true });
   for (const clip of clips) await fs.copyFile(path.join(batchDirectory, clip.id + '.mp3'), path.join(publicDirectory, clip.file));
   const manifest = { version: 1, batchId, provider: 'ElevenLabs', model: settings.model_id, voice: 'Encik — Round 4 Candidate 3', clips };
-  await writeJson(path.join(publicDirectory, 'manifest.json'), manifest);
+  await fs.mkdir(path.dirname(manifestFile), { recursive: true });
+  await writeJson(manifestFile, manifest);
   const cards = clips.map(c => `<section><h2>${c.id}</h2><p>${c.text}</p><audio controls preload="none" src="${c.file}"></audio></section>`).join('');
   await fs.writeFile(path.join(publicDirectory, 'index.html'), `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Encik callout pack</title><style>body{max-width:760px;margin:30px auto;padding:20px;background:#15251f;color:#f3e7c8;font:16px/1.6 system-ui}section{padding:10px 0;border-top:1px solid #647b66}audio{width:100%}h2{font-size:18px}</style><h1>Encik · 48 callouts</h1><p>Round 4 candidate 3 · Singaporean Encik</p>${cards}`);
   const after = await usage(key).catch(() => null);

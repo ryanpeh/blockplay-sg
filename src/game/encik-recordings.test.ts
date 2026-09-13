@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import manifest from '../../public/audio/encik/manifest.json';
+import manifest from '../audio/encik/manifest.json';
 import { ENCIK_LINES } from './fps-callouts';
 import { encikRecordingUrl } from './encik-recordings';
 it('ships one matching audio recording for every subtitle and preserves deployment base paths', () => {

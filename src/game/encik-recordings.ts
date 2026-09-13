@@ -1,4 +1,4 @@
-import manifest from '../../public/audio/encik/manifest.json';
+import manifest from '../audio/encik/manifest.json';
 import type { EncikCallout } from './fps-callouts';
 
 const recordings = new Map(manifest.clips.map(clip => [`${clip.event}\n${clip.text}`, clip.file]));
