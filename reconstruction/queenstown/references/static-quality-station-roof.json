@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "station.json",
+  "pano_id": "h3P6D4OMJLL-JgPLFFQVfg",
+  "position": {
+    "lat": 1.2942940203704458,
+    "lng": 103.80608981116512
+  },
+  "sourceDate": "2025-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 75,
+    "pitch": 28
+  },
+  "horizontalFov": 75,
+  "width": 640,
+  "height": 640,
+  "purpose": "Station upper roof silhouette and canopy support proportions",
+  "capturedAt": "2026-09-13T05:04:06.162Z",
+  "file": "reconstruction/queenstown/references/static-quality-station-roof.jpg",
+  "fingerprint": "4c096d259572ea393040ae82e5dab7fcfcfe45ba4b4ac0e364063c0ce6731cca",
+  "sha256": "62c8133a5d0a4d586e3b2bd0f5ce7743259bf310e4373158779c8068aafd28f8",
+  "bytes": 93006,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: rounded pier, viaduct underside joints and louver assembly; actual station roof not visible"
+}

@@ -20,7 +20,15 @@ export async function withBudget(task, ledgerPath = resolve('reconstruction/api-
         const { baselineStaticImageAttempts, maxAdditionalImages } = ledger.imageAllowance;
         if (!Number.isInteger(baselineStaticImageAttempts) || baselineStaticImageAttempts < 0 || !Number.isInteger(maxAdditionalImages) || maxAdditionalImages < 0) throw new Error('Invalid image allowance.');
         const images = ledger.attempts.filter(entry => isCapture(entry.kind)).length;
+        if (images < baselineStaticImageAttempts) throw new Error('Image allowance baseline exceeds recorded history.');
         if (images - baselineStaticImageAttempts >= maxAdditionalImages) throw new Error('Approved additional-image allowance exhausted.');
+      }
+      if (isCapture(kind) && ledger.regionImageAllowances) {
+        const allowance = ledger.regionImageAllowances[location];
+        if (!allowance || !Number.isInteger(allowance.baselineStaticImageAttempts) || allowance.baselineStaticImageAttempts < 0 || !Number.isInteger(allowance.maxAdditionalImages) || allowance.maxAdditionalImages < 0) throw new Error('No valid Static image allowance for this region.');
+        const used = ledger.attempts.filter(entry => isCapture(entry.kind) && entry.location === location).length - allowance.baselineStaticImageAttempts;
+        if (used < 0) throw new Error('Regional image allowance baseline exceeds recorded history.');
+        if (used >= allowance.maxAdditionalImages) throw new Error('Approved regional Static image allowance exhausted.');
       }
       const entry = { id: randomUUID(), date: new Date().toISOString(), kind, location, result: 'attempt reserved; outcome unknown' };
       ledger.attempts.push(entry);

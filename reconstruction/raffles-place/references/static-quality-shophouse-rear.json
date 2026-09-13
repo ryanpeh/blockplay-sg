@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "boat-quay.json",
+  "pano_id": "AUX1RbW7VvlfxgNQpJ9ktg",
+  "position": {
+    "lat": 1.2863837518495431,
+    "lng": 103.8494671518214
+  },
+  "sourceDate": "2017-12",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 270,
+    "pitch": 20
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Air conditioning units and metal support brackets",
+  "capturedAt": "2026-09-13T05:04:04.577Z",
+  "file": "reconstruction/raffles-place/references/static-quality-shophouse-rear.jpg",
+  "fingerprint": "1f32fea18c7bc34a036a2b50e8eab63e0684aa8d301b67e1806d528908bd7226",
+  "sha256": "9b80cfef36828fac34bbdb5bdc2927ab99206ee95620793d3f0423d737586fce",
+  "bytes": 68546,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

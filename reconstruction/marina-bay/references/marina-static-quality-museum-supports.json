@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "north-bay.json",
+  "pano_id": "NW_EPdX4uxkA1vEg0-ENsg",
+  "position": {
+    "lat": 1.2861001034091848,
+    "lng": 103.85885553989067
+  },
+  "sourceDate": "2012-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 100,
+    "pitch": 15
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Museum columns, shell edges and pond relationship",
+  "capturedAt": "2026-09-13T05:02:43.813Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-museum-supports.jpg",
+  "fingerprint": "78b79eb76416154c98ea3934129f02f05eaa2d13d6dccfe051e56c0deb396e55",
+  "sha256": "6cea15e3066e95f9ffea3b033cd70bb75d075b783719c9b904d44904fda6cf19",
+  "bytes": 64945,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: dark outer struts, white shell surface, pond and inset pond lights; no complete lotus silhouette inferred"
+}

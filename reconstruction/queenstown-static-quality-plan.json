@@ -1,0 +1,207 @@
+{
+  "name": "queenstown-static-quality-01",
+  "region": "queenstown",
+  "maxNewImages": 25,
+  "views": [
+    {
+      "id": "static-quality-station-front",
+      "source": "station.json",
+      "heading": 90,
+      "pitch": 8,
+      "fov": 65,
+      "purpose": "Blue station cladding and entrance louver spacing"
+    },
+    {
+      "id": "static-quality-station-roof",
+      "source": "station.json",
+      "heading": 75,
+      "pitch": 28,
+      "fov": 75,
+      "purpose": "Station upper roof silhouette and canopy support proportions"
+    },
+    {
+      "id": "static-quality-viaduct-section",
+      "source": "station-clear.json",
+      "heading": 180,
+      "pitch": 18,
+      "fov": 60,
+      "purpose": "Concrete viaduct edge section and rail-side hedge layering"
+    },
+    {
+      "id": "static-quality-station-link",
+      "source": "station-clear.json",
+      "heading": 0,
+      "pitch": 5,
+      "fov": 55,
+      "purpose": "Blue sheltered pedestrian link framing and roadside kerbs"
+    },
+    {
+      "id": "static-quality-cyan-gallery",
+      "source": "commonwealth-close.json",
+      "heading": 0,
+      "pitch": 12,
+      "fov": 65,
+      "purpose": "Cyan gallery parapets, recess depth and structural column rhythm"
+    },
+    {
+      "id": "static-quality-cyan-end",
+      "source": "commonwealth-close.json",
+      "heading": 285,
+      "pitch": 20,
+      "fov": 60,
+      "purpose": "Access-gallery end railing and cyan decorative panel geometry"
+    },
+    {
+      "id": "static-quality-garden-bench",
+      "source": "commonwealth-close.json",
+      "heading": 90,
+      "pitch": -12,
+      "fov": 65,
+      "purpose": "Pale segmented curved benches, paths and green seat bases"
+    },
+    {
+      "id": "static-quality-pavilion-detail",
+      "source": "commonwealth-close.json",
+      "heading": 175,
+      "pitch": 5,
+      "fov": 70,
+      "purpose": "Red tiled shelter roof with cyan posts and dark timber rails"
+    },
+    {
+      "id": "static-quality-peach-facade",
+      "source": "commonwealth-crescent.json",
+      "heading": 15,
+      "pitch": 22,
+      "fov": 65,
+      "purpose": "Cream structural grid and alternating peach gallery parapets"
+    },
+    {
+      "id": "static-quality-shelter-structure",
+      "source": "commonwealth-crescent.json",
+      "heading": 85,
+      "pitch": 0,
+      "fov": 60,
+      "purpose": "Red tile roof underside, dark posts and slim eave thickness"
+    },
+    {
+      "id": "static-quality-utility-facade",
+      "source": "commonwealth-crescent.json",
+      "heading": 180,
+      "pitch": 4,
+      "fov": 60,
+      "purpose": "Small utility block blue roof, vents and orange lower panels"
+    },
+    {
+      "id": "static-quality-mei-lattice",
+      "source": "mei-ling-road.json",
+      "heading": 180,
+      "pitch": 25,
+      "fov": 55,
+      "purpose": "White decorative lattice around gallery openings"
+    },
+    {
+      "id": "static-quality-mei-orange",
+      "source": "mei-ling-road.json",
+      "heading": 95,
+      "pitch": 22,
+      "fov": 60,
+      "purpose": "Orange projecting window surrounds and pale gray gallery strips"
+    },
+    {
+      "id": "static-quality-mei-gateway",
+      "source": "mei-ling-road.json",
+      "heading": 270,
+      "pitch": 18,
+      "fov": 75,
+      "purpose": "Timber-louver gateway panels and broad red tiled roof"
+    },
+    {
+      "id": "static-quality-mei-kopi",
+      "source": "mei-ling-road.json",
+      "heading": 180,
+      "pitch": -4,
+      "fov": 75,
+      "purpose": "Open kopitiam colonnade, round furniture and frontage recess"
+    },
+    {
+      "id": "static-quality-dawson-base",
+      "source": "dawson.json",
+      "heading": 90,
+      "pitch": 18,
+      "fov": 60,
+      "purpose": "Deep modern tower podium piers, pale stone bands and louvers"
+    },
+    {
+      "id": "static-quality-dawson-parking",
+      "source": "dawson.json",
+      "heading": 165,
+      "pitch": 18,
+      "fov": 65,
+      "purpose": "Layered open carpark decks and planted parapets"
+    },
+    {
+      "id": "static-quality-dawson-fins",
+      "source": "dawson-east.json",
+      "heading": 60,
+      "pitch": 32,
+      "fov": 65,
+      "purpose": "Dark tower recesses, tall piers and facade fin rhythm"
+    },
+    {
+      "id": "static-quality-dawson-landscape",
+      "source": "dawson-east.json",
+      "heading": 270,
+      "pitch": -5,
+      "fov": 70,
+      "purpose": "Layered planting edges and brick-paved estate access"
+    },
+    {
+      "id": "static-quality-market-roof",
+      "source": "margaret.json",
+      "heading": 90,
+      "pitch": 20,
+      "fov": 60,
+      "purpose": "Blue barrel roof of neighbourhood hall and pale colonnade"
+    },
+    {
+      "id": "static-quality-modern-podium",
+      "source": "margaret.json",
+      "heading": 0,
+      "pitch": 12,
+      "fov": 70,
+      "purpose": "White tower podium proportions and planted roof parapets"
+    },
+    {
+      "id": "static-quality-library-screen",
+      "source": "library.json",
+      "heading": 85,
+      "pitch": 12,
+      "fov": 60,
+      "purpose": "Pale perforated civic facade detail near Margaret Drive; identity not assumed"
+    },
+    {
+      "id": "static-quality-service-row",
+      "source": "tanglin-market-road.json",
+      "heading": 180,
+      "pitch": 8,
+      "fov": 65,
+      "purpose": "Two-storey service row, red tiled roof and air conditioner brackets"
+    },
+    {
+      "id": "static-quality-service-roof",
+      "source": "tanglin-market-road.json",
+      "heading": 135,
+      "pitch": 22,
+      "fov": 65,
+      "purpose": "Low-rise roof pitch, eaves and service-row upper facade"
+    },
+    {
+      "id": "static-quality-street-planting",
+      "source": "tanglin-east.json",
+      "heading": 270,
+      "pitch": -2,
+      "fov": 70,
+      "purpose": "Roadside hedges, broad tree branches, concrete curb and drain details"
+    }
+  ]
+}

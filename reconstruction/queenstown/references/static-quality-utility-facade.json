@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "commonwealth-crescent.json",
+  "pano_id": "q5fhXSwiqWvXuUVRmeSYUA",
+  "position": {
+    "lat": 1.306946267957519,
+    "lng": 103.80127426622778
+  },
+  "sourceDate": "2021-11",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": 4
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Small utility block blue roof, vents and orange lower panels",
+  "capturedAt": "2026-09-13T05:04:07.876Z",
+  "file": "reconstruction/queenstown/references/static-quality-utility-facade.jpg",
+  "fingerprint": "bb2d7603c33b6aae660afcc24373d76dc88469dbe005d2eb45aa513a8d8fbe3e",
+  "sha256": "8b7cbe6f7fb7eac650282d1a61ff5a0bbc6834a42109464d9e3ce58c05e68779",
+  "bytes": 90529,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: blue utility roof, orange panel base and vent-window band"
+}

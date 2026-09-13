@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:browser": "node scripts/smoke-regions.mjs",
     "references:inventory": "node scripts/reference-inventory.mjs",
+    "references:static": "node scripts/capture-static-references.mjs",
     "marina:capture": "node scripts/capture-marina.mjs",
     "marina:references": "node scripts/capture-marina-references.mjs",
     "marina:browser-capture": "node scripts/capture-marina-browser.mjs",

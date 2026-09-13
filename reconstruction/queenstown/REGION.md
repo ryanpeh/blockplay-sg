@@ -14,6 +14,23 @@ Queenstown is a separate, playable low-poly estate, not a colour variant of Mari
 
 ## References and accuracy
 
+### Static API model-quality pass
+
+`reconstruction/queenstown-static-quality-plan.json` adds exactly 25 targeted 640 × 640 JPGs, reusing existing Google-owned panorama IDs without metadata lookups. Root performed the authorized capture and ledger accounting. All 25 were visually inspected: 23 accepted, two limited, none rejected. Queenstown now has 99 cached reference images (74 browser PNGs plus 25 Static JPGs). Per-image JSON retains image date, camera parameters, purpose, checksum, attribution and actual-subject review.
+
+New image-driven geometry/material refinements:
+
+- `static-quality-station-front` and `station-roof`: rounded concrete piers, projecting dark louvers with separate blue framing, and concrete fascia joints. The image named `station-roof` shows the viaduct underside, not the roof silhouette; the authored station roof is unchanged.
+- `cyan-gallery`, `cyan-end`, `mei-lattice`, `mei-orange`: raised pale/orange window surrounds, mullions and gallery-end lattice elements add depth to repeated slab facades.
+- `shelter-structure`, `mei-gateway`: visible underside rafters, longitudinal beams and timber-louver gateway panels.
+- `market-roof`: curved standing seams follow the blue barrel roof rather than using flat stripes. `mei-kopi` replaces square table tops with round geometry and adds small stools.
+- `dawson-base`, `dawson-fins`, `modern-podium`: windows and horizontal bands now articulate all four tower sides; entrance recesses have distinct piers/louvers. The buildings remain solid, authored gameplay masses rather than navigable interiors.
+- `street-planting`: tapered polygon trunks, actual fork branches and four varied leaf clusters per tree replace uniform three-blob crowns. Leaf tones and canopy orientations vary deterministically; glass, painted metal and plaster have different roughness.
+
+The two limited images are `station-link` (distant/vegetation-obscured link) and `library-screen` (partially obscured civic facade, identity not verified). No further captures were made to replace these. Existing region bounds, eight objectives and road routes are preserved.
+
+Four regression tests pass, including all-objective reachability, clear road connectors, model geometry/material checks and batching. The browser quality render measured 15,111 authored static meshes batched into 77 root children including text signs. Offline review renders: `/tmp/queenstown-static-quality-station.png`, `-gallery.png`, `-market.png`, `-district.png` (temporary QA artifacts, not required runtime assets). The station/gallery/market close-ups visibly show the new model depth; no Maps requests are needed to render them.
+
 ### September detail expansion
 
 Seventy new browser screenshot files were stored in this session: 20 initial detail views, four clean replacement frames, 12 additional exterior views and 34 district expansion views. Together with the four earlier frames, Queenstown now has 74 cached PNG references. Every new frame was visually reviewed; individual JSON `visualReview` fields distinguish accepted, limited and rejected imagery. The latest 40-view district plan stopped after 34 captures and one failure at `margaret-north-180`; six views remain uncaptured. Raw error details are intentionally withheld by the capture helper to protect credentials. No automatic retries were spent; rerunning the plan later will reuse the 34 valid cache entries. All screenshot attempts remain recorded even when rejected.

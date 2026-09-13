@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "merlion-expansion.json",
+  "pano_id": "16W5kHHJYUdeYcEDblMr-Q",
+  "position": {
+    "lat": 1.2867612659229497,
+    "lng": 103.85442860998917
+  },
+  "sourceDate": "2018-07",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 75,
+    "pitch": 8
+  },
+  "horizontalFov": 45,
+  "width": 640,
+  "height": 640,
+  "purpose": "Ivory lion head and curved mane silhouette",
+  "capturedAt": "2026-09-13T05:02:43.364Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-merlion-head.jpg",
+  "fingerprint": "272f4c49ea507762588492f733d7d5024bc7f650d806bcecc38ce6728b73cf0f",
+  "sha256": "d317c9415366a43531719021f1433c66d93eadcc8a10454a4827ea53002edbdc",
+  "bytes": 51430,
+  "attribution": "Retained in original image",
+  "visualReview": "limited: head is cropped out; retain detailed fish scales and blue-grey tiled plinth only"
+}

@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "dawson-east.json",
+  "pano_id": "iVUgjepDr1eKbbI4-k6sSg",
+  "position": {
+    "lat": 1.2949005713223212,
+    "lng": 103.81139043414261
+  },
+  "sourceDate": "2024-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 60,
+    "pitch": 32
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Dark tower recesses, tall piers and facade fin rhythm",
+  "capturedAt": "2026-09-13T05:04:11.501Z",
+  "file": "reconstruction/queenstown/references/static-quality-dawson-fins.jpg",
+  "fingerprint": "ab367bb70d22d6c010246a1532c1f817413fc82d7dac3c31f3081b83431ee124",
+  "sha256": "690fc353335851a66f50701c76a4368e42eea2e809afe20a661347b850c357fb",
+  "bytes": 114913,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: gray deep piers, recessed windows and continuous projecting balcony bands"
+}

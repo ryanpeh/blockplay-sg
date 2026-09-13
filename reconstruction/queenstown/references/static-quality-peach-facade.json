@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "commonwealth-crescent.json",
+  "pano_id": "q5fhXSwiqWvXuUVRmeSYUA",
+  "position": {
+    "lat": 1.306946267957519,
+    "lng": 103.80127426622778
+  },
+  "sourceDate": "2021-11",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 15,
+    "pitch": 22
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Cream structural grid and alternating peach gallery parapets",
+  "capturedAt": "2026-09-13T05:04:07.719Z",
+  "file": "reconstruction/queenstown/references/static-quality-peach-facade.jpg",
+  "fingerprint": "2724e065301359286ba6315ed63f631f4b921084d8d6c92265a55a8b75ae86d0",
+  "sha256": "59fd2333c9d72cfc16100759455a6c646894bdab23511e8755848046abddde3e",
+  "bytes": 72910,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: cream grid, peach/orange gallery panels, red pitched shelter roofs"
+}

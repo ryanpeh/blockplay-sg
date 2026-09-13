@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "commonwealth-close.json",
+  "pano_id": "kua04M-UYqOfC7GWIuoOmg",
+  "position": {
+    "lat": 1.305275700985338,
+    "lng": 103.80098624453116
+  },
+  "sourceDate": "2021-11",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 0,
+    "pitch": 12
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Cyan gallery parapets, recess depth and structural column rhythm",
+  "capturedAt": "2026-09-13T05:04:06.934Z",
+  "file": "reconstruction/queenstown/references/static-quality-cyan-gallery.jpg",
+  "fingerprint": "196b176f696c07be70381d763bd998063e26a9d94c848dee8f85878b7dd34d91",
+  "sha256": "f6a270dff8a6d3f85ae7393fc24955d736db00cadd56a2c3cf8fd7dad4bf2dad",
+  "bytes": 57668,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: cyan parapets and columns, deeply recessed gallery openings"
+}

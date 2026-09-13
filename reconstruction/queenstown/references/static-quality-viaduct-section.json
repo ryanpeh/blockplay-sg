@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "station-clear.json",
+  "pano_id": "uPOEK2v2dHe1SNAXoJmchw",
+  "position": {
+    "lat": 1.2937781641813975,
+    "lng": 103.80671115578087
+  },
+  "sourceDate": "2025-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": 18
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Concrete viaduct edge section and rail-side hedge layering",
+  "capturedAt": "2026-09-13T05:04:06.414Z",
+  "file": "reconstruction/queenstown/references/static-quality-viaduct-section.jpg",
+  "fingerprint": "960d91500b6f36c902ad9bd6197962c7912499012a8dc033e13febf9c1b1baa1",
+  "sha256": "9ac7885725161bf35a40ddc0243a804143c8113a742e3a76f702217df52db099",
+  "bytes": 90092,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: concrete underside, red train stripe, layered green roadside hedges"
+}

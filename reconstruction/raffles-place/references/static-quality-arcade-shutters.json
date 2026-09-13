@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "church-expansion.json",
+  "pano_id": "h2EekuqVJ9IDDfqTUtJBZA",
+  "position": {
+    "lat": 1.28354127765295,
+    "lng": 103.84861525430189
+  },
+  "sourceDate": "2021-10",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 270,
+    "pitch": 23
+  },
+  "horizontalFov": 50,
+  "width": 640,
+  "height": 640,
+  "purpose": "Colored hinged shutters and white molded window trim",
+  "capturedAt": "2026-09-13T05:04:01.970Z",
+  "file": "reconstruction/raffles-place/references/static-quality-arcade-shutters.jpg",
+  "fingerprint": "f7a57e191b05546a7f77bc78bece26055cddb45aadbb6e4b85dd0158ae035a67",
+  "sha256": "14abf2f8e5ba85bae7bb7352377ab9f2a9f7066cbf3897f91a5936b732a59a44",
+  "bytes": 84790,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "commonwealth-crescent.json",
+  "pano_id": "q5fhXSwiqWvXuUVRmeSYUA",
+  "position": {
+    "lat": 1.306946267957519,
+    "lng": 103.80127426622778
+  },
+  "sourceDate": "2021-11",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 85,
+    "pitch": 0
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Red tile roof underside, dark posts and slim eave thickness",
+  "capturedAt": "2026-09-13T05:04:07.778Z",
+  "file": "reconstruction/queenstown/references/static-quality-shelter-structure.jpg",
+  "fingerprint": "19253bae0339c5280ea5d0d72c9c6e065c085264afec5d96b59e3c9565ee3a4d",
+  "sha256": "0dd6e8b33ee000c2353823d01e7b4a701c628cab5adc3eea047a739acf6ef960",
+  "bytes": 72895,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: dark rafters and posts beneath thin tiled eaves; pale wall with louvers"
+}

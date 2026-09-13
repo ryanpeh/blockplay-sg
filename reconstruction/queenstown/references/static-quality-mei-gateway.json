@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "mei-ling-road.json",
+  "pano_id": "E1Xe9ch6n0YfXDKmDPjPpA",
+  "position": {
+    "lat": 1.2905699969235567,
+    "lng": 103.80337011347143
+  },
+  "sourceDate": "2024-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 270,
+    "pitch": 18
+  },
+  "horizontalFov": 75,
+  "width": 640,
+  "height": 640,
+  "purpose": "Timber-louver gateway panels and broad red tiled roof",
+  "capturedAt": "2026-09-13T05:04:08.448Z",
+  "file": "reconstruction/queenstown/references/static-quality-mei-gateway.jpg",
+  "fingerprint": "34b9703fd97ee8b847ee55d805e1ca2025a6c1ae3abca2ec92d6bf123f7a2adb",
+  "sha256": "4a695f501abb9607aeaae0bc32a24a1542c7f1babcba1e0fa24defe8dfe5e15d",
+  "bytes": 91892,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: timber louver panels and underside rafters framing a clear pedestrian/vehicle opening"
+}

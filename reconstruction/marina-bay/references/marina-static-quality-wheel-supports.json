@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "promenade-road-03.json",
+  "pano_id": "x8L7_sxIVdllJJ8VLOyeSw",
+  "position": {
+    "lat": 1.2920129560275748,
+    "lng": 103.86163810359794
+  },
+  "sourceDate": "2021-08",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 150,
+    "pitch": 30
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Wheel support geometry from a second panorama position",
+  "capturedAt": "2026-09-13T05:02:42.129Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-wheel-supports.jpg",
+  "fingerprint": "ad6b3f98e1cd79057ee87e917913760e499db179a79788df70792173f11297dc",
+  "sha256": "a7b90e301f9e1405cf85e612ab75b4437d439a6528aee1ae800cd52f1727f3c0",
+  "bytes": 62879,
+  "attribution": "Retained in original image",
+  "visualReview": "limited: foreground flyover hides most wheel supports; use for flyover underside beams and visible capsule profile only"
+}

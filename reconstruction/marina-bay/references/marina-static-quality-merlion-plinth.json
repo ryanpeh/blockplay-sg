@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "merlion-expansion.json",
+  "pano_id": "16W5kHHJYUdeYcEDblMr-Q",
+  "position": {
+    "lat": 1.2867612659229497,
+    "lng": 103.85442860998917
+  },
+  "sourceDate": "2018-07",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 75,
+    "pitch": -10
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Blue tiled pedestal, fish scales and adjacent paving",
+  "capturedAt": "2026-09-13T05:02:43.480Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-merlion-plinth.jpg",
+  "fingerprint": "9d973e7a4faef796395d2b0f903fd10e8eb01b5b2248690a5961aa80d35fa0cc",
+  "sha256": "c28140ce95da1f8f94727b8e1f19fe34b7091ca8af05033a649c8a1381ebfe92",
+  "bytes": 61845,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: tiled blue-grey plinth, scale relief, planter edge and square grey paving; person partly obscures right foreground"
+}

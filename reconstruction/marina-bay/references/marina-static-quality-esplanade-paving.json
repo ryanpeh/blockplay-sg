@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "esplanade-road-03.json",
+  "pano_id": "zRv-u0DQNcflwiBnZxFYCw",
+  "position": {
+    "lat": 1.2911211162247562,
+    "lng": 103.85500638517166
+  },
+  "sourceDate": "2018-11",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 170,
+    "pitch": -10
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Slab paving scale, tree pits and layered planting",
+  "capturedAt": "2026-09-13T05:02:44.226Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-esplanade-paving.jpg",
+  "fingerprint": "c7e9d7b12c48940a201cbcaab1bc2788e82030f53949691c8c434d19d4907dd7",
+  "sha256": "d259a4cfd814344939268f42eadca565ea7545df4a2f733b7e64832266d17cc9",
+  "bytes": 102751,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: slab paving, inspection cover proportions and layered planting detail"
+}

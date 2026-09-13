@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "mei-ling-road.json",
+  "pano_id": "E1Xe9ch6n0YfXDKmDPjPpA",
+  "position": {
+    "lat": 1.2905699969235567,
+    "lng": 103.80337011347143
+  },
+  "sourceDate": "2024-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": -4
+  },
+  "horizontalFov": 75,
+  "width": 640,
+  "height": 640,
+  "purpose": "Open kopitiam colonnade, round furniture and frontage recess",
+  "capturedAt": "2026-09-13T05:04:08.787Z",
+  "file": "reconstruction/queenstown/references/static-quality-mei-kopi.jpg",
+  "fingerprint": "6549ea3e14aed22aa6bfdbb68fd36ec7316eebdcd5495f2738dc89b6c00d4c76",
+  "sha256": "5f36d060ec8ea6a78efff3702147d99c34c47604c69dd5037fbe0b031556c745",
+  "bytes": 86088,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: open colonnade and round cafe tables beneath residential access galleries"
+}

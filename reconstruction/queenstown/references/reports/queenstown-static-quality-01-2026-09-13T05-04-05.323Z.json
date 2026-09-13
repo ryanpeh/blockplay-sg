@@ -1,0 +1,138 @@
+{
+  "plan": "queenstown-static-quality-01",
+  "startedAt": "2026-09-13T05:04:05.323Z",
+  "cached": 0,
+  "captured": 25,
+  "failed": 0,
+  "staticImageAttempts": 25,
+  "metadataRequests": 0,
+  "bytes": 2453324,
+  "durationMs": 7484,
+  "views": [
+    {
+      "id": "static-quality-station-front",
+      "status": "saved",
+      "bytes": 88367
+    },
+    {
+      "id": "static-quality-station-roof",
+      "status": "saved",
+      "bytes": 93006
+    },
+    {
+      "id": "static-quality-viaduct-section",
+      "status": "saved",
+      "bytes": 90092
+    },
+    {
+      "id": "static-quality-station-link",
+      "status": "saved",
+      "bytes": 109882
+    },
+    {
+      "id": "static-quality-cyan-gallery",
+      "status": "saved",
+      "bytes": 57668
+    },
+    {
+      "id": "static-quality-cyan-end",
+      "status": "saved",
+      "bytes": 105640
+    },
+    {
+      "id": "static-quality-garden-bench",
+      "status": "saved",
+      "bytes": 109792
+    },
+    {
+      "id": "static-quality-pavilion-detail",
+      "status": "saved",
+      "bytes": 120308
+    },
+    {
+      "id": "static-quality-peach-facade",
+      "status": "saved",
+      "bytes": 72910
+    },
+    {
+      "id": "static-quality-shelter-structure",
+      "status": "saved",
+      "bytes": 72895
+    },
+    {
+      "id": "static-quality-utility-facade",
+      "status": "saved",
+      "bytes": 90529
+    },
+    {
+      "id": "static-quality-mei-lattice",
+      "status": "saved",
+      "bytes": 71414
+    },
+    {
+      "id": "static-quality-mei-orange",
+      "status": "saved",
+      "bytes": 93090
+    },
+    {
+      "id": "static-quality-mei-gateway",
+      "status": "saved",
+      "bytes": 91892
+    },
+    {
+      "id": "static-quality-mei-kopi",
+      "status": "saved",
+      "bytes": 86088
+    },
+    {
+      "id": "static-quality-dawson-base",
+      "status": "saved",
+      "bytes": 118915
+    },
+    {
+      "id": "static-quality-dawson-parking",
+      "status": "saved",
+      "bytes": 89634
+    },
+    {
+      "id": "static-quality-dawson-fins",
+      "status": "saved",
+      "bytes": 114913
+    },
+    {
+      "id": "static-quality-dawson-landscape",
+      "status": "saved",
+      "bytes": 123473
+    },
+    {
+      "id": "static-quality-market-roof",
+      "status": "saved",
+      "bytes": 101848
+    },
+    {
+      "id": "static-quality-modern-podium",
+      "status": "saved",
+      "bytes": 108446
+    },
+    {
+      "id": "static-quality-library-screen",
+      "status": "saved",
+      "bytes": 83201
+    },
+    {
+      "id": "static-quality-service-row",
+      "status": "saved",
+      "bytes": 114396
+    },
+    {
+      "id": "static-quality-service-roof",
+      "status": "saved",
+      "bytes": 119998
+    },
+    {
+      "id": "static-quality-street-planting",
+      "status": "saved",
+      "bytes": 124927
+    }
+  ]
+}

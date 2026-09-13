@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "marina-one-street-03.json",
+  "pano_id": "dlFatS0d3HyUpwje4d54Vw",
+  "position": {
+    "lat": 1.2776617136881363,
+    "lng": 103.852375851504
+  },
+  "sourceDate": "2022-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": 35
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Glass canopy structural grid above temporary hoarding",
+  "capturedAt": "2026-09-13T05:02:44.832Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-civic-canopy-grid.jpg",
+  "fingerprint": "bba5fd03b5878e4d649ac56fbe325be287eca7709ed1e6e30a70fafc4e75a22f",
+  "sha256": "795a477befb30a3f5146da72bfa25872c57ba968bb400ba7f66cbddb36740e8f",
+  "bytes": 94986,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: close canopy beam grid, glass panels and bronze fins; no courtyard layout inferred"
+}

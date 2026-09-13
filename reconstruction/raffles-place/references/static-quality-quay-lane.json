@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "quay-west-expansion.json",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "position": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "sourceDate": "2024-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": -12
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Narrow lane curb, parked bay paint and frontage ground scale",
+  "capturedAt": "2026-09-13T05:04:04.715Z",
+  "file": "reconstruction/raffles-place/references/static-quality-quay-lane.jpg",
+  "fingerprint": "f303b2078edaeb546e9549177ba375075cd9963b1ce2eddc55c26f09d29e5344",
+  "sha256": "c00ca47efa08777555a4050008fb48407851c20a347a358b96760e2d9a2e33d9",
+  "bytes": 87952,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

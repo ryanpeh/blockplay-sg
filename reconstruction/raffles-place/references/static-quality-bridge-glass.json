@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "collyer-expansion.json",
+  "pano_id": "2Gf-qpSG9KEtCp8xXaLKTg",
+  "position": {
+    "lat": 1.2836004501027491,
+    "lng": 103.8528586061318
+  },
+  "sourceDate": "2024-06",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 0,
+    "pitch": 15
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Elevated pedestrian bridge dark glazing and silver lower soffit",
+  "capturedAt": "2026-09-13T05:04:03.693Z",
+  "file": "reconstruction/raffles-place/references/static-quality-bridge-glass.jpg",
+  "fingerprint": "9674c82bcf8aad9e61e4e83fe2400a36c0d7666cf49a5726f3ae1512e277c825",
+  "sha256": "cc022f5159eccb3ec134166b92b4aa18a261d1d10fc64ad329e69bc90724a400",
+  "bytes": 80508,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

@@ -1,0 +1,207 @@
+{
+  "name": "raffles-static-quality-01",
+  "region": "raffles-place",
+  "maxNewImages": 25,
+  "views": [
+    {
+      "id": "static-quality-gable",
+      "source": "square.json",
+      "heading": 0,
+      "pitch": 20,
+      "fov": 55,
+      "purpose": "One Raffles entrance triangular gable louver spacing and silver trim"
+    },
+    {
+      "id": "static-quality-fan-palms",
+      "source": "square.json",
+      "heading": 0,
+      "pitch": -15,
+      "fov": 60,
+      "purpose": "Fan palm foliage shape and planting base"
+    },
+    {
+      "id": "static-quality-green-wall",
+      "source": "square.json",
+      "heading": 90,
+      "pitch": 22,
+      "fov": 55,
+      "purpose": "Green wall depth and canopy structure"
+    },
+    {
+      "id": "static-quality-square-paving",
+      "source": "battery.json",
+      "heading": 150,
+      "pitch": -25,
+      "fov": 65,
+      "purpose": "Plaza paving tile colors and seams"
+    },
+    {
+      "id": "static-quality-lobby",
+      "source": "battery.json",
+      "heading": 90,
+      "pitch": 8,
+      "fov": 50,
+      "purpose": "Lobby silver stone panels and black plinth"
+    },
+    {
+      "id": "static-quality-plaza-sculpture",
+      "source": "battery.json",
+      "heading": 5,
+      "pitch": 12,
+      "fov": 55,
+      "purpose": "Sculpture and planted perimeter proportions"
+    },
+    {
+      "id": "static-quality-tower-ribs",
+      "source": "cecil.json",
+      "heading": 180,
+      "pitch": 42,
+      "fov": 55,
+      "purpose": "Vertical white facade rib thickness and setbacks"
+    },
+    {
+      "id": "static-quality-podium-columns",
+      "source": "cecil.json",
+      "heading": 270,
+      "pitch": 22,
+      "fov": 55,
+      "purpose": "Slender curved canopy columns"
+    },
+    {
+      "id": "static-quality-facade-plants",
+      "source": "cecil-south-expansion.json",
+      "heading": 270,
+      "pitch": 26,
+      "fov": 55,
+      "purpose": "Layered foliage in recessed facade bays"
+    },
+    {
+      "id": "static-quality-stone-grid",
+      "source": "cecil-south-expansion.json",
+      "heading": 0,
+      "pitch": 35,
+      "fov": 55,
+      "purpose": "Cream facade panel grid and dark podium"
+    },
+    {
+      "id": "static-quality-arcade-shutters",
+      "source": "church-expansion.json",
+      "heading": 270,
+      "pitch": 23,
+      "fov": 50,
+      "purpose": "Colored hinged shutters and white molded window trim"
+    },
+    {
+      "id": "static-quality-arcade-awning",
+      "source": "church-expansion.json",
+      "heading": 0,
+      "pitch": 0,
+      "fov": 50,
+      "purpose": "Cafe fabric awning slope, valance and outdoor furniture"
+    },
+    {
+      "id": "static-quality-heritage-roof",
+      "source": "church-expansion.json",
+      "heading": 180,
+      "pitch": 26,
+      "fov": 55,
+      "purpose": "Green glazed tile edge and red courtyard frame"
+    },
+    {
+      "id": "static-quality-market-gable",
+      "source": "robinson-expansion.json",
+      "heading": 0,
+      "pitch": 22,
+      "fov": 50,
+      "purpose": "Market triangular roof peak, green fan ironwork and cream fascia"
+    },
+    {
+      "id": "static-quality-market-eaves",
+      "source": "lau-pa-sat-expansion.json",
+      "heading": 270,
+      "pitch": 19,
+      "fov": 55,
+      "purpose": "Terracotta roof tiers and decorative eave fringe"
+    },
+    {
+      "id": "static-quality-market-tables",
+      "source": "robinson-expansion.json",
+      "heading": 0,
+      "pitch": -10,
+      "fov": 55,
+      "purpose": "Tables, floor pattern and entrance threshold details"
+    },
+    {
+      "id": "static-quality-market-stalls",
+      "source": "robinson-expansion.json",
+      "heading": 70,
+      "pitch": 0,
+      "fov": 55,
+      "purpose": "Low hawker kiosk roof and service frontage"
+    },
+    {
+      "id": "static-quality-bridge-glass",
+      "source": "collyer-expansion.json",
+      "heading": 0,
+      "pitch": 15,
+      "fov": 55,
+      "purpose": "Elevated pedestrian bridge dark glazing and silver lower soffit"
+    },
+    {
+      "id": "static-quality-bridge-columns",
+      "source": "collyer-expansion.json",
+      "heading": 90,
+      "pitch": 12,
+      "fov": 60,
+      "purpose": "Bridge cylindrical supports and mullion spacing"
+    },
+    {
+      "id": "static-quality-bus-shelter",
+      "source": "collyer-expansion.json",
+      "heading": 180,
+      "pitch": 0,
+      "fov": 55,
+      "purpose": "Bus stop roof brackets and bollard stripes"
+    },
+    {
+      "id": "static-quality-quay-facade",
+      "source": "quay-west-expansion.json",
+      "heading": 90,
+      "pitch": 23,
+      "fov": 55,
+      "purpose": "Green and white shophouse trim and upper window bands"
+    },
+    {
+      "id": "static-quality-quay-lantern",
+      "source": "quay-west-expansion.json",
+      "heading": 90,
+      "pitch": 3,
+      "fov": 50,
+      "purpose": "Paired black street lanterns, canvas awnings and planter scale"
+    },
+    {
+      "id": "static-quality-shophouse-rear",
+      "source": "boat-quay.json",
+      "heading": 270,
+      "pitch": 20,
+      "fov": 55,
+      "purpose": "Air conditioning units and metal support brackets"
+    },
+    {
+      "id": "static-quality-quay-lane",
+      "source": "quay-west-expansion.json",
+      "heading": 180,
+      "pitch": -12,
+      "fov": 65,
+      "purpose": "Narrow lane curb, parked bay paint and frontage ground scale"
+    },
+    {
+      "id": "static-quality-skyline-crown",
+      "source": "cecil.json",
+      "heading": 0,
+      "pitch": 55,
+      "fov": 60,
+      "purpose": "Upper skyline proportions and crown variety"
+    }
+  ]
+}

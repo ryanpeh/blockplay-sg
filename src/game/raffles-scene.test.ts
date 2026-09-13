@@ -40,3 +40,13 @@ it('keeps every displayed road centerline clear for a car including expansion co
     }
   }finally{world.dispose();}
 });
+
+it('retains reference-derived quality geometry and distinct glass/stone materials within batching limits',()=>{
+  const world=buildRafflesScene();try{
+    expect(world.scene.userData.qualityFeatures).toHaveLength(10);
+    expect(world.scene.userData.authoredMeshCount).toBeGreaterThan(4000);
+    expect(world.scene.userData.materialContrast.glassRoughness).toBeLessThan(world.scene.userData.materialContrast.stoneRoughness);
+    expect(world.scene.userData.materialContrast.silverMetalness).toBeGreaterThan(0.4);
+    expect(world.scene.children.length).toBeLessThan(120);
+  }finally{world.dispose();}
+});

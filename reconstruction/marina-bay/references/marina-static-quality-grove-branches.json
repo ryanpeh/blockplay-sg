@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "gardens-grove-03.json",
+  "pano_id": "_N7MeyeTNKS6QuaodKBazw",
+  "position": {
+    "lat": 1.2816274048719476,
+    "lng": 103.8636480042419
+  },
+  "sourceDate": "2014-05",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": 10
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Open crown branching and ratio of trunk to canopy",
+  "capturedAt": "2026-09-13T05:02:40.521Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-grove-branches.jpg",
+  "fingerprint": "07ef0850756873c97e9accc3fc4eb30a701d9a6f5e4676358ab02538a1677d22",
+  "sha256": "ca02184147748184c0a0ec5dfc9b54465c54ad0747ba0edbf2cc659e1faeb41b",
+  "bytes": 65777,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: open forked crown with a narrower neck and broad upper spread; historical geometry reference"
+}

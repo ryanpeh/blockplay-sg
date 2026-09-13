@@ -2,8 +2,22 @@
   "imageAllowance": {
     "appliesTo": "Static API image downloads only; browser screenshots and Maps JavaScript events excluded, per user clarification 2026-09-13",
     "baselineStaticImageAttempts": 8,
-    "maxAdditionalImages": 65,
-    "scope": "Marina Bay detail/proportion pass; user renewed remaining allowance to 50 on 2026-09-13 after 15 used. Original baseline 8 and all attempts preserved (65 total additional authorized)."
+    "maxAdditionalImages": 90,
+    "scope": "User authorized 25 new Static images each for Marina Bay, Raffles Place and Queenstown on 2026-09-13, superseding the previous 50 remaining Marina allowance. Original baseline 8 and all 23 existing image attempts preserved: 15 previously used plus 75 newly authorized."
+  },
+  "regionImageAllowances": {
+    "marina-bay": {
+      "baselineStaticImageAttempts": 23,
+      "maxAdditionalImages": 25
+    },
+    "raffles-place": {
+      "baselineStaticImageAttempts": 0,
+      "maxAdditionalImages": 25
+    },
+    "queenstown": {
+      "baselineStaticImageAttempts": 0,
+      "maxAdditionalImages": 25
+    }
   },
   "version": 1,
   "limit": 1000,
@@ -2366,6 +2380,531 @@
       "date": "2026-09-13T04:43:39.681Z",
       "kind": "browser-screenshot-marina-one-street-03-270",
       "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "11eab502-2d7e-41c7-a9be-2df8a6622dcc",
+      "date": "2026-09-13T05:02:39.725Z",
+      "kind": "image-static-quality-marina-static-quality-grove-crown",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0064b5e9-514d-414f-a196-514a220fc2c6",
+      "date": "2026-09-13T05:02:40.157Z",
+      "kind": "image-static-quality-marina-static-quality-grove-core",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "52b10ce8-8f1f-4445-874d-cb6a76a47499",
+      "date": "2026-09-13T05:02:40.362Z",
+      "kind": "image-static-quality-marina-static-quality-grove-branches",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "39c12b75-ebc3-4ee7-9407-61ef37cc5540",
+      "date": "2026-09-13T05:02:40.521Z",
+      "kind": "image-static-quality-marina-static-quality-grove-skywalk",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "cf842237-d011-4244-8dc3-376979ff3fe6",
+      "date": "2026-09-13T05:02:40.732Z",
+      "kind": "image-static-quality-marina-static-quality-conservatory-ribs",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "de388ebe-b218-4617-b047-e62d1e4eb363",
+      "date": "2026-09-13T05:02:41.011Z",
+      "kind": "image-static-quality-marina-static-quality-conservatory-glazing",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2929d7b9-964c-49d8-8315-2d5e7fc06110",
+      "date": "2026-09-13T05:02:41.533Z",
+      "kind": "image-static-quality-marina-static-quality-conservatory-path",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1c4f255b-9063-4b75-997a-ec8a0b5928c5",
+      "date": "2026-09-13T05:02:41.681Z",
+      "kind": "image-static-quality-marina-static-quality-conservatory-footing",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "61459145-8ba7-4b7b-be34-208471e23438",
+      "date": "2026-09-13T05:02:41.796Z",
+      "kind": "image-static-quality-marina-static-quality-wheel-silhouette",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "236b578e-8963-40e4-a371-24677f1f98d2",
+      "date": "2026-09-13T05:02:42.005Z",
+      "kind": "image-static-quality-marina-static-quality-wheel-supports",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b0424cd3-4272-4b64-a8cf-c4411c61ed7d",
+      "date": "2026-09-13T05:02:42.130Z",
+      "kind": "image-static-quality-marina-static-quality-sands-rear-grid",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "5107ca26-4043-4906-9fd8-6a008592e913",
+      "date": "2026-09-13T05:02:42.207Z",
+      "kind": "image-static-quality-marina-static-quality-sands-skypark",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "900c4d7d-3afd-4084-a905-fe6ff73eeeb6",
+      "date": "2026-09-13T05:02:42.675Z",
+      "kind": "image-static-quality-marina-static-quality-sands-entrance",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bb5b217b-6f5d-4afe-967d-55a6a61a5eef",
+      "date": "2026-09-13T05:02:42.887Z",
+      "kind": "image-static-quality-marina-static-quality-sands-bayfront-side",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "fe845114-46d8-4f94-ac60-0969ca74c2ca",
+      "date": "2026-09-13T05:02:43.273Z",
+      "kind": "image-static-quality-marina-static-quality-merlion-head",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "22bd2a58-9b64-4db0-9c62-c65a34bd3b9f",
+      "date": "2026-09-13T05:02:43.365Z",
+      "kind": "image-static-quality-marina-static-quality-merlion-plinth",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4c9fe206-b5e0-4946-bdd3-f8232719309c",
+      "date": "2026-09-13T05:02:43.481Z",
+      "kind": "image-static-quality-marina-static-quality-museum-petals",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "79e1befc-47c1-4820-a8c7-dd24f6c7b581",
+      "date": "2026-09-13T05:02:43.678Z",
+      "kind": "image-static-quality-marina-static-quality-museum-supports",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "71b41049-7f9c-4543-ac4b-68c3f31e16d1",
+      "date": "2026-09-13T05:02:43.813Z",
+      "kind": "image-static-quality-marina-static-quality-esplanade-shell",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "00ab07d2-de64-4527-ae98-3657e2db8586",
+      "date": "2026-09-13T05:02:43.985Z",
+      "kind": "image-static-quality-marina-static-quality-esplanade-distant",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ee050862-1f4a-4ee7-a3a0-41d8de5c15aa",
+      "date": "2026-09-13T05:02:44.125Z",
+      "kind": "image-static-quality-marina-static-quality-esplanade-paving",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2cbee660-bce5-44e5-b6a3-a77d34676de2",
+      "date": "2026-09-13T05:02:44.228Z",
+      "kind": "image-static-quality-marina-static-quality-downtown-podium",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "26cf2dcc-e2d4-4a68-b9dc-04b5cfff0e3c",
+      "date": "2026-09-13T05:02:44.403Z",
+      "kind": "image-static-quality-marina-static-quality-downtown-shelter",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "00a7a232-a5b6-4e0a-bf6a-feda6fd88e9d",
+      "date": "2026-09-13T05:02:44.491Z",
+      "kind": "image-static-quality-marina-static-quality-civic-bronze-fins",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d56ecf8f-8b20-4103-9aa7-8069bd2fa414",
+      "date": "2026-09-13T05:02:44.608Z",
+      "kind": "image-static-quality-marina-static-quality-civic-canopy-grid",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a1c0398f-542f-4719-97ed-4a6d5f43e5e4",
+      "date": "2026-09-13T05:03:57.224Z",
+      "kind": "image-static-quality-static-quality-gable",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "036c4868-9be1-4e3e-8814-816828f8873b",
+      "date": "2026-09-13T05:03:57.769Z",
+      "kind": "image-static-quality-static-quality-fan-palms",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0a9e1d98-d4a5-4425-aa81-219ce7b366b1",
+      "date": "2026-09-13T05:03:57.866Z",
+      "kind": "image-static-quality-static-quality-green-wall",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0de5207c-0256-40bb-8e2f-a5ac64265c04",
+      "date": "2026-09-13T05:03:58.105Z",
+      "kind": "image-static-quality-static-quality-square-paving",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d2524256-32e5-492a-80cf-1aa4205b613f",
+      "date": "2026-09-13T05:03:58.484Z",
+      "kind": "image-static-quality-static-quality-lobby",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ac77ebb7-34c4-430a-8e44-94e03e89fbb9",
+      "date": "2026-09-13T05:03:58.820Z",
+      "kind": "image-static-quality-static-quality-plaza-sculpture",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "df252d34-1116-4930-9bf6-971285118abe",
+      "date": "2026-09-13T05:03:59.136Z",
+      "kind": "image-static-quality-static-quality-tower-ribs",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0479cc5c-7c89-4429-ba4d-bc9ec478694a",
+      "date": "2026-09-13T05:04:00.209Z",
+      "kind": "image-static-quality-static-quality-podium-columns",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bb32d054-4f8a-4953-b96c-cf3b1cf67ae7",
+      "date": "2026-09-13T05:04:00.588Z",
+      "kind": "image-static-quality-static-quality-facade-plants",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4973b468-1604-4a4f-9975-ce796beb62b8",
+      "date": "2026-09-13T05:04:00.950Z",
+      "kind": "image-static-quality-static-quality-stone-grid",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8b3ff830-b703-414f-8d0b-9fabf807336c",
+      "date": "2026-09-13T05:04:01.677Z",
+      "kind": "image-static-quality-static-quality-arcade-shutters",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7471d520-e631-4b6c-a700-0e4e8570efd6",
+      "date": "2026-09-13T05:04:01.971Z",
+      "kind": "image-static-quality-static-quality-arcade-awning",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "692f358b-5dcb-4e91-87e4-83c2a9c3a1e5",
+      "date": "2026-09-13T05:04:02.145Z",
+      "kind": "image-static-quality-static-quality-heritage-roof",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "fe4ebf89-23d6-43ac-9a14-7e9a2a660e74",
+      "date": "2026-09-13T05:04:02.483Z",
+      "kind": "image-static-quality-static-quality-market-gable",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ab2685ef-e346-41f0-9e39-70b300f8ecb4",
+      "date": "2026-09-13T05:04:02.675Z",
+      "kind": "image-static-quality-static-quality-market-eaves",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7175e69c-ba6c-41ae-b75b-b832cc898b27",
+      "date": "2026-09-13T05:04:02.818Z",
+      "kind": "image-static-quality-static-quality-market-tables",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2be5283e-ac58-4600-83a7-20b6e21a5056",
+      "date": "2026-09-13T05:04:03.019Z",
+      "kind": "image-static-quality-static-quality-market-stalls",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "845dfecd-c372-4a70-8599-8726a4584199",
+      "date": "2026-09-13T05:04:03.565Z",
+      "kind": "image-static-quality-static-quality-bridge-glass",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e9100763-74ad-4f2f-b722-0c05d017b2fc",
+      "date": "2026-09-13T05:04:03.697Z",
+      "kind": "image-static-quality-static-quality-bridge-columns",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0e31d594-69c7-48e6-b1aa-e458a84f741e",
+      "date": "2026-09-13T05:04:03.779Z",
+      "kind": "image-static-quality-static-quality-bus-shelter",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ffe0dbf9-69e2-4209-b293-46726e3ab509",
+      "date": "2026-09-13T05:04:04.058Z",
+      "kind": "image-static-quality-static-quality-quay-facade",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7a717b25-74c0-4ed3-94cc-0faea545f0d0",
+      "date": "2026-09-13T05:04:04.175Z",
+      "kind": "image-static-quality-static-quality-quay-lantern",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2d870541-30f5-4f47-8765-f39b44899c08",
+      "date": "2026-09-13T05:04:04.302Z",
+      "kind": "image-static-quality-static-quality-shophouse-rear",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6aadc397-0155-476c-8be7-ad70444d2720",
+      "date": "2026-09-13T05:04:04.577Z",
+      "kind": "image-static-quality-static-quality-quay-lane",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "daf7ed0f-741b-4233-a343-29d3ecea8a81",
+      "date": "2026-09-13T05:04:04.716Z",
+      "kind": "image-static-quality-static-quality-skyline-crown",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "972a7330-66e9-4f67-8ae1-c7e6fadc7414",
+      "date": "2026-09-13T05:04:05.325Z",
+      "kind": "image-static-quality-static-quality-station-front",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4f65c6b7-7cb5-4557-a687-1c940bfb7f31",
+      "date": "2026-09-13T05:04:05.853Z",
+      "kind": "image-static-quality-static-quality-station-roof",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9f72007c-96ee-40e5-9246-b1d540e03f1d",
+      "date": "2026-09-13T05:04:06.164Z",
+      "kind": "image-static-quality-static-quality-viaduct-section",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "68c0bd28-0a55-4968-8c41-5b70baccf7ae",
+      "date": "2026-09-13T05:04:06.417Z",
+      "kind": "image-static-quality-static-quality-station-link",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6ecde947-d5b8-487e-ac4a-20cbee4bfd2d",
+      "date": "2026-09-13T05:04:06.750Z",
+      "kind": "image-static-quality-static-quality-cyan-gallery",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f8049743-3fe1-468c-bdad-11dc0ead5bad",
+      "date": "2026-09-13T05:04:06.935Z",
+      "kind": "image-static-quality-static-quality-cyan-end",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8313d363-f0f0-4acb-8589-9ebc983c74b6",
+      "date": "2026-09-13T05:04:07.276Z",
+      "kind": "image-static-quality-static-quality-garden-bench",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "76aef361-2253-4f0c-a086-4f65e4998f86",
+      "date": "2026-09-13T05:04:07.357Z",
+      "kind": "image-static-quality-static-quality-pavilion-detail",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f5f7f7e4-9ad2-4f56-b858-dca13134425f",
+      "date": "2026-09-13T05:04:07.464Z",
+      "kind": "image-static-quality-static-quality-peach-facade",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "38443cb2-855e-4c47-b60f-913a849999a0",
+      "date": "2026-09-13T05:04:07.720Z",
+      "kind": "image-static-quality-static-quality-shelter-structure",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "469b08e8-1698-449e-87cf-2b77e9d171dd",
+      "date": "2026-09-13T05:04:07.779Z",
+      "kind": "image-static-quality-static-quality-utility-facade",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c8d82b07-72af-42a7-8d82-cac75d0ba814",
+      "date": "2026-09-13T05:04:07.879Z",
+      "kind": "image-static-quality-static-quality-mei-lattice",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9f020a60-21ee-49cb-99ed-fd52edd34e85",
+      "date": "2026-09-13T05:04:08.031Z",
+      "kind": "image-static-quality-static-quality-mei-orange",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "637e2462-f0b5-45f5-9651-6642b1877907",
+      "date": "2026-09-13T05:04:08.287Z",
+      "kind": "image-static-quality-static-quality-mei-gateway",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6053c7e0-49e0-47d7-850d-89de605fe2c6",
+      "date": "2026-09-13T05:04:08.450Z",
+      "kind": "image-static-quality-static-quality-mei-kopi",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2c4efa6d-4a11-4756-b828-9a0b09959a8f",
+      "date": "2026-09-13T05:04:08.789Z",
+      "kind": "image-static-quality-static-quality-dawson-base",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9b289faf-2284-4337-a085-9250e91e3bc2",
+      "date": "2026-09-13T05:04:08.982Z",
+      "kind": "image-static-quality-static-quality-dawson-parking",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c72deb34-9297-41c7-b2ca-cd7fc552b1a6",
+      "date": "2026-09-13T05:04:09.084Z",
+      "kind": "image-static-quality-static-quality-dawson-fins",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "865759a4-4844-474e-ba07-c4e65269dff4",
+      "date": "2026-09-13T05:04:11.506Z",
+      "kind": "image-static-quality-static-quality-dawson-landscape",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9b369e22-1875-4582-a5d6-4bb27566e72e",
+      "date": "2026-09-13T05:04:11.652Z",
+      "kind": "image-static-quality-static-quality-market-roof",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b6d0ddf3-fa8d-41e0-99a1-c94352dde4d6",
+      "date": "2026-09-13T05:04:11.924Z",
+      "kind": "image-static-quality-static-quality-modern-podium",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "17014ceb-265a-480d-a99a-0121f8ada6fe",
+      "date": "2026-09-13T05:04:12.069Z",
+      "kind": "image-static-quality-static-quality-library-screen",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4988ed69-7486-4375-91f8-b9d656b778bd",
+      "date": "2026-09-13T05:04:12.185Z",
+      "kind": "image-static-quality-static-quality-service-row",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "72d160e2-0235-48ef-8842-35dc6b066c9c",
+      "date": "2026-09-13T05:04:12.446Z",
+      "kind": "image-static-quality-static-quality-service-roof",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "92254402-fd1d-4cf6-a615-292f4fa5525d",
+      "date": "2026-09-13T05:04:12.646Z",
+      "kind": "image-static-quality-static-quality-street-planting",
+      "location": "queenstown",
       "result": "HTTP 200"
     }
   ]

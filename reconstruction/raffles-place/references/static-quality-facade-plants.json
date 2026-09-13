@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "cecil-south-expansion.json",
+  "pano_id": "blXMZWStANYc-azwZrlM1g",
+  "position": {
+    "lat": 1.2797671722655701,
+    "lng": 103.84836596692045
+  },
+  "sourceDate": "2024-06",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 270,
+    "pitch": 26
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Layered foliage in recessed facade bays",
+  "capturedAt": "2026-09-13T05:04:00.949Z",
+  "file": "reconstruction/raffles-place/references/static-quality-facade-plants.jpg",
+  "fingerprint": "f95f2bcf68c5ce2971dc22f8fdcca4491246965e5edd8a420e9f3453ad630084",
+  "sha256": "04cc4c71383b47368ce65b0a256d745bf4ce9a90f0f679b18ced8aae1b62e12a",
+  "bytes": 80099,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

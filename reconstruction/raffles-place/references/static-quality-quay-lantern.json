@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "quay-west-expansion.json",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "position": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "sourceDate": "2024-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 3
+  },
+  "horizontalFov": 50,
+  "width": 640,
+  "height": 640,
+  "purpose": "Paired black street lanterns, canvas awnings and planter scale",
+  "capturedAt": "2026-09-13T05:04:04.301Z",
+  "file": "reconstruction/raffles-place/references/static-quality-quay-lantern.jpg",
+  "fingerprint": "ede39c622759a39c9c76545afe3a06ebdee714f62276105757d682468b18bc66",
+  "sha256": "5c693357678dee97950ad38636e059f77e97e10007d49b016377190242aa78f3",
+  "bytes": 71481,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

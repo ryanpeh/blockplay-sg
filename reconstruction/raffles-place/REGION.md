@@ -4,6 +4,24 @@ Built 2026-09-13 as a distinct authored low-poly financial-district composition.
 
 ## Implemented
 
+### Focused Static reference/model-quality pass (latest)
+
+Root captured the 25-frame `reconstruction/raffles-static-quality-plan.json` using existing reviewed panorama IDs: **25 new Static images, zero metadata requests, 25/25 accepted after individual visual inspection**. These are focused 640 × 640 JPEG details with narrower FOV and targeted pitch, not repeats of the cardinal browser frames. All JPEGs, manifests, checksums and attribution are retained under `references/static-quality-*`. No additional images are needed to run this scene.
+
+Model-quality changes grounded in these images:
+
+- `gable`, `fan-palms`: corrected silver gable-edge alignment; folded, ribbed fan-shaped palm leaves replace rectangular leaf slabs.
+- `square-paving`, `market-tables`: smaller granite courses and restrained mixed rectangular market paving instead of large flat slabs.
+- `tower-ribs`, `stone-grid`, `skyline-crown`, `lobby`: lower-roughness glazing distinct from stone, alternating reflected panes, more varied crown setbacks, dark podium bases and detailed lobby mullions.
+- `arcade-shutters`, `heritage-roof`, `arcade-awning`: arched colored window trim, balustrade spindles, finer shutter louvers, green cylindrical roof-edge tiles and folded cafe umbrellas.
+- `market-gable`, `market-eaves`: raised roof cap, aligned terracotta tile courses, modeled scalloped cream fascia, corrected fan ironwork radius and diagonal metal support brackets.
+- `bridge-glass`, `bridge-columns`, `bus-shelter`: cylindrical silver supports, bridge soffit panel seams, glazing bands, shelter brackets and marked bollards.
+- `facade-plants`: hanging clusters layered over existing planted facade bays.
+
+All 11 stamps and every mapped road centerline remain car-radius reachable/clear; four Raffles tests cover these, boundary/tunnelling behavior and quality features/material contrast. Repeated geometry stays instanced. Offline aerial review measured approximately 140 draw calls and 89,562 triangles (camera dependent). Build passed. Close-up QA caught and corrected reversed gable edging and roof tiles initially hidden inside the roof surface. Local QA outputs: `/tmp/raffles-static-quality-market.png`, `...-arcade.png`, `...-plaza.png`, `...-bridge.png`; regenerate rather than treating these machine-local review files as source assets.
+
+Remaining approximation: tower proportions and market footprint are authored, not surveyed; the market hall is not an exact octagonal reproduction. Pedestrians remain decorative, and the bridge is scenery rather than an elevated playable path.
+
 ### District expansion (latest)
 
 The newer district is **580 × 399 game units (1.87× the first Raffles area)**. Outer west/east streets and a southern connector form a continuous expanded road loop. Eleven collectible rings now cover the square, quays, Cross Street arcade, market garden, Robinson colonnade and Collyer boulevard. Five additional towers, a west heritage arcade and a low market hall/court enrich these extensions. These remain compressed authored neighborhoods, not surveyed building placements. `RAFFLES_MAP_ROADS` drives the minimap and collision tests; every displayed centerline is checked at car radius, including connectors. This check also caught and corrected an old shophouse blocking the northern -75 street.

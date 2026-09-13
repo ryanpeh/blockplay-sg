@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "marina-one-street-03.json",
+  "pano_id": "dlFatS0d3HyUpwje4d54Vw",
+  "position": {
+    "lat": 1.2776617136881363,
+    "lng": 103.852375851504
+  },
+  "sourceDate": "2022-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 25
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Bronze vertical fins above temporary hoarding, material detail only",
+  "capturedAt": "2026-09-13T05:02:44.607Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-civic-bronze-fins.jpg",
+  "fingerprint": "a17011cc10b8f3a49f83e377ae72ab26d36dd02a9a19a2e1028f5bbe8f5d55a5",
+  "sha256": "724797b89fbe322887cc735c184abbf5f1f4d734a5e97296c7621d4092292430",
+  "bytes": 85623,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: bronze vertical fins and dark glass canopy grid clearly visible above hoarding; use material detail only"
+}

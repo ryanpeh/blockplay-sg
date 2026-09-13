@@ -12,6 +12,8 @@ See [PLAN.md](PLAN.md) for completed work, experiments, and the roadmap; [HANDOF
 
 Select any of these locations to open its own walk/drive 3D mode. These are authored, compressed interpretations, not surveyed replicas. Tampines and Toa Payoh still use the older generic scaffold. The region games make no Google API calls while playing.
 
+The latest model-quality pass uses 75 newly cached Static reference images: finer Marina landmark framing and patterned shells, more articulated Raffles roofs/shutters/glazing, and deeper Queenstown gallery/station details with more varied trees. Material roughness is differentiated so glass, metal, paint and stone do not all read alike. These changes preserve each region's map extent and collectible routes.
+
 Run `pnpm test:browser` with Vite and local Chrome debugging active to check region rendering, walk/drive, independent car-camera dragging, reset, switching and mobile width. The test uses its own tab, makes no live Maps requests, and saves diagnostic screenshots under ignored `.cache/browser-checks/`.
 
 In Drive, drag to orbit the car without steering it; A/D steers. After you release the drag, the camera gently returns behind the car while moving. Parked views stay where you leave them. Reset or switching travel mode restores the default chase camera. Walking drag controls are unchanged.
@@ -65,6 +67,10 @@ Region-specific batches use the same workflow: `pnpm marina:browser-capture --pl
 Do not run browser smoke checks or switch Chrome tabs during captures. The capture tab must render in the foreground: metadata can update before Street View pixels repaint. The workflow checks viewpoint/visibility, waits for repaint, rejects development overlays and exact duplicate frames, but visual review is still required. Rejected historical frames stay in the cache with review notes; capture success is not acceptance.
 
 `pnpm references:inventory` checks cached image hashes and reports image counts, bytes and accepted/limited/rejected/pending review totals for all three regions without network access. Some older reviews exist only in documents and therefore appear pending until their manifests are annotated.
+
+### Targeted Static references
+
+The quality-pass plans use existing Google panorama metadata to fetch focused, original 640 × 640 JPEGs with explicit heading, pitch and field of view. `pnpm references:static --plan reconstruction/marina-static-quality-plan.json --dry-run` previews cache reuse; substitute `raffles-static-quality-plan.json` or `queenstown-static-quality-plan.json` for the other regions. Without `--dry-run`, only missing images are requested using the Static-enabled `VITE_GOOGLE_MAPS_API_KEY`. Complete cached reruns require no key and make no requests. Camera settings, source dates, attribution, checksums and visual review notes remain alongside each image. Budget authority and usage are maintained in PLAN.md and the ledger, not in this README.
 
 Browser screenshots/loads are tracked separately from Static downloads. Browser Street View can still have separate billing. The initial batch saved eight 1280×900 images in 21.8s; cache-only rerun took 33ms, with zero Static requests in either run.
 

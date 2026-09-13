@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "tanglin-market-road.json",
+  "pano_id": "muBswkkDOQ3Z4Ysb9u2twQ",
+  "position": {
+    "lat": 1.3010032948928667,
+    "lng": 103.79763349435201
+  },
+  "sourceDate": "2022-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": 8
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Two-storey service row, red tiled roof and air conditioner brackets",
+  "capturedAt": "2026-09-13T05:04:12.442Z",
+  "file": "reconstruction/queenstown/references/static-quality-service-row.jpg",
+  "fingerprint": "044d4940a342e275a589ce43fde942847bbe3320d992be2f0dc8cd1047346ca7",
+  "sha256": "880bda9ae6239a068c5ccc02e1518cf04632eb535af3389b8f26d7aea67b1cd4",
+  "bytes": 114396,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: red tiled low-rise roof, projecting service air-conditioners and small windows"
+}

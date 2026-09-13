@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "collyer-expansion.json",
+  "pano_id": "2Gf-qpSG9KEtCp8xXaLKTg",
+  "position": {
+    "lat": 1.2836004501027491,
+    "lng": 103.8528586061318
+  },
+  "sourceDate": "2024-06",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": 0
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Bus stop roof brackets and bollard stripes",
+  "capturedAt": "2026-09-13T05:04:04.057Z",
+  "file": "reconstruction/raffles-place/references/static-quality-bus-shelter.jpg",
+  "fingerprint": "68d4eacd18d3955fc518606de243d966566a13fec716dc22a6fe252956af2785",
+  "sha256": "dbbc4816a78ff59a26ad4f73e471662c4d3cbb8bcbc7dd3dd6cf4287324bb07f",
+  "bytes": 81501,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

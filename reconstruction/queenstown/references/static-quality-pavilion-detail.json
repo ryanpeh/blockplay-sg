@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "commonwealth-close.json",
+  "pano_id": "kua04M-UYqOfC7GWIuoOmg",
+  "position": {
+    "lat": 1.305275700985338,
+    "lng": 103.80098624453116
+  },
+  "sourceDate": "2021-11",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 175,
+    "pitch": 5
+  },
+  "horizontalFov": 70,
+  "width": 640,
+  "height": 640,
+  "purpose": "Red tiled shelter roof with cyan posts and dark timber rails",
+  "capturedAt": "2026-09-13T05:04:07.463Z",
+  "file": "reconstruction/queenstown/references/static-quality-pavilion-detail.jpg",
+  "fingerprint": "810a802d0472caafbafe782b476796022d4c99e44d60d410430d80289a133a33",
+  "sha256": "6be5a1b3b06f3249c5c47776771b7d764356c1c1b4cdcefe443b27088ebf99e9",
+  "bytes": 120308,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: red tiled eave, cyan post, dark timber rail and sheltered-path context"
+}

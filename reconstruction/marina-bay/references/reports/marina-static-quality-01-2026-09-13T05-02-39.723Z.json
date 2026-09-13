@@ -1,0 +1,138 @@
+{
+  "plan": "marina-static-quality-01",
+  "startedAt": "2026-09-13T05:02:39.723Z",
+  "cached": 0,
+  "captured": 25,
+  "failed": 0,
+  "staticImageAttempts": 25,
+  "metadataRequests": 0,
+  "bytes": 1862041,
+  "durationMs": 5110,
+  "views": [
+    {
+      "id": "marina-static-quality-grove-crown",
+      "status": "saved",
+      "bytes": 104144
+    },
+    {
+      "id": "marina-static-quality-grove-core",
+      "status": "saved",
+      "bytes": 76959
+    },
+    {
+      "id": "marina-static-quality-grove-branches",
+      "status": "saved",
+      "bytes": 65777
+    },
+    {
+      "id": "marina-static-quality-grove-skywalk",
+      "status": "saved",
+      "bytes": 84338
+    },
+    {
+      "id": "marina-static-quality-conservatory-ribs",
+      "status": "saved",
+      "bytes": 55505
+    },
+    {
+      "id": "marina-static-quality-conservatory-glazing",
+      "status": "saved",
+      "bytes": 68494
+    },
+    {
+      "id": "marina-static-quality-conservatory-path",
+      "status": "saved",
+      "bytes": 74929
+    },
+    {
+      "id": "marina-static-quality-conservatory-footing",
+      "status": "saved",
+      "bytes": 70210
+    },
+    {
+      "id": "marina-static-quality-wheel-silhouette",
+      "status": "saved",
+      "bytes": 77258
+    },
+    {
+      "id": "marina-static-quality-wheel-supports",
+      "status": "saved",
+      "bytes": 62879
+    },
+    {
+      "id": "marina-static-quality-sands-rear-grid",
+      "status": "saved",
+      "bytes": 53983
+    },
+    {
+      "id": "marina-static-quality-sands-skypark",
+      "status": "saved",
+      "bytes": 75847
+    },
+    {
+      "id": "marina-static-quality-sands-entrance",
+      "status": "saved",
+      "bytes": 60654
+    },
+    {
+      "id": "marina-static-quality-sands-bayfront-side",
+      "status": "saved",
+      "bytes": 95277
+    },
+    {
+      "id": "marina-static-quality-merlion-head",
+      "status": "saved",
+      "bytes": 51430
+    },
+    {
+      "id": "marina-static-quality-merlion-plinth",
+      "status": "saved",
+      "bytes": 61845
+    },
+    {
+      "id": "marina-static-quality-museum-petals",
+      "status": "saved",
+      "bytes": 42325
+    },
+    {
+      "id": "marina-static-quality-museum-supports",
+      "status": "saved",
+      "bytes": 64945
+    },
+    {
+      "id": "marina-static-quality-esplanade-shell",
+      "status": "saved",
+      "bytes": 82032
+    },
+    {
+      "id": "marina-static-quality-esplanade-distant",
+      "status": "saved",
+      "bytes": 70554
+    },
+    {
+      "id": "marina-static-quality-esplanade-paving",
+      "status": "saved",
+      "bytes": 102751
+    },
+    {
+      "id": "marina-static-quality-downtown-podium",
+      "status": "saved",
+      "bytes": 89976
+    },
+    {
+      "id": "marina-static-quality-downtown-shelter",
+      "status": "saved",
+      "bytes": 89320
+    },
+    {
+      "id": "marina-static-quality-civic-bronze-fins",
+      "status": "saved",
+      "bytes": 85623
+    },
+    {
+      "id": "marina-static-quality-civic-canopy-grid",
+      "status": "saved",
+      "bytes": 94986
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "conservatory-road-03.json",
+  "pano_id": "v8Wz5OAE66zLVyDElJY5jA",
+  "position": {
+    "lat": 1.2850350592561106,
+    "lng": 103.86479823848322
+  },
+  "sourceDate": "2014-05",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 85,
+    "pitch": 28
+  },
+  "horizontalFov": 75,
+  "width": 640,
+  "height": 640,
+  "purpose": "Heavy white inclined ribs and attachment spacing",
+  "capturedAt": "2026-09-13T05:02:41.009Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-conservatory-ribs.jpg",
+  "fingerprint": "d6c9d634fe0db671f5d7ecaf061eda4ebca69ece2c82bdffadca0b7a68dc37c9",
+  "sha256": "c158cbe6005fd4ce28b83aff4ced7ab17f9720e7bdbfb4e5fbd1fde8c5e2f59a",
+  "bytes": 55505,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: white inclined structural ribs, glazing supports and repeated spacing; no measured dimensions inferred"
+}

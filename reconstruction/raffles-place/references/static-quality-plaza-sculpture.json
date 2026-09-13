@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "battery.json",
+  "pano_id": "iXuBrsYTpdFBENgzJvgXRw",
+  "position": {
+    "lat": 1.2847765093148913,
+    "lng": 103.85175288205832
+  },
+  "sourceDate": "2018-07",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 5,
+    "pitch": 12
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Sculpture and planted perimeter proportions",
+  "capturedAt": "2026-09-13T05:03:59.135Z",
+  "file": "reconstruction/raffles-place/references/static-quality-plaza-sculpture.jpg",
+  "fingerprint": "42a8e707911ace9e628afefeeb78d805edc65b133c9ef88f7e2c0a28da1ffd43",
+  "sha256": "3223e0f73da9316c0fad0c92345d17d6e01d99b557aed123f3c0c3d851001f6a",
+  "bytes": 85940,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

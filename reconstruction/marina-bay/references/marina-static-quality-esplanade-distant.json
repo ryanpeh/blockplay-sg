@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "float-waterfront-03.json",
+  "pano_id": "UMbGGEkDkczQEniHAGu11w",
+  "position": {
+    "lat": 1.2896887364818257,
+    "lng": 103.858838819201
+  },
+  "sourceDate": "2024-06",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 280,
+    "pitch": 15
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Esplanade pod massing and lower podium from another viewpoint",
+  "capturedAt": "2026-09-13T05:02:44.125Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-esplanade-distant.jpg",
+  "fingerprint": "b3550750b13770b4de2cfdaf49062668f7bc4f5072be13e42408162af0f7a70a",
+  "sha256": "a3aef7250139afd4be3e17041f70808f3f16c906cf65604b553ba4fa5dfbc1bd",
+  "bytes": 70554,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: distant paired pod silhouette and repeating roof-shade texture; authored compression remains explicit"
+}

@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "mei-ling-road.json",
+  "pano_id": "E1Xe9ch6n0YfXDKmDPjPpA",
+  "position": {
+    "lat": 1.2905699969235567,
+    "lng": 103.80337011347143
+  },
+  "sourceDate": "2024-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 180,
+    "pitch": 25
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "White decorative lattice around gallery openings",
+  "capturedAt": "2026-09-13T05:04:08.031Z",
+  "file": "reconstruction/queenstown/references/static-quality-mei-lattice.jpg",
+  "fingerprint": "f2ce87a83fbb0a160e56ba5023b586d62421ba143f57c39cc4d8a13952728c8e",
+  "sha256": "e03c2e78bcc04ad769b4b7b17f792c1f6ffac44be8a712ff3889d57e58cb003d",
+  "bytes": 71414,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: white diamond lattice framing square openings and thin gallery rails"
+}

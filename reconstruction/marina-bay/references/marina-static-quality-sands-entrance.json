@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "museum-promenade.json",
+  "pano_id": "k01iDZdJc_E073cUVGRGbg",
+  "position": {
+    "lat": 1.2832654952564388,
+    "lng": 103.8596409722749
+  },
+  "sourceDate": "2022-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 0,
+    "pitch": 35
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Sands entrance canopy grid and facade fins",
+  "capturedAt": "2026-09-13T05:02:42.887Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-sands-entrance.jpg",
+  "fingerprint": "bb214afe76bab1ac3a9771818f0ccb62d0a5f9a343e3c97a2685ccca2c7090c8",
+  "sha256": "d98ee5308c5d6a7d7cbfc5b271f7a8e35d46cd2b997fc0962bd8905bb78bf982",
+  "bytes": 60654,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: blue vertical fins, pale framing, metal-panel canopy underside and glass entrance; architectural material detail"
+}

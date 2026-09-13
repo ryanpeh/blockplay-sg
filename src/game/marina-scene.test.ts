@@ -60,3 +60,16 @@ it('uses published SkyPark proportions and batches static details', () => {
     expect(world.scene.userData.referenceFeatures).toHaveLength(21);
   } finally { world.dispose(); }
 });
+
+it('models the reviewed facade and landmark details without expanding the play footprint', () => {
+  const world = buildMarinaScene();
+  try {
+    expect(MARINA_BOUNDS).toEqual({ minX: -338, maxX: 388, minZ: -328, maxZ: 288 });
+    expect(MARINA_STAMPS).toHaveLength(14);
+    expect(world.scene.userData.qualityDetails).toEqual({ esplanadeSunshades: 472, wheelCapsules: 16, conservatoryGlazingSegments: 224, sandsMullions: 3240 });
+    const instances = world.scene.children.filter((child): child is InstancedMesh => child instanceof InstancedMesh);
+    expect(instances.reduce((sum, mesh) => sum + mesh.count, 0)).toBeGreaterThan(14000);
+    expect(instances.length).toBeLessThan(60);
+    expect(world.scene.children.length).toBeLessThan(240);
+  } finally { world.dispose(); }
+});

@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "gardens-grove-03.json",
+  "pano_id": "_N7MeyeTNKS6QuaodKBazw",
+  "position": {
+    "lat": 1.2816274048719476,
+    "lng": 103.8636480042419
+  },
+  "sourceDate": "2014-05",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 300,
+    "pitch": 45
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "SkyPark deck edge and roof planting silhouette",
+  "capturedAt": "2026-09-13T05:02:42.674Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-sands-skypark.jpg",
+  "fingerprint": "a3d628d65ac7438c3601391b662b20e3991eb04d27e5ec77caba6a6e6fdb0b09",
+  "sha256": "ed61b3c462d135adbd874d17adc0140f994fcdcc6da2cb74170052d551cc982b",
+  "bytes": 75847,
+  "attribution": "Retained in original image",
+  "visualReview": "limited: canopy branches and cables dominate with SkyPark cropped along lower edge; useful branching detail, not new SkyPark dimensions"
+}

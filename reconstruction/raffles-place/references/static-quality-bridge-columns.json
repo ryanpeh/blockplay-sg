@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "collyer-expansion.json",
+  "pano_id": "2Gf-qpSG9KEtCp8xXaLKTg",
+  "position": {
+    "lat": 1.2836004501027491,
+    "lng": 103.8528586061318
+  },
+  "sourceDate": "2024-06",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 12
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Bridge cylindrical supports and mullion spacing",
+  "capturedAt": "2026-09-13T05:04:03.779Z",
+  "file": "reconstruction/raffles-place/references/static-quality-bridge-columns.jpg",
+  "fingerprint": "bc0aa96722f33920d82a5b8fd887b45a0c3a5047b33e1f3a1099bac14332f6c2",
+  "sha256": "5f395e737416d6c67b0bea2e772c8e97005a8e088e56b398bc43b483109e3ac6",
+  "bytes": 66192,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

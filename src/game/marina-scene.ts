@@ -45,6 +45,7 @@ export function buildMarinaScene() {
   Object.assign(sun.shadow.camera, { left: -405, right: 405, top: 370, bottom: -370, near: 1, far: 850 });
   sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.3; scene.add(sun);
   const geometries: THREE.BufferGeometry[] = [], materials: THREE.Material[] = [];
+  const qualityDetails = { esplanadeSunshades: 0, wheelCapsules: 0, conservatoryGlazingSegments: 0, sandsMullions: 0 };
   const obstacles: Obstacle[] = [{ minX: -80, maxX: 80, minZ: -90, maxZ: 50 }];
   const geo = <T extends THREE.BufferGeometry>(g: T) => { geometries.push(g); return g; };
   const mat = (color: string, extra: THREE.MeshStandardMaterialParameters = {}) => {
@@ -212,8 +213,15 @@ export function buildMarinaScene() {
       box(142.35 - splay * 0.2, y - 0.95, z, 0.16, 0.09, 30, steel);
       box(151, y, z - 15.2, 18 + splay, 1.94, 0.6, cream);
       box(151, y, z + 15.2, 18 + splay, 1.94, 0.6, cream);
+      // Follow both splayed faces rather than floating a straight grille in
+      // front of the curved lower legs. Rear frames read pale against glass.
+      box(159.65 + splay, y - 0.93, z, 0.13, 0.12, 30, pale);
+      for (let dz = -13.5; dz <= 13.5; dz += 3) {
+        box(142.35 - splay * 0.2, y, z + dz, 0.1, 1.96, 0.1, steel);
+        box(159.65 + splay, y, z + dz, 0.13, 1.96, 0.13, pale);
+        qualityDetails.sandsMullions += 2;
+      }
     }
-    for (let dz = -14; dz <= 14; dz += 2.8) box(140.55, h / 2, z + dz, 0.1, h, 0.12, steel);
     box(151, 2, z, 27, 4, 33, pale);
   }
   const boat = new THREE.Shape();
@@ -253,6 +261,11 @@ export function buildMarinaScene() {
     beam(new THREE.Vector3(135 + Math.cos(angle) * 8, 0.2, -110 - Math.sin(angle) * 8), new THREE.Vector3(135 + Math.cos(angle) * 4, 12, -110 - Math.sin(angle) * 4), 0.6, pale);
   }
   const pondRim = new THREE.Mesh(geo(new THREE.TorusGeometry(22.5, 0.5, 4, 64)), cream); pondRim.rotation.x = Math.PI / 2; pondRim.position.set(135, 0.3, -110); scene.add(pondRim);
+  // Static close-ups distinguish dark outer struts from the white inner legs.
+  for (let i = 0; i < 8; i++) {
+    const angle = i / 8 * Math.PI * 2;
+    beam(new THREE.Vector3(135 + Math.cos(angle) * 17, 0.2, -110 + Math.sin(angle) * 17), new THREE.Vector3(135 + Math.cos(angle) * 14, 13.8, -110 + Math.sin(angle) * 14), 0.65, dark);
+  }
   const lilyGeo = geo(new THREE.CircleGeometry(0.45, 7));
   for (let i = 0; i < 36; i++) {
     const a = i * 2.4, r = 13 + i % 8;
@@ -342,6 +355,12 @@ export function buildMarinaScene() {
   const tileBlue = mat('#386a9a');
   const statue = new THREE.Group(); statue.position.set(-87, 0, -40); scene.add(statue); collider(-87, -40, 4, 4);
   const pedestal = new THREE.Mesh(geo(new THREE.CylinderGeometry(2.2, 2.8, 0.9, 12)), tileBlue); pedestal.position.y = 0.45; statue.add(pedestal);
+  for (let i = 0; i < 12; i++) {
+    const angle = i / 12 * Math.PI * 2;
+    const waveTile = box(Math.cos(angle) * 2, 0.7, Math.sin(angle) * 2, 0.65, 1.05, 1.2, i % 2 ? tileBlue : steel, statue);
+    waveTile.rotation.y = Math.PI / 2 - angle;
+    for (const y of [0.35, 0.65, 0.95]) { const grout = box(Math.cos(angle) * 2.02, y, Math.sin(angle) * 2.02, 0.67, 0.025, 1.22, cream, statue); grout.rotation.y = Math.PI / 2 - angle; }
+  }
   const fish = new THREE.Mesh(geo(new THREE.CylinderGeometry(0.85, 1.5, 4.5, 9)), pale); fish.position.y = 3; statue.add(fish);
   const lion = new THREE.Mesh(geo(new THREE.IcosahedronGeometry(1.25, 1)), cream); lion.position.set(0, 6.1, 0); statue.add(lion);
   box(0.95, 5.85, 0, 1.1, 0.6, 0.95, pale, statue);
@@ -358,12 +377,26 @@ export function buildMarinaScene() {
   // reconstruction of the Esplanade shells.
   box(-25, 0.01, -190, 137, 0.12, 32, sand);
   const pavilionGeo = geo(new THREE.SphereGeometry(1, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2));
+  const sunshadeGeo = geo(new THREE.ConeGeometry(1, 0.5, 3));
+  const sunshade = mat('#b8b9a6', { roughness: 0.65, metalness: 0.15 });
   for (const x of [-60, 10]) {
     const dome = new THREE.Mesh(pavilionGeo, mat('#899996', { roughness: 0.5, metalness: 0.18 }));
     dome.position.set(x, 1, -183); dome.scale.set(21, 12, 13); scene.add(dome); collider(x, -183, 42, 26);
     for (let i = 0; i < 18; i++) {
       const angle = i / 18 * Math.PI * 2;
       beam(new THREE.Vector3(x + Math.cos(angle) * 21, 1, -183 + Math.sin(angle) * 13), new THREE.Vector3(x + Math.cos(angle) * 10, 11.5, -183 + Math.sin(angle) * 6), 0.45, cream);
+    }
+    // Dense triangular sunshades, rather than a smooth pumpkin-like dome.
+    for (let row = 0; row < 8; row++) {
+      const polar = (row + 0.6) / 8.6 * Math.PI / 2, count = 12 + row * 5;
+      for (let i = 0; i < count; i++) {
+        const azimuth = (i + (row % 2) * 0.5) / count * Math.PI * 2;
+        const dx = Math.sin(polar) * Math.cos(azimuth), dy = Math.cos(polar), dz = Math.sin(polar) * Math.sin(azimuth);
+        const facet = new THREE.Mesh(sunshadeGeo, sunshade);
+        facet.position.set(x + dx * 21.1, 1 + dy * 12.1, -183 + dz * 13.1);
+        facet.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(dx / 21, dy / 12, dz / 13).normalize());
+        facet.scale.set(1.35, 1, 1.15); scene.add(facet); qualityDetails.esplanadeSunshades++;
+      }
     }
   }
   for (const x of [-88, -27, 43]) { palm(x, -202, 9); box(x, 0.5, -202, 6, 1, 3, hedge); collider(x, -202, 6, 3); }
@@ -392,10 +425,14 @@ export function buildMarinaScene() {
     rim.rotation.x = Math.PI / 2; rim.position.set(x, 25, z); scene.add(rim);
     for (let i = 0; i < 12; i++) {
       const angle = i * Math.PI / 6;
-      beam(new THREE.Vector3(x + Math.cos(angle) * 1.5, 1, z + Math.sin(angle) * 1.5), new THREE.Vector3(x + Math.cos(angle) * radius, 25, z + Math.sin(angle) * radius), 0.3, canopyFrame);
+      const trunkPoint = new THREE.Vector3(x + Math.cos(angle) * 2.4, 17, z + Math.sin(angle) * 2.4);
+      const shoulder = new THREE.Vector3(x + Math.cos(angle) * radius * 0.58, 22, z + Math.sin(angle) * radius * 0.58);
+      beam(new THREE.Vector3(x + Math.cos(angle) * 2, 1, z + Math.sin(angle) * 2), trunkPoint, 0.3, canopyFrame);
+      beam(trunkPoint, shoulder, 0.3, canopyFrame);
+      beam(shoulder, new THREE.Vector3(x + Math.cos(angle) * radius, 25, z + Math.sin(angle) * radius), 0.23, canopyFrame);
       for (const fork of [-0.16, 0.16]) beam(new THREE.Vector3(x + Math.cos(angle) * radius * 0.7, 22, z + Math.sin(angle) * radius * 0.7), new THREE.Vector3(x + Math.cos(angle + fork) * (radius + 2), 26, z + Math.sin(angle + fork) * (radius + 2)), 0.15, canopyFrame);
       for (const y of [3, 6, 9, 12, 15]) {
-        const planting = new THREE.Mesh(shrubGeo, hedge); planting.position.set(x + Math.cos(angle) * 2.2, y, z + Math.sin(angle) * 2.2); planting.scale.set(0.65, 1.5, 0.65); scene.add(planting);
+        const planting = new THREE.Mesh(shrubGeo, i % 3 ? hedge : leaf); planting.position.set(x + Math.cos(angle) * 2.2, y + (i % 3) * 0.35, z + Math.sin(angle) * 2.2); planting.scale.set(0.75, 1.8, 0.75); scene.add(planting);
       }
     }
   }
@@ -418,6 +455,18 @@ export function buildMarinaScene() {
       }
       scene.add(new THREE.Mesh(geo(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(curve), 20, 0.4, 4, false)), pale));
     }
+    // Fine dark longitudinal mullions subdivide the glass between white ribs.
+    // Box beams join the shared instance batch instead of adding draw calls.
+    for (let row = 1; row < 8; row++) {
+      const angle = row / 8 * Math.PI;
+      let previous: THREE.Vector3 | undefined;
+      for (let i = 0; i <= 16; i++) {
+        const latitude = -Math.PI / 2 + i / 16 * Math.PI, radius = Math.cos(latitude);
+        const point = new THREE.Vector3(x + Math.cos(angle) * width * radius * 1.003, 0.55 + Math.sin(angle) * height * radius, z + Math.sin(latitude) * depth * 1.003);
+        if (previous) { beam(previous, point, 0.075, dark); qualityDetails.conservatoryGlazingSegments++; }
+        previous = point;
+      }
+    }
     box(x, 1.8, z + depth + 0.5, 12, 3.6, 1, dark);
     for (const dx of [-4, 0, 4]) box(x + dx, 1.8, z + depth + 1.05, 3.5, 3.2, 0.1, glass);
   }
@@ -425,6 +474,7 @@ export function buildMarinaScene() {
   // Promenade-road references show planted flyover supports and coach bays.
   // This is scenery above the ground route, not a second driveable level.
   box(257, 16, -227, 150, 1.7, 14, cream);
+  for (let x = 185; x <= 329; x += 8) box(x, 14.6, -227, 0.75, 1.2, 13.6, cream);
   for (const z of [-233.7, -220.3]) box(257, 17.3, z, 150, 1, 0.4, pale);
   for (const x of [193, 253, 313]) {
     for (const z of [-231, -223]) {
@@ -437,14 +487,20 @@ export function buildMarinaScene() {
   // Observation wheel with paired rims, radial spokes, capsule glazing and
   // splayed supports; the ground-level forecourt remains flat and accessible.
   box(250, 0.015, -267, 70, 0.12, 35, sand);
+  const capsuleGeo = geo(new THREE.CapsuleGeometry(1.05, 4.5, 3, 8));
+  const capsuleGlass = mat('#587c7c', { roughness: 0.32, metalness: 0.15 });
+  const axle = new THREE.Mesh(geo(new THREE.CylinderGeometry(1.1, 1.1, 7.2, 12)), steel); axle.rotation.x = Math.PI / 2; axle.position.set(258, 30, -267); scene.add(axle);
   for (const z of [-270, -264]) {
     const rim = new THREE.Mesh(geo(new THREE.TorusGeometry(25, 0.4, 5, 40)), pale); rim.position.set(258, 30, z); scene.add(rim);
     for (let i = 0; i < 16; i++) {
       const angle = i / 16 * Math.PI * 2;
       beam(new THREE.Vector3(258, 30, z), new THREE.Vector3(258 + Math.cos(angle) * 25, 30 + Math.sin(angle) * 25, z), 0.12, steel);
       if (z === -264) {
-        box(258 + Math.cos(angle) * 25, 30 + Math.sin(angle) * 25, -267, 3.2, 2.1, 6.8, glass);
-        box(258 + Math.cos(angle) * 25, 31.2 + Math.sin(angle) * 25, -267, 3.4, 0.2, 7, pale);
+        const x = 258 + Math.cos(angle) * 25, y = 30 + Math.sin(angle) * 25;
+        const capsule = new THREE.Mesh(capsuleGeo, capsuleGlass); capsule.rotation.x = Math.PI / 2; capsule.scale.x = 1.5; capsule.position.set(x, y, -267); scene.add(capsule); qualityDetails.wheelCapsules++;
+        box(x, y - 0.95, -267, 2.5, 0.18, 5.5, pale);
+        box(x, y + 1.05, -267, 2.3, 0.13, 5.7, pale);
+        for (const dx of [-1.53, 1.53]) for (const dz of [-2, -1, 0, 1, 2]) box(x + dx, y, -267 + dz, 0.07, 1.55, 0.07, steel);
       }
     }
     for (const x of [245, 271]) { beam(new THREE.Vector3(x, 0, z + (z === -270 ? -6 : 6)), new THREE.Vector3(258, 30, z), 1, pale); collider(x, z + (z === -270 ? -6 : 6), 2, 2); }
@@ -461,6 +517,7 @@ export function buildMarinaScene() {
       box(x + dx, 7.3, 213.1, 4.8, 2.7, 0.15, glass);
     }
     box(x, 3.5, 213.3, 35, 0.7, 0.1, dark);
+    for (const y of [3.05, 3.3, 3.55]) box(x, y, 215.2, 42, 0.08, 0.12, pale);
     for (const dx of [-18, 18]) { box(x + dx, 2, 217, 0.3, 4, 0.3, steel); collider(x + dx, 217, 0.4, 0.4); }
   }
   // Dense but batched west-side offices and open civic arcades.
@@ -529,6 +586,7 @@ export function buildMarinaScene() {
     box(-117, 0.35, z, 1.5, 0.7, 4.5, cream); box(-117, 1, z, 1.2, 0.9, 4.2, hedge); collider(-117, z, 1.5, 4.5);
   }
   // Record which reviewed images informed authored features (not photogrammetry).
+  scene.userData.qualityDetails = qualityDetails;
   scene.userData.referenceFeatures = ['museum-shell', 'bay-skyline', 'fullerton-materials', 'fullerton-glazing', 'sands-canopy', 'sands-streetscape', 'south-waterfront', 'south-palms', 'merlion-waterfront-east', 'bayfront-gardens-east', 'south-promenade-north', 'gardens-grove-03-0', 'conservatory-road-03-90', 'barrage-approach-03-180', 'east-garden-03-180', 'flyer-road-03-270', 'float-waterfront-03-90', 'esplanade-road-03-180', 'promenade-road-03-180', 'downtown-green-03-180', 'marina-one-street-03-90'];
 
   const waves: THREE.Mesh[] = [];
@@ -552,6 +610,11 @@ export function buildMarinaScene() {
   for (const x of [-1.15, 1.15]) for (const z of [-1.35, 1.35]) { const wheel = new THREE.Mesh(wheelGeo, dark); wheel.rotation.z = Math.PI / 2; wheel.position.set(x, 0.5, z); car.add(wheel); }
   // Repeated façade/paving/railing and palm details share batched draw calls.
   // Leave unique landmark geometry, moving waves and car/boat children alone.
+  // The Merlion is static: preserve its world transforms while flattening it
+  // so every scale/tile/grout strip joins the existing instance batches.
+  statue.updateMatrixWorld(true);
+  for (const child of [...statue.children]) scene.attach(child);
+  scene.remove(statue);
   const batches = new Map<string, THREE.Mesh[]>();
   for (const child of [...scene.children]) {
     if (!(child instanceof THREE.Mesh) || child instanceof THREE.InstancedMesh || Array.isArray(child.material) || waves.includes(child)) continue;

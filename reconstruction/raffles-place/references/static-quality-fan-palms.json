@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "square.json",
+  "pano_id": "x-yEYc02g45kEqGGAixkkA",
+  "position": {
+    "lat": 1.2837148661510418,
+    "lng": 103.85109276049249
+  },
+  "sourceDate": "2024-06",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 0,
+    "pitch": -15
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Fan palm foliage shape and planting base",
+  "capturedAt": "2026-09-13T05:03:57.865Z",
+  "file": "reconstruction/raffles-place/references/static-quality-fan-palms.jpg",
+  "fingerprint": "0c4ab1640e5936746e684039dae199a353f2fcc8166b3204f6e13dcbcab7e528",
+  "sha256": "5861835247368cb4a03328aea835bf12cd0edeb1746f37998c9cf8db1c7602a8",
+  "bytes": 98720,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "gardens-grove-03.json",
+  "pano_id": "_N7MeyeTNKS6QuaodKBazw",
+  "position": {
+    "lat": 1.2816274048719476,
+    "lng": 103.8636480042419
+  },
+  "sourceDate": "2014-05",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 220,
+    "pitch": -12
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Golden railing posts, grey decking and planting proportions",
+  "capturedAt": "2026-09-13T05:02:40.731Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-grove-skywalk.jpg",
+  "fingerprint": "f7eefe4c72cd64a95cd7c8c1ce02051e26c499397669bc4388c3355e2dcbc6cb",
+  "sha256": "77d41f6a5f8af0d9e3c0d20a368a411c3aed3d5c32ab1233ba98ad274928f610",
+  "bytes": 84338,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: gold railing, wire infill and garden path context; no metric deck width inferred"
+}

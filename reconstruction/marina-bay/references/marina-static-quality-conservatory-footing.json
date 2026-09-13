@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "conservatory-road-03.json",
+  "pano_id": "v8Wz5OAE66zLVyDElJY5jA",
+  "position": {
+    "lat": 1.2850350592561106,
+    "lng": 103.86479823848322
+  },
+  "sourceDate": "2014-05",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 30,
+    "pitch": -10
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Rib footing, planting bed and path-edge material",
+  "capturedAt": "2026-09-13T05:02:41.795Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-conservatory-footing.jpg",
+  "fingerprint": "a745198241a1708ab5c1c4b668806b753d84380252ad39ca259aa3a4cf8173a8",
+  "sha256": "9b368a71d2282252d2ae0db515930329b32386ef18c0ac7bf265e56b5b888e47",
+  "bytes": 70210,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: structural base fins, drainage grating, pale paving and planting"
+}

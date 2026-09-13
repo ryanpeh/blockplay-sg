@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "margaret.json",
+  "pano_id": "rawGq7vugQAsCwX_SL6jQg",
+  "position": {
+    "lat": 1.2976944022246522,
+    "lng": 103.80396040543337
+  },
+  "sourceDate": "2025-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 20
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Blue barrel roof of neighbourhood hall and pale colonnade",
+  "capturedAt": "2026-09-13T05:04:11.923Z",
+  "file": "reconstruction/queenstown/references/static-quality-market-roof.jpg",
+  "fingerprint": "9403b448b0ff26fcb90c482755752cfe65a4e2250faacceb4bf435e1c4442b23",
+  "sha256": "95858ecdce50f15fc5406b9c3072da567abf0f81cb9c425f56cf5e953b46df40",
+  "bytes": 101848,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: blue barrel standing seams, pale gallery balustrade and colonnade"
+}

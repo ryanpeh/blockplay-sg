@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "gardens-grove-03.json",
+  "pano_id": "_N7MeyeTNKS6QuaodKBazw",
+  "position": {
+    "lat": 1.2816274048719476,
+    "lng": 103.8636480042419
+  },
+  "sourceDate": "2014-05",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 20,
+    "pitch": 20
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Wine-purple branching crown silhouette and structural spacing",
+  "capturedAt": "2026-09-13T05:02:40.156Z",
+  "file": "reconstruction/marina-bay/references/marina-static-quality-grove-crown.jpg",
+  "fingerprint": "106a15815677c510de141c1bfa1669ed245bc5a4037e20d89501ab89a3831c53",
+  "sha256": "c8b3b16ce88714ddb1ea606d58a48fe8a89850273877a664f2cdcc69f3c4b79d",
+  "bytes": 104144,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: straight planted trunk transitions into a flared branching shoulder, wine-purple steel and gold guardrail; informed corrected tree profile"
+}

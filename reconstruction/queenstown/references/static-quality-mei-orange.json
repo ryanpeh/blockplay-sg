@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "mei-ling-road.json",
+  "pano_id": "E1Xe9ch6n0YfXDKmDPjPpA",
+  "position": {
+    "lat": 1.2905699969235567,
+    "lng": 103.80337011347143
+  },
+  "sourceDate": "2024-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 95,
+    "pitch": 22
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Orange projecting window surrounds and pale gray gallery strips",
+  "capturedAt": "2026-09-13T05:04:08.286Z",
+  "file": "reconstruction/queenstown/references/static-quality-mei-orange.jpg",
+  "fingerprint": "faf707736f938f54bb95f4a77a35b5f2fd81b6b736d6137bb00ff7af2b0fdfd3",
+  "sha256": "5c167858673d8c736299f29302b37e6b3a93509d16d19f3cdf5d62353920499e",
+  "bytes": 93090,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: projecting orange window frames, pale galleries and red gateway roof"
+}

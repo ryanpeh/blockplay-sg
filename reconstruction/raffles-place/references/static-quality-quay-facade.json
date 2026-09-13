@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "quay-west-expansion.json",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "position": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "sourceDate": "2024-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 23
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Green and white shophouse trim and upper window bands",
+  "capturedAt": "2026-09-13T05:04:04.174Z",
+  "file": "reconstruction/raffles-place/references/static-quality-quay-facade.jpg",
+  "fingerprint": "b52d0120689c114398077b31906c781092f7ef13f00d3dea4865d4f188b776d8",
+  "sha256": "0eab6647698bb1e6451c7d33fdfe41d7df0307cc8e64c7da657dc6153cb9c6d8",
+  "bytes": 77447,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame"
+}

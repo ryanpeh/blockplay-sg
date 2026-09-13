@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest';
+import { Mesh } from 'three';
 import { buildQueenstownScene, QUEENSTOWN_MAP_ROADS, QUEENSTOWN_SPAWN, QUEENSTOWN_STAMPS } from './queenstown-scene';
 import { canOccupy, moveInQueenstown, QUEENSTOWN_BOUNDS } from './queenstown-collision';
 
@@ -52,4 +53,18 @@ it('allows passage through open void decks but stops at estate columns', () => {
     expect(canOccupy(QUEENSTOWN_BOUNDS.maxX, 0, 1, [])).toBe(false);
     expect(moveInQueenstown({ x: 250, z: 0 }, 30, 0, 1, []).x).toBeLessThanOrEqual(259);
   } finally { world.dispose(); }
+});
+
+it('retains Static-reference model depth and differentiated materials within the draw budget', () => {
+  const world=buildQueenstownScene();
+  try {
+    expect(world.scene.userData.authoredMeshCount).toBeGreaterThan(14000);
+    expect(world.scene.children.length).toBeLessThan(100);
+    expect(world.scene.userData.qualityFeatures).toEqual(expect.arrayContaining(['rounded-viaduct-piers','projecting-station-louvers','framed-lattice-galleries','barrel-roof-seams','round-kopi-tables','four-sided-tower-facades','branched-canopies','gateway-louver-panels']));
+    const geometryTypes=new Set<string>();world.scene.traverse(child=>{if(child instanceof Mesh)geometryTypes.add(child.geometry.type);});
+    expect(geometryTypes.has('CylinderGeometry')).toBe(true);
+    expect(geometryTypes.has('TubeGeometry')).toBe(true);
+    expect(world.scene.userData.materialRoughness.glass).toBeLessThan(world.scene.userData.materialRoughness.plaster);
+    expect(world.scene.userData.materialRoughness.paintedMetal).toBeLessThan(world.scene.userData.materialRoughness.plaster);
+  } finally {world.dispose();}
 });

@@ -1,0 +1,138 @@
+{
+  "plan": "raffles-static-quality-01",
+  "startedAt": "2026-09-13T05:03:57.222Z",
+  "cached": 0,
+  "captured": 25,
+  "failed": 0,
+  "staticImageAttempts": 25,
+  "metadataRequests": 0,
+  "bytes": 2050434,
+  "durationMs": 8054,
+  "views": [
+    {
+      "id": "static-quality-gable",
+      "status": "saved",
+      "bytes": 85070
+    },
+    {
+      "id": "static-quality-fan-palms",
+      "status": "saved",
+      "bytes": 98720
+    },
+    {
+      "id": "static-quality-green-wall",
+      "status": "saved",
+      "bytes": 92428
+    },
+    {
+      "id": "static-quality-square-paving",
+      "status": "saved",
+      "bytes": 58302
+    },
+    {
+      "id": "static-quality-lobby",
+      "status": "saved",
+      "bytes": 42621
+    },
+    {
+      "id": "static-quality-plaza-sculpture",
+      "status": "saved",
+      "bytes": 85940
+    },
+    {
+      "id": "static-quality-tower-ribs",
+      "status": "saved",
+      "bytes": 96168
+    },
+    {
+      "id": "static-quality-podium-columns",
+      "status": "saved",
+      "bytes": 89809
+    },
+    {
+      "id": "static-quality-facade-plants",
+      "status": "saved",
+      "bytes": 80099
+    },
+    {
+      "id": "static-quality-stone-grid",
+      "status": "saved",
+      "bytes": 79950
+    },
+    {
+      "id": "static-quality-arcade-shutters",
+      "status": "saved",
+      "bytes": 84790
+    },
+    {
+      "id": "static-quality-arcade-awning",
+      "status": "saved",
+      "bytes": 86844
+    },
+    {
+      "id": "static-quality-heritage-roof",
+      "status": "saved",
+      "bytes": 85274
+    },
+    {
+      "id": "static-quality-market-gable",
+      "status": "saved",
+      "bytes": 86375
+    },
+    {
+      "id": "static-quality-market-eaves",
+      "status": "saved",
+      "bytes": 92669
+    },
+    {
+      "id": "static-quality-market-tables",
+      "status": "saved",
+      "bytes": 85362
+    },
+    {
+      "id": "static-quality-market-stalls",
+      "status": "saved",
+      "bytes": 93775
+    },
+    {
+      "id": "static-quality-bridge-glass",
+      "status": "saved",
+      "bytes": 80508
+    },
+    {
+      "id": "static-quality-bridge-columns",
+      "status": "saved",
+      "bytes": 66192
+    },
+    {
+      "id": "static-quality-bus-shelter",
+      "status": "saved",
+      "bytes": 81501
+    },
+    {
+      "id": "static-quality-quay-facade",
+      "status": "saved",
+      "bytes": 77447
+    },
+    {
+      "id": "static-quality-quay-lantern",
+      "status": "saved",
+      "bytes": 71481
+    },
+    {
+      "id": "static-quality-shophouse-rear",
+      "status": "saved",
+      "bytes": 68546
+    },
+    {
+      "id": "static-quality-quay-lane",
+      "status": "saved",
+      "bytes": 87952
+    },
+    {
+      "id": "static-quality-skyline-crown",
+      "status": "saved",
+      "bytes": 92611
+    }
+  ]
+}

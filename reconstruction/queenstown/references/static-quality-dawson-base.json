@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "dawson.json",
+  "pano_id": "_7E763z20DuvVk0jyMJO6w",
+  "position": {
+    "lat": 1.2959333863881268,
+    "lng": 103.80888721098805
+  },
+  "sourceDate": "2024-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 18
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Deep modern tower podium piers, pale stone bands and louvers",
+  "capturedAt": "2026-09-13T05:04:08.980Z",
+  "file": "reconstruction/queenstown/references/static-quality-dawson-base.jpg",
+  "fingerprint": "8e3d74309e87396dc9302ea528c5221b10d1843db0cf5d982bb74a8b02f14172",
+  "sha256": "1efa7d692c95a6d1dcbb88c9e3e7b2263336417f6a0927dd89e0f3d5b0460a41",
+  "bytes": 118915,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: deep vertical entrance recess, pale piers and horizontal podium louvers"
+}

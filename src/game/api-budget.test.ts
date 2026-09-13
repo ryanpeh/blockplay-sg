@@ -5,6 +5,24 @@ import { expect, it } from 'vitest';
 // @ts-expect-error Shared build-time JavaScript module.
 import { withBudget } from '../../scripts/api-budget.mjs';
 
+it('enforces independent regional Static authorizations and counts failures', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'blockplay-budget-'));
+  const path = join(directory, 'usage.json');
+  try {
+    await writeFile(path, JSON.stringify({ limit: 1000, regionImageAllowances: { 'marina-bay': { baselineStaticImageAttempts: 1, maxAdditionalImages: 1 }, queenstown: { baselineStaticImageAttempts: 0, maxAdditionalImages: 1 } }, attempts: [{ kind: 'image-old', location: 'marina-bay' }] }));
+    await withBudget(async (request: (kind: string, callback: () => Promise<Response>) => Promise<Response>) => {
+      await expect(request('image-new', async () => { throw new Error('offline'); })).rejects.toThrow('offline');
+      await expect(request('image-new', async () => new Response())).rejects.toThrow('regional');
+      await request('browser-screenshot', async () => new Response());
+    }, path, 'marina-bay');
+    await withBudget(async (request: (kind: string, callback: () => Promise<Response>) => Promise<Response>) => {
+      await request('image-new', async () => new Response());
+    }, path, 'queenstown');
+    const ledger = JSON.parse(await readFile(path, 'utf8'));
+    expect(ledger.attempts.filter((entry: { kind: string }) => entry.kind.startsWith('image'))).toHaveLength(3);
+  } finally { await rm(directory, { recursive: true }); }
+});
+
 it('enforces the Static image allowance but excludes browser loads/screenshots', async () => {
   const directory = await mkdtemp(join(tmpdir(), 'blockplay-budget-'));
   const path = join(directory, 'usage.json');

@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "dawson.json",
+  "pano_id": "_7E763z20DuvVk0jyMJO6w",
+  "position": {
+    "lat": 1.2959333863881268,
+    "lng": 103.80888721098805
+  },
+  "sourceDate": "2024-02",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 165,
+    "pitch": 18
+  },
+  "horizontalFov": 65,
+  "width": 640,
+  "height": 640,
+  "purpose": "Layered open carpark decks and planted parapets",
+  "capturedAt": "2026-09-13T05:04:09.078Z",
+  "file": "reconstruction/queenstown/references/static-quality-dawson-parking.jpg",
+  "fingerprint": "6e18684c2d7a408b259ac762580b2dbd265652ba6f102740bbe01e22025fc9a7",
+  "sha256": "cba558ffbb83d7b901de894312c90eb439cbdae8a42185e81dc827cd3865e16a",
+  "bytes": 89634,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: planted open parking podium and tall white slab contrast"
+}

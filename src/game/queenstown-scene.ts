@@ -41,10 +41,19 @@ export function buildQueenstownScene() {
   const red = mat('#b36655'), orange = mat('#f09a43'), wood = mat('#846b52');
   const stationBlue = mat('#668faa'), walkwayBlue = mat('#36799b'), corridorGray = mat('#c5c8c3');
   const paving = mat('#d6c7b2'), yellow = mat('#e2c566'), shrub = mat('#628548'), blue = mat('#729eaf');
+  glass.roughness = 0.32; glass.metalness = 0.2;
+  stationBlue.roughness = 0.55; walkwayBlue.roughness = 0.55;
+  const foliageLight = mat('#6a9050'), foliageDeep = mat('#3e693e');
   function box(x: number, y: number, z: number, w: number, h: number, d: number, material: THREE.Material, parent: THREE.Object3D = scene, shadow = false) {
     const mesh = new THREE.Mesh(unit, material); mesh.position.set(x, y, z); mesh.scale.set(w, h, d); mesh.castShadow = shadow; mesh.receiveShadow = true; parent.add(mesh); return mesh;
   }
   function solid(x: number, z: number, w: number, d: number) { obstacles.push({ minX: x - w / 2, maxX: x + w / 2, minZ: z - d / 2, maxZ: z + d / 2 }); }
+  function beam(a: THREE.Vector3, b: THREE.Vector3, width: number, material: THREE.Material) {
+    const middle = a.clone().add(b).multiplyScalar(0.5), direction = b.clone().sub(a);
+    const mesh = box(middle.x,middle.y,middle.z,width,direction.length(),width,material,scene,true);
+    mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),direction.normalize());
+    return mesh;
+  }
   function sign(text: string, x: number, y: number, z: number, w = 14, h = 2) {
     if (typeof document === 'undefined') return;
     const canvas = document.createElement('canvas'); canvas.width = 768; canvas.height = 128;
@@ -98,6 +107,11 @@ export function buildQueenstownScene() {
         for (let dx = -18; dx < 28; dx += 5.5) {
           box(x + dx, y, z + dz, 2.5, 1.35, 0.12, glass);
           box(x + dx + 1.8, y - 0.35, z + dz * 1.04, 0.8, 0.65, 0.5, concrete);
+          const faceZ=z+dz*1.012;
+          const frame=label==='HOME' && floor%3===1?orange:cream;
+          box(x+dx,y,faceZ,0.09,1.45,0.12,cream);
+          for(const offset of [-0.72,0.72]) box(x+dx,y+offset,faceZ,2.7,0.1,0.28,frame);
+          for(const offset of [-1.32,1.32]) box(x+dx+offset,y,faceZ,0.1,1.45,0.28,frame);
         }
       }
       // estate-south.png: long recessed access galleries with pale-gray parapets.
@@ -106,6 +120,9 @@ export function buildQueenstownScene() {
       box(x + 4, y - 0.18, z + 7.98, 46, 0.12, 0.12, white);
       for (let dx = -17; dx < 28; dx += 9) box(x + dx, y, z + 8.02, 0.3, 2.7, 0.25, cream);
       box(x - 25, y, z + 7.85, 3.8, 1.6, 0.1, white);
+      box(x-25,y,z+7.96,3.2,1.35,0.12,dark);
+      for(const direction of [-1,1]) {const lattice=box(x-25,y,z+8.06,3.5,0.1,0.1,white); lattice.rotation.z=direction*Math.atan2(1.35,3.2);}
+      for(const edge of [-1.7,1.7]) box(x-25+edge,y,z+8.08,0.12,1.65,0.12,white);
       for (const side of [-1, 1]) {
         box(x + side * 29.6, y, z, 0.12, 1.5, 3.2, glass);
         box(x + side * 29.8, y - 1.1, z, 0.55, 0.16, 4.5, concrete);
@@ -125,6 +142,8 @@ export function buildQueenstownScene() {
   function shelter(x: number, z: number, width: number) {
     box(x, 3.05, z, width, 0.3, 4.2, concrete, scene, true);
     box(x, 0.08, z, width, 0.16, 4.4, concrete);
+    for(let dx=-width/2+1;dx<width/2;dx+=2) box(x+dx,2.84,z,0.12,0.18,4,dark);
+    for(const side of [-1,1]) box(x,2.8,z+side*1.7,width,0.18,0.18,dark);
     for (let dx = -width / 2 + 2; dx < width / 2; dx += 8) {
       box(x + dx, 1.5, z - 1.7, 0.2, 3, 0.2, walkwayBlue); solid(x + dx, z - 1.7, 0.25, 0.25);
     }
@@ -135,7 +154,12 @@ export function buildQueenstownScene() {
   for (const z of [18, 26]) box(0, 8.7, z, 360, 0.6, 0.35, concrete);
   for (const z of [20.2, 23.8]) box(0, 8.55, z, 360, 0.1, 0.12, dark);
   for (let x = -175; x < 175; x += 2) box(x, 8.4, 22, 0.4, 0.1, 5.5, dark);
-  for (let x = -164; x <= 170; x += 28) { box(x, 3.6, 22, 1.6, 7.2, 2.2, concrete, scene, true); solid(x, 22, 1.6, 2.2); }
+  const pierGeo=geo(new THREE.CylinderGeometry(1,1,1,12));
+  for (let x = -164; x <= 170; x += 28) {
+    const pier=new THREE.Mesh(pierGeo,concrete);pier.position.set(x,3.6,22);pier.scale.set(0.8,7.2,1.1);pier.castShadow=true;scene.add(pier);solid(x,22,1.6,2.2);
+    box(x,7.15,22,3.2,0.65,5.5,concrete,scene,true);
+  }
+  for(let x=-174;x<178;x+=7) for(const z of [17.45,26.55]) box(x,7.8,z,0.035,1.35,0.04,dark);
   box(0, 9.2, 22, 74, 0.8, 19, cream, scene, true);
   for (const z of [14, 30]) for (let x = -32; x <= 32; x += 8) box(x, 11.2, z, 0.35, 4, 0.35, cream);
   for (const z of [14, 30]) {
@@ -151,6 +175,8 @@ export function buildQueenstownScene() {
     box(x, 4.5, 39, 6, 9, 6, stationBlue, scene, true); solid(x, 39, 6, 6);
     box(x, 6.1, 42.1, 4.7, 2.6, 0.12, glass);
     for (let y = 5; y <= 7; y += 0.45) box(x, y, 42.25, 5.3, 0.11, 0.15, concrete);
+    for(let y=5;y<=7;y+=0.45) {const louver=box(x,y,42.47,5.5,0.12,0.5,dark);louver.rotation.x=-0.18;}
+    for(const dx of [-2.7,0,2.7]) box(x+dx,6,42.7,0.12,2.6,0.13,stationBlue);
     box(x, 9.2, 32, 6, 0.5, 14, cream);
     sign('MRT', x, 3.8, 42.1, 4, 1.2);
   }
@@ -163,16 +189,25 @@ export function buildQueenstownScene() {
   // Low-rise neighbourhood shops and market canopy, not tourist landmarks.
   box(73, 3, -13, 65, 6, 13, cream, scene, true); solid(73, -13, 65, 13);
   const shopNames = ['KOPI', 'PROVISIONS', 'BAKERY', 'MARKET'];
+  const tabletopGeo=geo(new THREE.CylinderGeometry(0.85,0.85,0.12,16));
   for (let i = 0; i < 4; i++) {
     const x = 49 + i * 16;
     box(x, 1.7, -6.4, 12, 2.9, 0.15, glass); box(x, 3.6, -4.7, 15, 0.25, 4, i % 2 ? teal : coral, scene, true);
     sign(shopNames[i], x, 4.9, -6.25, 12, 1.2);
-    for (const dx of [-3, 3]) { box(x + dx, 0.8, -1, 1.7, 0.12, 1.7, cream); box(x + dx, 0.4, -1, 0.25, 0.8, 0.25, dark); solid(x + dx, -1, 1.7, 1.7); }
+    for (const dx of [-3, 3]) {
+      const top=new THREE.Mesh(tabletopGeo,cream);top.position.set(x+dx,0.8,-1);scene.add(top);
+      box(x+dx,0.4,-1,0.25,0.8,0.25,dark);solid(x+dx,-1,1.7,1.7);
+      for(const side of [-1,1]) {box(x+dx+side*1.15,0.48,-1,0.55,0.12,0.55,dark);box(x+dx+side*1.15,0.23,-1,0.12,0.46,0.12,dark);}
+    }
   }
   // margaret-90: blue barrel-roof neighbourhood hall and pale colonnaded frontage.
   // Reuse the authored station roof section, scaled to the compact market pavilion.
   const marketRoof = new THREE.Mesh(roofGeo, blue); marketRoof.rotation.y = Math.PI / 2;
   marketRoof.scale.set(0.67,0.48,0.88); marketRoof.position.set(38.7,6.4,-13); marketRoof.castShadow = true; scene.add(marketRoof);
+  // Static market-roof: narrow standing seams follow the barrel, not flat bands.
+  const ribPath=new THREE.QuadraticBezierCurve3(new THREE.Vector3(0,6.42,-19.96),new THREE.Vector3(0,9.78,-13),new THREE.Vector3(0,6.42,-6.04));
+  const ribGeo=geo(new THREE.TubeGeometry(ribPath,12,0.035,4,false));
+  for(let x=40;x<106;x+=2.2) {const rib=new THREE.Mesh(ribGeo,stationBlue);rib.position.x=x;scene.add(rib);}
   for (let x = 44; x < 104; x += 8) box(x,2.8,-6.2,0.45,5.6,0.7,white);
   // Community court with accurately marked game-scale basketball half circles.
   box(85, 0.08, -53, 32, 0.16, 45, red);
@@ -194,9 +229,15 @@ export function buildQueenstownScene() {
   for (const side of [-1, 1]) { const roof = box(23, 7.4, -103 + side * 4.3, 47, 0.45, 9.5, red, scene, true); roof.rotation.x = side * 0.15; }
   sign('QUEENSTOWN LIBRARY', 23, 5.7, -94.02, 29, 1.4);
   const crownGeo = geo(new THREE.IcosahedronGeometry(1, 1));
+  const trunkGeo = geo(new THREE.CylinderGeometry(0.24,0.4,1,7));
   function tree(x: number, z: number, height = 7) {
-    box(x, height / 2, z, 0.65, height, 0.65, wood, scene, true); solid(x, z, 0.8, 0.8);
-    for (let j = 0; j < 3; j++) { const crown = new THREE.Mesh(crownGeo, leaf); crown.position.set(x + (j - 1) * 1.5, height + j % 2, z); crown.scale.set(3.3, 2.3, 3); crown.castShadow = true; scene.add(crown); }
+    const trunk=new THREE.Mesh(trunkGeo,wood);trunk.position.set(x,height/2,z);trunk.scale.y=height;trunk.castShadow=true;scene.add(trunk);solid(x,z,0.8,0.8);
+    const phase=(x*0.73+z*0.37),palette=[leaf,foliageLight,foliageDeep];
+    for (let j = 0; j < 4; j++) {
+      const angle=phase+j*Math.PI/2,spread=1.6+(j%2)*0.7,px=x+Math.cos(angle)*spread,pz=z+Math.sin(angle)*spread,py=height+(j%2)*0.7;
+      beam(new THREE.Vector3(x,height*0.63,z),new THREE.Vector3(px,py-0.5,pz),0.22,wood);
+      const crown=new THREE.Mesh(crownGeo,palette[j%3]);crown.position.set(px,py,pz);crown.scale.set(2.6+(j%2)*0.5,1.8+(j%3)*0.25,2.8);crown.rotation.y=angle;crown.castShadow=true;scene.add(crown);
+    }
   }
   for (let z = -126; z <= 126; z += 21) for (const x of [-170, 168]) {
     if (x===168 && Math.abs(z-22)<10) continue; // new eastern road connector
@@ -251,6 +292,20 @@ export function buildQueenstownScene() {
       box(x+dx+2.2,height/2,z+11.5,0.55,height,1,concrete);
     }
     for (let y=6;y<height;y+=3.2) box(x,y,z+11.8,25,0.25,1.4,white);
+    for(let y=10;y<height;y+=3.2) {
+      box(x,y,z-11.15,24,0.22,0.9,concrete);
+      for(const side of [-1,1]) {
+        box(x+side*12.65,y,z,0.22,0.25,22,white);
+        for(let dz=-7;dz<=7;dz+=4.7) box(x+side*12.55,y+1.25,z+dz,0.15,1.8,2.8,glass);
+      }
+      for(let dx=-9;dx<=9;dx+=6) box(x+dx,y+1.25,z-11.2,3.5,1.8,0.15,glass);
+    }
+    for(const side of [-1,1]) {
+      box(x+side*12.85,height/2,z,0.6,height,2,concrete);
+      box(x,3.7,z+side*11.3,20,6.5,0.15,dark);
+      for(let dx=-10;dx<=10;dx+=5) box(x+dx,3.7,z+side*11.75,0.75,7.4,1.1,white);
+      for(let y=1;y<6.5;y+=0.5) box(x, y,z+side*11.5,19,0.12,0.35,concrete);
+    }
     box(x,7,z,32,2,29,concrete); box(x,8.2,z,31,0.6,28,shrub);
   }
   // A sheltered western residential garden and eastern civic forecourt create
@@ -271,6 +326,8 @@ export function buildQueenstownScene() {
   for (const x of [158,210]) for (const z of [109,150]) tree(x,z,7.5);
   // Mei Ling courtyard references show gateway roofs, palms and open shop colonnades.
   for (const x of [-7,7]) { box(x,3.2,-162,0.7,6.4,0.7,cream); solid(x,-162,0.8,0.8); }
+  for(const x of [-6.3,6.3]) for(let y=3.5;y<6.4;y+=0.23) box(x,y,-162,0.8,0.12,3.4,wood);
+  for(let x=-7;x<=7;x+=1.4) box(x,6.35,-162,0.14,0.2,7.7,wood);
   for (const side of [-1,1]) { const roof=box(0,6.7,-162+side*2,18,0.25,4.4,coral,scene,true);roof.rotation.x=side*0.14; }
   sign('QUEENSTOWN DISTRICT',0,5.7,-159.7,14,1.1);
   // tanglin-market-road-90/180: older two-storey service row contrasts with
@@ -336,6 +393,8 @@ export function buildQueenstownScene() {
   const stamps = QUEENSTOWN_STAMPS.map(point => { const stamp = new THREE.Mesh(stampGeo, orange); stamp.position.set(point.x, 2.2, point.z); scene.add(stamp); return stamp; });
   scene.userData.referenceFeatures = ['station-east', 'estate-north', 'estate-south', 'stirling-90', 'stirling-270-retry', 'margaret-0', 'margaret-90', 'library-270'];
   scene.userData.detailFeatures = ['open-deck-lobbies', 'station-platform-edges', 'bus-shelters', 'playground', 'community-pavilion', 'court-fence', 'parked-cars', 'layered-roadside-planting'];
+  scene.userData.qualityFeatures=['rounded-viaduct-piers','projecting-station-louvers','framed-lattice-galleries','barrel-roof-seams','round-kopi-tables','four-sided-tower-facades','branched-canopies','gateway-louver-panels'];
+  scene.userData.materialRoughness={glass:glass.roughness,plaster:cream.roughness,paintedMetal:stationBlue.roughness};
   scene.userData.authoredMeshCount = scene.children.filter(child => child instanceof THREE.Mesh).length;
   // Batch static details while leaving car, train and collectible animation independent.
   const batches = new Map<string, THREE.Mesh[]>(), instances: THREE.InstancedMesh[] = [];

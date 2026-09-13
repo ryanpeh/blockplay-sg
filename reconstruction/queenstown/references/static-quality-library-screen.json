@@ -1,0 +1,26 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "library.json",
+  "pano_id": "CUXme4r0XEEC9WkKQA2d3Q",
+  "position": {
+    "lat": 1.2985824282387217,
+    "lng": 103.80489108222561
+  },
+  "sourceDate": "2025-03",
+  "copyright": "© 2026 Google",
+  "pov": {
+    "heading": 85,
+    "pitch": 12
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Pale perforated civic facade detail near Margaret Drive; identity not assumed",
+  "capturedAt": "2026-09-13T05:04:12.182Z",
+  "file": "reconstruction/queenstown/references/static-quality-library-screen.jpg",
+  "fingerprint": "de5a0cdaaf5d568fa486a9803a2c9107bb32e058096c316d866620ae80bad8e9",
+  "sha256": "f85e00837c5e0dd30a91155b42b6470b21f7e5d4b03d7cee9943d9081974c8f1",
+  "bytes": 83201,
+  "attribution": "Retained in original image",
+  "visualReview": "limited: pale perforated civic screen partly behind tree; landmark identity unverified"
+}

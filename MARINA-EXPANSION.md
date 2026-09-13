@@ -1,5 +1,22 @@
 # Marina Bay expansion — 13 September 2026
 
+## Static reference quality pass (latest)
+
+The approved `reconstruction/marina-static-quality-plan.json` batch adds 25 cached 640 × 640 Static API images using existing panorama metadata (zero additional metadata requests). All 25 were visually reviewed: **19 accepted, six limited, zero rejected/pending**. Full source-to-model notes are in `reconstruction/marina-bay/references/static-quality-review.md`. Cropped or obstructed frames were retained with honest limitations, not re-queried.
+
+The 726 × 616 playable bounds, all 14 stamps, road graph and 389 colliders remain unchanged. Quality changes are focused on the modeled landmarks:
+
+- Garden structures now have straight planted cores, narrower shoulders and flared branching crowns instead of full-height conical cages.
+- The conservatories gained 224 fine dark glazing-grid segments between the heavier white ribs.
+- The observation wheel gained 16 rounded glazed capsules, window divisions and a central axle.
+- Sands gained 3,240 mullion segments that follow both splayed faces; the old floating straight west-side grille was removed.
+- The Esplanade-inspired pods gained 472 triangular sunshades. Their placement is an authored motif, not an exact reconstruction of partially tree-obscured imagery.
+- Museum dark outer struts, Merlion blue/grey tile bands and grout, flyover underside beams and layered southern canopy louvers improve close-up material contrast.
+
+Static Merlion details now join the scene's instance batches. The final quality scene has **14,310 instances in 42 batches**, 211 direct scene children and the same 389 colliders. The eight Marina tests cover unchanged bounds/stamps, route and collectible reachability, quality-detail counts and batching. Targeted offline renders were inspected at `/tmp/marina-quality-esplanade.png`, `/tmp/marina-quality-conservatory.png`, `/tmp/marina-expansion-wheel.png` and `/tmp/marina-expansion-greenway.png`. The diagnostic wide render reports 236 draw calls / 194,969 triangles with shadows disabled; it is not a gameplay FPS measurement.
+
+Earlier milestone metrics below are retained as history and are superseded by this quality pass.
+
 ## Third-ring milestone (current)
 
 The playable area is now **726 × 616 game units**, 447,216 square units: **1.73×** the preceding 556 × 466 map, and 3.57× the initial 396 × 316 map. All existing landmarks, routes and nine stamps remain. Five new stamps bring the total to **14**.

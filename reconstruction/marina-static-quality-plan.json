@@ -1,0 +1,207 @@
+{
+  "name": "marina-static-quality-01",
+  "region": "marina-bay",
+  "maxNewImages": 25,
+  "views": [
+    {
+      "id": "marina-static-quality-grove-crown",
+      "source": "gardens-grove-03.json",
+      "heading": 20,
+      "pitch": 20,
+      "fov": 65,
+      "purpose": "Wine-purple branching crown silhouette and structural spacing"
+    },
+    {
+      "id": "marina-static-quality-grove-core",
+      "source": "gardens-grove-03.json",
+      "heading": 95,
+      "pitch": 20,
+      "fov": 45,
+      "purpose": "Purple tubular structure, planted core and grey backing at close range"
+    },
+    {
+      "id": "marina-static-quality-grove-branches",
+      "source": "gardens-grove-03.json",
+      "heading": 180,
+      "pitch": 10,
+      "fov": 55,
+      "purpose": "Open crown branching and ratio of trunk to canopy"
+    },
+    {
+      "id": "marina-static-quality-grove-skywalk",
+      "source": "gardens-grove-03.json",
+      "heading": 220,
+      "pitch": -12,
+      "fov": 65,
+      "purpose": "Golden railing posts, grey decking and planting proportions"
+    },
+    {
+      "id": "marina-static-quality-conservatory-ribs",
+      "source": "conservatory-road-03.json",
+      "heading": 85,
+      "pitch": 28,
+      "fov": 75,
+      "purpose": "Heavy white inclined ribs and attachment spacing"
+    },
+    {
+      "id": "marina-static-quality-conservatory-glazing",
+      "source": "conservatory-road-03.json",
+      "heading": 180,
+      "pitch": 30,
+      "fov": 65,
+      "purpose": "Upper glass grid above the shuttle-cart occlusion"
+    },
+    {
+      "id": "marina-static-quality-conservatory-path",
+      "source": "conservatory-road-03.json",
+      "heading": 270,
+      "pitch": 20,
+      "fov": 80,
+      "purpose": "Repeated ribs, glazing and visitor-path width"
+    },
+    {
+      "id": "marina-static-quality-conservatory-footing",
+      "source": "conservatory-road-03.json",
+      "heading": 30,
+      "pitch": -10,
+      "fov": 65,
+      "purpose": "Rib footing, planting bed and path-edge material"
+    },
+    {
+      "id": "marina-static-quality-wheel-silhouette",
+      "source": "float-waterfront-03.json",
+      "heading": 90,
+      "pitch": 20,
+      "fov": 45,
+      "purpose": "Observation-wheel rim, capsule profile and central support proportions"
+    },
+    {
+      "id": "marina-static-quality-wheel-supports",
+      "source": "promenade-road-03.json",
+      "heading": 150,
+      "pitch": 30,
+      "fov": 55,
+      "purpose": "Wheel support geometry from a second panorama position"
+    },
+    {
+      "id": "marina-static-quality-sands-rear-grid",
+      "source": "gardens-grove-03.json",
+      "heading": 270,
+      "pitch": 30,
+      "fov": 60,
+      "purpose": "Rear Sands window grids and pale structural bands"
+    },
+    {
+      "id": "marina-static-quality-sands-skypark",
+      "source": "gardens-grove-03.json",
+      "heading": 300,
+      "pitch": 45,
+      "fov": 55,
+      "purpose": "SkyPark deck edge and roof planting silhouette"
+    },
+    {
+      "id": "marina-static-quality-sands-entrance",
+      "source": "museum-promenade.json",
+      "heading": 0,
+      "pitch": 35,
+      "fov": 65,
+      "purpose": "Sands entrance canopy grid and facade fins"
+    },
+    {
+      "id": "marina-static-quality-sands-bayfront-side",
+      "source": "bayfront-expansion.json",
+      "heading": 270,
+      "pitch": 30,
+      "fov": 65,
+      "purpose": "Sands side facade and pale tower structure"
+    },
+    {
+      "id": "marina-static-quality-merlion-head",
+      "source": "merlion-expansion.json",
+      "heading": 75,
+      "pitch": 8,
+      "fov": 45,
+      "purpose": "Ivory lion head and curved mane silhouette"
+    },
+    {
+      "id": "marina-static-quality-merlion-plinth",
+      "source": "merlion-expansion.json",
+      "heading": 75,
+      "pitch": -10,
+      "fov": 65,
+      "purpose": "Blue tiled pedestal, fish scales and adjacent paving"
+    },
+    {
+      "id": "marina-static-quality-museum-petals",
+      "source": "north-bay.json",
+      "heading": 75,
+      "pitch": 35,
+      "fov": 75,
+      "purpose": "Petal thickness, concave shell underside and white surface"
+    },
+    {
+      "id": "marina-static-quality-museum-supports",
+      "source": "north-bay.json",
+      "heading": 100,
+      "pitch": 15,
+      "fov": 55,
+      "purpose": "Museum columns, shell edges and pond relationship"
+    },
+    {
+      "id": "marina-static-quality-esplanade-shell",
+      "source": "esplanade-road-03.json",
+      "heading": 145,
+      "pitch": 20,
+      "fov": 65,
+      "purpose": "Triangular Esplanade sunshade texture and pod roof color"
+    },
+    {
+      "id": "marina-static-quality-esplanade-distant",
+      "source": "float-waterfront-03.json",
+      "heading": 280,
+      "pitch": 15,
+      "fov": 60,
+      "purpose": "Esplanade pod massing and lower podium from another viewpoint"
+    },
+    {
+      "id": "marina-static-quality-esplanade-paving",
+      "source": "esplanade-road-03.json",
+      "heading": 170,
+      "pitch": -10,
+      "fov": 55,
+      "purpose": "Slab paving scale, tree pits and layered planting"
+    },
+    {
+      "id": "marina-static-quality-downtown-podium",
+      "source": "downtown-green-03.json",
+      "heading": 0,
+      "pitch": 25,
+      "fov": 65,
+      "purpose": "Stone colonnade, blue-green glazing and podium louver rhythm"
+    },
+    {
+      "id": "marina-static-quality-downtown-shelter",
+      "source": "downtown-green-03.json",
+      "heading": 180,
+      "pitch": 8,
+      "fov": 55,
+      "purpose": "Shelter louvers, slender columns and seating scale"
+    },
+    {
+      "id": "marina-static-quality-civic-bronze-fins",
+      "source": "marina-one-street-03.json",
+      "heading": 90,
+      "pitch": 25,
+      "fov": 55,
+      "purpose": "Bronze vertical fins above temporary hoarding, material detail only"
+    },
+    {
+      "id": "marina-static-quality-civic-canopy-grid",
+      "source": "marina-one-street-03.json",
+      "heading": 180,
+      "pitch": 35,
+      "fov": 65,
+      "purpose": "Glass canopy structural grid above temporary hoarding"
+    }
+  ]
+}
