@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Crosshair, Maximize, Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Crosshair, Maximize, Minimize, Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-react';
 import { createFpsEngine, initialFpsHud, type FpsEngine } from '../game/fps-engine';
 import { FPS_TARGETS } from '../game/fps-rules';
+import { useFpsFullscreen } from '../game/use-fps-fullscreen';
 import { progression } from '../game/progression';
 import { resolveLoadout, type ArmoryProfile, type ExerciseReward } from '../game/armory-state';
 
@@ -13,10 +14,12 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
   const [combat, setCombat] = useState(false);
   const rewardCallback = useRef(onReward); rewardCallback.current = onReward;
   const host = useRef<HTMLDivElement>(null), stage = useRef<HTMLDivElement>(null), engine = useRef<FpsEngine | null>(null);
+  const fullscreen = useFpsFullscreen(stage, () => engine.current?.pause());
+  const fullscreenAction = useRef(fullscreen.toggle); fullscreenAction.current = fullscreen.toggle;
   const [hud, setHud] = useState(initialFpsHud), [epoch, setEpoch] = useState(0);
   useEffect(() => {
     setHud({ ...initialFpsHud });
-    try { engine.current = createFpsEngine(host.current!, setHud, { loadout: equipment, combat, onComplete: result => rewardCallback.current(result), onElimination: id => eliminationCallback.current(id) }); }
+    try { engine.current = createFpsEngine(host.current!, setHud, { loadout: equipment, combat, onComplete: result => rewardCallback.current(result), onElimination: id => eliminationCallback.current(id), onFullscreen: () => { void fullscreenAction.current(); } }); }
     catch { setHud(h => ({ ...h, phase: 'error', message: '3D graphics could not start. Check that WebGL is enabled, then retry.' })); }
     return () => { engine.current?.dispose(); engine.current = null; };
   }, [epoch, combat, equipment]);
@@ -32,9 +35,12 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
     onPointerCancel: () => engine.current?.setInput(key, false),
     onLostPointerCapture: () => engine.current?.setInput(key, false),
   });
-  return <div className="fps-game" ref={stage} data-phase={hud.phase} data-health={hud.health.toFixed(1)} data-armor={hud.armor.toFixed(1)} data-vehicle={hud.vehicle} data-speed={hud.vehicleSpeed.toFixed(2)} data-altitude={hud.altitude.toFixed(2)} data-player-x={hud.x.toFixed(3)} data-player-z={hud.z.toFixed(3)}>
+  return <div className={`fps-game ${fullscreen.immersive ? 'is-immersive' : ''}`} ref={stage} data-phase={hud.phase} data-health={hud.health.toFixed(1)} data-armor={hud.armor.toFixed(1)} data-vehicle={hud.vehicle} data-speed={hud.vehicleSpeed.toFixed(2)} data-altitude={hud.altitude.toFixed(2)} data-player-x={hud.x.toFixed(3)} data-player-z={hud.z.toFixed(3)}>
     <div className="viewport fps-viewport">
       <div className="world" ref={host} />
+      {fullscreen.immersive && fullscreen.notice && <div className="fps-screen-notice" role="status">{fullscreen.notice}</div>}
+      {fullscreen.immersive && <div className="fps-immersive-hint">F · FULLSCREEN <span>ESC · PAUSE & RELEASE MOUSE</span></div>}
+      {fullscreen.immersive && !playing && <button className="fps-leave-screen" onClick={() => { void fullscreen.toggle(); }}><Minimize size={14} /> Exit fullscreen</button>}
       <div className="fps-top"><span className="fps-badge"><span className="status-dot" /> MARINA BAY / FIELD RANGE</span><span className="fps-score">{hud.hits} / {FPS_TARGETS.length} TARGETS <b>{hud.elapsed.toFixed(1)}s</b></span></div>
       {playing && <>
         <div className="fps-vitals"><span>HP <b>{Math.ceil(hud.health)}</b></span><span>ARMOR <b>{Math.ceil(hud.armor)}</b></span></div>
@@ -64,13 +70,13 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
           {hud.phase === 'complete' || hud.phase === 'defeated' || hud.phase === 'error' ? <RotateCcw size={16} /> : <Play size={16} />} {hud.phase === 'loading' ? 'Loading…' : hud.phase === 'error' ? 'Retry' : hud.phase === 'complete' || hud.phase === 'defeated' ? 'Reset exercise' : hud.phase === 'paused' ? 'Resume exercise' : 'Enter range'} <ArrowRight size={17} />
         </button>
         <button className="fps-shop-link" onClick={onOpenShop}>Open armory · change equipment →</button>
-        <div className="fps-control-guide"><span><kbd>WASD</kbd> Move</span><span><kbd>LMB</kbd> Fire</span><span><kbd>RMB</kbd> Aim</span><span><kbd>R</kbd> Reload</span><span><kbd>Shift</kbd> Sprint</span><span><kbd>C</kbd> Crouch</span><span><kbd>Space</kbd> Jump</span><span><kbd>1 / 2</kbd> Switch</span><span><kbd>E</kbd> Enter / exit vehicle</span><span><kbd>Space / C</kbd> Fly up / down</span></div>
+        <div className="fps-control-guide"><span><kbd>WASD</kbd> Move</span><span><kbd>LMB</kbd> Fire</span><span><kbd>RMB</kbd> Aim</span><span><kbd>R</kbd> Reload</span><span><kbd>Shift</kbd> Sprint</span><span><kbd>C</kbd> Crouch</span><span><kbd>Space</kbd> Jump</span><span><kbd>1 / 2</kbd> Switch</span><span><kbd>E</kbd> Enter / exit vehicle</span><span><kbd>Space / C</kbd> Fly up / down</span><span><kbd>F</kbd> Fullscreen</span></div>
         <small className="fps-touch-note">On touchscreens, drag the scene to look and use the controls below.</small>
       </div></div>}
     </div>
     <div className="experience-toolbar fps-toolbar"><div className="experience-title"><span className="mode-icon"><Crosshair size={22} /></span><div><h3>Marina FPS · field range</h3><p>{combat ? 'Counter-fire drill' : 'Practice drill'} · Custom loadout · 8 targets</p></div></div><div className="toolbar-actions">
       <button className="icon-button" aria-label={hud.muted ? 'Enable range sound' : 'Mute range sound'} onClick={() => engine.current?.toggleSound()}>{hud.muted ? <VolumeX size={16} /> : <Volume2 size={16} />}</button>
-      <button className="icon-button" aria-label="Fullscreen range" onClick={() => { if (document.fullscreenElement) void document.exitFullscreen(); else void stage.current?.requestFullscreen().catch(() => {}); }}><Maximize size={16} /></button>
+      <button className="session-button fps-fullscreen-button" aria-label={fullscreen.immersive ? 'Exit fullscreen range' : 'Fullscreen range'} aria-pressed={fullscreen.immersive} onClick={() => { void fullscreen.toggle(); }}>{fullscreen.immersive ? <Minimize size={16} /> : <Maximize size={16} />} {fullscreen.immersive ? 'Windowed' : 'Fullscreen'} <kbd>F</kbd></button>
       <button className="icon-button" aria-label="Reset FPS exercise" disabled={hud.phase === 'loading' || hud.phase === 'error'} onClick={resetExercise}><RotateCcw size={16} /></button>
       <button className="session-button" disabled={hud.phase === 'loading' || hud.phase === 'error' || hud.phase === 'complete' || hud.phase === 'defeated' || suspended} onClick={() => playing ? engine.current?.pause() : engine.current?.start()}>{playing ? <Pause size={15} /> : <Play size={15} />}{playing ? 'Pause' : hud.phase === 'ready' ? 'Start' : 'Resume'}</button>
     </div></div>
@@ -80,6 +86,6 @@ export default function FpsGame({ suspended = false, profile, onReward, onElimin
       <button disabled={!playing} {...hold('shift')}>{hud.vehicle === 'helicopter' ? 'Boost' : 'Sprint'}</button><button disabled={!playing} {...hold('c')}>{hud.vehicle === 'helicopter' ? 'Descend' : 'Crouch'}</button>{mounted ? <button disabled={!playing} {...hold(' ')}>{hud.vehicle === 'car' ? 'Brake' : 'Climb'}</button> : <button disabled={!playing} onClick={() => engine.current?.jump()}>Jump</button>}<button disabled={!playing || !hud.interact} onClick={() => engine.current?.interactVehicle()}>{mounted ? 'Exit vehicle' : 'Enter vehicle'}</button><button disabled={!playing || mounted} onClick={() => engine.current?.reload()}>Reload</button><button disabled={!playing || mounted} aria-pressed={hud.aiming} onClick={() => engine.current?.toggleAim()}>Aim</button><button className="fps-fire-button" disabled={!playing || mounted} {...hold('fire')}>Fire</button>
     </div>
     <div className="fps-progression-summary"><b>LV {rank.level} · {rank.rank}</b><progress value={rank.progress} max={1} aria-label="FPS level progress" /><span>{rank.remaining ? `${rank.remaining} XP to next level` : 'Maximum level'}</span></div>
-    <p className="fps-message" role="status">{hud.message || 'Game balance stats · Scenery blocks shots · Armor replenishes each exercise'}</p>
+    <p className="fps-message" role="status">{fullscreen.notice || hud.message || 'Game balance stats · Scenery blocks shots · Armor replenishes each exercise'}</p>
   </div>;
 }

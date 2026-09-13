@@ -63,7 +63,7 @@ Desktop Enter/Resume requests browser pointer lock directly from the user click.
 - `src/components/ArmoryShop.tsx`, `ArmoryPreview.tsx`: catalog, comparisons, preview and saved loadout.
 - `fps-engine.ts`, `FpsGame.tsx`: snapshot the equipped loadout on entry. XP updates do not recreate the engine. Target health, ammo, handling, armor damage, rewards and callouts use that snapshot. Enter the Armory to change equipment for the next exercise.
 
-47 unit tests cover purchase idempotency, level gates, validation, inventory, attachment slots, actual modified ammo/reload timing, health breakpoints, armor exhaustion, rewards, level boundaries and chain timing, alongside existing world/physics checks. Local Chrome checks cover buying/equipping, preview and skin rendering, persistence, narrow layout, armor damage/defeat/reset, XP/level-up, full drill completion, callouts, mouse confinement, denied capture, Escape/pause, renderer cleanup, no uncaught browser errors and zero map requests. The production build passes with pnpm 11.22.0; the existing Three.js chunk warning remains.
+75 unit tests cover purchase idempotency, level gates, validation, inventory, attachment slots, actual modified ammo/reload timing, health breakpoints, armor exhaustion, rewards, level boundaries and chain timing, alongside existing world/physics checks. Local Chrome checks cover buying/equipping, preview and skin rendering, persistence, narrow layout, armor damage/defeat/reset, XP/level-up, full drill completion, callouts, mouse confinement, denied capture, Escape/pause, renderer cleanup, no uncaught browser errors and zero map requests. The production build passes with pnpm 11.22.0; the existing Three.js chunk warning remains.
 
 This is a local single-player economy, not an authoritative multiplayer inventory or real-money payment system. Actual mobile-device performance and voice availability vary by browser. No packages or release-age exemptions were added.
 
@@ -77,3 +77,9 @@ Utility 01 is a driveable 4×4 at the starting promenade. Falcon 01 is a flyable
 - **Scope:** vehicles are transport inside the existing target exercise. There is no vehicle combat, fuel system, passenger networking or full flight simulator. Character damage in counter-fire continues to use the player's position rather than the chase camera.
 
 `vehicle-rules.ts` owns movement, clearance and safe exit rules. `vehicle-models.ts` supplies original reusable models and wraps. `fps-vehicles.ts` owns the vehicle instances, pad, labels and transitions. `pnpm test:vehicles` covers shop wraps and the full car/helicopter entry, movement, pause, landing and dismount loop in isolated local Chrome.
+
+## Immersive fullscreen
+
+The Fullscreen toolbar button and F shortcut expand the existing FPS/vehicle session. Desktop play fills the display with the game and HUD; the toolbar returns when paused. Escape releases the captured mouse and pauses, and native browser fullscreen exits according to the browser's Escape behavior. The pause screen includes an explicit Exit fullscreen control. Unsupported/denied native requests fall back to a viewport-filling view with an explanatory notice. Exiting restores page scrolling. Touch controls remain available in immersive view.
+
+`use-fps-fullscreen.ts` owns native/fallback state and cleanup. `pnpm test:fullscreen` verifies native entry, FPS/car play, F toggling, Escape capture release, session continuity, denial fallback, scroll restoration and renderer cleanup. These browser checks passed locally. The combined checkout rebased onto `2f27af2` passes all 75 tests and the production build.

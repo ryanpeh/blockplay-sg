@@ -20,7 +20,8 @@
     "marina:usage": "node scripts/api-usage.mjs",
     "test:fps": "node scripts/fps-smoke.mjs",
     "test:armory": "node scripts/armory-smoke.mjs",
-    "test:vehicles": "node scripts/vehicle-smoke.mjs"
+    "test:vehicles": "node scripts/vehicle-smoke.mjs",
+    "test:fullscreen": "node scripts/fullscreen-smoke.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

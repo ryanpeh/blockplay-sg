@@ -1,5 +1,12 @@
 # Blockplay project plan
 
+## Completed: integrated rebase and immersive screen mode
+
+- Preserved the upstream three-region expansion and model refinement through `2f27af2`, resolving the handoff/scene conflicts and restoring the fullscreen autostash.
+- Added F/button fullscreen for the same FPS and vehicle session, native-request fallback, Escape pause/release, screen-mode cleanup and a dedicated browser smoke script.
+- Combined checkout: 75 unit tests and production build pass. Native fullscreen, car continuity, denied-request fallback, Escape and page-scroll restoration passed in local Chrome.
+
+
 ## Completed: armory, XP and arcade FPS feedback (2026-09-13)
 
 - [x] 27-item permanent shop, stat comparisons, 3D previews, demo credit/token wallet and saved inventory.

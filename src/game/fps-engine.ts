@@ -33,7 +33,7 @@ function disposeAssets(roots: THREE.Object3D[]) {
   textures.forEach(t => { t.dispose(); if (typeof ImageBitmap !== 'undefined' && t.source.data instanceof ImageBitmap) t.source.data.close(); });
 }
 
-export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => void, options: { loadout?: ResolvedLoadout; combat?: boolean; onComplete?: (reward: ExerciseReward) => void; onElimination?: (id: string) => void } = {}) {
+export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => void, options: { loadout?: ResolvedLoadout; combat?: boolean; onComplete?: (reward: ExerciseReward) => void; onElimination?: (id: string) => void; onFullscreen?: () => void } = {}) {
   const equipment = options.loadout || resolveLoadout(createProfile()), specs = equipment.weapons;
   const undress: (() => void)[] = [];
   const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -197,9 +197,10 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (key === 'fire') trigger = held && !vehicles.active;
     else if (held) keys.add(key); else keys.delete(key);
   }
-  const keyboardKeys = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift', 'c', ' ', 'r', '1', '2', 'e', 'control', 'escape'];
+  const keyboardKeys = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift', 'c', ' ', 'r', '1', '2', 'e', 'f', 'control', 'escape'];
   const keydown = (event: KeyboardEvent) => {
     const key = event.key.toLowerCase();
+    if (key === 'f' && !event.repeat) { event.preventDefault(); options.onFullscreen?.(); return; }
     if (hud.phase !== 'playing' || !keyboardKeys.includes(key)) return;
     event.preventDefault();
     if (key === 'escape') pause();

@@ -381,7 +381,7 @@ export function buildMarinaScene() {
   const sunshade = mat('#b8b9a6', { roughness: 0.65, metalness: 0.15 });
   for (const x of [-60, 10]) {
     const dome = new THREE.Mesh(pavilionGeo, mat('#899996', { roughness: 0.5, metalness: 0.18 }));
-    dome.position.set(x, 1, -183); dome.scale.set(21, 12, 13); scene.add(dome); collider(x, -183, 42, 26);
+    dome.position.set(x, 1, -183); dome.scale.set(21, 12, 13); scene.add(dome); collider(x, -183, 42, 26, 14);
     for (let i = 0; i < 18; i++) {
       const angle = i / 18 * Math.PI * 2;
       beam(new THREE.Vector3(x + Math.cos(angle) * 21, 1, -183 + Math.sin(angle) * 13), new THREE.Vector3(x + Math.cos(angle) * 10, 11.5, -183 + Math.sin(angle) * 6), 0.45, cream);
@@ -420,7 +420,7 @@ export function buildMarinaScene() {
   for (const z of [-130, 80, 135]) box(291, 0.035, z, 67, 0.17, 7, sand);
   for (const [x, z, radius] of [[291, 15, 11], [304, 65, 14], [289, 116, 10]]) {
     const stem = new THREE.Mesh(geo(new THREE.CylinderGeometry(1.4, 2.5, 21, 9)), sand);
-    stem.position.set(x, 10.5, z); scene.add(stem); collider(x, z, 5, 5);
+    stem.position.set(x, 10.5, z); scene.add(stem); collider(x, z, 5, 5, 28);
     const rim = new THREE.Mesh(geo(new THREE.TorusGeometry(radius, 0.2, 5, 18)), canopyFrame);
     rim.rotation.x = Math.PI / 2; rim.position.set(x, 25, z); scene.add(rim);
     for (let i = 0; i < 12; i++) {
@@ -445,7 +445,7 @@ export function buildMarinaScene() {
   // Ribbed conservatory-inspired shells, kept to the side of the public path.
   const conservatoryGlass = mat('#718e89', { roughness: 0.35, metalness: 0.08 });
   for (const [x, z, width, height, depth] of [[287, -168, 22, 20, 32], [289, -95, 25, 15, 26]]) {
-    const shell = new THREE.Mesh(pavilionGeo, conservatoryGlass); shell.position.set(x, 0.4, z); shell.scale.set(width, height, depth); scene.add(shell); collider(x, z, width * 2, depth * 2);
+    const shell = new THREE.Mesh(pavilionGeo, conservatoryGlass); shell.position.set(x, 0.4, z); shell.scale.set(width, height, depth); scene.add(shell); collider(x, z, width * 2, depth * 2, height + 1);
     for (let rib = -4; rib <= 4; rib++) {
       const fraction = rib / 5, ringRadius = Math.sqrt(1 - fraction * fraction);
       const curve: THREE.Vector3[] = [];
@@ -478,7 +478,7 @@ export function buildMarinaScene() {
   for (const z of [-233.7, -220.3]) box(257, 17.3, z, 150, 1, 0.4, pale);
   for (const x of [193, 253, 313]) {
     for (const z of [-231, -223]) {
-      box(x, 4, z, 1.8, 8, 1.8, cream); collider(x, z, 2, 2);
+      box(x, 4, z, 1.8, 8, 1.8, cream); collider(x, z, 2, 2, 12);
       beam(new THREE.Vector3(x, 7, z), new THREE.Vector3(x - 4, 15.5, z), 1.4, cream);
       beam(new THREE.Vector3(x, 7, z), new THREE.Vector3(x + 4, 15.5, z), 1.4, cream);
       box(x + 0.95, 5.5, z, 0.18, 10, 1.6, hedge);
@@ -509,7 +509,7 @@ export function buildMarinaScene() {
   // central reservations. Keep the north/south connector at x=0 unobstructed.
   box(33, 0.015, 227, 480, 0.12, 18, sand);
   for (const x of [-185, -133, -81, 67, 119, 171]) {
-    box(x, 5, 201, 40, 10, 24, cream, scene, true); collider(x, 201, 40, 24);
+    box(x, 5, 201, 40, 10, 24, cream, scene, true); collider(x, 201, 40, 24, 15);
     box(x, 10.4, 201, 43, 0.8, 26, pale);
     box(x, 4.2, 215, 44, 0.3, 5, steel);
     for (let dx = -17; dx <= 17; dx += 6.8) {
@@ -522,7 +522,7 @@ export function buildMarinaScene() {
   }
   // Dense but batched west-side offices and open civic arcades.
   for (const z of [-230, -140, -50, 45]) {
-    box(-281, 16, z, 24, 32, 34, cream, scene, true); collider(-281, z, 24, 34);
+    box(-281, 16, z, 24, 32, 34, cream, scene, true); collider(-281, z, 24, 34, 36);
     box(-281, 33, z, 26, 2, 36, pale);
     for (let floor = 0; floor < 8; floor++) for (let dz = -12; dz <= 12; dz += 6) box(-268.9, 3 + floor * 3.6, z + dz, 0.15, 2.5, 3.8, glass);
     box(-264, 4, z, 8, 0.18, 36, glass);

@@ -33,6 +33,7 @@ export function createFpsVehicles(scene: THREE.Scene, obstacles: Obstacle[], ski
       { minX: 140, maxX: 163, minZ: -108, maxZ: 78, minY: 108, maxY: 114 },
       { minX: 21, maxX: 90, minZ: -103, maxZ: -93, minY: 0, maxY: 6.5 },
       { ...vehicleBounds(states.car), minY: 0, maxY: 2.7 },
+      { minX: 229, maxX: 286, minZ: -281, maxZ: -253, minY: 0, maxY: 67 },
     ];
   }
   function nearest(player: { x: number; z: number }) {

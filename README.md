@@ -45,6 +45,8 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 
 ## What works
 
+- **Immersive fullscreen:** use the Fullscreen button or F during FPS/vehicle play. Escape pauses and releases the mouse. The same canvas, loadout, vehicle and target progress remain active across screen-mode changes. Browsers that deny native fullscreen get an expanded viewport with an exit control.
+
 - **FPS vehicles:** approach Utility 01 or Falcon 01 and press E to enter/exit. Drive with WASD and Space brake, or fly with WASD, Space climb, C/Ctrl descend and Shift boost. Land before leaving the helicopter. The Armory’s Vehicles tab offers five cosmetic wraps, equipped separately on each vehicle.
 
 - **Field exchange:** the Armory sidebar opens a 27-item equipment shop with interactive 3D previews, permanent purchases, skins, attachment slots, and ILBV/LBS-inspired rigs with separate soft/ceramic inserts. Premium variants provide stronger stats, applied to the FPS. See [armory balance and architecture](docs/ARMORY.md).
@@ -155,6 +157,8 @@ With Vite running and an isolated Chrome started with `--remote-debugging-port=9
 ```sh
 NO_PROXY=127.0.0.1,localhost pnpm test:fps
 NO_PROXY=127.0.0.1,localhost pnpm test:armory
+NO_PROXY=127.0.0.1,localhost pnpm test:vehicles
+NO_PROXY=127.0.0.1,localhost pnpm test:fullscreen
 ```
 
 Both scripts default to `http://127.0.0.1:5175`; set `FPS_APP_ORIGIN` and `FPS_CHROME_ORIGIN` if needed. Use a separate Chrome `--user-data-dir`: the checks reset the demo armory save on the test origin. Screenshots go to `.cache/fps-smoke/` and `.cache/armory-smoke/`. No browser-testing dependencies were added.
