@@ -40,13 +40,35 @@ try {
  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'q',code:'KeyQ'}); await delay(250);
  assert(await evaluate(aiming(true)));
  const before=await evaluate(ammo);
- await send('Input.dispatchMouseEvent',{type:'mousePressed',x:700,y:550,button:'left',clickCount:1}); await delay(120);
- await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:700,y:550,button:'left',clickCount:1});
+ await send('Input.dispatchMouseEvent',{type:'mousePressed',x:700,y:550,button:'left',buttons:1,clickCount:1}); await wait(`${ammo}<${before}`);
+ await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:700,y:550,button:'left',buttons:0,clickCount:1});
  await wait(`${ammo}<${before}`); assert(await evaluate(aiming(true)),'Left click fires without dropping toggled aim');
  await screenshot('keyboard-toggle-fire');
  await key('q','KeyQ'); await wait(aiming(false));
- await send('Input.dispatchMouseEvent',{type:'mousePressed',x:700,y:550,button:'right',clickCount:1}); await wait(aiming(true));
- await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:700,y:550,button:'right',clickCount:1}); await wait(aiming(false));
+ const mouse = (type, button, buttons) => send('Input.dispatchMouseEvent',{type,x:700,y:550,button,buttons,clickCount:1});
+ // Real button chords: pointerdown fires only for the first held mouse button.
+ await mouse('mousePressed','right',2); await wait(aiming(true));
+ const scopedAmmo = await evaluate(ammo);
+ await mouse('mousePressed','left',3); await wait(`${ammo}<${scopedAmmo}`,3000);
+ await mouse('mouseReleased','left',2); await delay(300);
+ const stoppedAmmo = await evaluate(ammo); await delay(350);
+ assert.equal(await evaluate(ammo),stoppedAmmo,'Releasing LMB stops firing while RMB remains held');
+ assert(await evaluate(aiming(true)),'Releasing LMB must preserve RMB aim');
+ // A second shot must work without releasing/repressing RMB.
+ await mouse('mousePressed','left',3); await wait(`${ammo}<${stoppedAmmo}`,3000);
+ await mouse('mouseReleased','right',1); await wait(aiming(false));
+ const hipAmmo = await evaluate(ammo); await wait(`${ammo}<${hipAmmo}`,3000);
+ await mouse('mouseReleased','left',0); await delay(300);
+ const releasedAmmo = await evaluate(ammo); await delay(350);
+ assert.equal(await evaluate(ammo),releasedAmmo,'Releasing both buttons stops firing');
+ // Reverse press order: add/remove RMB while holding LMB.
+ await mouse('mousePressed','left',1); await mouse('mousePressed','right',3); await wait(aiming(true));
+ await mouse('mouseReleased','left',2); assert(await evaluate(aiming(true)));
+ await mouse('mouseReleased','right',0); await wait(aiming(false));
+ // A right click does not clear the independent Q latch.
+ await key('q','KeyQ'); await wait(aiming(true));
+ await mouse('mousePressed','right',2); await mouse('mouseReleased','right',0);
+ assert(await evaluate(aiming(true))); await key('q','KeyQ'); await wait(aiming(false));
  await key('q','KeyQ'); await wait(aiming(true)); await key('r','KeyR'); await wait(aiming(false));
  await wait(`${ammo}===30`); await delay(200);
  await key('q','KeyQ'); await wait(aiming(true)); await key('2','Digit2'); await wait(aiming(false));
@@ -59,6 +81,6 @@ try {
  await evaluate(`[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Aim').click()`);
  assert.equal(await evaluate(`document.querySelector('.fps-pilot-panel').dataset.pilotActive`),'true');
  await wait(phase('complete'),90000);
- assert.deepEqual(errors,[]); console.log('PASS: Q toggle survives key release/repeat and left-click firing; RMB hold, reload/switch/pause reset, and AI isolation with all eight targets cleared.');
+ assert.deepEqual(errors,[]); console.log('PASS: Q toggle firing; RMB/LMB chords in both press/release orders without stuck fire or aim; reload/switch/pause reset; AI isolation with all eight targets cleared.');
 } catch(error) {console.log(errors); await screenshot('pilot-failure'); throw error;}
-finally {ws.close(); await fetch(`${chrome}/json/close/${tab.id}`);}
+finally {await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:700,y:550,button:'left',buttons:0,clickCount:1}).catch(()=>{}); await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:700,y:550,button:'right',buttons:0,clickCount:1}).catch(()=>{}); ws.close(); await fetch(`${chrome}/json/close/${tab.id}`);}

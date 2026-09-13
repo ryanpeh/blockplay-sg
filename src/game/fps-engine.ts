@@ -393,14 +393,24 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     ({ yaw, pitch } = turnFpsLook(yaw, pitch, dx, dy, ads || touchAim));
   };
   const mousemove = (event: MouseEvent) => { if (!pilotEnabled && document.pointerLockElement === canvas) look(event.movementX, event.movementY); };
+  // Pointer events only report the first press and final release of a mouse chord.
+  // Mouse events report each button independently, including LMB while RMB is held.
+  const mousedown = (event: MouseEvent) => {
+    if (pilotEnabled || hud.phase !== 'playing' || document.pointerLockElement !== canvas) return;
+    if (event.button === 0) trigger = true;
+    if (event.button === 2) ads = true;
+  };
+  const mouseup = (event: MouseEvent) => {
+    if (pilotEnabled || document.pointerLockElement !== canvas) return;
+    if (event.button === 0) trigger = false;
+    if (event.button === 2) ads = false;
+  };
   const pointerdown = (event: PointerEvent) => {
     if (pilotEnabled) return;
     if (hud.phase !== 'playing') return;
     canvas.focus();
-    if (document.pointerLockElement === canvas) {
-      if (event.button === 0) trigger = true;
-      if (event.button === 2) ads = true;
-    } else if (inputMode === 'touch' && !requiresFpsPointerLock(event.pointerType)) {
+    if (document.pointerLockElement === canvas) return;
+    if (inputMode === 'touch' && !requiresFpsPointerLock(event.pointerType)) {
       canvas.setPointerCapture(event.pointerId); drag = { id: event.pointerId, x: event.clientX, y: event.clientY };
     } else {
       pause();
@@ -411,7 +421,6 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     look(event.clientX - drag.x, event.clientY - drag.y); drag.x = event.clientX; drag.y = event.clientY;
   };
   const pointerup = (event: PointerEvent) => {
-    if (event.pointerType === 'mouse') { if (event.button === 0) trigger = false; if (event.button === 2) ads = false; }
     if (drag?.id === event.pointerId) drag = null;
   };
   const releasePointer = () => { trigger = false; ads = false; drag = null; };
@@ -430,6 +439,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   canvas.addEventListener('pointerdown', pointerdown); canvas.addEventListener('pointermove', pointermove);
   window.addEventListener('pointerup', pointerup); canvas.addEventListener('pointercancel', releasePointer); canvas.addEventListener('lostpointercapture', releasePointer);
   canvas.addEventListener('contextmenu', contextmenu); document.addEventListener('mousemove', mousemove);
+  canvas.addEventListener('mousedown', mousedown); window.addEventListener('mouseup', mouseup);
   document.addEventListener('pointerlockchange', lockchange); document.addEventListener('pointerlockerror', lockerror);
   window.addEventListener('blur', pause); document.addEventListener('visibilitychange', visibility);
 
@@ -819,6 +829,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       canvas.removeEventListener('pointerdown', pointerdown); canvas.removeEventListener('pointermove', pointermove);
       window.removeEventListener('pointerup', pointerup); canvas.removeEventListener('pointercancel', releasePointer); canvas.removeEventListener('lostpointercapture', releasePointer);
       canvas.removeEventListener('contextmenu', contextmenu); document.removeEventListener('mousemove', mousemove);
+      canvas.removeEventListener('mousedown', mousedown); window.removeEventListener('mouseup', mouseup);
       document.removeEventListener('pointerlockchange', lockchange); document.removeEventListener('pointerlockerror', lockerror);
       window.removeEventListener('blur', pause); document.removeEventListener('visibilitychange', visibility);
       void audio?.close().catch(() => {}); arenaRuntime?.dispose(); expeditionSession?.close(); markers?.dispose(); vehicles.dispose(); undress.forEach(fn => fn()); handling.forEach(model => model.dispose()); disposeAssets(templates); world.dispose();
