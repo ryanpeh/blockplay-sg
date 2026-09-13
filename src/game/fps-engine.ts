@@ -21,6 +21,7 @@ import type { ExpeditionLoot, FieldLoot } from './expedition-loot';
 import { itemById } from './armory-catalog';
 import { DEFAULT_FPS_DEBUG, FPS_REGEN_DELAY, normalizeFpsDebug, readFpsDebug, regenerateHealth, saveFpsDebug, type FpsDebugSettings } from './fps-debug';
 import { createWeaponHandling } from './fps-viewmodel';
+import { createScopeRenderer, getWeaponSight } from './weapon-optics';
 import { reloadMotion, reloadStage, smoothStep } from './fps-weapon-motion';
 import { advanceBloom, createWeaponBloom, recordBloomShot, sampleShotSpread, weaponSpread } from './fps-accuracy';
 
@@ -88,6 +89,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   const viewScene = new THREE.Scene(), viewCamera = new THREE.PerspectiveCamera(65, 1, 0.01, 3);
   viewScene.add(new THREE.HemisphereLight('#e4efff', '#576350', 2.1));
   const weaponLight = new THREE.DirectionalLight('#fff4dd', 2.5); weaponLight.position.set(1, 2, 1); viewScene.add(weaponLight);
+  const scopeRenderer = createScopeRenderer(renderer);
   const rig = new THREE.Group(); viewScene.add(rig);
   const loader = new GLTFLoader(), templates: THREE.Group[] = [], weapons: THREE.Group[] = [];
   const handling: ReturnType<typeof createWeaponHandling>[] = [], emptyReload = [false, false];
@@ -413,7 +415,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     const crouching = keys.has('c');
     camera.position.set(position.x, (crouching ? 1.15 : 1.75) + vertical, position.z);
     camera.rotation.set(pitch + kick * 0.22, yaw, 0, 'YXZ');
-    camera.fov = THREE.MathUtils.lerp(sprinting ? 71 : 65, specs[hud.weapon].aimFov, aim);
+    camera.fov = THREE.MathUtils.lerp(sprinting ? 71 : 65, 65, aim);
     camera.updateProjectionMatrix(); camera.updateMatrixWorld(true);
     viewCamera.fov = THREE.MathUtils.lerp(65, 54, aim); viewCamera.updateProjectionMatrix();
     bob += moving ? dt * (sprinting ? 13 : 8) : 0;
@@ -425,7 +427,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     const progress = remaining > 0 ? 1 - remaining : null, motion = reloadMotion(progress ?? 0);
     rig.position.set(THREE.MathUtils.lerp(.20, 0, aim) + sway + motion.x,
       THREE.MathUtils.lerp(-.32, -(handling[hud.weapon]?.aimHeight ?? .435), aim) + Math.abs(sway) - (sprinting ? .08 : 0) + motion.y,
-      THREE.MathUtils.lerp(-.78, -.47, aim) + kick * .6 + motion.z);
+      THREE.MathUtils.lerp(-.78, handling[hud.weapon]?.aimDepth ?? -.47, aim) + kick * .6 + motion.z);
     rig.rotation.set(kick * (1 - aim * .8) + (sprinting ? -.18 : 0) + motion.pitch, motion.yaw, motion.roll);
     handling.forEach((model, i) => model.update(i === hud.weapon ? progress : null, emptyReload[i]));
     const stage = reloadStage(remaining, emptyReload[hud.weapon]);
@@ -623,6 +625,8 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       motor.frequency.setTargetAtTime(vehicles.active === 'helicopter' ? 54 + Math.sin(hud.elapsed * 24) * 8 : 35 + Math.abs(vehicles.mounted?.speed || 0) * 4, audio.currentTime, .05);
     }
     world.animate(hud.elapsed);
+    const scopeActive = scopeRenderer.render(world.scene, camera, viewCamera, weapons[hud.weapon] ? getWeaponSight(weapons[hud.weapon]) : undefined, aimProgress > .85 && rig.visible && !vehicles.active && hud.phase === 'playing');
+    canvas.dataset.scopeActive = String(scopeActive);
     renderer.clear(); renderer.render(world.scene, camera); renderer.clearDepth(); renderer.render(viewScene, viewCamera);
     if (now - lastReport > 100) { publish(); lastReport = now; }
     frame = requestAnimationFrame(animate);
@@ -681,7 +685,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       void audio?.close().catch(() => {}); arenaRuntime?.dispose(); expeditionSession?.close(); markers?.dispose(); vehicles.dispose(); undress.forEach(fn => fn()); handling.forEach(model => model.dispose()); disposeAssets(templates); world.dispose();
       healthGeometry.dispose(); healthMaterial.dispose();
       targetGeometry.dispose(); targetMaterial.dispose(); flashGeometry.dispose(); flashMaterial.dispose(); tracerGeometry.dispose(); tracerMaterial.dispose(); impactGeometry.dispose(); impactMaterial.dispose();
-      renderer.dispose(); canvas.remove();
+      scopeRenderer.dispose(); renderer.dispose(); canvas.remove();
     },
   };
 }

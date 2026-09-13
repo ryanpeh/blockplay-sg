@@ -1,8 +1,12 @@
 /** Arcade tuning, intentionally independent of real equipment specifications. */
-export interface WeaponSpec { id: string; name: string; role: string; capacity: number; reserve: number; interval: number; reload: number; recoil: number; sightHeight: number; damage: number; aimFov: number; mobility: number }
+export type WeaponOptic = 'integrated' | 'reflex' | 'precision';
+export const HIP_FOV = 65;
+export const magnifiedFov = (zoom: number) => 2 * Math.atan(Math.tan(HIP_FOV * Math.PI / 360) / zoom) * 180 / Math.PI;
+export const opticMagnification = (weapon: WeaponSpec) => Math.tan(HIP_FOV * Math.PI / 360) / Math.tan(weapon.aimFov * Math.PI / 360);
+export interface WeaponSpec { id: string; name: string; role: string; capacity: number; reserve: number; interval: number; reload: number; recoil: number; sightHeight: number; damage: number; aimFov: number; mobility: number; optic?: WeaponOptic }
 export const FPS_WEAPONS: readonly WeaponSpec[] = [
-  { id: 'sar21-inspired', name: 'SAR 21', role: 'Bullpup rifle', capacity: 30, reserve: 120, interval: 0.12, reload: 1.8, recoil: 0.018, sightHeight: 0.328, damage: 36, aimFov: 48, mobility: 1 },
-  { id: 'ultimax-inspired', name: 'Ultimax', role: 'Support weapon', capacity: 60, reserve: 180, interval: 0.085, reload: 2.5, recoil: 0.026, sightHeight: 0.28, damage: 30, aimFov: 48, mobility: 1 },
+  { id: 'sar21-inspired', name: 'SAR 21', role: 'Bullpup rifle', capacity: 30, reserve: 120, interval: 0.12, reload: 1.8, recoil: 0.018, sightHeight: 0.328, damage: 36, aimFov: magnifiedFov(1.5), mobility: 1, optic: 'integrated' },
+  { id: 'ultimax-inspired', name: 'Ultimax', role: 'Support weapon', capacity: 60, reserve: 180, interval: 0.085, reload: 2.5, recoil: 0.026, sightHeight: 0.28, damage: 30, aimFov: HIP_FOV, mobility: 1, optic: 'reflex' },
 ];
 
 export interface WeaponState { magazine: number; reserve: number; cooldown: number; reloadRemaining: number }

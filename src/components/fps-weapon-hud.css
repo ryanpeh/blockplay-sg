@@ -36,3 +36,9 @@
 @keyframes fps-kill-impact{from{transform:translate(-50%,-50%) rotate(45deg) scale(1.6)}to{transform:translate(-50%,-50%) rotate(45deg) scale(1)}}
 @media(max-width:720px){.fps-weapon-hud .fps-ammo{min-width:150px;padding:8px 10px}.fps-weapon-hud .fps-ammo strong{font-size:34px}.fps-weapon-hud .fps-ammo p{font-size:7px}.fps-weapon-hud .fps-ammo>span{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.fps-weapon-hud *{transition:none!important;animation:none!important}}
+
+.fps-weapon-hud[data-sight=scope] .fps-tactical-crosshair b{opacity:calc(1 - var(--fps-aim))}
+.fps-integrated-reticle{position:absolute;inset:0;opacity:var(--fps-aim);filter:drop-shadow(0 0 1px #ffffff70)}
+.fps-integrated-reticle:before,.fps-integrated-reticle:after{content:"";position:absolute;background:#101713}
+.fps-integrated-reticle:before{width:36px;height:1px;left:6px;top:23.5px}
+.fps-integrated-reticle:after{width:1px;height:36px;left:23.5px;top:6px}

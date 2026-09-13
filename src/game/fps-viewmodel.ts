@@ -1,8 +1,9 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { reloadMotion } from './fps-weapon-motion';
+import { getWeaponSight } from './weapon-optics';
 
-/** Lightweight rigid hand poses and a hollow optic; no extra render target or skinning. */
+/** Lightweight rigid hand poses; no extra render target or skinning. */
 export function createWeaponHandling(model: THREE.Group, index: number) {
   const additions = new THREE.Group(); additions.name = 'fps-handling'; model.add(additions);
   const geometries: THREE.BufferGeometry[] = [], materials: THREE.Material[] = [];
@@ -35,21 +36,12 @@ export function createWeaponHandling(model: THREE.Group, index: number) {
   const magazine = model.getObjectByName(`${index ? 'ultimax' : 'sar21'}-inspired__magazine`);
   const magazineHome = magazine?.position.clone() ?? new THREE.Vector3();
   const magazineRotation = magazine?.rotation.clone() ?? new THREE.Euler();
-  // Raised reflex optic keeps the original opaque export below the sight line.
-  const aimHeight = index ? .405 : .435, opticZ = index ? .18 : .16;
-  const optic = new THREE.Group(); optic.name = 'fps-reflex-optic'; optic.position.set(0, aimHeight, opticZ); additions.add(optic);
-  box(optic, .038, .065, .055, 0, -.065, -.012, steel);
-  const tube = mesh(optic, new THREE.CylinderGeometry(.050, .050, .052, 28, 1, true), steel, 0, 0, -.016); tube.rotation.x = Math.PI / 2;
-  for (const z of [-.042, .010]) mesh(optic, new THREE.TorusGeometry(.048, .006, 6, 28), steel, 0, 0, z);
-  const glass = new THREE.MeshBasicMaterial({ color: '#83c4c6', transparent: true, opacity: .055, depthWrite: false, side: THREE.DoubleSide }); materials.push(glass);
-  mesh(optic, new THREE.CircleGeometry(.045, 28), glass, 0, 0, -.014);
-  box(optic, .025, .038, .039, .061, -.005, -.014, steel);
-  box(optic, .012, .012, .041, .076, -.004, -.014, pad);
   // Animated control is decorative; gameplay ammunition remains owned by weapon rules.
   const control = box(additions, .023, .014, .025, .049, index ? .211 : .257, index ? .05 : .10, steel);
   const controlZ = control.position.z;
   return {
-    aimHeight,
+    get aimHeight() { return getWeaponSight(model)?.aimHeight ?? .328; },
+    get aimDepth() { return getWeaponSight(model)?.aimDepth ?? -.36; },
     update(progress: number | null, empty: boolean) {
       const motion = reloadMotion(progress ?? 0);
       if (magazine) {

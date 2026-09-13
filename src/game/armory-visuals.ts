@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { itemById, type ShopItem } from './armory-catalog';
 import type { EquippedWeapon } from './armory-state';
+import { fitWeaponOptic } from './weapon-optics';
 
 /** Each preview owns its materials. Restore originals before disposing the source GLB. */
 export function dressWeapon(root: THREE.Object3D, weapon: EquippedWeapon) {
@@ -37,10 +38,11 @@ export function dressWeapon(root: THREE.Object3D, weapon: EquippedWeapon) {
     const part = new THREE.Mesh(new THREE.BoxGeometry(.038, .012, .05), new THREE.MeshStandardMaterial({ color, metalness: .55, roughness: .45 }));
     part.position.set(x, y, z); accessories.add(part);
   };
-  if (weapon.equipment.attachments.optic) addBand(0, weapon.sightHeight + .02, -.08, '#79bccc');
+  const removeOptic = fitWeaponOptic(root, weapon);
   if (weapon.equipment.attachments.magazine) addBand(.036, .07, .13, '#b8a17a');
   if (weapon.equipment.attachments.handling) addBand(0, .07, -.20, '#555b5e');
   return () => {
+    removeOptic();
     originals.forEach(([object, material]) => object.material = material);
     materials.forEach(m => m.dispose()); texture?.dispose(); accessories.removeFromParent(); disposeModel(accessories);
   };

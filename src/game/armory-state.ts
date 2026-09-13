@@ -66,7 +66,9 @@ export function resolveLoadout(profile: ArmoryProfile): ResolvedLoadout {
     const variant = itemById(gun.variant)!;
     const spec: EquippedWeapon = { ...FPS_WEAPONS[i], ...variant.stats, name: variant.name, equipment: gun, accent: variant.accent, reserve: FPS_WEAPONS[i].reserve + (rig.carry || 0) };
     for (const id of Object.values(gun.attachments)) {
-      const mod = itemById(id)?.modifiers; if (!mod) continue;
+      const attachment = itemById(id);
+      if (attachment?.slot === 'optic' && attachment.stats?.optic) spec.optic = attachment.stats.optic;
+      const mod = attachment?.modifiers; if (!mod) continue;
       spec.capacity += mod.capacity || 0; spec.reload *= mod.reload || 1; spec.recoil *= mod.recoil || 1; spec.mobility *= mod.mobility || 1;
       if (mod.aimFov) spec.aimFov = mod.aimFov;
     }

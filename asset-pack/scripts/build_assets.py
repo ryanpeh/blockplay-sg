@@ -1,5 +1,5 @@
 """Original visual game meshes. Run with Blender --background --python this_file."""
-import bpy, math, json, random, numpy as np
+import bpy, math, json, random, sys, shutil, numpy as np
 from pathlib import Path
 from mathutils import Vector
 
@@ -126,12 +126,14 @@ cyl('Muzzle dark face',(.4115,0,.197),.010,.001,rubber)
 for s in [-1,1]:
     for i in range(3):box('Muzzle slots',(.375+i*.009,s*.016,.197),(.004,.001,.013),rubber,.0004)
 # Distinctive elevated integrated optic, with open space below.
+PART='optic'
 for l in [-.15,.13]:profile('Optic bridge',[(l-.028,.256),(l+.025,.256),(l+.015,.315),(l-.015,.319)],.035,olive,bevel=.003)
 cyl('Optic tube',(-.015,0,.328),.026,.30,olive)
 for l in [-.174,.144]:cyl('Optic housing',(l,0,.328),.032,.035,rubber)
 for l in [-.192,.162]:cyl('Optic lens',(l,0,.328),.024,.001,glass)
 cyl('Optic turret',(-.03,0,.36),.014,.018,steel,'z')
 box('Optic top rib',(-.01,0,.356),(.24,.017,.007),olive)
+PART='body'
 screws([(-.36,.115),(-.11,.186),(.06,.215),(.21,.15)],.075)
 PART='magazine'
 profile('Magazine',[(-.274,.104),(-.208,.103),(-.19,-.099),(-.209,-.142),(-.272,-.132),(-.28,-.068)],.035,steel,bevel=.004)
@@ -140,6 +142,17 @@ for s in [-1,1]:
 box('Magazine base',(-.241,0,-.134),(.071,.041,.014),rubber)
 PART='body'; socket('socket_muzzle',(.414,0,.197)); socket('socket_grip',(0,0,0)); socket('socket_support',(.17,0,.105)); socket('socket_sight',(-.19,0,.328)); socket('socket_eject',(-.23,.043,.164))
 sar=end('sar21-inspired','SAR 21 / Bullpup','Weapon','SAR 21-inspired silhouette with elevated optic, olive polymer and detachable rear magazine.')
+
+# Fast, reproducible optic update without rebuilding the other assets or studio renders.
+if '--sar-only' in sys.argv:
+    shutil.copy2(BASE/'public/models/sar21-inspired.glb', BASE.parent/'public/models/field-kit/sar21-inspired.glb')
+    for manifest in [BASE/'public/models/manifest.json', BASE.parent/'public/models/field-kit/manifest.json']:
+        if manifest.exists():
+            entries=json.loads(manifest.read_text())
+            if isinstance(entries, list):
+                entries=[catalog[0] if entry['id']=='sar21-inspired' else entry for entry in entries]
+                manifest.write_text(json.dumps(entries,indent=2))
+    sys.exit(0)
 
 begin('ultimax-inspired')
 profile('Stock',[(-.50,.21),(-.49,.025),(-.40,.02),(-.32,.09),(-.22,.115),(-.22,.19)],.062,olive,bevel=.005)
