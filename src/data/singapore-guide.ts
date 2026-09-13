@@ -1,3 +1,5 @@
+import { rafflesLearningTopics } from './raffles-guide.ts';
+import { queenstownLearningTopics } from './queenstown-guide.ts';
 /** Curated facts, reviewed 13 September 2026. Game stops are stylised counterparts, not surveyed sites. */
 export const learningTopics = [
   { id: 'marina-bay', title: 'Marina Bay: a working waterfront', stops: ['waterfront', 'city-skyline', 'bay-crossing', 'waterfront-terraces', 'harbour-promenade'],
@@ -24,20 +26,14 @@ export const learningTopics = [
     facts: ['The Singapore Flyer is a 165-metre observation wheel.', 'Its glass capsules provide panoramic views including Marina Bay, the Singapore River and Raffles Place.'],
     notice: 'Find the wheel in the game. How might a higher viewpoint change your understanding of a city’s layout?',
     source: 'Singapore Tourism Board — Singapore Flyer', url: 'https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/marina-bay/singapore-flyer/' },
-  { id: 'raffles-place', title: 'Raffles Place: commerce through time', stops: [],
-    facts: ['Raffles Place was called Commercial Square before it was renamed in 1858.', 'A National Heritage Board photograph records its busy central car park in the 1950s, surrounded by banks, offices and shops. Today the central space includes MRT entrances.'],
-    notice: 'Imagine replacing a central car park with access to trains. How would that change the way people use the district?',
-    source: 'National Heritage Board — Raffles Place collection', url: 'https://www.roots.gov.sg/Collection-Landing/listing/1111377' },
-  { id: 'queenstown', title: 'Queenstown: everyday Singapore matters', stops: [],
-    facts: ['Queenstown was Singapore’s first satellite town, initiated in 1952.', 'Satellite towns were planned with everyday amenities such as schools, markets and shops outside the city centre. HDB took over Queenstown’s development from the Singapore Improvement Trust in 1960.'],
-    notice: 'What would you need within walking distance to make a neighbourhood feel like a complete community?',
-    source: 'National Heritage Board — Queenstown', url: 'https://www.roots.gov.sg/stories-landing/stories/queenstown-the-queen-of-housing-estates/story' },
+  ...rafflesLearningTopics,
+  ...queenstownLearningTopics,
 ] as const;
 
 export type LearningTopic = typeof learningTopics[number];
 export function learningTopic(id: unknown): LearningTopic | undefined {
   return learningTopics.find(topic => topic.id === id);
 }
-export function learningText(topic: LearningTopic) {
-  return `${topic.title}. ${topic.facts.join(' ')} Something to think about: ${topic.notice} Your objective and stamps are unchanged. These facts describe the real place; the game is a stylised interpretation.`;
+export function learningText(topic: LearningTopic, educationOnly = false) {
+  return `${topic.title}. ${topic.facts.join(' ')} Something to think about: ${topic.notice} ${educationOnly ? 'Your exploration progress and stamps are unchanged.' : 'Your objective and stamps are unchanged.'} These facts describe the real place; the game is a stylised interpretation.`;
 }

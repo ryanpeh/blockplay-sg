@@ -1,6 +1,7 @@
 export type Destination = { id: string; name: string; x: number; z: number };
+export type GuideRegion = 'marina-bay' | 'raffles-place' | 'queenstown';
 export type AdventureSnapshot = {
-  sessionId: string; revision: number; region: 'marina-bay';
+  sessionId: string; revision: number; region: GuideRegion;
   position: { x: number; z: number }; activeId: string | null;
   destinations: Destination[]; collected: string[];
 };

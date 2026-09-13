@@ -4,6 +4,8 @@
 
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
+Regional education added: `src/data/raffles-guide.ts` and `queenstown-guide.ts` each contain six source-checked cards covering all 11/eight game stops. Shared catalog now has 18 topics. `RegionGuide.tsx` and `learning-guide.ts` bridge current position/stamps into an education-only companion; they cannot mutate game state. Queenstown/Raffles reset remounts the panel and clears history, while region switches cancel requests. Backend accepts all three region snapshots but only Marina may propose objective changes. Luna text and GPT-Live-1 voice remain shared. Live browser verified Queenstown library and Boat Quay answers with unchanged stamps; physical microphone quality remains untested. Theme-to-stop mappings are not surveyed landmark coordinates.
+
 Latest model choice supersedes earlier Astra runtime instructions: use `gpt-5.6-luna` for companion text interpretation and delegated transcripts, as requested by the user. Speech stays `gpt-live-1`; no automatic fallback. UI and server tests identify Luna. Astra remains the build tool, and historical Astra test results below are not Luna verification.
 
 Luna browser failure resolved: a stale frontend returned 404 for API requests while backend port 3001 succeeded. Restart `pnpm dev` after proxy configuration changes (and `pnpm server` after server changes). Live Luna education/closer/named/skip now verified in browser; 109 unit tests and build pass. A missing-route error now gives explicit restart guidance instead of a generic model failure.

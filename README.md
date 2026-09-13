@@ -133,7 +133,7 @@ The game and Google viewer are independent. Extend the original world without mi
 
 ## Deploy
 
-The game can be hosted statically, but the Marina **Change the adventure** companion requires a server. See [ADVENTURE.md](ADVENTURE.md) for text/voice setup, testing and deployment. Run `pnpm server` alongside `pnpm dev`, with private `OPENAI_API_KEY` in `.env`. The companion uses GPT-5.6 Luna and GPT-Live-1; ordinary exploration remains local.
+The game can be hosted statically, but the **Change the adventure** companion and regional educational guides require a server. See [ADVENTURE.md](ADVENTURE.md) for text/voice setup, testing and deployment. Run `pnpm server` alongside `pnpm dev`, with private `OPENAI_API_KEY` in `.env`. The companions use GPT-5.6 Luna and GPT-Live-1; ordinary exploration remains local. Queenstown and Raffles Place each have six sourced learning cards linked to their game stops. Ask about the nearest stop, local history, the Queenstown library or Boat Quay. Their guides do not change objectives or stamps.
 
 For a game-only static deployment, import the repository into Vercel, Netlify, or your static host:
 

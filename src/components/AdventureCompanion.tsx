@@ -5,7 +5,7 @@ import { createAdventureClient } from '../lib/adventure-client';
 import { LiveVoice, type VoiceState } from '../lib/live-voice';
 import type { LearningTopic } from '../data/singapore-guide';
 
-export default function AdventureCompanion({ game }: { game: AdventureGame }) {
+export default function AdventureCompanion({ game, educationOnly = false, regionName = 'Marina Bay' }: { game: AdventureGame; educationOnly?: boolean; regionName?: string }) {
   const [learning, setLearning] = useState<LearningTopic | null>(null);
   const [client] = useState(() => createAdventureClient(game, undefined, setLearning));
   const [text, setText] = useState('');
@@ -56,26 +56,26 @@ export default function AdventureCompanion({ game }: { game: AdventureGame }) {
     });
     voice.current = session; void session.start();
   };
-  return <section className="adventure-companion" aria-label="Change the adventure" onKeyDown={e => e.stopPropagation()} onKeyUp={e => e.stopPropagation()}>
-    <div className="companion-heading"><strong>Change the adventure</strong><span role="status">{processing ? 'Processing…' : voiceState === 'off' ? 'Luna · text / voice' : voiceState === 'speaking' ? 'Replying · microphone on' : `${voiceState}…`}</span></div>
+  return <section className="adventure-companion" aria-label={educationOnly ? `${regionName} educational guide` : 'Change the adventure'} onKeyDown={e => e.stopPropagation()} onKeyUp={e => e.stopPropagation()}>
+    <div className="companion-heading"><strong>{educationOnly ? `${regionName} guide` : 'Change the adventure'}</strong><span role="status">{processing ? 'Processing…' : voiceState === 'off' ? 'Luna · GPT-Live-1' : voiceState === 'speaking' ? 'Replying · microphone on' : `${voiceState}…`}</span></div>
     <div className="companion-history" role="log" aria-label="Companion conversation" aria-live="polite">
-      {history.length ? history.map((item, i) => <p key={i}><b>{item.role}:</b> {item.text}</p>) : <p>Change your route or learn about Singapore. Try “something closer”, “tell me about this stop”, or “what makes Queenstown special?”. Your stamps stay collected.</p>}
+      {history.length ? history.map((item, i) => <p key={i}><b>{item.role}:</b> {item.text}</p>) : <p>{educationOnly ? `Learn about ${regionName}: ask about its history, local highlights or a nearby stop. This guide does not change objectives or collected stamps.` : 'Change your route or learn about Singapore. Try “something closer”, “tell me about this stop”, or “what makes Queenstown special?”. Your stamps stay collected.'}</p>}
     </div>
     <div className="companion-suggestions" aria-label="Explore and learn">
-      {['Tell me about this stop', 'Marina Bay highlights', 'Tell me about Queenstown'].map(prompt => <button key={prompt} type="button" onClick={() => { stopVoice(); void send(prompt); }}>{prompt}</button>)}
+      {(educationOnly ? [`${regionName} highlights`, 'Tell me about the nearest stop', `Tell me about the history of ${regionName}`] : ['Tell me about this stop', 'Marina Bay highlights', 'Tell me about Queenstown']).map(prompt => <button key={prompt} type="button" onClick={() => { stopVoice(); void send(prompt); }}>{prompt}</button>)}
     </div>
     {learning && <aside className="companion-learning" aria-label="Singapore learning card">
       <strong>{learning.title}</strong>
       <ul>{learning.facts.map(fact => <li key={fact}>{fact}</li>)}</ul>
       <p><b>Think about it:</b> {learning.notice}</p>
       <a href={learning.url} target="_blank" rel="noopener noreferrer">Source: {learning.source} ↗</a>
-      <small>Real-place context · stylised game landmarks · facts reviewed 13 Sep 2026. Learning does not change your objective.</small>
+      <small>Real-place context · stylised game landmarks · facts reviewed 13 Sep 2026. {educationOnly ? 'Learning does not change your exploration progress.' : 'Learning does not change your objective.'}</small>
     </aside>}
     {transcript && voiceState !== 'off' && <p className="companion-caption">Heard: {transcript}</p>}
     {spoken && voiceState !== 'off' && <p className="companion-caption">Voice: {spoken}</p>}
     {error && <p className="companion-error" role="alert">{error}</p>}
     <form onSubmit={event => { event.preventDefault(); if (!text.trim()) return; stopVoice(); void send(text.trim()); setText(''); }}>
-      <input aria-label="Adventure request" value={text} maxLength={1200} onChange={e => setText(e.target.value)} placeholder="Where shall we go, or what would you like to learn?" autoComplete="off" />
+      <input aria-label="Adventure request" value={text} maxLength={1200} onChange={e => setText(e.target.value)} placeholder={educationOnly ? `Ask about ${regionName}…` : 'Where shall we go, or what would you like to learn?'} autoComplete="off" />
       <button type="submit" aria-label="Send adventure request" disabled={!text.trim()}><Send size={16} /></button>
       <button type="button" aria-label={voiceState === 'off' ? 'Start microphone' : 'Stop microphone'} aria-pressed={voiceState !== 'off'} onClick={voiceState === 'off' ? startVoice : stopVoice}>{voiceState === 'off' ? <Mic size={16} /> : <Square size={16} />}</button>
     </form>

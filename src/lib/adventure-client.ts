@@ -30,7 +30,7 @@ export function createAdventureClient(game: AdventureGame, fetcher: typeof fetch
           const topic = learningTopic(body.decision.topicId);
           if (!topic && body.decision.topicId !== null) throw new Error('Unknown learning topic. Your objective is unchanged.');
           onLearning(topic ?? null);
-          return topic ? learningText(topic) : 'I don’t have verified information for that question yet. Ask about Marina Bay, the museum, SkyPark, Gardens by the Bay, Esplanade, the Flyer, Raffles Place or Queenstown. Check the official venue website for current hours, prices and exhibitions. Your objective is unchanged.';
+          return topic ? learningText(topic, now.region !== 'marina-bay') : 'I don’t have verified information for that question yet. Ask about Marina Bay, the museum, SkyPark, Gardens by the Bay, Esplanade, the Flyer, Raffles Place or Queenstown. Check the official venue website for current hours, prices and exhibitions. Your progress is unchanged.';
         }
         return game.apply(ticket, body.decision).message;
       } catch (error) {

@@ -3,18 +3,25 @@ import { Readable } from 'node:stream';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { createAdventure } from '../src/game/adventure';
 import { createAdventureHandler, interpret, liveSession, validSnapshot } from './adventure-api';
+import { learningTopics } from '../src/data/singapore-guide';
 const state = createAdventure([{ id: 'waterfront', name: 'Waterfront', x: 100, z: 0 }, { id: 'lotus-museum', name: 'Lotus museum', x: 10, z: 0 }], { x: 0, z: 0 }).read();
 it('routes education to curated topics, with active and nearby context', async () => {
   const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ output: [{ content: [{ type: 'output_text', text: JSON.stringify({ intent: 'learn', destinationId: null, topicId: 'artscience-museum' }) }] }] })));
   expect(await interpret('Tell me about the museum', state, 'key', 'https://api.openai.com/v1', fetcher)).toEqual({ intent: 'learn', destinationId: null, topicId: 'artscience-museum' });
   const body = JSON.parse(fetcher.mock.calls[0][1].body), input = JSON.parse(body.input);
-  expect(input.nearestStopId).toBe('lotus-museum'); expect(input.topics).toHaveLength(8);
+  expect(input.nearestStopId).toBe('lotus-museum'); expect(input.topics).toHaveLength(learningTopics.length);
   expect(body.instructions).toContain('Never change an objective merely');
 });
 it('rejects invented lessons and mixed learning/travel decisions', async () => {
   for (const decision of [{ intent: 'learn', destinationId: null, topicId: 'invented' }, { intent: 'learn', destinationId: 'lotus-museum', topicId: 'artscience-museum' }]) {
     const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ output: [{ content: [{ type: 'output_text', text: JSON.stringify(decision) }] }] })));
     await expect(interpret('explain', state, 'key', 'https://api.openai.com/v1', fetcher)).rejects.toThrow('invalid learning topic');
+  }
+});
+it('accepts regional education but never forwards a regional travel proposal', async () => {
+  const fetcher = vi.fn().mockImplementation(() => Promise.resolve(new Response(JSON.stringify({ output: [{ content: [{ type: 'output_text', text: JSON.stringify({ intent: 'named', destinationId: 'lotus-museum', topicId: null }) }] }] }))));
+  for (const region of ['queenstown', 'raffles-place'] as const) {
+    expect(await interpret('take me there', { ...state, region }, 'key', 'https://api.openai.com/v1', fetcher)).toEqual({ intent: 'keep', destinationId: null });
   }
 });
 it('uses Luna structured IDs and deterministic closer context without exposing the key', async () => {
@@ -25,7 +32,8 @@ it('uses Luna structured IDs and deterministic closer context without exposing t
   expect(body.text.format.strict).toBe(true); expect(JSON.stringify(body)).not.toContain('private-key');
 });
 it('rejects malformed snapshots and invalid model output', async () => {
-  expect(validSnapshot(state)).toBe(true); expect(validSnapshot({ ...state, region: 'queenstown' } as never)).toBe(false);
+  expect(validSnapshot(state)).toBe(true); expect(validSnapshot({ ...state, region: 'queenstown' })).toBe(true);
+  expect(validSnapshot({ ...state, region: 'unknown' } as never)).toBe(false);
   const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ output: [{ content: [{ type: 'output_text', text: '{"intent":"named","destinationId":"invented"}' }] }] })));
   await expect(interpret('museum', state, 'key', 'https://api.openai.com/v1', fetcher)).rejects.toThrow('invalid objective');
 });

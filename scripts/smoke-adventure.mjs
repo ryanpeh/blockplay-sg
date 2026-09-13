@@ -31,7 +31,11 @@ try {
       if (url === '/api/adventure/voice-session') return new Response(JSON.stringify({ session: { id: 'mock' }, transport: { sdp: 'mock' } }));
       if (url !== '/api/adventure/change') return window.__realFetch(url, options);
       const body = JSON.parse(options.body); window.__requests.push(body);
-      if (/tell me about|highlights/i.test(body.text)) return new Response(JSON.stringify({decision:{intent:'learn',destinationId:null,topicId:/Queenstown/i.test(body.text)?'queenstown':/museum/i.test(body.text)?'artscience-museum':'marina-bay'}}));
+      if (/tell me about|highlights/i.test(body.text)) {
+        const result = new Response(JSON.stringify({decision:{intent:'learn',destinationId:null,topicId:/library/i.test(body.text)?'queenstown-library':/Boat Quay/i.test(body.text)?'raffles-boat-quay':/Queenstown/i.test(body.text)?'queenstown':/Raffles/i.test(body.text)?'raffles-place':/museum/i.test(body.text)?'artscience-museum':body.state.region}}));
+        if (/slow/.test(body.text)) return new Promise(resolve=>window.__pending.push(()=>resolve(result)));
+        return result;
+      }
       let intent = /closer/.test(body.text) ? 'closer' : /skip/.test(body.text) ? 'skip' : 'named';
       const candidates = body.state.destinations.filter(d => d.id !== body.state.activeId && !body.state.collected.includes(d.id));
       candidates.sort((a,b) => Math.hypot(a.x-body.state.position.x,a.z-body.state.position.z)-Math.hypot(b.x-body.state.position.x,b.z-body.state.position.z));
@@ -50,7 +54,7 @@ try {
   };
   const waitFor = async expression => { for (let n = 0; n < 120; n++) { if (await evaluate(expression)) return; await sleep(250); } throw new Error('Condition timed out: '+expression); };
   assert.equal(await active(), 'waterfront');
-  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('.mode-card strong')).map(e=>e.textContent)`), ['Marina 3D', 'Marina FPS', 'Street View']);
+  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('.mode-card strong')).map(e=>e.textContent)`), ['Marina 3D', 'Marina FPS', 'Open world', 'LAN arena', 'Street View']);
   await evaluate(`Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim()==='The idea').click()`);
   assert.equal(await evaluate(`document.querySelector('dialog').textContent.includes('source-linked facts') && document.querySelector('dialog').textContent.includes('fullscreen')`), true);
   await evaluate(`document.querySelector('[aria-label="Close dialog"]').click(); Array.from(document.querySelectorAll('footer button')).find(b=>b.textContent==='Privacy').click()`);
@@ -72,6 +76,21 @@ try {
   assert.equal(await evaluate(`document.querySelector('.objective-map-label').textContent.includes('Lotus museum')`), true);
   await submit('skip this stop'); await waitFor(`document.querySelector('[data-active-objective]').dataset.activeObjective !== 'lotus-museum'`);
   console.log(`PASS ${live ? 'LIVE Luna' : 'mocked'} text: closer, museum, skip, HUD and minimap`);
+  for (const [region, question, answer] of [['Queenstown', 'Tell me about the library', '30 April 1970'], ['Raffles Place', 'Tell me about Boat Quay', 'conservation area in 1989']]) {
+    await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes(${JSON.stringify(region)})).click()`);
+    await waitFor(`!!document.querySelector('[aria-label=${JSON.stringify(region + ' educational guide')}]')`);
+    const stamps = await evaluate(`document.querySelector('.marina-stamp-count').textContent`);
+    await submit(question); await waitFor(`document.querySelector('.companion-learning')?.textContent.includes(${JSON.stringify(answer)})`);
+    assert.equal(await evaluate(`document.querySelector('.marina-stamp-count').textContent`), stamps);
+    assert.equal(await active(), undefined);
+    await page.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 900, deviceScaleFactor: 1, mobile: true });
+    assert.equal(await evaluate('document.documentElement.scrollWidth <= 392'), true);
+    await mkdir('.cache/browser-checks', { recursive: true });
+    const guideShot = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+    await writeFile(`.cache/browser-checks/guide-${region.toLowerCase().replaceAll(' ', '-')}.png`, Buffer.from(guideShot.data, 'base64'));
+  }
+  console.log(`PASS ${live ? 'LIVE Luna' : 'mocked'} Queenstown library and Raffles Boat Quay guides; stamps unchanged, mobile cards`);
+  await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes('Marina Bay')).click()`); await sleep(500);
   await evaluate('window.__mock()');
   const before = await active(); await submit('invalid'); await sleep(450); assert.equal(await active(), before);
   await submit('failure'); await waitFor(`!!document.querySelector('.companion-error')`); assert.equal(await active(), before);
@@ -88,7 +107,12 @@ try {
   await evaluate('window.__pending.splice(0).forEach(resolve=>resolve())'); await sleep(350); assert.equal(await active(), 'waterfront');
   await submit('slow museum'); await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes('Queenstown')).click()`); await sleep(700);
   await evaluate('window.__pending.splice(0).forEach(resolve=>resolve())'); await sleep(350);
-  assert.equal(await evaluate(`!!document.querySelector('.adventure-companion')`), false);
+  assert.equal(await evaluate(`!!document.querySelector('[aria-label="Change the adventure"]')`), false);
+  assert.equal(await evaluate(`!!document.querySelector('.companion-learning')`), false);
+  await submit('slow tell me about the library');
+  await evaluate(`document.querySelector('[aria-label="Reset Queenstown progress (clears stamps and conversation)"]').click()`); await sleep(300);
+  await evaluate('window.__pending.splice(0).forEach(resolve=>resolve())'); await sleep(300);
+  assert.equal(await evaluate(`!!document.querySelector('.companion-learning')`), false);
   await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes('Marina Bay')).click()`); await sleep(900); assert.equal(await active(), 'waterfront');
   console.log('PASS invalid IDs, API failures, typing isolation, rapid requests, reset and region-switch races');
   // Denied permission does not disable the text path.
@@ -124,6 +148,17 @@ try {
   await mkdir('.cache/browser-checks', { recursive: true });
   const shot = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
   await writeFile('.cache/browser-checks/adventure-mobile.png', Buffer.from(shot.data, 'base64'));
+  for (const [region, question, expected] of [['Queenstown', 'Tell me about the library', '30 April 1970'], ['Raffles Place', 'Tell me about Boat Quay', 'conservation area in 1989']]) {
+    await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes(${JSON.stringify(region)})).click()`); await sleep(300);
+    await evaluate(`window.__lastVoiceSend=null; document.querySelector('[aria-label="Start microphone"]').click()`);
+    await waitFor(`document.querySelector('.companion-heading').textContent.includes('listening')`);
+    await evaluate(`for(const event of [{type:'session.input_transcript.delta',delta:${JSON.stringify(question)},start_ms:0,end_ms:1200},{type:'session.delegation.created',offset_ms:1200,delegation:{id:'regional_learning',target:'client'}}])window.__voiceChannel.onmessage({data:JSON.stringify(event)});`);
+    await waitFor(`window.__lastVoiceSend?.content?.includes(${JSON.stringify(expected)})`);
+    assert.equal(await evaluate(`document.querySelector('.companion-history').textContent.includes(${JSON.stringify(expected)})`), true);
+    await evaluate(`document.querySelector('[aria-label="Stop microphone"]').click()`);
+  }
+  console.log('PASS simulated voice learning in both new regional panels');
+  await evaluate(`Array.from(document.querySelectorAll('.location-card')).find(b=>b.textContent.includes('Marina Bay')).click()`); await sleep(300);
   assert.equal(await evaluate(`Array.from(document.querySelectorAll('.mode-card')).some(b=>b.textContent.includes('Armory'))`), false);
   await evaluate(`Array.from(document.querySelectorAll('.mode-card')).find(b=>b.textContent.includes('Marina FPS')).click()`);
   await waitFor(`!!document.querySelector('.fps-shop-link')`);

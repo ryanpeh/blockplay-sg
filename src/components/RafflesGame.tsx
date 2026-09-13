@@ -1,3 +1,4 @@
+import RegionGuide from './RegionGuide';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { defaultDriveLook, dragDriveLook, driveCameraOffset, settleDriveLook } from '../game/drive-camera';
@@ -19,6 +20,7 @@ export default function RafflesGame() {
   const keys = useRef(new Set<string>());
   const reset = useRef(() => {});
   const [hud, setHud] = useState(initialHud);
+  const [guideSession, setGuideSession] = useState(0);
   useEffect(() => { travelRef.current = travel; keys.current.clear(); }, [travel]);
 
   useEffect(() => {
@@ -41,6 +43,7 @@ export default function RafflesGame() {
     const collected = new Set<number>();
     const report = () => setHud({ distance, speed, ...position, collected: [...collected] });
     reset.current = () => {
+      setGuideSession(value => value + 1);
       position = { x: RAFFLES_SPAWN.x, z: RAFFLES_SPAWN.z }; yaw = RAFFLES_SPAWN.yaw; pitch = 0.14; speed = 0; distance = 0; collected.clear();
       driveLook = defaultDriveLook(); drag = undefined; lastLookAt = 0;
       world.stamps.forEach(stamp => { stamp.visible = true; }); keys.current.clear(); report();
@@ -136,7 +139,8 @@ export default function RafflesGame() {
         <div className="marina-objective">{hud.collected.length === RAFFLES_STAMPS.length ? 'All district stamps. Shiok! Keep exploring or reset to play again.' : `Find the orange rings · Explore the square and quays and collect ${RAFFLES_STAMPS.length} stamps.`}</div>
       </>}
     </div>
-    <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon">{travel === 'walk' ? <Footprints size={20} /> : <CarFront size={20} />}</span><div><h3>Raffles · the financial district</h3><p>Low-poly game map · authored skyline, square and riverfront</p></div></div><div className="toolbar-actions"><button className="session-button" aria-pressed={travel === 'walk'} onClick={() => setTravel('walk')}>Walk</button><button className="session-button" aria-pressed={travel === 'drive'} onClick={() => setTravel('drive')}>Drive</button><button className="icon-button" aria-label="Reset Raffles progress (clears stamps)" title="Reset Raffles progress (clears stamps)" onClick={() => reset.current()}><RotateCcw size={16} /></button></div></div>
+    <RegionGuide key={guideSession} region="raffles-place" hud={hud} stops={RAFFLES_STAMPS} />
+    <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon">{travel === 'walk' ? <Footprints size={20} /> : <CarFront size={20} />}</span><div><h3>Raffles · the financial district</h3><p>Low-poly game map · authored skyline, square and riverfront</p></div></div><div className="toolbar-actions"><button className="session-button" aria-pressed={travel === 'walk'} onClick={() => setTravel('walk')}>Walk</button><button className="session-button" aria-pressed={travel === 'drive'} onClick={() => setTravel('drive')}>Drive</button><button className="icon-button" aria-label="Reset Raffles progress (clears stamps and conversation)" title="Reset Raffles progress (clears stamps and conversation)" onClick={() => reset.current()}><RotateCcw size={16} /></button></div></div>
     <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · {travel === 'walk' ? 'Drag to look · Shift to run' : `Drag to orbit · A/D steer · ${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Raffles ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
   </div>;
 }

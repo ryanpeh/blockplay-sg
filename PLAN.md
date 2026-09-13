@@ -31,6 +31,8 @@ Details, limitations and reference links: [docs/ARMORY.md](docs/ARMORY.md). Demo
 
 Last updated: 2026-09-13 (Singapore time).
 
+Educational rollout: Raffles Place and Queenstown now have their own text/voice guide panels. Two regional subagents researched six cards each; all 19 regional stops are covered, bringing the shared catalog to 18 topics. A read-only bridge preserves local movement, stamps and completion. Only Marina has changeable active objectives. Reset/region-switch cancellation, sourced cards, live regional text answers and mobile layout are checked; future work remains human microphone/listening tests and broader learning activities rather than unsourced free-form facts.
+
 Latest user override: companion text interpretation now uses GPT-5.6 Luna (`gpt-5.6-luna`), including transcripts delegated from voice. GPT-Live-1 speech is unchanged. Earlier references to Astra as the runtime interpreter are historical; Astra was used for building.
 
 Location picker cleanup: only the developed Marina Bay, Raffles Place and Queenstown worlds remain; removed the undeveloped Tampines and Toa Payoh presets. A lightweight Singapore locator highlights the active region, with a central-area inset for the closely spaced downtown locations. This is approximate orientation, not navigation or surveyed geography, and makes no Maps requests.
