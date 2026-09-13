@@ -1,6 +1,6 @@
 # blockplaySG — Singapore, playable.
 
-Explore familiar Singapore neighborhoods as stylized 3D game worlds.
+Explore familiar Singapore neighborhoods as stylized 3D game worlds, created using **Google Maps Street View imagery as visual references** and **GPT-6 Astra to help build and refine the worlds and game code**.
 
 **[Play the demo](https://blockplay-sg.qwertz0808.chatgpt.site)**
 
