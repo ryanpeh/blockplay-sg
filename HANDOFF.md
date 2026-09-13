@@ -2,6 +2,8 @@
 
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
+Navigation simplification: Joyride and fixed-camera Target practice are removed from the app. Region Walk/Drive, Street View and Marina FPS remain. Armory is reachable only from the Marina FPS briefing/pause screen’s Open armory button, not the sidebar; FPS remains selected while shopping. Historical prototype source remains unmounted. Browser shop scripts enter FPS before opening the shop.
+
 Location/UI follow-up: only Marina Bay, Raffles Place and Queenstown remain selectable. `SingaporeMap.tsx` supplies a local SVG overview and central inset, linked to the same selection handler with click/keyboard controls; no Maps calls. Reset labels disclose stamp/history clearing, Privacy describes region/mode progress loss, The idea covers education/fullscreen, and Joyride is correctly labelled a 240 m checkpoint run. Motor Pool no longer exposes weapon attachment controls; level 50 has maximum-level copy. Tests cover the location list, map selection and keyboard access, About/Privacy, separate armory panels, and maximum-level wording.
 
 Independent follow-up copy review is clear within its reviewed scope after fixing Target practice’s reset label and specifying Marina FPS credit rewards. Verification: 108 tests, production build, companion/copy/armory browser checks and all three regions/map selection/keyboard/mobile checks pass; no Maps calls or uncaught browser errors. Existing Three.js chunk-size warning remains nonblocking.

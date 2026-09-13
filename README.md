@@ -51,7 +51,7 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 
 - **FPS vehicles:** approach Utility 01 or Falcon 01 and press E to enter/exit. Drive with WASD and Space brake, or fly with WASD, Space climb, C/Ctrl descend and Shift boost. Land before leaving the helicopter. The Armory’s Vehicles tab offers five cosmetic wraps, equipped separately on each vehicle.
 
-- **Field exchange:** the Armory sidebar opens a 27-item equipment shop with interactive 3D previews, permanent purchases, skins, attachment slots, and ILBV/LBS-inspired rigs with separate soft/ceramic inserts. Premium variants provide stronger stats, applied to the FPS. See [armory balance and architecture](docs/ARMORY.md).
+- **Field exchange:** Marina FPS → Open armory opens a 27-item equipment shop with interactive 3D previews, permanent purchases, skins, attachment slots, and ILBV/LBS-inspired rigs with separate soft/ceramic inserts. Premium variants provide stronger stats, applied to the FPS. See [armory balance and architecture](docs/ARMORY.md).
 - **Progression:** 50 XP levels, rank badges and level-gated purchases. Target eliminations award 25 XP; completing a drill adds XP and earned credits. Double/triple/multi-kill announcements escalate through Rampage for eliminations within three seconds. Stingers and available installed English voices follow the sound toggle.
 - **Counter-fire drill:** optional return fire makes armor and movement matter. Incoming shots have a dodge warning, respect scenery, deplete armor and can end the exercise. The default practice drill has no incoming damage.
 
@@ -61,13 +61,11 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 Latest Marina pass adds reference-matched gray paving, blue glass, deeper water, silver railings, fuller palms, planting, lights and a detailed Shoppes roofline. Sands landmark proportions use published dimensions; the overall map remains compressed. Static and browser reference images are cached in [the reference folder](reconstruction/marina-bay/references/README.md); use `pnpm marina:usage` for live usage counts.
 
 - **Marina 3D / Queenstown 3D / Raffles 3D:** location-specific low-poly games. Click the scene; WASD walks, drag looks, Shift runs. Drive switches to a visible car with a chase camera; W/S accelerate/reverse, A/D steer, Space brakes. Collect 14 orange rings in Marina, eight in Queenstown or 11 in Raffles Place. Water/buildings block movement; reset clears progress. Arcade handling, not full vehicle physics. No Google requests while playing.
-- **Joyride:** drive a 240 m circuit through an original, procedurally built neighborhood. WASD / arrow keys accelerate, brake, and steer; Space brakes. Touch controls work too. Cross three gates to finish. The vehicle stays within the road; there is no traffic, vehicle model, or collision simulation yet.
-- **Target practice:** click / tap five targets in a fixed first-person view. This is a small NS-inspired arcade foundation, not a full FPS or an authentic equipment simulation. No enemies or real weapon mechanics are implemented.
 - **Street View:** a separate live viewer requiring a Maps key. Three starting viewpoints per location display imagery, with look left/right, step forward/backward, and recenter controls. Google's descriptions, image-date control, navigation arrows, and attribution remain available. The search finds nearby panoramas within 200 m; positions and outdoor classification are not guarantees. Loading, missing-key, request-error, authorization-error, and retry states are included.
-- Queenstown, Marina Bay and Raffles Place presets. Each has approximate search coordinates and a distinct palette for the procedural demo. Street View availability and exact panorama positions depend on Google.
+- Queenstown, Marina Bay and Raffles Place presets. Each has approximate search coordinates and its own authored 3D world. Street View availability and exact panorama positions depend on Google.
 - Start, pause, resume, reset, progress, timers, completion states, and responsive controls.
 
-Joyride and Target practice use fictional original layouts. **Marina 3D uses authored solid geometry**, with reference-informed waterfront details and deliberately compressed landmark placement. Displayed distances are game units treated as meters, not surveyed distances. The earlier four-photo depth experiment did not satisfy the desired game art style and is no longer mounted.
+The legacy Joyride and Target practice modes are no longer exposed in the app. **Marina 3D uses authored solid geometry**, with reference-informed waterfront details and deliberately compressed landmark placement. Displayed distances are game units treated as meters, not surveyed distances. The earlier four-photo depth experiment did not satisfy the desired game art style and is no longer mounted.
 
 ## Enable real Street View
 
@@ -150,7 +148,7 @@ Add your deployed origin to the Google key's allowed referrers. Rebuild after ch
 4. Demo the Marina companion: use a typed or spoken request to change the actual objective. Runtime Astra calls and GPT-Live-1 session creation use server-only credentials; structured destination proposals are validated locally. See `ADVENTURE.md`.
 5. Use the last hour for deployed-browser checks and the 90-second video.
 
-Suggested video: show the neighborhood selection (10 s), complete the driving circuit (25 s), show target practice (15 s), explore a real neighborhood in Street View (20 s), and explain Astra's concrete engineering contributions and the next milestone (20 s).
+Suggested video: show the Singapore map (10 s), explore a region (20 s), change an objective with the companion (20 s), ask an educational question (15 s), show Marina FPS and its armory (10 s), and explain Astra’s contributions (15 s).
 
 Before presenting, verify the live Google integration with your own key and test desktop + phone controls. No public deployment is created by this scaffold itself.
 

@@ -25,7 +25,9 @@ async function key(key, code, held = 0) { await send('Input.dispatchKeyEvent', {
 async function screenshot(name) { const shot = await send('Page.captureScreenshot', { format: 'png' }); await fs.writeFile(new URL(name + '.png', output), Buffer.from(shot.data, 'base64')); }
 const phase = value => `document.querySelector('.fps-game')?.dataset.phase===${JSON.stringify(value)}`;
 const ammo = `Number(document.querySelector('.fps-ammo strong')?.firstChild.textContent)`;
-const shop = `[...document.querySelectorAll('button')].find(b=>b.querySelector('strong')?.textContent==='Armory')`;
+const fpsMode = `[...document.querySelectorAll('.mode-card')].find(b=>b.querySelector('strong')?.textContent==='Marina FPS')`;
+const shop = `document.querySelector('.fps-shop-link')`;
+async function openShop() { await click(fpsMode); await wait(`!!${shop}`); await click(shop); }
 const action = `document.querySelector('[data-testid="shop-action"]')`;
 const wallet = `JSON.parse(localStorage.getItem('blockplay.armory.v1'))`;
 const choose = async id => { await click(`document.querySelector('[data-item="${id}"]')`); await delay(200); };
@@ -33,16 +35,16 @@ const category = async id => { await click(`document.querySelector('#shop-tab-${
 try {
   await send('Runtime.enable'); await send('Network.enable'); await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
-  await wait(`!!${shop}`);
-  await evaluate(`localStorage.removeItem('blockplay.armory.v1');location.reload()`); await delay(1000); await wait(`!!${shop}`);
-  await click(shop); await wait(`!!document.querySelector('.armory-preview canvas')`);
+  await wait(`!!${fpsMode}`);
+  await evaluate(`localStorage.removeItem('blockplay.armory.v1');location.reload()`); await delay(1000); await wait(`!!${fpsMode}`);
+  await openShop(); await wait(`!!document.querySelector('.armory-preview canvas')`);
   assert(await evaluate(`${action}.disabled && ${action}.textContent.includes('level 3')`), 'New recruits cannot buy Vanguard');
   await click(button('+250 demo tokens'));
   assert(await evaluate(`${action}.disabled`), 'Token top-ups never bypass levels');
   await evaluate(`document.querySelector('.armory').scrollIntoView({block:'start'})`); await screenshot('recruit-lock');
   // Saved veteran fixture supplies XP only. All inventory changes below use real shop controls.
   await evaluate(`(()=>{const p=${wallet};p.xp=800;p.tokens=300;localStorage.setItem('blockplay.armory.v1',JSON.stringify(p));location.reload()})()`);
-  await delay(1000); await wait(`!!${shop}`); await click(shop);
+  await delay(1000); await wait(`!!${fpsMode}`); await openShop();
   await click(action); await wait(`${wallet}.tokens===60`); assert(await evaluate(`${action}.textContent.includes('Equip on SAR')`));
   await click(action); await wait(`${wallet}.guns[0].variant==='sar-vanguard'`); assert(await evaluate(`${action}.disabled`));
   await category('attachment'); await choose('mag-quick'); await click(action); await click(action); await wait(`${wallet}.guns[0].attachments.magazine==='mag-quick'`);
@@ -54,7 +56,7 @@ try {
   await wait(`${wallet}.guns[0].skin==='skin-gold'`); assert.equal(await evaluate(`${wallet}.tokens`), 190);
   await delay(1500); await evaluate(`document.querySelector('.armory').scrollIntoView({block:'start'})`); await screenshot('gold-loadout');
   const saved = await evaluate(wallet);
-  await send('Page.reload'); await delay(1000); await wait(`!!${shop}`); await click(shop); assert.deepEqual(await evaluate(wallet), saved, 'Wallet, XP, ownership and loadout survive reload');
+  await send('Page.reload'); await delay(1000); await wait(`!!${fpsMode}`); await openShop(); assert.deepEqual(await evaluate(wallet), saved, 'Wallet, XP, ownership and loadout survive reload');
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   await evaluate(`document.querySelector('.armory').scrollIntoView({block:'start'})`); await screenshot('shop-mobile');
   assert(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'), 'Shop fits a mobile viewport');

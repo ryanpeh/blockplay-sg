@@ -3,7 +3,7 @@ import { hasRegionGame, regionModeLabel } from './region-selection';
 import { locations } from '../data/locations';
 
 it('only lists the three developed worlds in the location picker', () => {
-  expect(locations.map(location => location.id)).toEqual(['raffles-place', 'queenstown', 'marina-bay']);
+  expect(locations.map(location => location.id)).toEqual(['marina-bay', 'raffles-place', 'queenstown']);
   expect(locations.every(location => hasRegionGame(location.id))).toBe(true);
 });
 

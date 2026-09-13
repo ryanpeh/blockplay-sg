@@ -25,7 +25,9 @@ async function key(key, code, held = 0) { await send('Input.dispatchKeyEvent', {
 async function screenshot(name) { const shot = await send('Page.captureScreenshot', { format: 'png' }); await fs.writeFile(new URL(name + '.png', output), Buffer.from(shot.data, 'base64')); }
 const phase = value => `document.querySelector('.fps-game')?.dataset.phase===${JSON.stringify(value)}`;
 const ammo = `Number(document.querySelector('.fps-ammo strong')?.firstChild.textContent)`;
-const shop = `[...document.querySelectorAll('button')].find(b=>b.querySelector('strong')?.textContent==='Armory')`;
+const fpsMode = `[...document.querySelectorAll('.mode-card')].find(b=>b.querySelector('strong')?.textContent==='Marina FPS')`;
+const shop = `document.querySelector('.fps-shop-link')`;
+async function openShop() { await click(fpsMode); await wait(`!!${shop}`); await click(shop); }
 const action = `document.querySelector('[data-testid="shop-action"]')`;
 const wallet = `JSON.parse(localStorage.getItem('blockplay.armory.v1'))`;
 const choose = async id => { await click(`document.querySelector('[data-item="${id}"]')`); await delay(200); };
@@ -35,11 +37,11 @@ const number = name => `Number(document.querySelector('.fps-game').dataset.${nam
 try {
   await send('Runtime.enable'); await send('Network.enable'); await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
-  await wait(`!!${shop}`);
+  await wait(`!!${fpsMode}`);
   // Veteran fixture supplies level access. The wrap itself is bought and equipped through UI.
-  await evaluate(`(()=>{localStorage.removeItem('blockplay.armory.v1');location.reload()})()`); await delay(1000); await wait(`!!${shop}`);
-  await evaluate(`(()=>{const p=${wallet};p.xp=800;localStorage.setItem('blockplay.armory.v1',JSON.stringify(p));location.reload()})()`); await delay(1000); await wait(`!!${shop}`);
-  await click(shop); await category('vehicleSkin'); await choose('paint-jungle'); await click(action); await click(action);
+  await evaluate(`(()=>{localStorage.removeItem('blockplay.armory.v1');location.reload()})()`); await delay(1000); await wait(`!!${fpsMode}`);
+  await evaluate(`(()=>{const p=${wallet};p.xp=800;localStorage.setItem('blockplay.armory.v1',JSON.stringify(p));location.reload()})()`); await delay(1000); await wait(`!!${fpsMode}`);
+  await openShop(); await category('vehicleSkin'); await choose('paint-jungle'); await click(action); await click(action);
   await wait(`${wallet}.vehicleSkins.car==='paint-jungle'`); assert.equal(await evaluate(`${wallet}.vehicleSkins.helicopter`),'paint-issued');
   await click(button('Falcon 01')); await click(action); await wait(`${wallet}.vehicleSkins.helicopter==='paint-jungle'`);
   assert.equal(await evaluate(`${wallet}.credits`),950,'One wrap purchase fits both vehicles');

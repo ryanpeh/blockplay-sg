@@ -25,7 +25,9 @@ async function key(key, code, held = 0) { await send('Input.dispatchKeyEvent', {
 async function screenshot(name) { const shot = await send('Page.captureScreenshot', { format: 'png' }); await fs.writeFile(new URL(name + '.png', output), Buffer.from(shot.data, 'base64')); }
 const phase = value => `document.querySelector('.fps-game')?.dataset.phase===${JSON.stringify(value)}`;
 const ammo = `Number(document.querySelector('.fps-ammo strong')?.firstChild.textContent)`;
-const shop = `[...document.querySelectorAll('button')].find(b=>b.querySelector('strong')?.textContent==='Armory')`;
+const fpsMode = `[...document.querySelectorAll('.mode-card')].find(b=>b.querySelector('strong')?.textContent==='Marina FPS')`;
+const shop = `document.querySelector('.fps-shop-link')`;
+async function openShop() { await click(fpsMode); await wait(`!!${shop}`); await click(shop); }
 const action = `document.querySelector('[data-testid="shop-action"]')`;
 const wallet = `JSON.parse(localStorage.getItem('blockplay.armory.v1'))`;
 const choose = async id => { await click(`document.querySelector('[data-item="${id}"]')`); await delay(200); };

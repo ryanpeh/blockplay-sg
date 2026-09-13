@@ -85,7 +85,7 @@ try {
     await delay(100);
   }
   assert(await evaluate(`!!document.querySelector('.location-card')`), 'app is ready (check Vite import/build errors if absent)');
-  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('.location-card strong')).map(e=>e.textContent)`), ['Raffles Place', 'Queenstown', 'Marina Bay'], 'only developed regions are selectable');
+  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('.location-card strong')).map(e=>e.textContent)`), ['Marina Bay', 'Raffles Place', 'Queenstown'], 'developed regions are selectable with Marina first');
   // Include the third region once its playable card has landed during parallel development.
   if (await evaluate(`Array.from(document.querySelectorAll('.location-card')).some(b=>b.textContent.includes('Raffles Place'))`)) regions.push(['Raffles Place', 'Reset Raffles progress (clears stamps)']);
   const rotation = async () => {

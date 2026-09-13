@@ -1,6 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, CarFront, Check, ChevronRight, Crosshair, Flag, Globe2, MapPin, Pause, Play, RotateCcw, ShoppingBag, X } from 'lucide-react';
-import World, { type GameStats } from './game/World';
+import { useState } from 'react';
+import { ArrowUpRight, Check, ChevronRight, Crosshair, Globe2, MapPin, X } from 'lucide-react';
 import StreetView from './components/StreetView';
 import MarinaGame from './components/MarinaGame';
 import FpsGame from './components/FpsGame';
@@ -10,14 +9,7 @@ import QueenstownGame from './components/QueenstownGame';
 import RafflesGame from './components/RafflesGame';
 import SingaporeMap from './components/SingaporeMap';
 import { hasRegionGame, regionModeLabel } from './game/region-selection';
-import { locations, type Location, type Mode } from './data/locations';
-
-const emptyStats: GameStats = { speed: 0, distance: 0, score: 0, elapsed: 0 };
-const modes = [
-  { id: 'drive' as const, name: 'Joyride', label: 'Take the scenic route', icon: CarFront },
-  { id: 'training' as const, name: 'Target practice', label: 'An NS-inspired arcade drill', icon: Crosshair },
-  { id: 'explore' as const, name: 'Street View', label: 'See the real neighborhood', icon: Globe2 },
-];
+import { locations, type Location } from './data/locations';
 
 export default function App() {
   const [location, setLocation] = useState<Location>(locations.find(place => place.id === 'marina-bay')!);
@@ -25,31 +17,17 @@ export default function App() {
   const [fpsOpen, setFpsOpen] = useState(false);
   const [armoryOpen, setArmoryOpen] = useState(false);
   const armory = useArmory();
-  const [mode, setMode] = useState<Mode>(import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim() ? 'explore' : 'drive');
-  const [running, setRunning] = useState(false);
-  const [started, setStarted] = useState(false);
-  const [finished, setFinished] = useState(false);
-  const [epoch, setEpoch] = useState(0);
-  const [stats, setStats] = useState(emptyStats);
   const [dialog, setDialog] = useState<'about' | 'privacy' | 'terms' | null>(null);
-  const controls = useRef(new Set<string>());
-  const onStats = useCallback((value: GameStats) => setStats(value), []);
-  const onFinish = useCallback(() => { setFinished(true); setRunning(false); }, []);
-  const reset = () => {
-    setRunning(false); setStarted(false); setFinished(false); setStats(emptyStats); setEpoch(n => n + 1); controls.current.clear();
-  };
-  const chooseLocation = (next: Location) => { setLocation(next); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(hasRegionGame(next.id)); reset(); };
-  const chooseMode = (next: Mode) => { setMode(next); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); reset(); };
-  const openArmory = () => { reset(); setFpsOpen(false); setRegionOpen(false); setArmoryOpen(true); };
-  const openFps = () => { reset(); setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setRegionOpen(false); setFpsOpen(true); };
-  const start = () => { setStarted(true); setRunning(true); };
-  const total = mode === 'drive' ? 3 : 5;
+  const chooseLocation = (next: Location) => { setLocation(next); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); };
+  const openStreetView = () => { setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); };
+  const openArmory = () => { if (!fpsOpen || location.id !== 'marina-bay') return; setRegionOpen(false); setArmoryOpen(true); };
+  const openFps = () => { setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setRegionOpen(false); setFpsOpen(true); };
 
   return <div className="app-shell">
     <header className="site-header">
       <a className="brand" href="#" aria-label="Blockplay home"><span className="brand-mark"><span /><span /><span /></span>blockplay<span className="brand-dot">.</span></a>
       <div className="header-center"><span className="status-dot" /> SINGAPORE, PLAYABLE.</div>
-      <button className="text-button" onClick={() => { setRunning(false); setDialog('about'); }}>The idea <ArrowUpRight size={16} /></button>
+      <button className="text-button" onClick={() => { setDialog('about'); }}>The idea <ArrowUpRight size={16} /></button>
     </header>
 
     <main>
@@ -73,62 +51,30 @@ export default function App() {
 
           <div className="section-label mode-label"><span>02 / MAKE IT YOURS</span></div>
           <div className="mode-list">
-            {hasRegionGame(location.id) && <button className={`mode-card ${regionOpen ? 'selected' : ''}`} aria-pressed={regionOpen} onClick={() => { reset(); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); }}><Globe2 size={20} /><span><strong>{regionModeLabel(location.id).name}</strong><small>{regionModeLabel(location.id).subtitle}</small></span><span className="radio-dot" /></button>}
+            {hasRegionGame(location.id) && <button className={`mode-card ${regionOpen ? 'selected' : ''}`} aria-pressed={regionOpen} onClick={() => { setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); }}><Globe2 size={20} /><span><strong>{regionModeLabel(location.id).name}</strong><small>{regionModeLabel(location.id).subtitle}</small></span><span className="radio-dot" /></button>}
             {location.id === 'marina-bay' && <button className={`mode-card ${fpsOpen ? 'selected' : ''}`} aria-pressed={fpsOpen} onClick={openFps}><Crosshair size={20} /><span><strong>Marina FPS</strong><small>Weapons ready. Range open.</small></span><span className="radio-dot" /></button>}
-            <button className={`mode-card ${armoryOpen ? 'selected' : ''}`} aria-pressed={armoryOpen} onClick={openArmory}><ShoppingBag size={20} /><span><strong>Armory</strong><small>Variants, skins & armor</small></span><span className="radio-dot" /></button>
-            {modes.map(({ id, name, label, icon: Icon }) => <button key={id} className={`mode-card ${!armoryOpen && !fpsOpen && !regionOpen && mode === id ? 'selected' : ''}`} onClick={() => chooseMode(id)} aria-pressed={!armoryOpen && !fpsOpen && !regionOpen && mode === id}>
-              <Icon size={20} strokeWidth={1.6} /><span><strong>{name}</strong><small>{label}</small></span><span className="radio-dot" />
-            </button>)}
+            <button className={`mode-card ${!fpsOpen && !regionOpen ? 'selected' : ''}`} onClick={openStreetView} aria-pressed={!fpsOpen && !regionOpen}>
+              <Globe2 size={20} /><span><strong>Street View</strong><small>See the real neighborhood</small></span><span className="radio-dot" />
+            </button>
           </div>
           <div className="sidebar-note"><span>✳</span><p>Big adventures.<br /><strong>Very local energy.</strong></p></div>
         </aside>
 
         <div className="experience">
           {armoryOpen ? <ArmoryShop store={armory} onEnterRange={openFps} /> : fpsOpen ? <FpsGame profile={armory.profile} onReward={armory.award} onElimination={armory.awardElimination} onOpenShop={openArmory} suspended={dialog !== null} /> : regionOpen && hasRegionGame(location.id) ? (location.id === 'raffles-place' ? <RafflesGame key={location.id} /> : location.id === 'queenstown' ? <QueenstownGame key={location.id} /> : <MarinaGame key={location.id} />) : <>
-          <div className={`viewport ${mode === 'training' && running ? 'training-active' : ''}`}>
-            {mode === 'explore' ? <StreetView key={location.id} location={location} /> : <>
-              <World key={epoch} location={location} mode={mode} running={running} controls={controls} onStats={onStats} onFinish={onFinish} />
-              <div className="scene-top"><span className="scene-badge"><span className="status-dot" /> PLAYABLE DEMO</span><span className="coordinates">{location.lat.toFixed(4)}° N &nbsp; {location.lng.toFixed(4)}° E</span></div>
-              <div className="scene-place"><span>{location.district} / SG</span><h2>{location.name}<span>↗</span></h2><p>Original stylized scene · not a map reconstruction</p></div>
-
-              {!running && <div className="play-overlay"><div className="play-card">
-                <span className="eyebrow">{finished ? 'NICELY DONE, LAH.' : started ? 'TAKE YOUR TIME' : mode === 'drive' ? 'NO ERP. NO RUSH.' : 'FALL IN. HAVE FUN.'}</span>
-                <h3>{finished ? (mode === 'drive' ? 'Home, the scenic way.' : 'Five for five.') : started ? 'A little pit stop.' : mode === 'drive' ? 'Meet you downstairs.' : 'Ready for your detail?'}</h3>
-                <p>{finished ? `Completed in ${stats.elapsed.toFixed(1)} seconds. Another round?` : mode === 'drive' ? 'Cruise through the estate and pass all 3 orange gates.' : 'Click or tap all 5 orange targets. An arcade drill with no weapon simulation.'}</p>
-                <button className="primary-button" onClick={event => { event.currentTarget.blur(); if (finished) reset(); else start(); }}>
-                  {finished ? <RotateCcw size={16} /> : <Play size={16} fill="currentColor" />} {finished ? (mode === 'drive' ? 'Reset circuit' : 'Reset practice') : started ? 'Keep going' : mode === 'drive' ? 'Let’s take a drive' : 'Start practice'} <ArrowRight size={17} />
-                </button>
-                {!finished && <small>{mode === 'drive' ? 'WASD / arrow keys to drive · Space to brake' : 'Click / tap to aim and hit a target'}</small>}
-              </div></div>}
-
-              {running && <div className="live-hud">{mode === 'drive' ? <Flag size={16} /> : <Crosshair size={16} />}<span>{stats.score} / {total} {mode === 'drive' ? 'checkpoints' : 'targets'}</span><span className="hud-divider" />{stats.elapsed.toFixed(1)}s</div>}
-              <div className="scene-bottom"><span className="scene-caption">{mode === 'drive' ? 'THE HEARTLAND CIRCUIT' : 'THE VOID DECK DRILL'}</span><span className="compass">N <ArrowUp size={18} /></span></div>
-            </>}
-          </div>
-
-          <div className="experience-toolbar">
-            <div className="experience-title"><span className="mode-icon">{mode === 'drive' ? <CarFront size={22} /> : mode === 'training' ? <Crosshair size={22} /> : <Globe2 size={22} />}</span><div><h3>{mode === 'explore' ? 'The real ' + location.name : location.subtitle}</h3><p>{mode === 'explore' ? 'Google Street View · Drag to look, use arrows to travel' : mode === 'drive' ? '240 m checkpoint run · stylized scene' : 'Arcade target practice · 5 targets'}</p></div></div>
-            {mode !== 'explore' && <div className="toolbar-actions"><button className="icon-button" onClick={reset} title="Reset session" aria-label="Reset session"><RotateCcw size={17} /></button><button className="session-button" disabled={finished} onClick={event => { event.currentTarget.blur(); if (running) setRunning(false); else start(); }}>{running ? <Pause size={15} /> : <Play size={15} />} {running ? 'Pause' : started ? 'Resume' : 'Start'}</button></div>}
-          </div>
-          {mode !== 'explore' && <div className="session-strip">
-            <div><span>{mode === 'drive' ? 'SPEED' : 'HITS'}</span><strong>{mode === 'drive' ? Math.round(stats.speed * 3.6) : stats.score}<small>{mode === 'drive' ? 'km/h' : '/ 5'}</small></strong></div>
-            <div className="route-progress"><span>{mode === 'drive' ? 'YOUR LITTLE ADVENTURE' : 'PRACTICE PROGRESS'}</span><div className="progress-track"><i style={{ width: `${mode === 'drive' ? stats.distance / 240 * 100 : stats.score / 5 * 100}%` }} /></div></div>
-            <div className="touch-controls" aria-label="Driving controls">{mode === 'drive' ? [ ['a', ArrowLeft, 'Steer left'], ['w', ArrowUp, 'Accelerate'], ['s', ArrowDown, 'Brake'], ['d', ArrowRight, 'Steer right'] ].map(([key, Icon, label]) => {
-              const ControlIcon = Icon as typeof ArrowUp;
-              return <button key={String(key)} aria-label={String(label)} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); if (running) controls.current.add(String(key)); }} onPointerUp={() => controls.current.delete(String(key))} onPointerCancel={() => controls.current.delete(String(key))} onLostPointerCapture={() => controls.current.delete(String(key))}><ControlIcon size={15} /></button>;
-            }) : <span className="practice-hint">Point. Click. Shiok.</span>}</div>
-          </div>}
+          <div className="viewport"><StreetView key={location.id} location={location} /></div>
+          <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon"><Globe2 size={22} /></span><div><h3>The real {location.name}</h3><p>Google Street View · Drag to look, use arrows to travel</p></div></div></div>
           </>}
         </div>
       </section>
 
       <section className="below-playground"><div><span className="small-cross">+</span><p>Not just the skyline.<br /><strong>The places that make us, us.</strong></p></div><p>{location.description}</p><span className="edition">BUILT WITH ASTRA<br /><strong>SG / 2026 — PROTOTYPE 01</strong></span></section>
     </main>
-    <footer><span>Made for the places we call home.</span><div><button onClick={() => { setRunning(false); setDialog('terms'); }}>Terms</button><button onClick={() => { setRunning(false); setDialog('privacy'); }}>Privacy</button><span>1° N, 103° E <span className="tiny-star">✳</span></span></div></footer>
+    <footer><span>Made for the places we call home.</span><div><button onClick={() => { setDialog('terms'); }}>Terms</button><button onClick={() => { setDialog('privacy'); }}>Privacy</button><span>1° N, 103° E <span className="tiny-star">✳</span></span></div></footer>
 
     {dialog && <div className="modal-backdrop" onClick={() => setDialog(null)}><dialog open aria-labelledby="dialog-title" onCancel={() => setDialog(null)} onClick={event => event.stopPropagation()}><button autoFocus className="icon-button modal-close" aria-label="Close dialog" onClick={() => setDialog(null)}><X size={20} /></button>
       <span className="eyebrow">BLOCKPLAY / SINGAPORE</span><h2 id="dialog-title">{dialog === 'about' ? 'The whole island deserves to be playable.' : dialog === 'privacy' ? 'Privacy' : 'Prototype terms'}</h2>
-      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through playable 3D scenes.</p><p>Marina 3D, Queenstown 3D and Raffles 3D are distinct walkable and driveable game regions: a waterfront with gardens and landmarks, a detailed estate with an elevated station, and a city core of towers, plazas and riverfront streets. References inform authored geometry; geography is compressed, not automatically reconstructed or surveyed.</p><p>Collect each region’s orange stamps on foot or in the car. Live Street View remains available separately. Astra powers Marina’s optional Change the adventure companion, with GPT-Live-1 for voice. The companion also offers source-linked facts and reflection questions about Singapore, without changing your objective. Movement, collisions and stamp collection stay local; exploring alone makes no model calls.</p><p>Marina FPS adds a target exercise, an equipment shop, XP progression and driveable/flyable vehicles on the same Marina map. FPS and vehicle sessions support immersive fullscreen, with an expanded-view fallback when fullscreen is unavailable. No live map or model requests are made during FPS play.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Stamps and conversation history stay in memory and reset when you reset the region, leave its game mode, switch regions, or reload. Switching between Walk and Drive within a region preserves stamps. Your demo armory wallet, XP, permanent unlocks and equipped loadout are saved in this browser’s local storage. Clearing site data removes them. There are no real payments or account synchronization. Using Marina’s companion sends your request and game-state snapshot to OpenAI. Starting the microphone sends audio to OpenAI and plays an AI-generated voice; Stop ends the session. The app does not save microphone recordings or conversation history to a database.</p><p>Each region builds its game geometry locally in your browser. Live Street View and Google Fonts connect your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Its game maps are stylized interpretations with approximate or fictional layouts, not navigation tools. Target practice has no affiliation to the Singapore Armed Forces.</p><p>The owner confirmed permission for the saved imagery used as reference and in the earlier depth experiment; its source credits are preserved with those assets. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
+      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through playable 3D scenes.</p><p>Marina 3D, Queenstown 3D and Raffles 3D are distinct walkable and driveable game regions: a waterfront with gardens and landmarks, a detailed estate with an elevated station, and a city core of towers, plazas and riverfront streets. References inform authored geometry; geography is compressed, not automatically reconstructed or surveyed.</p><p>Collect each region’s orange stamps on foot or in the car. Live Street View remains available separately. Astra powers Marina’s optional Change the adventure companion, with GPT-Live-1 for voice. The companion also offers source-linked facts and reflection questions about Singapore, without changing your objective. Movement, collisions and stamp collection stay local; exploring alone makes no model calls.</p><p>Marina FPS adds a target exercise, an equipment shop, XP progression and driveable/flyable vehicles on the same Marina map. FPS and vehicle sessions support immersive fullscreen, with an expanded-view fallback when fullscreen is unavailable. No live map or model requests are made during FPS play.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Stamps and conversation history stay in memory and reset when you reset the region, leave its game mode, switch regions, or reload. Switching between Walk and Drive within a region preserves stamps. Your demo armory wallet, XP, permanent unlocks and equipped loadout are saved in this browser’s local storage. Clearing site data removes them. There are no real payments or account synchronization. Using Marina’s companion sends your request and game-state snapshot to OpenAI. Starting the microphone sends audio to OpenAI and plays an AI-generated voice; Stop ends the session. The app does not save microphone recordings or conversation history to a database.</p><p>Each region builds its game geometry locally in your browser. Live Street View and Google Fonts connect your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Its game maps are stylized interpretations with approximate or fictional layouts, not navigation tools. Marina FPS has no affiliation to the Singapore Armed Forces.</p><p>The owner confirmed permission for the saved imagery used as reference and in the earlier depth experiment; its source credits are preserved with those assets. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
     </dialog></div>}
   </div>;
 }

@@ -50,6 +50,7 @@ try {
   };
   const waitFor = async expression => { for (let n = 0; n < 120; n++) { if (await evaluate(expression)) return; await sleep(250); } throw new Error('Condition timed out: '+expression); };
   assert.equal(await active(), 'waterfront');
+  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('.mode-card strong')).map(e=>e.textContent)`), ['Marina 3D', 'Marina FPS', 'Street View']);
   await evaluate(`Array.from(document.querySelectorAll('button')).find(b=>b.textContent.trim()==='The idea').click()`);
   assert.equal(await evaluate(`document.querySelector('dialog').textContent.includes('source-linked facts') && document.querySelector('dialog').textContent.includes('fullscreen')`), true);
   await evaluate(`document.querySelector('[aria-label="Close dialog"]').click(); Array.from(document.querySelectorAll('footer button')).find(b=>b.textContent==='Privacy').click()`);
@@ -123,7 +124,10 @@ try {
   await mkdir('.cache/browser-checks', { recursive: true });
   const shot = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
   await writeFile('.cache/browser-checks/adventure-mobile.png', Buffer.from(shot.data, 'base64'));
-  await evaluate(`Array.from(document.querySelectorAll('.mode-card')).find(b=>b.textContent.includes('Armory')).click()`); await sleep(300);
+  assert.equal(await evaluate(`Array.from(document.querySelectorAll('.mode-card')).some(b=>b.textContent.includes('Armory'))`), false);
+  await evaluate(`Array.from(document.querySelectorAll('.mode-card')).find(b=>b.textContent.includes('Marina FPS')).click()`);
+  await waitFor(`!!document.querySelector('.fps-shop-link')`);
+  await evaluate(`document.querySelector('.fps-shop-link').click()`); await sleep(300);
   await evaluate(`document.querySelector('#shop-tab-vehicleSkin').click()`); await sleep(200);
   assert.equal(await evaluate(`!!document.querySelector('.armory-vehicle-equipped') && !document.querySelector('.armory-equipped .armory-slot') && !document.querySelector('.armory-equipped .armory-rig-summary')`), true);
   await evaluate(`document.querySelector('#shop-tab-weapon').click()`); await sleep(200);
