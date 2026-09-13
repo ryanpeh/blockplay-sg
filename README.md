@@ -6,6 +6,8 @@ Explore familiar Singapore neighborhoods as stylized 3D game worlds, created usi
 
 **[Play the demo](https://blockplay-sg.qwertz0808.chatgpt.site)**
 
+[![Blockplay SG: panoramic in-game view of Marina Bay, its waterfront, three landmark towers and lotus-shaped museum](docs/images/blockplay-sg-marina.png)](https://blockplay-sg.qwertz0808.chatgpt.site)
+
 [How we built it: engineering and visual understanding](docs/BUILD-STORY.md) · [Reference-to-game comparisons](docs/visual-understanding.md)
 
 ## What you can play

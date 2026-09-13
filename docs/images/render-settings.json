@@ -1,0 +1,26 @@
+{
+  "settingsWrittenAt": "2026-09-13T12:33:21.455Z",
+  "method": "Current scene builders rendered with documentation cameras; not player-camera screenshots or reconstruction output.",
+  "viewport": [
+    1600,
+    900
+  ],
+  "fov": 55,
+  "views": [
+    {
+      "id": "marina-banner",
+      "module": "marina",
+      "builder": "buildMarinaScene",
+      "camera": [
+        -100,
+        85,
+        150
+      ],
+      "target": [
+        95,
+        32,
+        -90
+      ]
+    }
+  ]
+}
