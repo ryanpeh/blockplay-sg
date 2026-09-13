@@ -1,10 +1,11 @@
 import type { AdventureGame, AdventureSnapshot, Destination, GuideRegion } from './adventure';
+import { randomUuid } from '../lib/random-id.ts';
 
 /** Read-only bridge: the region's existing game remains the sole owner of stamps. */
 export function createLearningGuide(region: Exclude<GuideRegion, 'marina-bay'>, current: () => {
   position: { x: number; z: number }; destinations: Destination[]; collected: string[];
 }): AdventureGame {
-  const sessionId = crypto.randomUUID();
+  const sessionId = randomUuid();
   let request = 0, revision = 0, lastCollected = '';
   const read = (): AdventureSnapshot => {
     const state = current(), collected = JSON.stringify(state.collected);

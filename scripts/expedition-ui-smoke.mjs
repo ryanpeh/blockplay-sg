@@ -111,5 +111,5 @@ try {
   assert.equal(mapRequests,0,'No live map requests'); assert.deepEqual(errors,[],'No browser errors');
   console.log('PASS: Open world route, Marina with one canvas/eight supplies/four bots, three-zone graph, map route planning without scene resets, selected-district starts, keyboard map access, pointer capture, movement, firing, menu, native fullscreen, mobile layout, persistent Armory unchanged and renderer cleanup.');
   console.log('Screenshots: .cache/expedition-ui-smoke/');
-} catch(error) { await screenshot('expedition-failure'); throw error; }
+} catch(error) { console.error('Browser errors:', errors); await screenshot('expedition-failure'); throw error; }
 finally { ws.close(); await fetch(`${chrome}/json/close/${tab.id}`); }

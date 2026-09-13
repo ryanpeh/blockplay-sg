@@ -6,6 +6,18 @@ import { RAFFLES_STAMPS } from './raffles-scene';
 import { QUEENSTOWN_STAMPS } from './queenstown-scene';
 import { destinationId } from './adventure';
 
+it.each(['raffles-place', 'queenstown'] as const)('%s starts on LAN HTTP without crypto.randomUUID', region => {
+  const getRandomValues = crypto.getRandomValues.bind(crypto);
+  vi.stubGlobal('crypto', { getRandomValues });
+  try {
+    const state = { position: { x: 0, z: 0 }, destinations: [], collected: [] };
+    const guide = createLearningGuide(region, () => state);
+    expect(guide.read().region).toBe(region);
+    expect(guide.read().sessionId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
+    expect(guide.begin().snapshot.sessionId).toBe(guide.read().sessionId);
+  } finally { vi.unstubAllGlobals(); }
+});
+
 it('covers each new region stop with one sourced topic and unique topic IDs', () => {
   expect(new Set(learningTopics.map(t => t.id)).size).toBe(learningTopics.length);
   for (const stamps of [RAFFLES_STAMPS, QUEENSTOWN_STAMPS]) for (const stamp of stamps) {
