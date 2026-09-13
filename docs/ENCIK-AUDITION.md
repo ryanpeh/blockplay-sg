@@ -4,24 +4,28 @@ The user upgraded to a paid plan and authorized retrying the same two-line audit
 
 **Result (2026-09-13):** one request generated three playable MP3 candidates (7.4s, 8.8s, 7.8s), available at `.cache/encik-audition/93f198a2b596/index.html`. The follow-up subscription check reports **118 / 40,000 credits used**. The immediate post-generation check was still zero, so `usage-followup.json` preserves the later reading. User feedback: candidates 1 and 3 sounded British attempting Singaporean; candidate 2 sounded slightly Hong Kong-ish. No candidate was selected. The original files remain available for comparison.
 
-**Round 2:** one authorized request returned three valid MP3 previews (8.0s, 6.8s, 8.0s), at `.cache/encik-audition/7ce08f42e116/index.html`. That page links back to round 1. A later quota check confirmed 118 credits for round 2, 236/40000 total used. Awaiting user feedback on the revised accent.
+**Round 2:** one authorized request returned three valid MP3 previews (8.0s, 6.8s, 8.0s), at `.cache/encik-audition/7ce08f42e116/index.html`. That page links back to round 1. A later quota check confirmed 118 credits for round 2, 236/40000 total used. User found all three accents natural, with #2 more hostile, but still lacking Encik coarseness and crudeness. No voice selected.
+
+**Round 3:** one authorized request returned three valid MP3 previews (7.1s, 7.2s, 6.8s), at `.cache/encik-audition/0731c4fd24ac/index.html`, with a link to round 2. Awaiting user feedback on rasp, coarseness and retained accent. Follow-up quota: 127 credits for round 3, 363/40000 total used.
 
 This is a standalone voice audition; it does not alter game audio or generate the full pack.
 
 1. Use a paid ElevenLabs account and put `ELEVENLABS_API_KEY` in the ignored `.env.local`. The key needs access to Voice Design and reading the user subscription. Never use a `VITE_` prefix or paste the key into chat.
-2. `pnpm voice:audition` prints the exact prompt and 118-character, two-line script without network calls.
+2. `pnpm voice:audition` prints the exact prompt and 127-character, two-line script without network calls.
 3. `pnpm voice:audition --generate` checks the paid subscription and available included quota, then submits one Voice Design v3 request. It downloads the returned candidate previews into `.cache/encik-audition/<request-hash>/` and creates an `index.html` listening page.
 4. Audition the candidates before making further generations or saving a voice. The full callout pack remains on hold until a candidate is approved.
 
-Round 2 voice description (user authorized one more set, retaining the same two lines, model, seed and guidance):
+Round 3 voice description (user authorized one more two-line audition with rougher delivery and wording; model, seed and guidance retained):
 
-> Singaporean man in his forties speaking everyday colloquial Singapore English. Conversational, slightly nasal, dry and matter-of-fact. Familiar kopitiam conversation, with mild impatience. Understated delivery.
+> Singaporean man in his late forties speaking everyday colloquial Singapore English. Familiar kopitiam speech, slightly nasal, with natural Singlish rhythm and vowels. Low-mid pitch, coarse grainy rasp and a weathered throaty edge. Blunt, earthy and casually foul-mouthed. An old encik who has spent twenty years scolding recruits: weary irritation, biting dry humour, abrupt bursts of emphasis. Conversational grumbling that snaps into a short bark. Rough, unpolished delivery with clear words.
 
 The preview contains:
 
-> Eh, recruit! You fighting the enemy or fighting the wall? Go around lah!
+> Eh, recruit! Bloody hell, you shooting the wall for what? Go around lah!
 >
-> Reloading, ah! Nobody say can take tea break.
+> Reloading! Don't stand there like a blur sotong. Move!
+
+This creates new candidates from a description; it does not edit or preserve the exact identity of round 2 candidate #2. Its preview remains available as the accent reference.
 
 The script saves a permanent attempt marker before submitting. Re-running the same request, including after a timeout, will stop instead of spending credits again. Inspect `attempt.json` and the ElevenLabs dashboard before explicitly deciding to retry. This is not an automatic retry or batch tool. The before/after account quota difference is recorded when available; concurrent account usage may affect that measurement. The quota reserve check is conservative, not a provider-enforced per-request credit cap.
 

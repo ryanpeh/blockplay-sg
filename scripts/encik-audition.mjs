@@ -5,8 +5,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 export const audition = {
   model_id: 'eleven_ttv_v3',
-  voice_description: 'Singaporean man in his forties speaking everyday colloquial Singapore English. Conversational, slightly nasal, dry and matter-of-fact. Familiar kopitiam conversation, with mild impatience. Understated delivery.',
-  text: 'Eh, recruit! You fighting the enemy or fighting the wall? Go around lah!\nReloading, ah! Nobody say can take tea break.',
+  voice_description: 'Singaporean man in his late forties speaking everyday colloquial Singapore English. Familiar kopitiam speech, slightly nasal, with natural Singlish rhythm and vowels. Low-mid pitch, coarse grainy rasp and a weathered throaty edge. Blunt, earthy and casually foul-mouthed. An old encik who has spent twenty years scolding recruits: weary irritation, biting dry humour, abrupt bursts of emphasis. Conversational grumbling that snaps into a short bark. Rough, unpolished delivery with clear words.',
+  text: 'Eh, recruit! Bloody hell, you shooting the wall for what? Go around lah!\nReloading! Don\'t stand there like a blur sotong. Move!',
   auto_generate_text: false, should_enhance: false, stream_previews: false,
   guidance_scale: 25, seed: 21,
 };
