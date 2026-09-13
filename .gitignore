@@ -7,6 +7,10 @@ dist/
 *.tsbuildinfo
 .DS_Store
 .cache/
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
 reconstruction/marina-bay/*
 !reconstruction/marina-bay/references/
 reconstruction/api-usage.json.lock

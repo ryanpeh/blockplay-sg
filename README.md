@@ -50,6 +50,7 @@ Built with React, TypeScript, Vite and Three.js.
 ## Documentation
 
 - [Project guide](docs/PROJECT-GUIDE.md) — controls, optional services, testing and deployment.
+- [Cloudflare deployment](docs/CLOUDFLARE.md) — game hosting, companion API, secrets and GitHub builds.
 - [Adventure companions](docs/ADVENTURE.md) — objective changes, educational guides and voice.
 - [Open world](docs/WORLD-ZONES.md), [LAN arena](docs/LAN-ARENA.md) and [Armory](docs/ARMORY.md) — mode-specific details.
 - [Agent workspace notes](.agents/README.md) — planning, handoff, experiments and continuing development.

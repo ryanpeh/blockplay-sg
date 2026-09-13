@@ -57,6 +57,8 @@ FPS modes share a lightweight local minimap using regional road data: practice s
 
 ## Local setup
 
+For HTTPS hosting with the companion backend, see [Cloudflare deployment](CLOUDFLARE.md). It includes CLI deployment, private runtime secrets, local Worker preview and GitHub build settings.
+
 Use Node 22.12+ and pnpm 11.22.0, pinned in `package.json`.
 
 ```sh

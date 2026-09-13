@@ -59,13 +59,14 @@ export async function interpret(text: string, state: AdventureSnapshot, key: str
   return state.region === 'marina-bay' ? decision : { intent: 'keep' as const, destinationId: null };
 }
 
-export function createAdventureHandler(env: Record<string, string | undefined>, fetcher = fetch) {
+export function createAdventureHandler(env: Record<string, string | undefined>, fetcher = fetch,
+  options: { isOriginAllowed?: (req: IncomingMessage) => boolean } = {}) {
   const allowed = new Set((env.ADVENTURE_ALLOWED_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173,http://localhost:3001,http://127.0.0.1:3001').split(',').map(origin => origin.trim()));
   const reserve = createRequestGuard();
   return async (req: IncomingMessage, res: ServerResponse) => {
     const reply = (status: number, data: unknown) => { res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...(status === 429 ? { 'Retry-After': '60' } : {}) }); res.end(JSON.stringify(data)); };
     if (req.method !== 'POST' || !['/api/adventure/change', '/api/adventure/voice-session', '/api/adventure/pilot-plan'].includes(req.url ?? '')) return reply(404, { error: 'Not found' });
-    if (!allowed.has(req.headers.origin ?? '')) return reply(403, { error: 'Unexpected origin' });
+    if (!(options.isOriginAllowed ? options.isOriginAllowed(req) : allowed.has(req.headers.origin ?? ''))) return reply(403, { error: 'Unexpected origin' });
     if (env.ADVENTURE_ENABLED === 'false' || (req.url === '/api/adventure/voice-session' && env.ADVENTURE_VOICE_ENABLED === 'false')) return reply(503, { error: 'The companion service is temporarily disabled. You can keep exploring.' });
     if (req.headers['content-type']?.split(';')[0].trim().toLowerCase() !== 'application/json') return reply(415, { error: 'JSON required' });
     if (req.headers['content-encoding'] && req.headers['content-encoding'] !== 'identity') return reply(415, { error: 'Compressed requests are not supported' });

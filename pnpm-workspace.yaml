@@ -5,6 +5,7 @@ minimumReleaseAgeStrict: true
 # Vite uses esbuild's platform-specific binary setup.
 allowBuilds:
   esbuild: true
+  workerd: true
   onnxruntime-node: true
   sharp: true
   protobufjs: false
