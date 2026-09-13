@@ -1,0 +1,56 @@
+{
+  "settingsWrittenAt": "2026-09-13T11:11:04.356Z",
+  "method": "Current scene builders rendered with documentation cameras; not player-camera screenshots or reconstruction output.",
+  "viewport": [
+    640,
+    640
+  ],
+  "fov": 65,
+  "views": [
+    {
+      "id": "marina",
+      "module": "marina",
+      "builder": "buildMarinaScene",
+      "camera": [
+        103,
+        6,
+        -78
+      ],
+      "target": [
+        135,
+        20,
+        -110
+      ]
+    },
+    {
+      "id": "queenstown",
+      "module": "queenstown",
+      "builder": "buildQueenstownScene",
+      "camera": [
+        52,
+        7,
+        60
+      ],
+      "target": [
+        42,
+        6,
+        39
+      ]
+    },
+    {
+      "id": "raffles",
+      "module": "raffles",
+      "builder": "buildRafflesScene",
+      "camera": [
+        -139,
+        6,
+        -69
+      ],
+      "target": [
+        -128,
+        5,
+        -85
+      ]
+    }
+  ]
+}

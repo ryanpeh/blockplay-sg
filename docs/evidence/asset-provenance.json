@@ -1,0 +1,38 @@
+[
+  {
+    "region": "marina",
+    "reference": "reconstruction/marina-bay/references/marina-static-quality-museum-petals.jpg",
+    "metadata": "reconstruction/marina-bay/references/marina-static-quality-museum-petals.json",
+    "sourceDate": "2012-02",
+    "capturedAt": "2026-09-13T05:02:43.677Z",
+    "credit": "© 2026 Google",
+    "visualReview": "accepted: white concave shell underside and contrast between dark outer struts and pale inner angled supports",
+    "referenceSha256": "c7e88946cb875b497c86060c415a12caf4fe55e04999241289510ee984de898d",
+    "render": "docs/evidence/marina-scene.png",
+    "renderSha256": "0db98740869ac163a6cdcfec8a7fcd048cba0a9a19f168052ad9b599b9cdd69c"
+  },
+  {
+    "region": "queenstown",
+    "reference": "reconstruction/queenstown/references/static-quality-station-front.jpg",
+    "metadata": "reconstruction/queenstown/references/static-quality-station-front.json",
+    "sourceDate": "2025-03",
+    "capturedAt": "2026-09-13T05:04:05.852Z",
+    "credit": "© 2026 Google",
+    "visualReview": "accepted: blue fascia, dark projecting louvers, pale rounded pier and hedge; entrance massing only",
+    "referenceSha256": "7dfe4049c3a6581c7a7a33e04b07fa1f47cc0756fe7a1b64ce0ec12300324923",
+    "render": "docs/evidence/queenstown-scene.png",
+    "renderSha256": "bed634b34c5c54b10b5bb928a124f09f32b5a1a92723ba77a68f42ceb18d4012"
+  },
+  {
+    "region": "raffles",
+    "reference": "reconstruction/raffles-place/references/static-quality-quay-facade.jpg",
+    "metadata": "reconstruction/raffles-place/references/static-quality-quay-facade.json",
+    "sourceDate": "2024-03",
+    "capturedAt": "2026-09-13T05:04:04.174Z",
+    "credit": "© 2026 Google",
+    "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame",
+    "referenceSha256": "0eab6647698bb1e6451c7d33fdfe41d7df0307cc8e64c7da657dc6153cb9c6d8",
+    "render": "docs/evidence/raffles-scene.png",
+    "renderSha256": "862f7018fc38506c005d686d32b51473c1336147b5a7cd2cfa6dc6f4c51d7e6c"
+  }
+]

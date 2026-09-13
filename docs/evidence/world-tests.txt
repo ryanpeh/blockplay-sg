@@ -1,0 +1,17 @@
+
+ RUN  v3.2.7 /Users/ryanpeh/Documents/Programming/astra-hackathon
+
+ ✓ src/game/capture-readiness.test.ts (3 tests) 12ms
+ ✓ src/game/drive-camera.test.ts (3 tests) 4ms
+ ✓ src/game/raffles-scene.test.ts (4 tests) 772ms
+   ✓ builds detailed, batched expanded Raffles Place with eleven drive-reachable stamps  663ms
+ ✓ src/game/queenstown-scene.test.ts (4 tests) 1388ms
+   ✓ creates a distinct estate with safe spawn and reachable driving collectibles  964ms
+ ✓ src/game/marina-scene.test.ts (5 tests) 1492ms
+   ✓ keeps spawn, collectibles and the full road loop clear for the car  384ms
+   ✓ can reach all fourteen stamps from spawn without crossing a collider  782ms
+
+ Test Files  5 passed (5)
+      Tests  19 passed (19)
+   Start at  19:26:48
+   Duration  1.87s (transform 201ms, setup 0ms, collect 429ms, tests 3.67s, environment 0ms, prepare 261ms)
