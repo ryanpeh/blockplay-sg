@@ -1,0 +1,86 @@
+
+ RUN  v3.2.7 /Users/ryanpeh/Documents/Programming/astra-hackathon
+
+ ✓ src/game/fps-rules.test.ts (5 tests) 295ms
+ ✓ src/game/vehicle-rules.test.ts (7 tests) 230ms
+ ✓ server/native-import.test.ts (1 test) 235ms
+ ✓ src/game/expedition-loot.test.ts (9 tests) 190ms
+ ✓ src/game/raffles-scene.test.ts (4 tests) 1176ms
+   ✓ builds detailed, batched expanded Raffles Place with eleven drive-reachable stamps  1023ms
+ ✓ src/game/arena-runtime.test.ts (6 tests) 18ms
+stdout | src/game/api-budget.test.ts > enforces independent regional Static authorizations and counts failures
+Recorded events: 3; Static attempts: 2/1000
+
+stdout | src/game/api-budget.test.ts > enforces independent regional Static authorizations and counts failures
+Recorded events: 4; Static attempts: 3/1000
+
+stdout | src/game/api-budget.test.ts > enforces the Static image allowance but excludes browser loads/screenshots
+Recorded events: 2; Static attempts: 1/1000
+
+stdout | src/game/api-budget.test.ts > enforces the Static image allowance but excludes browser loads/screenshots
+Recorded events: 3; Static attempts: 2/1000
+
+stdout | src/game/api-budget.test.ts > enforces the Static image allowance but excludes browser loads/screenshots
+Recorded events: 4; Static attempts: 2/1000
+
+stdout | src/game/api-budget.test.ts > enforces the Static image allowance but excludes browser loads/screenshots
+Recorded events: 5; Static attempts: 3/1000
+
+stdout | src/game/api-budget.test.ts > persists an attempt before calling the network and stops at the limit
+Recorded events: 1; Static attempts: 1/1
+
+stdout | src/game/api-budget.test.ts > persists an attempt before calling the network and stops at the limit
+Recorded events: 2; Static attempts: 1/1
+
+stdout | src/game/api-budget.test.ts > persists an attempt before calling the network and stops at the limit
+Recorded events: 3; Static attempts: 1/1
+
+ ✓ src/game/api-budget.test.ts (4 tests) 112ms
+ ✓ src/components/ArmoryShop.test.tsx (1 test) 61ms
+ ✓ src/components/FpsMinimap.test.tsx (2 tests) 7ms
+ ✓ src/game/static-reference-plan.test.ts (3 tests) 30ms
+ ✓ server/adventure-security.test.ts (10 tests) 16ms
+ ✓ src/game/reference-inventory.test.ts (2 tests) 17ms
+ ✓ src/game/arena-rules.test.ts (21 tests) 50ms
+ ✓ src/game/queenstown-scene.test.ts (4 tests) 2098ms
+   ✓ creates a distinct estate with safe spawn and reachable driving collectibles  1523ms
+ ✓ server/adventure-api.test.ts (8 tests) 11ms
+ ✓ src/game/weapon-optics.test.ts (6 tests) 12ms
+ ✓ src/game/expedition-loot-world.test.ts (3 tests) 2015ms
+   ✓ expedition loot in authored scenes > marina-bay: all crates are clear and reachable across several seeds  614ms
+   ✓ expedition loot in authored scenes > raffles-place: all crates are clear and reachable across several seeds  534ms
+   ✓ expedition loot in authored scenes > queenstown: all crates are clear and reachable across several seeds  866ms
+ ✓ src/lib/live-voice.test.ts (9 tests) 9ms
+ ✓ src/game/browser-capture-plan.test.ts (4 tests) 12ms
+ ✓ src/game/world-zones.test.ts (7 tests) 2275ms
+   ✓ marina-bay: checkpoints and arrivals are clear and connected to the authored spawn  746ms
+   ✓ raffles-place: checkpoints and arrivals are clear and connected to the authored spawn  503ms
+   ✓ queenstown: checkpoints and arrivals are clear and connected to the authored spawn  1013ms
+ ✓ src/components/SingaporeMap.test.tsx (2 tests) 16ms
+ ✓ src/game/objective-highlight.test.ts (2 tests) 8ms
+ ✓ src/lib/adventure-client.test.ts (9 tests) 16ms
+ ✓ src/game/minimap.test.ts (4 tests) 3ms
+ ✓ src/game/fps-weapon-motion.test.ts (2 tests) 3ms
+ ✓ src/game/depth-mesh.test.ts (3 tests) 3ms
+ ✓ src/game/fps-pointer.test.ts (7 tests) 6ms
+ ✓ src/game/adventure.test.ts (7 tests) 22ms
+ ✓ src/game/capture-readiness.test.ts (3 tests) 7ms
+ ✓ src/game/marina-collision.test.ts (3 tests) 1ms
+ ✓ src/game/armory-state.test.ts (14 tests) 8ms
+ ✓ src/game/fps-accuracy.test.ts (3 tests) 3ms
+ ✓ src/game/learning-guide.test.ts (3 tests) 10ms
+ ✓ src/game/fps-debug.test.ts (2 tests) 4ms
+ ✓ src/game/lan-peer.test.ts (2 tests) 6ms
+ ✓ src/game/marina-scene.test.ts (5 tests) 3072ms
+   ✓ adds over 70 percent more area and keeps all three road circuits and connectors clear  388ms
+   ✓ can reach all fourteen stamps from spawn without crossing a collider  2097ms
+ ✓ src/game/physics.test.ts (3 tests) 4ms
+ ✓ src/game/drive-camera.test.ts (3 tests) 2ms
+ ✓ src/game/region-selection.test.ts (3 tests) 2ms
+ ✓ src/game/fps-raycast.test.ts (1 test) 7ms
+ ✓ src/lib/street-view-navigation.test.ts (3 tests) 10ms
+
+ Test Files  41 passed (41)
+      Tests  200 passed (200)
+   Start at  20:12:25
+   Duration  3.84s (transform 873ms, setup 0ms, collect 3.49s, tests 12.08s, environment 7ms, prepare 3.24s)

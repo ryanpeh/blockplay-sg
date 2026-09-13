@@ -173,10 +173,36 @@ export function buildRafflesScene() {
   for(const x of [-163,-162.6,162.6,163])box(x,0.12,12,0.14,0.02,236,orange);
   // Quay service lane: narrow colored shophouses, shutters, AC boxes, terracotta roofs.
   const shopColors=[mat('#c7957c'),mat('#d4c6a6'),mat('#9baea5'),mat('#c18675')];
-  for(let i=0;i<7;i++){const x=[-146,-128,-110,-40,-22,-4,14][i];box(x,5,-87,16,10,17,shopColors[i%4],scene,true);solid(x,-87,16,17);
-    for(const side of [-1,1]){const r=box(x,10.7,-87+side*4.6,17,0.35,10,terra,scene,true);r.rotation.x=side*0.22;}
-    for(const dx of [-4,4]){box(x+dx,6.8,-77.9,3,2.4,0.15,dark);box(x+dx,6.8,-77.7,2.5,2,0.1,leaf);for(let y=6;y<8;y+=0.35)box(x+dx,y,-77.5,2.7,0.12,0.14,pale);box(x+dx,1.9,-77.8,3.4,3.4,0.1,dark);box(x+dx,5,-96,2,1.4,0.6,stone);}
-    box(x,3.7,-76.6,16,0.25,3.2,i%2?red:grass);sign(i%2?'QUAY CAFE':'RIVER HOUSE',x,4.5,-77.6,13,1.1,'#765646');}
+  const quayWhite=mat('#eeeae1'),quayGreen=mat('#24775e'),quayRed=mat('#a3384d');
+  const valanceShape=new THREE.Shape();valanceShape.moveTo(-0.35,0);valanceShape.absarc(0,0,0.35,Math.PI,Math.PI*2,false);valanceShape.closePath();
+  const valanceGeo=geo(new THREE.ShapeGeometry(valanceShape));
+  for(let i=0;i<7;i++){
+    const x=[-146,-128,-110,-40,-22,-4,14][i],refined=i===1;
+    box(x,5,-87,16,10,17,refined?quayWhite:shopColors[i%4],scene,true);solid(x,-87,16,17);
+    if(refined){
+      // refinement-02-quay-* references: two white window bands, green vents/trim,
+      // and a red sloping canopy. Dimensions remain an authored compression.
+      box(x,10.15,-87,16,0.3,17,quayWhite);
+      box(x,10.65,-78.55,16,0.9,0.3,quayWhite);
+      for(const y of [4.4,7.4,10.2,11.1])box(x,y,-78.25,16,0.16,0.22,quayGreen);
+      for(const dx of [-7.65,7.65])box(x+dx,7.65,-78.2,0.45,6.6,0.25,quayGreen);
+      for(const y of [5.75,8.75]){
+        box(x,y,-78.25,13.2,2.15,0.15,dark);
+        for(const dx of [-6.6,-4.4,-2.2,0,2.2,4.4,6.6])box(x+dx,y,-78.08,0.14,2.25,0.16,quayWhite);
+        for(const dy of [-1.08,-0.36,0.36,1.08])box(x,y+dy,-78.06,13.4,0.12,0.18,quayWhite);
+        for(let n=0;n<3;n++)box(x,y+1.3+n*0.16,-78.08,13.4,0.09,0.24,quayGreen);
+      }
+      for(const dx of [-4,4]){box(x+dx,1.9,-77.8,3.4,3.4,0.1,dark);box(x+dx,5,-96,2,1.4,0.6,stone);}
+      const canopy=box(x,3.8,-76.6,16,0.16,3.2,quayRed);canopy.rotation.x=0.18;
+      box(x,3.51,-75.03,16,0.12,0.12,quayWhite);
+      box(x,3.34,-75.02,16,0.22,0.09,quayRed);
+      for(let n=0;n<23;n++){const scallop=new THREE.Mesh(valanceGeo,quayRed);scallop.position.set(x-7.65+n*0.695,3.23,-74.96);scene.add(scallop);}
+    }else{
+      for(const side of [-1,1]){const r=box(x,10.7,-87+side*4.6,17,0.35,10,terra,scene,true);r.rotation.x=side*0.22;}
+      for(const dx of [-4,4]){box(x+dx,6.8,-77.9,3,2.4,0.15,dark);box(x+dx,6.8,-77.7,2.5,2,0.1,leaf);for(let y=6;y<8;y+=0.35)box(x+dx,y,-77.5,2.7,0.12,0.14,pale);box(x+dx,1.9,-77.8,3.4,3.4,0.1,dark);box(x+dx,5,-96,2,1.4,0.6,stone);}
+      box(x,3.7,-76.6,16,0.25,3.2,i%2?red:grass);sign(i%2?'QUAY CAFE':'RIVER HOUSE',x,4.5,-77.6,13,1.1,'#765646');
+    }
+  }
   // Safe waterfront edge, bollards, textured paved promenade and river ripples.
   box(0,0.12,-129,580,0.22,10,pale);box(0,0.65,-135,580,1.3,0.7,stone);solid(0,-135,580,0.7);
   for(let x=-284;x<290;x+=7){box(x,1.6,-135,0.18,1.7,0.18,dark);box(x,2.35,-135,7,0.12,0.12,dark);}

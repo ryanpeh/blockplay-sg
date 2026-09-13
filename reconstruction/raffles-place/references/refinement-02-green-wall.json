@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "square.json",
+  "pano_id": "x-yEYc02g45kEqGGAixkkA",
+  "position": {
+    "lat": 1.2837148661510418,
+    "lng": 103.85109276049249
+  },
+  "sourceDate": "2024-06",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 94,
+    "pitch": 22
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Green wall depth and canopy structure",
+  "capturedAt": "2026-09-13T12:06:20.187Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-green-wall.jpg",
+  "fingerprint": "42af8e0cc177c74375851a98329d130dcfdc26ede1f1d62a92d1cd8aa7c5888f",
+  "sha256": "506d80fefa7d72bcb8d73bd4f7b56a6b7aa380713b868a75bc2011619ea40d53",
+  "bytes": 97450,
+  "attribution": "Retained in original image",
+  "visualReview": "limited: planted wall and colored canopy visible at distance; no reliable dimensions",
+  "reviewedAt": "2026-09-13T12:10:59.486568+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

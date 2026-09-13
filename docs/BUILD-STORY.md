@@ -2,6 +2,8 @@
 
 Blockplay SG turns Singapore locations into stylised, playable Three.js environments. This guide connects the project's **Agentic Engineering** and **Visual Understanding** work to implementation, references, and reproducible checks.
 
+For a concrete new iteration, see the [Raffles refinement with before/after images](raffles-refinement.md).
+
 Start with the [visual comparisons](visual-understanding.md), then the [engineering example](agentic-engineering.md). The [verification record](evidence/verification.md) separates checks performed for this document from historical reports.
 
 | Evidence | What to inspect |

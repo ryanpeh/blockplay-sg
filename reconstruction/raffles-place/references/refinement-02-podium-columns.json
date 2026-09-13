@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "cecil.json",
+  "pano_id": "PUxFa-L5ilZ8j5iNcqDuvg",
+  "position": {
+    "lat": 1.2823277239636524,
+    "lng": 103.8503366589604
+  },
+  "sourceDate": "2024-06",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 274,
+    "pitch": 22
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Slender curved canopy columns",
+  "capturedAt": "2026-09-13T12:06:21.576Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-podium-columns.jpg",
+  "fingerprint": "f270242b33bf313578dc5d1bec6e37b24720c9be120012c8a101c4defd5c125e",
+  "sha256": "4e1b229489b924aa172de141580ecfda61dde37ed4c0aa4ae535a2a729e3cbf4",
+  "bytes": 94601,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: slender splayed pale columns",
+  "reviewedAt": "2026-09-13T12:10:59.487887+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

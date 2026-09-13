@@ -2,8 +2,8 @@
   "imageAllowance": {
     "appliesTo": "Static API image downloads only; browser screenshots and Maps JavaScript events excluded, per user clarification 2026-09-13",
     "baselineStaticImageAttempts": 8,
-    "maxAdditionalImages": 90,
-    "scope": "User authorized 25 new Static images each for Marina Bay, Raffles Place and Queenstown on 2026-09-13, superseding the previous 50 remaining Marina allowance. Original baseline 8 and all 23 existing image attempts preserved: 15 previously used plus 75 newly authorized."
+    "maxAdditionalImages": 115,
+    "scope": "User authorized 25 new Static images each for Marina Bay, Raffles Place and Queenstown on 2026-09-13, superseding the previous 50 remaining Marina allowance. Original baseline 8 and all 23 existing image attempts preserved: 15 previously used plus 75 newly authorized. User additionally authorized 25 Raffles Place Static image attempts for a documented refinement on 2026-09-13; original baselines and all history retained."
   },
   "regionImageAllowances": {
     "marina-bay": {
@@ -12,7 +12,7 @@
     },
     "raffles-place": {
       "baselineStaticImageAttempts": 0,
-      "maxAdditionalImages": 25
+      "maxAdditionalImages": 50
     },
     "queenstown": {
       "baselineStaticImageAttempts": 0,
@@ -2905,6 +2905,181 @@
       "date": "2026-09-13T05:04:12.646Z",
       "kind": "image-static-quality-static-quality-street-planting",
       "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "77afd414-3471-4e79-ae30-d22f7051bfef",
+      "date": "2026-09-13T12:06:19.037Z",
+      "kind": "image-static-quality-refinement-02-gable",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d13c830e-9f8f-4215-921c-e4142bc39cf1",
+      "date": "2026-09-13T12:06:19.670Z",
+      "kind": "image-static-quality-refinement-02-fan-palms",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ae5714eb-221a-4a9c-986d-c6a498af665b",
+      "date": "2026-09-13T12:06:19.961Z",
+      "kind": "image-static-quality-refinement-02-green-wall",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "448e4124-f8f0-43c5-b3f9-f1637f94ea77",
+      "date": "2026-09-13T12:06:20.188Z",
+      "kind": "image-static-quality-refinement-02-square-paving",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a730009d-31b1-4744-9e12-3c788fd0444e",
+      "date": "2026-09-13T12:06:20.414Z",
+      "kind": "image-static-quality-refinement-02-lobby",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ae2d318c-6da4-48b3-88e8-cb9c87d8caad",
+      "date": "2026-09-13T12:06:20.642Z",
+      "kind": "image-static-quality-refinement-02-plaza-sculpture",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7fb95077-133e-483a-b505-01140670954a",
+      "date": "2026-09-13T12:06:20.911Z",
+      "kind": "image-static-quality-refinement-02-tower-ribs",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ae23f4fc-4d9a-4388-b8e2-7034c922a01a",
+      "date": "2026-09-13T12:06:21.362Z",
+      "kind": "image-static-quality-refinement-02-podium-columns",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f41a33c9-3b9e-4bf8-a341-33a85a675462",
+      "date": "2026-09-13T12:06:21.576Z",
+      "kind": "image-static-quality-refinement-02-facade-plants",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6b64b155-ce40-4cdb-9e58-4aedb743ce7a",
+      "date": "2026-09-13T12:06:21.798Z",
+      "kind": "image-static-quality-refinement-02-stone-grid",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "edeaf54a-2340-4c0d-9790-9f54741176f1",
+      "date": "2026-09-13T12:06:22.200Z",
+      "kind": "image-static-quality-refinement-02-arcade-shutters",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f1998ab8-0c48-4142-b9db-b6630590f14a",
+      "date": "2026-09-13T12:06:22.458Z",
+      "kind": "image-static-quality-refinement-02-arcade-awning",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "cd83c673-6280-4c9c-ac34-dc43028bf3e2",
+      "date": "2026-09-13T12:06:22.629Z",
+      "kind": "image-static-quality-refinement-02-heritage-roof",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ec2b3dbe-32b8-418c-978b-8c9f4a898f98",
+      "date": "2026-09-13T12:06:22.810Z",
+      "kind": "image-static-quality-refinement-02-market-gable",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "65450a29-023c-4a50-83c0-11bfd5d218f1",
+      "date": "2026-09-13T12:06:23.071Z",
+      "kind": "image-static-quality-refinement-02-market-eaves",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2d9a8cca-167c-4e81-a0d6-22142959707d",
+      "date": "2026-09-13T12:06:23.297Z",
+      "kind": "image-static-quality-refinement-02-market-tables",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7a25ec9e-7e4a-4c4a-b7ce-b6b65c3f87fd",
+      "date": "2026-09-13T12:06:23.467Z",
+      "kind": "image-static-quality-refinement-02-market-stalls",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b19437f0-7c17-4317-aa8f-a4d17b52ccbf",
+      "date": "2026-09-13T12:06:23.639Z",
+      "kind": "image-static-quality-refinement-02-bridge-glass",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "edfcbcff-550f-496e-af3a-2f11e7ab0845",
+      "date": "2026-09-13T12:06:23.845Z",
+      "kind": "image-static-quality-refinement-02-bridge-columns",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "dbd66977-80f7-41fa-8cab-7221e54eba1d",
+      "date": "2026-09-13T12:06:24.031Z",
+      "kind": "image-static-quality-refinement-02-bus-shelter",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "acada1ae-9d87-4cdc-813b-4b686a2e97e2",
+      "date": "2026-09-13T12:06:24.214Z",
+      "kind": "image-static-quality-refinement-02-quay-context",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6c0cf9f6-4667-4ed4-9cb8-352abbc2086a",
+      "date": "2026-09-13T12:06:24.418Z",
+      "kind": "image-static-quality-refinement-02-quay-upper",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "594b71f7-2aa2-42f1-ad5a-eda749a4a43f",
+      "date": "2026-09-13T12:06:24.596Z",
+      "kind": "image-static-quality-refinement-02-quay-lower",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "14f5c935-0ad1-410d-8329-cd1f928171c9",
+      "date": "2026-09-13T12:06:24.787Z",
+      "kind": "image-static-quality-refinement-02-quay-left",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7f8e1c18-f5c7-4476-8b53-401e1c8ef004",
+      "date": "2026-09-13T12:06:24.973Z",
+      "kind": "image-static-quality-refinement-02-quay-right",
+      "location": "raffles-place",
       "result": "HTTP 200"
     }
   ]

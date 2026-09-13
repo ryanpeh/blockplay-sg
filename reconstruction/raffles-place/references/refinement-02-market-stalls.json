@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "robinson-expansion.json",
+  "pano_id": "8vqvLSs6Rb1BYuRk_R7BIA",
+  "position": {
+    "lat": 1.2802098374474813,
+    "lng": 103.85017105497431
+  },
+  "sourceDate": "2022-03",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 74,
+    "pitch": 0
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Low hawker kiosk roof and service frontage",
+  "capturedAt": "2026-09-13T12:06:23.638Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-market-stalls.jpg",
+  "fingerprint": "694528a32f50ed78c6cc1c3c6dd42d414255b80841bef0fb2ead22cf53d9c64d",
+  "sha256": "1afc5f0ca24bb94a001c36ab8f482c4944c96367c729630357a411b5f57aae84",
+  "bytes": 88203,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: small kiosk roof and service opening",
+  "reviewedAt": "2026-09-13T12:10:59.489938+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

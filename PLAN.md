@@ -1,3 +1,7 @@
+## Completed capture and implementation: documented Raffles visual refinement (13 September evening)
+
+User authorized 25 additional Raffles Place Static API image attempts after documentation commit `19ba0c7`. Use cached panorama metadata, preserve ledger history, and record observed image features, a targeted scene change, before/after renders and validation. This adds 25 to the aggregate and Raffles allowances only; failures count and no automatic retries are authorized. All 25 images were captured and directly reviewed (23 accepted, two limited), with zero failures and zero metadata requests. The additional allowance is now exhausted; total Static attempts are 130/1000. One quay facade now has two white window bands, green trim and vents, a sloped scalloped red canopy and low front parapet. See `docs/raffles-refinement.md` for observations, source hashes, before/after renders and validation. Earlier exhausted-allowance statements below describe previous batches.
+
 # Blockplay project plan
 
 ## Completed: prevent unlocked FPS mouse play (2026-09-13)

@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "quay-west-expansion.json",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "position": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "sourceDate": "2024-03",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 29
+  },
+  "horizontalFov": 45,
+  "width": 640,
+  "height": 640,
+  "purpose": "Upper window bands, white panels, green pilasters and cornice",
+  "capturedAt": "2026-09-13T12:06:24.595Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-quay-upper.jpg",
+  "fingerprint": "91508256b473403393a626e1ff4f54b937efcbd96830d0cdca0a2c5626772b65",
+  "sha256": "200025f3a54c34ea4d834a626bafea20e42f468b0d5fb76b780b2a5513cfa291",
+  "bytes": 75855,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: green slats over both window rows, white spandrel and green pilasters; no hidden bay inference",
+  "reviewedAt": "2026-09-13T12:10:59.491898+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

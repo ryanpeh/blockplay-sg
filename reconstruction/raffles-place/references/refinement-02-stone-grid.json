@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "cecil-south-expansion.json",
+  "pano_id": "blXMZWStANYc-azwZrlM1g",
+  "position": {
+    "lat": 1.2797671722655701,
+    "lng": 103.84836596692045
+  },
+  "sourceDate": "2024-06",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 4,
+    "pitch": 35
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Cream facade panel grid and dark podium",
+  "capturedAt": "2026-09-13T12:06:22.199Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-stone-grid.jpg",
+  "fingerprint": "b62123a8d42133a2082887ce717415b6ccf60899fe1d354cd312143bc5cc13fc",
+  "sha256": "fc57c48cf3da3260c1ed4b58845cdcbdb8193c855dd36dfa0412f63f1ac6e6cc",
+  "bytes": 72816,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: pale panel grid and dark base",
+  "reviewedAt": "2026-09-13T12:10:59.488264+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

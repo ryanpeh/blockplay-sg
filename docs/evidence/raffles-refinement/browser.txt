@@ -1,0 +1,4 @@
+PASS Marina Bay: render, walk, reset, drive, stationary/moving camera orbit, independent trajectory, recenter, mode switch
+PASS Queenstown: render, walk, reset, drive, stationary/moving camera orbit, independent trajectory, recenter, mode switch
+PASS Raffles Place: render, walk, reset, drive, stationary/moving camera orbit, independent trajectory, recenter, mode switch
+PASS region switching, mobile width, zero Google Maps requests, no uncaught errors

@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "battery.json",
+  "pano_id": "iXuBrsYTpdFBENgzJvgXRw",
+  "position": {
+    "lat": 1.2847765093148913,
+    "lng": 103.85175288205832
+  },
+  "sourceDate": "2018-07",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 94,
+    "pitch": 8
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Lobby silver stone panels and black plinth",
+  "capturedAt": "2026-09-13T12:06:20.642Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-lobby.jpg",
+  "fingerprint": "26a5c1f8fb9af54f8059d26ca461763dbb44d4b4c4d6b0f97cba61b08f94b8e8",
+  "sha256": "947ac18b35c62e111eb8d1462949a2984677f2657db1bef0024c4fe6c6e79324",
+  "bytes": 44648,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: silver panel seams and dark plinth",
+  "reviewedAt": "2026-09-13T12:10:59.487423+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

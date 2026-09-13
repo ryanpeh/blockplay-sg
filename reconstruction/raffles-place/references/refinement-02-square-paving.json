@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "battery.json",
+  "pano_id": "iXuBrsYTpdFBENgzJvgXRw",
+  "position": {
+    "lat": 1.2847765093148913,
+    "lng": 103.85175288205832
+  },
+  "sourceDate": "2018-07",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 154,
+    "pitch": -25
+  },
+  "horizontalFov": 70,
+  "width": 640,
+  "height": 640,
+  "purpose": "Plaza paving tile colors and seams",
+  "capturedAt": "2026-09-13T12:06:20.413Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-square-paving.jpg",
+  "fingerprint": "f4a411ab499bcba4a687ec9392b04f0bdfbc4baf0c3130ee380cd3498ef86cee",
+  "sha256": "a52b6457c4088a600c7cad94b1f0867d32259a0f85862900d6362296e6881104",
+  "bytes": 58359,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: gray rectangular paving and steps; ignore foreground car occlusion",
+  "reviewedAt": "2026-09-13T12:10:59.486749+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

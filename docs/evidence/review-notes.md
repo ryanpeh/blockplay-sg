@@ -2,6 +2,8 @@
 
 An independently tasked AI subagent assessed the Agentic Engineering and Visual Understanding material on 13 September 2026. No detailed official judging rubric was supplied. This is a qualitative review of category relevance, evidence strength, traceability and reproducibility, not an official score or prediction.
 
+This review predates the subsequent [Raffles refinement](../raffles-refinement.md), which implements the facade correction and records a new visual iteration. Findings below describe the project at the time of review.
+
 ## Findings and changes
 
 | Priority | Gap identified | Documentation improvement |

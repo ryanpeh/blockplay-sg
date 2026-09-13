@@ -1,0 +1,46 @@
+{
+  "baselineCommit": "19ba0c7",
+  "recordedAt": "2026-09-13T12:15:22.613968+00:00",
+  "artifacts": [
+    {
+      "file": "before.png",
+      "sha256": "862f7018fc38506c005d686d32b51473c1336147b5a7cd2cfa6dc6f4c51d7e6c"
+    },
+    {
+      "file": "after.png",
+      "sha256": "9df6396104c830d86073ccb0b55b7050954fa1126bcb30677b62194fdef92775"
+    },
+    {
+      "file": "before-settings.json",
+      "sha256": "abe9c4f7a55f70a3eaa931b3a38baea32c28f498e51db1aaa891ff274dd80d00"
+    },
+    {
+      "file": "after-settings.json",
+      "sha256": "bf8864c3ebb31695a23fb90e3c1a51063695c83204f5aeddcf36608902b47bcb"
+    },
+    {
+      "file": "session-record.md",
+      "sha256": "417edcb6cf49ad6bcbc8fc5b1e366ec98c3bda1395678025c2ef33ddd65931c2"
+    },
+    {
+      "file": "reference-review.json",
+      "sha256": "ec1293837e8f3df1cb5cd7790d6576c688757986bdafad2ffe34085940446f95"
+    },
+    {
+      "file": "scene-change.patch",
+      "sha256": "eb67390bf3b63ca76556beffbcc61d45438ec2af28f41595801528905ff10094"
+    },
+    {
+      "file": "tests.txt",
+      "sha256": "62027faed4f02472318d2eb42f73cc9e29d41a3a43e08a1fc47645c171081c6f"
+    },
+    {
+      "file": "build.txt",
+      "sha256": "75858437754d5887648e68e7d82de1ce1f11d8dbfcef7f81fffb0e84bb91752f"
+    },
+    {
+      "file": "browser.txt",
+      "sha256": "ecb093c8053bee07bc130c404ce4fade863b9431b99efe96e60194938b95d7aa"
+    }
+  ]
+}

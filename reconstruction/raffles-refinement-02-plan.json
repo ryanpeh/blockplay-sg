@@ -1,0 +1,207 @@
+{
+  "name": "raffles-refinement-02",
+  "region": "raffles-place",
+  "maxNewImages": 25,
+  "views": [
+    {
+      "id": "refinement-02-gable",
+      "source": "square.json",
+      "heading": 4,
+      "pitch": 20,
+      "fov": 60,
+      "purpose": "One Raffles entrance triangular gable louver spacing and silver trim"
+    },
+    {
+      "id": "refinement-02-fan-palms",
+      "source": "square.json",
+      "heading": 4,
+      "pitch": -15,
+      "fov": 65,
+      "purpose": "Fan palm foliage shape and planting base"
+    },
+    {
+      "id": "refinement-02-green-wall",
+      "source": "square.json",
+      "heading": 94,
+      "pitch": 22,
+      "fov": 60,
+      "purpose": "Green wall depth and canopy structure"
+    },
+    {
+      "id": "refinement-02-square-paving",
+      "source": "battery.json",
+      "heading": 154,
+      "pitch": -25,
+      "fov": 70,
+      "purpose": "Plaza paving tile colors and seams"
+    },
+    {
+      "id": "refinement-02-lobby",
+      "source": "battery.json",
+      "heading": 94,
+      "pitch": 8,
+      "fov": 55,
+      "purpose": "Lobby silver stone panels and black plinth"
+    },
+    {
+      "id": "refinement-02-plaza-sculpture",
+      "source": "battery.json",
+      "heading": 9,
+      "pitch": 12,
+      "fov": 60,
+      "purpose": "Sculpture and planted perimeter proportions"
+    },
+    {
+      "id": "refinement-02-tower-ribs",
+      "source": "cecil.json",
+      "heading": 184,
+      "pitch": 42,
+      "fov": 60,
+      "purpose": "Vertical white facade rib thickness and setbacks"
+    },
+    {
+      "id": "refinement-02-podium-columns",
+      "source": "cecil.json",
+      "heading": 274,
+      "pitch": 22,
+      "fov": 60,
+      "purpose": "Slender curved canopy columns"
+    },
+    {
+      "id": "refinement-02-facade-plants",
+      "source": "cecil-south-expansion.json",
+      "heading": 274,
+      "pitch": 26,
+      "fov": 60,
+      "purpose": "Layered foliage in recessed facade bays"
+    },
+    {
+      "id": "refinement-02-stone-grid",
+      "source": "cecil-south-expansion.json",
+      "heading": 4,
+      "pitch": 35,
+      "fov": 60,
+      "purpose": "Cream facade panel grid and dark podium"
+    },
+    {
+      "id": "refinement-02-arcade-shutters",
+      "source": "church-expansion.json",
+      "heading": 274,
+      "pitch": 23,
+      "fov": 55,
+      "purpose": "Colored hinged shutters and white molded window trim"
+    },
+    {
+      "id": "refinement-02-arcade-awning",
+      "source": "church-expansion.json",
+      "heading": 4,
+      "pitch": 0,
+      "fov": 55,
+      "purpose": "Cafe fabric awning slope, valance and outdoor furniture"
+    },
+    {
+      "id": "refinement-02-heritage-roof",
+      "source": "church-expansion.json",
+      "heading": 184,
+      "pitch": 26,
+      "fov": 60,
+      "purpose": "Green glazed tile edge and red courtyard frame"
+    },
+    {
+      "id": "refinement-02-market-gable",
+      "source": "robinson-expansion.json",
+      "heading": 4,
+      "pitch": 22,
+      "fov": 55,
+      "purpose": "Market triangular roof peak, green fan ironwork and cream fascia"
+    },
+    {
+      "id": "refinement-02-market-eaves",
+      "source": "lau-pa-sat-expansion.json",
+      "heading": 274,
+      "pitch": 19,
+      "fov": 60,
+      "purpose": "Terracotta roof tiers and decorative eave fringe"
+    },
+    {
+      "id": "refinement-02-market-tables",
+      "source": "robinson-expansion.json",
+      "heading": 4,
+      "pitch": -10,
+      "fov": 60,
+      "purpose": "Tables, floor pattern and entrance threshold details"
+    },
+    {
+      "id": "refinement-02-market-stalls",
+      "source": "robinson-expansion.json",
+      "heading": 74,
+      "pitch": 0,
+      "fov": 60,
+      "purpose": "Low hawker kiosk roof and service frontage"
+    },
+    {
+      "id": "refinement-02-bridge-glass",
+      "source": "collyer-expansion.json",
+      "heading": 4,
+      "pitch": 15,
+      "fov": 60,
+      "purpose": "Elevated pedestrian bridge dark glazing and silver lower soffit"
+    },
+    {
+      "id": "refinement-02-bridge-columns",
+      "source": "collyer-expansion.json",
+      "heading": 94,
+      "pitch": 12,
+      "fov": 65,
+      "purpose": "Bridge cylindrical supports and mullion spacing"
+    },
+    {
+      "id": "refinement-02-bus-shelter",
+      "source": "collyer-expansion.json",
+      "heading": 184,
+      "pitch": 0,
+      "fov": 60,
+      "purpose": "Bus stop roof brackets and bollard stripes"
+    },
+    {
+      "id": "refinement-02-quay-context",
+      "source": "quay-west-expansion.json",
+      "heading": 90,
+      "pitch": 15,
+      "fov": 75,
+      "purpose": "Facade context: count storeys and locate white/green bands relative to red awning"
+    },
+    {
+      "id": "refinement-02-quay-upper",
+      "source": "quay-west-expansion.json",
+      "heading": 90,
+      "pitch": 29,
+      "fov": 45,
+      "purpose": "Upper window bands, white panels, green pilasters and cornice"
+    },
+    {
+      "id": "refinement-02-quay-lower",
+      "source": "quay-west-expansion.json",
+      "heading": 90,
+      "pitch": 8,
+      "fov": 45,
+      "purpose": "Lower window band and red fabric awning detail"
+    },
+    {
+      "id": "refinement-02-quay-left",
+      "source": "quay-west-expansion.json",
+      "heading": 75,
+      "pitch": 23,
+      "fov": 55,
+      "purpose": "Left facade bays and occlusion limits"
+    },
+    {
+      "id": "refinement-02-quay-right",
+      "source": "quay-west-expansion.json",
+      "heading": 105,
+      "pitch": 23,
+      "fov": 55,
+      "purpose": "Right facade bays and neighboring roofline"
+    }
+  ]
+}

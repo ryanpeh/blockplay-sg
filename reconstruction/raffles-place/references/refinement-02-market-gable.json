@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "robinson-expansion.json",
+  "pano_id": "8vqvLSs6Rb1BYuRk_R7BIA",
+  "position": {
+    "lat": 1.2802098374474813,
+    "lng": 103.85017105497431
+  },
+  "sourceDate": "2022-03",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 4,
+    "pitch": 22
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Market triangular roof peak, green fan ironwork and cream fascia",
+  "capturedAt": "2026-09-13T12:06:23.070Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-market-gable.jpg",
+  "fingerprint": "6a420e5216f8679f06faa6942600837dba535a5aa06d2caf5a4b59350fb283e1",
+  "sha256": "4269c621b739952e8c66c00201e14c983efe7b28dd934ada68de69cb14b4a1aa",
+  "bytes": 89755,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: green fan ironwork and pale scalloped fascia",
+  "reviewedAt": "2026-09-13T12:10:59.489319+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

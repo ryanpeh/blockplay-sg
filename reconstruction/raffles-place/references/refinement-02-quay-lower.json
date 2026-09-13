@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "quay-west-expansion.json",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "position": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "sourceDate": "2024-03",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 90,
+    "pitch": 8
+  },
+  "horizontalFov": 45,
+  "width": 640,
+  "height": 640,
+  "purpose": "Lower window band and red fabric awning detail",
+  "capturedAt": "2026-09-13T12:06:24.786Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-quay-lower.jpg",
+  "fingerprint": "564bf2b8b4e1676f88c4ae2fc31232910dfbac804bb94aa0376e0aa36b39ac9d",
+  "sha256": "044b9b033c113b2814920b0aec36fec7765aa6ea54bbeb9e5c70da9bd477b9e4",
+  "bytes": 69691,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: lower window mullions, sloped red awning, white leading rail and scalloped valance",
+  "reviewedAt": "2026-09-13T12:10:59.492037+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

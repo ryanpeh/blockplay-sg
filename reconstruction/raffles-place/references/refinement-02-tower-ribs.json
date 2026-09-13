@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "cecil.json",
+  "pano_id": "PUxFa-L5ilZ8j5iNcqDuvg",
+  "position": {
+    "lat": 1.2823277239636524,
+    "lng": 103.8503366589604
+  },
+  "sourceDate": "2024-06",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 184,
+    "pitch": 42
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Vertical white facade rib thickness and setbacks",
+  "capturedAt": "2026-09-13T12:06:21.361Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-tower-ribs.jpg",
+  "fingerprint": "656f5c44ec46b525f742affd3f2b3de2cee4633924ded2a8f7550ab0ec9d38f6",
+  "sha256": "b32b6f612cdbd7dc65827fc05903134e6696fe5cbb7aef742a82a1692943c094",
+  "bytes": 91665,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: vertical facade fins and recessed planted balconies",
+  "reviewedAt": "2026-09-13T12:10:59.487716+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

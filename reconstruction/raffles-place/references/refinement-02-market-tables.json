@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "robinson-expansion.json",
+  "pano_id": "8vqvLSs6Rb1BYuRk_R7BIA",
+  "position": {
+    "lat": 1.2802098374474813,
+    "lng": 103.85017105497431
+  },
+  "sourceDate": "2022-03",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 4,
+    "pitch": -10
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Tables, floor pattern and entrance threshold details",
+  "capturedAt": "2026-09-13T12:06:23.466Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-market-tables.jpg",
+  "fingerprint": "b949bd2fb20b5a9a8f89ca8944910d50c028ef9da9847626498c5083fde9c5c8",
+  "sha256": "45c93c4e64d9f4e1fffd072fe5ab53d29b29c46330a66c415316e3646f37392c",
+  "bytes": 88806,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: outdoor round tables and patterned threshold steps",
+  "reviewedAt": "2026-09-13T12:10:59.489748+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

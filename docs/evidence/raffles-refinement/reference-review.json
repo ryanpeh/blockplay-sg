@@ -1,0 +1,127 @@
+[
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-gable.jpg",
+    "sha256": "3bf0d5ac2d2b06662c323975b31acd2189b4876566b3c125b00e79e291e3c560",
+    "observation": "accepted: red triangular louvers and silver diagonal trim; signage cropped"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-fan-palms.jpg",
+    "sha256": "14bde284db39d54660f14baad4c17bf0ab23f49f978aefe4695d0c3bb1c2a83f",
+    "observation": "accepted: radial folded fans and clustered trunks"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-green-wall.jpg",
+    "sha256": "506d80fefa7d72bcb8d73bd4f7b56a6b7aa380713b868a75bc2011619ea40d53",
+    "observation": "limited: planted wall and colored canopy visible at distance; no reliable dimensions"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-square-paving.jpg",
+    "sha256": "a52b6457c4088a600c7cad94b1f0867d32259a0f85862900d6362296e6881104",
+    "observation": "accepted: gray rectangular paving and steps; ignore foreground car occlusion"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-lobby.jpg",
+    "sha256": "947ac18b35c62e111eb8d1462949a2984677f2657db1bef0024c4fe6c6e79324",
+    "observation": "accepted: silver panel seams and dark plinth"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-plaza-sculpture.jpg",
+    "sha256": "00d4322f06cefda96cf492ac629bf291aad0b578f752f580edde39447f069640",
+    "observation": "accepted: looping bronze sculpture and stepped plaza; not surveyed proportions"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-tower-ribs.jpg",
+    "sha256": "b32b6f612cdbd7dc65827fc05903134e6696fe5cbb7aef742a82a1692943c094",
+    "observation": "accepted: vertical facade fins and recessed planted balconies"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-podium-columns.jpg",
+    "sha256": "4e1b229489b924aa172de141580ecfda61dde37ed4c0aa4ae535a2a729e3cbf4",
+    "observation": "accepted: slender splayed pale columns"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-facade-plants.jpg",
+    "sha256": "9107535c693d06c3446687ea02868c435677d10a1a94ed28cb3b8de5932449f5",
+    "observation": "accepted: planting behind glass fins in recessed bays"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-stone-grid.jpg",
+    "sha256": "fc57c48cf3da3260c1ed4b58845cdcbdb8193c855dd36dfa0412f63f1ac6e6cc",
+    "observation": "accepted: pale panel grid and dark base"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-arcade-shutters.jpg",
+    "sha256": "3c3c731234b45902eaf89faafe71372a1087b61fc781fc9d4a9a182ea221c89d",
+    "observation": "accepted: two stacked rows of arched colorful hinged shutters; distinct building from quay target"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-arcade-awning.jpg",
+    "sha256": "6f98296fe777b29c32a78aa5b7a47a22285f7434e675016d83877fa7ca8a213a",
+    "observation": "accepted: sloped gray fabric awning and scalloped valance"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-heritage-roof.jpg",
+    "sha256": "e26a1a3883b60a46ef73047314bfdd16d1fc10cd3ba23c9efaebca8dee44b6a7",
+    "observation": "accepted: green tile eaves and red framed glass atrium"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-market-gable.jpg",
+    "sha256": "4269c621b739952e8c66c00201e14c983efe7b28dd934ada68de69cb14b4a1aa",
+    "observation": "accepted: green fan ironwork and pale scalloped fascia"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-market-eaves.jpg",
+    "sha256": "fc10461a6f06fcda5ab4fb4efa5bcf50eb47213c2cdf780fa8482d843182a46e",
+    "observation": "accepted: tiered terracotta tiles; tree obscures middle section"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-market-tables.jpg",
+    "sha256": "45c93c4e64d9f4e1fffd072fe5ab53d29b29c46330a66c415316e3646f37392c",
+    "observation": "accepted: outdoor round tables and patterned threshold steps"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-market-stalls.jpg",
+    "sha256": "1afc5f0ca24bb94a001c36ab8f482c4944c96367c729630357a411b5f57aae84",
+    "observation": "accepted: small kiosk roof and service opening"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-bridge-glass.jpg",
+    "sha256": "9f6e51b4bb00027076e7408909f1ffab8fccfafa8f380445dc4eda2f2662a49c",
+    "observation": "accepted: dark glazing above silver soffit"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-bridge-columns.jpg",
+    "sha256": "5d5636c800c7e62961832e8420b675517eda72138d597d799a73ad3b3221db68",
+    "observation": "accepted: cylindrical pale supports and thin glazing mullions"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-bus-shelter.jpg",
+    "sha256": "a871f8000d18267e00c3a90b3e198ba2b22b25740286b8a53d97f035b4483b15",
+    "observation": "accepted: long thin roof and striped bollards"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-quay-context.jpg",
+    "sha256": "dadf536e0c5396e43a48568399a7d5f09788866f6686e644f41cb11d97b9322e",
+    "observation": "accepted: two upper white-framed window rows, green trim, red awning; right side tree occluded"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-quay-upper.jpg",
+    "sha256": "200025f3a54c34ea4d834a626bafea20e42f468b0d5fb76b780b2a5513cfa291",
+    "observation": "accepted: green slats over both window rows, white spandrel and green pilasters; no hidden bay inference"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-quay-lower.jpg",
+    "sha256": "044b9b033c113b2814920b0aec36fec7765aa6ea54bbeb9e5c70da9bd477b9e4",
+    "observation": "accepted: lower window mullions, sloped red awning, white leading rail and scalloped valance"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-quay-left.jpg",
+    "sha256": "126f05bab0336a45f8fd5b7e5ccf5a89dfc413a6f5cc2cd9cdbaa70f43e94d46",
+    "observation": "accepted: clear left pilaster and two window bands; adjacent gray building separate"
+  },
+  {
+    "image": "reconstruction/raffles-place/references/refinement-02-quay-right.jpg",
+    "sha256": "92dc6ae9dff50ac3495417a88929c41f1fd6b11abf257eebcac844cbf2a9f675",
+    "observation": "limited: tree obscures right window bays; useful for awning and visible trim only"
+  }
+]

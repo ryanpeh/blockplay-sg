@@ -33,6 +33,6 @@
     "visualReview": "accepted: individually inspected clear outdoor focused reference, useful for facade/material/roof/ground detail; no overlay, indoor scene or stale frame",
     "referenceSha256": "0eab6647698bb1e6451c7d33fdfe41d7df0307cc8e64c7da657dc6153cb9c6d8",
     "render": "docs/evidence/raffles-scene.png",
-    "renderSha256": "862f7018fc38506c005d686d32b51473c1336147b5a7cd2cfa6dc6f4c51d7e6c"
+    "renderSha256": "9df6396104c830d86073ccb0b55b7050954fa1126bcb30677b62194fdef92775"
   }
 ]

@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "battery.json",
+  "pano_id": "iXuBrsYTpdFBENgzJvgXRw",
+  "position": {
+    "lat": 1.2847765093148913,
+    "lng": 103.85175288205832
+  },
+  "sourceDate": "2018-07",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 9,
+    "pitch": 12
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Sculpture and planted perimeter proportions",
+  "capturedAt": "2026-09-13T12:06:20.910Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-plaza-sculpture.jpg",
+  "fingerprint": "bc1107b58923205ab5f7dd9f301e50af7055031fc5fed1a3fc2d22e82633c42e",
+  "sha256": "00d4322f06cefda96cf492ac629bf291aad0b578f752f580edde39447f069640",
+  "bytes": 85116,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: looping bronze sculpture and stepped plaza; not surveyed proportions",
+  "reviewedAt": "2026-09-13T12:10:59.487593+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

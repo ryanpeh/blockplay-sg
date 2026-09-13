@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "church-expansion.json",
+  "pano_id": "h2EekuqVJ9IDDfqTUtJBZA",
+  "position": {
+    "lat": 1.28354127765295,
+    "lng": 103.84861525430189
+  },
+  "sourceDate": "2021-10",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 184,
+    "pitch": 26
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Green glazed tile edge and red courtyard frame",
+  "capturedAt": "2026-09-13T12:06:22.809Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-heritage-roof.jpg",
+  "fingerprint": "a23b9b1e164da3f6158a0e49aac771d193dd6d0b03ca9be499e627b2075f3ec9",
+  "sha256": "e26a1a3883b60a46ef73047314bfdd16d1fc10cd3ba23c9efaebca8dee44b6a7",
+  "bytes": 89148,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: green tile eaves and red framed glass atrium",
+  "reviewedAt": "2026-09-13T12:10:59.489181+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

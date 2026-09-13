@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "lau-pa-sat-expansion.json",
+  "pano_id": "YH0O4Z8IPSeMTTLJWWoOjA",
+  "position": {
+    "lat": 1.280497800941725,
+    "lng": 103.85087443098827
+  },
+  "sourceDate": "2024-06",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 274,
+    "pitch": 19
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "Terracotta roof tiers and decorative eave fringe",
+  "capturedAt": "2026-09-13T12:06:23.297Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-market-eaves.jpg",
+  "fingerprint": "878182819ec9fc91090ec3cba258ed834336f233adea29facb15a28f3a6e7d4d",
+  "sha256": "fc10461a6f06fcda5ab4fb4efa5bcf50eb47213c2cdf780fa8482d843182a46e",
+  "bytes": 93578,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: tiered terracotta tiles; tree obscures middle section",
+  "reviewedAt": "2026-09-13T12:10:59.489560+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "church-expansion.json",
+  "pano_id": "h2EekuqVJ9IDDfqTUtJBZA",
+  "position": {
+    "lat": 1.28354127765295,
+    "lng": 103.84861525430189
+  },
+  "sourceDate": "2021-10",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 4,
+    "pitch": 0
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Cafe fabric awning slope, valance and outdoor furniture",
+  "capturedAt": "2026-09-13T12:06:22.628Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-arcade-awning.jpg",
+  "fingerprint": "7cc7584ba44c2e26f5a02b6180670d95268d9e16f2c28e31debc0a385c60bcc3",
+  "sha256": "6f98296fe777b29c32a78aa5b7a47a22285f7434e675016d83877fa7ca8a213a",
+  "bytes": 83508,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: sloped gray fabric awning and scalloped valance",
+  "reviewedAt": "2026-09-13T12:10:59.489027+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

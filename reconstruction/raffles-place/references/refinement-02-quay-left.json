@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "quay-west-expansion.json",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "position": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "sourceDate": "2024-03",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 75,
+    "pitch": 23
+  },
+  "horizontalFov": 55,
+  "width": 640,
+  "height": 640,
+  "purpose": "Left facade bays and occlusion limits",
+  "capturedAt": "2026-09-13T12:06:24.972Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-quay-left.jpg",
+  "fingerprint": "824244491415d6a26b1e0ab009fb8be693dcd8f097f5f2f8602cd69b7aaabc43",
+  "sha256": "126f05bab0336a45f8fd5b7e5ccf5a89dfc413a6f5cc2cd9cdbaa70f43e94d46",
+  "bytes": 68470,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: clear left pilaster and two window bands; adjacent gray building separate",
+  "reviewedAt": "2026-09-13T12:10:59.492153+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}

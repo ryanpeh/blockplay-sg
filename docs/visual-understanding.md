@@ -2,7 +2,7 @@
 
 [How we built it](BUILD-STORY.md) · [Verification record](evidence/verification.md)
 
-These comparisons show how specific visible features in Google Maps Street View references correspond to authored game geometry. Each source is an existing, reviewed cache image; no new Google imagery was requested. Original images retain their attribution and are linked rather than duplicated.
+These comparisons show how specific visible features in Google Maps Street View references correspond to authored game geometry. The three original comparison sources are reviewed cache images. The later Raffles refinement adds 25 user-authorized Static API images, documented separately below. Original images retain their attribution and are linked rather than duplicated.
 
 The right-hand images are new renders of the **current game scene builders**, using fixed documentation cameras to expose the relevant details. They are not matched/calibrated camera reconstructions or screenshots of a player's movement. [Capture settings](evidence/render-settings.json) and the [reproduction script](evidence/capture-project-evidence.mjs) make the framing explicit.
 
@@ -42,15 +42,15 @@ The team reports that **Marina Bay received the most iterations within the hacka
 
 | Google Street View reference | Current Raffles scene geometry |
 | --- | --- |
-| ![Shophouse reference: green and white trim, upper window bands and red awning](../reconstruction/raffles-place/references/static-quality-quay-facade.jpg) | ![Current quay shophouse: pale horizontal shutter bars, green window panels, red awning and narrow frontage](evidence/raffles-scene.png) |
+| ![Shophouse reference: green and white trim, upper window bands and red awning](../reconstruction/raffles-place/references/static-quality-quay-facade.jpg) | ![Refined quay shophouse: two white window bands, green trim and sloped red awning](evidence/raffles-scene.png) |
 
 **Provenance:** Google Street View Static API, owner-authorized reference; source imagery **March 2024**, captured **13 September 2026**; metadata credit **© 2026 Google**, with original image attribution preserved. [Metadata and review](../reconstruction/raffles-place/references/static-quality-quay-facade.json). Accepted as a clear outdoor detail reference; its stated purpose is green/white trim and upper window bands. The visible tree still obscures part of the facade.
 
-**Visible translation:** narrow frontage, green window/shutter panels, pale horizontal bars and a projecting red awning provide a recognisable shophouse vocabulary. Inspect the quay service-lane section in [raffles-scene.ts](../src/game/raffles-scene.ts).
+**Visible translation:** narrow frontage, two white-framed window bands, green pilasters and ventilation slats, and a sloped red awning now preserve more of the source facade’s distinctive features. Inspect the quay service-lane section in [raffles-scene.ts](../src/game/raffles-scene.ts).
 
-**Limits:** this is not a replica of that business or building. The game uses a tan wall, fewer window groups, simplified storeys, a terracotta roof, and fictional shop signs. Its tall background grid and neighbouring buildings are part of the compressed game layout, not evidence supplied by this reference.
+**Limits:** this is not a replica of that business or building. The selected facade now has two window bands, white/green trim and a low parapet following the recorded refinement; its compressed proportions, simplified glazing and authored neighboring buildings still differ from the source. Its tall background grid and neighbouring buildings are part of the compressed game layout, not evidence supplied by this reference.
 
-**Concrete improvement opportunity, not implemented:** preserve the reference's two stacked upper window bands and white panels with green trim in one selected facade, then compare again from the same documentation camera. Acceptance would require those bands and trim to be visible while retaining the existing footprint and collision bounds. The current screenshot exposes the mismatch; this document does not claim that correction has been made.
+**Implemented follow-up:** the [recorded Raffles refinement](raffles-refinement.md) captures 25 new Static API references, observations before editing, the actual code diff, and matching-camera before/after images. It adds the two window bands and white/green trim to one selected facade while preserving its ground footprint and collision bounds.
 
 ## Trace visual decisions to implementation
 
@@ -66,7 +66,7 @@ The museum provides the clearest documented chain: an accepted reference identif
 
 ## What this evidence establishes
 
-The comparisons establish visible correspondences and limitations; the source metadata and scene code make them inspectable. The team's use of Astra is documented in [README](../README.md), [PLAN](../PLAN.md), and existing reference reviews. A visual resemblance alone cannot prove a particular model inspected a particular image. No complete image-input transcript is included, and these new comparison captions are observations from this documentation review.
+The comparisons establish visible correspondences and limitations; the source metadata and scene code make them inspectable. The team's use of Astra is documented in [README](../README.md), [PLAN](../PLAN.md), and existing reference reviews. A visual resemblance alone cannot prove a particular model inspected a particular image. No complete historical image-input transcript is included. The new [Raffles session record](evidence/raffles-refinement/session-record.md) preserves observations made during this refinement, with their scope stated explicitly.
 
 To reproduce the model renders, install dependencies using the [project setup](../README.md), and use Node with the built-in WebSocket client (Node 22 or newer). From the repository root, start Vite in one terminal:
 

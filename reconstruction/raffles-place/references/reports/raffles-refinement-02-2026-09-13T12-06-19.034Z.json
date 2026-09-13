@@ -1,0 +1,138 @@
+{
+  "plan": "raffles-refinement-02",
+  "startedAt": "2026-09-13T12:06:19.034Z",
+  "cached": 0,
+  "captured": 25,
+  "failed": 0,
+  "staticImageAttempts": 25,
+  "metadataRequests": 0,
+  "bytes": 2057176,
+  "durationMs": 6105,
+  "views": [
+    {
+      "id": "refinement-02-gable",
+      "status": "saved",
+      "bytes": 87410
+    },
+    {
+      "id": "refinement-02-fan-palms",
+      "status": "saved",
+      "bytes": 104534
+    },
+    {
+      "id": "refinement-02-green-wall",
+      "status": "saved",
+      "bytes": 97450
+    },
+    {
+      "id": "refinement-02-square-paving",
+      "status": "saved",
+      "bytes": 58359
+    },
+    {
+      "id": "refinement-02-lobby",
+      "status": "saved",
+      "bytes": 44648
+    },
+    {
+      "id": "refinement-02-plaza-sculpture",
+      "status": "saved",
+      "bytes": 85116
+    },
+    {
+      "id": "refinement-02-tower-ribs",
+      "status": "saved",
+      "bytes": 91665
+    },
+    {
+      "id": "refinement-02-podium-columns",
+      "status": "saved",
+      "bytes": 94601
+    },
+    {
+      "id": "refinement-02-facade-plants",
+      "status": "saved",
+      "bytes": 81471
+    },
+    {
+      "id": "refinement-02-stone-grid",
+      "status": "saved",
+      "bytes": 72816
+    },
+    {
+      "id": "refinement-02-arcade-shutters",
+      "status": "saved",
+      "bytes": 84699
+    },
+    {
+      "id": "refinement-02-arcade-awning",
+      "status": "saved",
+      "bytes": 83508
+    },
+    {
+      "id": "refinement-02-heritage-roof",
+      "status": "saved",
+      "bytes": 89148
+    },
+    {
+      "id": "refinement-02-market-gable",
+      "status": "saved",
+      "bytes": 89755
+    },
+    {
+      "id": "refinement-02-market-eaves",
+      "status": "saved",
+      "bytes": 93578
+    },
+    {
+      "id": "refinement-02-market-tables",
+      "status": "saved",
+      "bytes": 88806
+    },
+    {
+      "id": "refinement-02-market-stalls",
+      "status": "saved",
+      "bytes": 88203
+    },
+    {
+      "id": "refinement-02-bridge-glass",
+      "status": "saved",
+      "bytes": 80384
+    },
+    {
+      "id": "refinement-02-bridge-columns",
+      "status": "saved",
+      "bytes": 66044
+    },
+    {
+      "id": "refinement-02-bus-shelter",
+      "status": "saved",
+      "bytes": 86771
+    },
+    {
+      "id": "refinement-02-quay-context",
+      "status": "saved",
+      "bytes": 88497
+    },
+    {
+      "id": "refinement-02-quay-upper",
+      "status": "saved",
+      "bytes": 75855
+    },
+    {
+      "id": "refinement-02-quay-lower",
+      "status": "saved",
+      "bytes": 69691
+    },
+    {
+      "id": "refinement-02-quay-left",
+      "status": "saved",
+      "bytes": 68470
+    },
+    {
+      "id": "refinement-02-quay-right",
+      "status": "saved",
+      "bytes": 85697
+    }
+  ]
+}

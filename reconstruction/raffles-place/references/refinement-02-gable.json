@@ -1,0 +1,28 @@
+{
+  "source": "Google Street View Static API; owner-authorized reference",
+  "sourceMetadata": "square.json",
+  "pano_id": "x-yEYc02g45kEqGGAixkkA",
+  "position": {
+    "lat": 1.2837148661510418,
+    "lng": 103.85109276049249
+  },
+  "sourceDate": "2024-06",
+  "copyright": "\u00a9 2026 Google",
+  "pov": {
+    "heading": 4,
+    "pitch": 20
+  },
+  "horizontalFov": 60,
+  "width": 640,
+  "height": 640,
+  "purpose": "One Raffles entrance triangular gable louver spacing and silver trim",
+  "capturedAt": "2026-09-13T12:06:19.668Z",
+  "file": "reconstruction/raffles-place/references/refinement-02-gable.jpg",
+  "fingerprint": "1139bf33d3527cbda1430393cb0dba070ae0cddb25aa9bbc9f99e60cc8c350bd",
+  "sha256": "3bf0d5ac2d2b06662c323975b31acd2189b4876566b3c125b00e79e291e3c560",
+  "bytes": 87410,
+  "attribution": "Retained in original image",
+  "visualReview": "accepted: red triangular louvers and silver diagonal trim; signage cropped",
+  "reviewedAt": "2026-09-13T12:10:59.485851+00:00",
+  "reviewMethod": "Direct image inspection by Codex development assistant in the current refinement session"
+}
