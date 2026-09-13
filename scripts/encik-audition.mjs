@@ -42,8 +42,11 @@ export async function generateAudition({ key, directory = outputDirectory, fetch
     throw new Error('Generation connection failed or timed out. It may have consumed credits; the attempt is recorded and will not retry automatically.');
   }
   if (!response.ok) {
-    await fs.writeFile(marker, JSON.stringify({ ...attempt, status: 'failed', httpStatus: response.status }, null, 2));
-    throw new Error(`Voice Design failed (HTTP ${response.status}). No retry was made. Check the ElevenLabs dashboard.`);
+    const detail = await response.json().catch(() => ({}));
+    const errorCode = typeof detail.detail?.status === 'string' ? detail.detail.status : null;
+    const message = typeof detail.detail?.message === 'string' ? detail.detail.message.replaceAll(key.trim(), '[redacted]') : 'Check the ElevenLabs dashboard.';
+    await fs.writeFile(marker, JSON.stringify({ ...attempt, status: 'failed', httpStatus: response.status, errorCode, message }, null, 2));
+    throw new Error(`Voice Design failed (HTTP ${response.status}${errorCode ? ', ' + errorCode : ''}): ${message} No automatic retry was made.`);
   }
   const data = await response.json();
   // Keep the original result before processing so an interruption cannot require regeneration.

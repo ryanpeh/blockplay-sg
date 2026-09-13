@@ -1,11 +1,21 @@
 # Two-line Encik audition
 
+**Verified restriction (2026-09-13):** the free account passed the subscription check, but Voice Design returned HTTP 403 `feature_unavailable`: “Creating a voice through the API is only available on a paid plan.” The account quota remained at zero after the first denial. Do not repeat the API audition to fix this; changing key permissions cannot lift the plan restriction.
+
+For the free audition, use the ElevenLabs website: **Voices → My Voices → Add a new voice → Voice Design**. Paste the description printed by `pnpm voice:audition` and the two lines below into its preview text field. Generate one set of previews, then compare them before spending credits on additional attempts. No voice needs to be saved or shipped yet.
+
+The API tooling below remains as a documented experiment; it currently cannot generate this preview on the Free plan. Browser automation from this workspace was blocked by pending macOS Accessibility and Screen Recording permissions.
+
 This is a standalone voice audition; it does not alter game audio or generate the full pack.
 
 1. Create a free ElevenLabs account and put `ELEVENLABS_API_KEY` in the ignored `.env.local`. The key needs access to Voice Design and reading the user subscription. Never use a `VITE_` prefix or paste the key into chat.
 2. `pnpm voice:audition` prints the exact prompt and 118-character, two-line script without network calls.
 3. `pnpm voice:audition --generate` checks the free subscription and available quota, then submits one Voice Design v3 request. It downloads the returned candidate previews into `.cache/encik-audition/<request-hash>/` and creates an `index.html` listening page.
 4. Audition the candidates before making further generations or saving a voice. The full callout pack remains on hold until a candidate is approved.
+
+Voice description:
+
+> Native Singapore English, colloquial Singlish. Male, late forties. A gravelly, booming army warrant officer with a thick Singaporean accent. Clipped commands, expressive intonation, theatrical impatience and dry humour. Loud but intelligible. Clean studio recording.
 
 The preview contains:
 

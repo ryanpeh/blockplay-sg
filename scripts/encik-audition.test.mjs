@@ -48,3 +48,14 @@ test('a timed-out generation remains blocked from automatic retries', async () =
     assert.equal(posts, 1);
   });
 });
+test('preserves a provider plan restriction without logging credentials', async () => {
+  await temporary(async directory => {
+    const fetcher = async (_url, options) => options.method === 'POST'
+      ? new Response(JSON.stringify({ detail: { status: 'feature_unavailable', message: 'Paid plan required. test-key' } }), { status: 403 })
+      : json(free);
+    await assert.rejects(generateAudition({ directory, key: 'test-key', fetcher }), /feature_unavailable/);
+    const saved = await fs.readFile(path.join(directory, 'attempt.json'), 'utf8');
+    assert.equal(JSON.parse(saved).errorCode, 'feature_unavailable');
+    assert.doesNotMatch(saved, /test-key/);
+  });
+});
