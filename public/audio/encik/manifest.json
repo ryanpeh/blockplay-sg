@@ -1,0 +1,441 @@
+{
+  "version": 1,
+  "batchId": "01a0d406e267",
+  "provider": "ElevenLabs",
+  "model": "eleven_v3",
+  "voice": "Encik — Round 4 Candidate 3",
+  "clips": [
+    {
+      "id": "start-1",
+      "event": "start",
+      "index": 0,
+      "text": "Alright, fall in! Eyes open, we move.",
+      "file": "start-1-c275574709.mp3",
+      "bytes": 58558,
+      "sha256": "c2755747094aef8d5cbecbf84c6e53067909598b1077b092ef039ee6ce6060e9"
+    },
+    {
+      "id": "start-2",
+      "event": "start",
+      "index": 1,
+      "text": "Stand by, ah. Weapon ready, brain also ready.",
+      "file": "start-2-ff0a2815f2.mp3",
+      "bytes": 61066,
+      "sha256": "ff0a2815f2d449a39fe0fdbca99f3007f78ea1deeb7a8a3e8275a5099e8e3aa6"
+    },
+    {
+      "id": "start-3",
+      "event": "start",
+      "index": 2,
+      "text": "Listen in! Move together, come back together.",
+      "file": "start-3-58be963fdf.mp3",
+      "bytes": 49781,
+      "sha256": "58be963fdf37130da8c16a604bcb611f79810b9a8370276c61647d4c63c8b113"
+    },
+    {
+      "id": "contact-1",
+      "event": "contact",
+      "index": 0,
+      "text": "Contact front! Eyes open, don’t blur!",
+      "file": "contact-1-92ff3fce75.mp3",
+      "bytes": 46019,
+      "sha256": "92ff3fce75f7bb631e56e8ba5f42a022cd9da63d8bf578cb2597aa6927c34130"
+    },
+    {
+      "id": "contact-2",
+      "event": "contact",
+      "index": 1,
+      "text": "Got contact! Steady your aim, don’t kancheong.",
+      "file": "contact-2-aef0ed6c86.mp3",
+      "bytes": 52288,
+      "sha256": "aef0ed6c86577349e97c76cf4b8894979592afcfef3e313b5aef464f44f51bad"
+    },
+    {
+      "id": "contact-3",
+      "event": "contact",
+      "index": 2,
+      "text": "Oi, front! This one not sightseeing tour!",
+      "file": "contact-3-8f6703c02a.mp3",
+      "bytes": 52288,
+      "sha256": "8f6703c02aa7c9863001ba4274f3e0cb362353a6e7a762f9d64fd9f9107c2c0b"
+    },
+    {
+      "id": "reload-1",
+      "event": "reload",
+      "index": 0,
+      "text": "Changing mag! Cover first, hero later.",
+      "file": "reload-1-0dde60ee82.mp3",
+      "bytes": 49781,
+      "sha256": "0dde60ee821808f1415ddc49f8dac73dd44488456f6660386950e5a0325ff2a1"
+    },
+    {
+      "id": "reload-2",
+      "event": "reload",
+      "index": 1,
+      "text": "Reloading, ah! Nobody say can take tea break.",
+      "file": "reload-2-f019e23691.mp3",
+      "bytes": 44765,
+      "sha256": "f019e23691a530bedcc4167d160b4cc31df25efa4b3072522fb5331e608a9279"
+    },
+    {
+      "id": "reload-3",
+      "event": "reload",
+      "index": 2,
+      "text": "Fresh mag going in. Steady, don’t fumble.",
+      "file": "reload-3-c8dc02431d.mp3",
+      "bytes": 65245,
+      "sha256": "c8dc02431dfe746ab2299ccbafe7cecd69cc749a7a9b65bc82ba77affdeb2df2"
+    },
+    {
+      "id": "lowAmmo-1",
+      "event": "lowAmmo",
+      "index": 0,
+      "text": "Ammo running low! Every round counts, ah.",
+      "file": "lowAmmo-1-01b6a1e529.mp3",
+      "bytes": 51035,
+      "sha256": "01b6a1e529ecd895e84b24a6e9842d95880b4da035a11cd3390170d8f6d9a949"
+    },
+    {
+      "id": "lowAmmo-2",
+      "event": "lowAmmo",
+      "index": 1,
+      "text": "Check your ammo! This one not unlimited buffet.",
+      "file": "lowAmmo-2-254403479c.mp3",
+      "bytes": 63991,
+      "sha256": "254403479c6ff91dfe02886b2bce5b4761d1ae69ccadfeef729fe70ca764013c"
+    },
+    {
+      "id": "lowAmmo-3",
+      "event": "lowAmmo",
+      "index": 2,
+      "text": "Rounds low already. Go find supplies.",
+      "file": "lowAmmo-3-8cc909fbec.mp3",
+      "bytes": 49781,
+      "sha256": "8cc909fbec144ebfb98feddcda5a8639dd4387d1e33c26c1cb4a2344942551e4"
+    },
+    {
+      "id": "hurt-1",
+      "event": "hurt",
+      "index": 0,
+      "text": "Find cover lah! You think your ILBV is magic?",
+      "file": "hurt-1-cd9a8ca189.mp3",
+      "bytes": 61066,
+      "sha256": "cd9a8ca18978ccd60b591edd6a88f9162113cd047fd4c67ade0e09881c0383b9"
+    },
+    {
+      "id": "hurt-2",
+      "event": "hurt",
+      "index": 1,
+      "text": "Move, move! Don’t stand there like Merlion!",
+      "file": "hurt-2-2a76b0c410.mp3",
+      "bytes": 47273,
+      "sha256": "2a76b0c4106909911b1dac599d7ff3ead61e94bcd5c910b1a95975315d7c2e78"
+    },
+    {
+      "id": "hurt-3",
+      "event": "hurt",
+      "index": 2,
+      "text": "Taking fire! This one not the time to admire scenery.",
+      "file": "hurt-3-c99c834958.mp3",
+      "bytes": 75276,
+      "sha256": "c99c83495837cf5d7b2a8e7e99727d456dbcfba520e6f17397b936ada541d2b8"
+    },
+    {
+      "id": "medical-1",
+      "event": "medical",
+      "index": 0,
+      "text": "Health low! Find medical supplies, don’t act hero.",
+      "file": "medical-1-32f555395a.mp3",
+      "bytes": 70261,
+      "sha256": "32f555395a0a3a47168cf4f64bbda3ae04fef4f9dec7fd5a746eb43cfbf7ef38"
+    },
+    {
+      "id": "medical-2",
+      "event": "medical",
+      "index": 1,
+      "text": "You want to book out or not? Get patched up!",
+      "file": "medical-2-235e0f55c8.mp3",
+      "bytes": 34316,
+      "sha256": "235e0f55c8039ce9ca231b30132d62e221bad7e84421560604bf9b5f68547a7e"
+    },
+    {
+      "id": "medical-3",
+      "event": "medical",
+      "index": 2,
+      "text": "Wounded already! Cover first, then sort yourself out.",
+      "file": "medical-3-98e19a54f0.mp3",
+      "bytes": 54796,
+      "sha256": "98e19a54f0f9a1722db06da468486b868436a1b07644e16a47ec7ed976045bd3"
+    },
+    {
+      "id": "kill-1",
+      "event": "kill",
+      "index": 0,
+      "text": "One down. Good shot, carry on!",
+      "file": "kill-1-e0ff80d179.mp3",
+      "bytes": 38078,
+      "sha256": "e0ff80d179a61bef9f3e1906768afe669b43e7becb0618bfc9dfdc75c02d8dff"
+    },
+    {
+      "id": "kill-2",
+      "event": "kill",
+      "index": 1,
+      "text": "Solid lah! Eyes up, still got work.",
+      "file": "kill-2-a2147df5de.mp3",
+      "bytes": 44765,
+      "sha256": "a2147df5deded2c650ccb5f77a91396ea7125140ec9f938be4d1c45984f36e48"
+    },
+    {
+      "id": "kill-3",
+      "event": "kill",
+      "index": 2,
+      "text": "That one settled. Don’t anyhow celebrate yet.",
+      "file": "kill-3-467a968d3a.mp3",
+      "bytes": 59812,
+      "sha256": "467a968d3acddd4817373dd10b3eab8381964d84f85ba0533e7fbd8927842573"
+    },
+    {
+      "id": "double-1",
+      "event": "double",
+      "index": 0,
+      "text": "Double kill! Wah, today you on form ah!",
+      "file": "double-1-c9981e27de.mp3",
+      "bytes": 46019,
+      "sha256": "c9981e27de25288309247a6517023314c25c4f7f3ee49de7b95bd92ef9b611d1"
+    },
+    {
+      "id": "double-2",
+      "event": "double",
+      "index": 1,
+      "text": "Two down! Can lah, keep it steady.",
+      "file": "double-2-61f717b22b.mp3",
+      "bytes": 49781,
+      "sha256": "61f717b22bdb715cf937f3e9557388e4bba6203ac1892aec836e41a2928b826d"
+    },
+    {
+      "id": "double-3",
+      "event": "double",
+      "index": 2,
+      "text": "Two already! Good grouping, soldier!",
+      "file": "double-3-ebd79fdfcb.mp3",
+      "bytes": 43511,
+      "sha256": "ebd79fdfcbfdfa4d07a5f638475459609208f69cf47414a97d3759cce6a0db93"
+    },
+    {
+      "id": "triple-1",
+      "event": "triple",
+      "index": 0,
+      "text": "Triple kill! Encik saw that. Not bad, ah!",
+      "file": "triple-1-39fc5a7b9f.mp3",
+      "bytes": 51035,
+      "sha256": "39fc5a7b9fc9784b4d0630372dc40ea4d3cc7edd7f584e745cadcebc9e497128"
+    },
+    {
+      "id": "triple-2",
+      "event": "triple",
+      "index": 1,
+      "text": "Three down! Steady lah, don’t get cocky.",
+      "file": "triple-2-0b299a7000.mp3",
+      "bytes": 49781,
+      "sha256": "0b299a7000e3a84364e445324b4587aad731358a0911d6092458f0d776a9e608"
+    },
+    {
+      "id": "triple-3",
+      "event": "triple",
+      "index": 2,
+      "text": "Three already! This one got standard!",
+      "file": "triple-3-d257082a55.mp3",
+      "bytes": 52288,
+      "sha256": "d257082a55f7cafd67fa4f4a7c5cd5ee2cc83004dcbaaf21dfac03a14cf782e8"
+    },
+    {
+      "id": "multi-1",
+      "event": "multi",
+      "index": 0,
+      "text": "Wah, whole lot! Leave some for your section lah!",
+      "file": "multi-1-6e27fd5b09.mp3",
+      "bytes": 41839,
+      "sha256": "6e27fd5b09ce1a0a37f827ceee31298a5fb127851a88e001c2eb15c568fdcbce"
+    },
+    {
+      "id": "multi-2",
+      "event": "multi",
+      "index": 1,
+      "text": "You clearing the whole parade square or what?",
+      "file": "multi-2-3306e9f734.mp3",
+      "bytes": 33062,
+      "sha256": "3306e9f734fd5562a34e893ead513a76867990e1ee4c9e48cfb17a6b8d8d7224"
+    },
+    {
+      "id": "multi-3",
+      "event": "multi",
+      "index": 2,
+      "text": "Solid work! Keep your head, don’t anyhow rush.",
+      "file": "multi-3-e7baedc745.mp3",
+      "bytes": 51035,
+      "sha256": "e7baedc74559fc60173cc1e54859513a99adbd0b13ad0ae74b63aad6f3530647"
+    },
+    {
+      "id": "pickup-1",
+      "event": "pickup",
+      "index": 0,
+      "text": "Supplies secured. Check your kit, then move.",
+      "file": "pickup-1-32c75567fa.mp3",
+      "bytes": 48527,
+      "sha256": "32c75567fa517cfa854746003e69c525eb1a66d3113690d2a06ac0d482ed1113"
+    },
+    {
+      "id": "pickup-2",
+      "event": "pickup",
+      "index": 1,
+      "text": "Got resupply! Take what you need, not shopping spree.",
+      "file": "pickup-2-ed66e362d2.mp3",
+      "bytes": 53542,
+      "sha256": "ed66e362d2253fd425e861b7b18c26ee75b8c0575c75604c804710341b6b2344"
+    },
+    {
+      "id": "pickup-3",
+      "event": "pickup",
+      "index": 2,
+      "text": "Good, gear sorted. Don’t leave anything behind, ah.",
+      "file": "pickup-3-0e46493c8d.mp3",
+      "bytes": 52288,
+      "sha256": "0e46493c8d0b9b3cb19166e75de57ab3c6673796c6f5c3243755b9c7f817c015"
+    },
+    {
+      "id": "moving-1",
+      "event": "moving",
+      "index": 0,
+      "text": "Move out! This one tactical movement, not route march.",
+      "file": "moving-1-6d48de426a.mp3",
+      "bytes": 82799,
+      "sha256": "6d48de426a5e09720ec7c4423403712e07cec7ce8ec22ff017dd7fe0a086690b"
+    },
+    {
+      "id": "moving-2",
+      "event": "moving",
+      "index": 1,
+      "text": "Keep moving, ah. Don’t grow roots here.",
+      "file": "moving-2-fe9d1b0097.mp3",
+      "bytes": 36824,
+      "sha256": "fe9d1b0097aaeeb66b4c135d726a671adb4f70fb6b3a2114bd2a8fe03fd151fe"
+    },
+    {
+      "id": "moving-3",
+      "event": "moving",
+      "index": 2,
+      "text": "Next bound! Eyes up, weapon ready.",
+      "file": "moving-3-8c92a486ee.mp3",
+      "bytes": 46019,
+      "sha256": "8c92a486ee6b4aefd6bf5f68061e834f26fb64af21ec1d327e87906751ae73c2"
+    },
+    {
+      "id": "stuck-1",
+      "event": "stuck",
+      "index": 0,
+      "text": "Eh, wall in front. Go around lah.",
+      "file": "stuck-1-501ffe912b.mp3",
+      "bytes": 34316,
+      "sha256": "501ffe912be454add4d771277e9f56e5f0d41f6cd3266094ca53ca2a12fc705c"
+    },
+    {
+      "id": "stuck-2",
+      "event": "stuck",
+      "index": 1,
+      "text": "You fighting the enemy or fighting the wall?",
+      "file": "stuck-2-3f767fd0c2.mp3",
+      "bytes": 46019,
+      "sha256": "3f767fd0c2de6a1be378f808b79fd22e2334f637b572142efad72475506d8276"
+    },
+    {
+      "id": "stuck-3",
+      "event": "stuck",
+      "index": 2,
+      "text": "Stuck again? Reverse, turn, try another way!",
+      "file": "stuck-3-cc35e4df73.mp3",
+      "bytes": 48527,
+      "sha256": "cc35e4df73b51b16fb46c9d04e5344fbc6260e9a36725658cae2f3ac591edc4d"
+    },
+    {
+      "id": "death-1",
+      "event": "death",
+      "index": 0,
+      "text": "Aiyoh. Next life, use the cover properly.",
+      "file": "death-1-f455b142ff.mp3",
+      "bytes": 59812,
+      "sha256": "f455b142ffb1204acd87241f645d7ef9843825b977284e288e324086fd29c959"
+    },
+    {
+      "id": "death-2",
+      "event": "death",
+      "index": 1,
+      "text": "Down already. Learn from it, come back stronger.",
+      "file": "death-2-7acbc9dfbf.mp3",
+      "bytes": 56050,
+      "sha256": "7acbc9dfbfdd85e5d436ee7d2146f7dffbddf1292f6bde6ac652cf34ac43b868"
+    },
+    {
+      "id": "death-3",
+      "event": "death",
+      "index": 2,
+      "text": "Never mind. Regroup, then do properly.",
+      "file": "death-3-c44bc18b3e.mp3",
+      "bytes": 46019,
+      "sha256": "c44bc18b3eb5998ec4126a0f780b98d4de91d3df41d8fe991f834f5aa76bc756"
+    },
+    {
+      "id": "respawn-1",
+      "event": "respawn",
+      "index": 0,
+      "text": "Back already? Good. This time, use your brain.",
+      "file": "respawn-1-791ab85cc4.mp3",
+      "bytes": 71515,
+      "sha256": "791ab85cc44498092cee77e36b55c4c2781e95b6a0595b974723684a8c10e788"
+    },
+    {
+      "id": "respawn-2",
+      "event": "respawn",
+      "index": 1,
+      "text": "Fall in again! Same mission, better execution.",
+      "file": "respawn-2-00053d8937.mp3",
+      "bytes": 75276,
+      "sha256": "00053d8937fca908eea5e4de43ae767eda3333ff80f4bf9d88529f029e973d1e"
+    },
+    {
+      "id": "respawn-3",
+      "event": "respawn",
+      "index": 2,
+      "text": "Another chance. Steady, don’t repeat the same stunt.",
+      "file": "respawn-3-bb42c8e3c2.mp3",
+      "bytes": 59812,
+      "sha256": "bb42c8e3c21374cd1ce26897af30b1cb8b898231922ad9769bf2e5a60c0153b2"
+    },
+    {
+      "id": "complete-1",
+      "event": "complete",
+      "index": 0,
+      "text": "Exercise cut! Check clear, then we talk about book out.",
+      "file": "complete-1-8a4fa26307.mp3",
+      "bytes": 61066,
+      "sha256": "8a4fa263079e9a8224baa4eac577840dc357ef8d7040d383fbe7e52026a59fbf"
+    },
+    {
+      "id": "complete-2",
+      "event": "complete",
+      "index": 1,
+      "text": "End of exercise! Good effort, whole lot of you.",
+      "file": "complete-2-cf7443ec76.mp3",
+      "bytes": 51035,
+      "sha256": "cf7443ec76bf7a77048bb341e062bb7a09a753c74b3729c5c15f15f29638feeb"
+    },
+    {
+      "id": "complete-3",
+      "event": "complete",
+      "index": 2,
+      "text": "All targets down. Can lah! Now check your kit.",
+      "file": "complete-3-825878ec06.mp3",
+      "bytes": 56050,
+      "sha256": "825878ec069282cabfce8ab2559322f4cee2c9cbec0ff7f317cff45a55b13c78"
+    }
+  ]
+}

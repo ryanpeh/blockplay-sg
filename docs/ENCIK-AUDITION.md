@@ -1,5 +1,7 @@
 # Two-line Encik audition
 
+**Selection complete:** the user chose round 4 candidate 3 and authorized the full batch. All 48 clips are generated and bundled; see [recorded callouts](ENCIK-VOICE.md). The entries below record the audition history.
+
 The user upgraded to a paid plan and authorized retrying the same two-line audition on 2026-09-13. The API verified Starter with 40,000 included credits and overage disabled. Free-plan API attempts previously returned HTTP 403 `feature_unavailable`; those confirmed denials are archived in the ignored cache.
 
 **Result (2026-09-13):** one request generated three playable MP3 candidates (7.4s, 8.8s, 7.8s), available at `.cache/encik-audition/93f198a2b596/index.html`. The follow-up subscription check reports **118 / 40,000 credits used**. The immediate post-generation check was still zero, so `usage-followup.json` preserves the later reading. User feedback: candidates 1 and 3 sounded British attempting Singaporean; candidate 2 sounded slightly Hong Kong-ish. No candidate was selected. The original files remain available for comparison.
@@ -15,7 +17,7 @@ This is a standalone voice audition; it does not alter game audio or generate th
 1. Use a paid ElevenLabs account and put `ELEVENLABS_API_KEY` in the ignored `.env.local`. The key needs access to Voice Design and reading the user subscription. Never use a `VITE_` prefix or paste the key into chat.
 2. `pnpm voice:audition` prints the exact prompt and 127-character, two-line script without network calls.
 3. `pnpm voice:audition --generate` checks the paid subscription and available included quota, then submits one Voice Design v3 request. It downloads the returned candidate previews into `.cache/encik-audition/<request-hash>/` and creates an `index.html` listening page.
-4. Audition the candidates before making further generations or saving a voice. The full callout pack remains on hold until a candidate is approved.
+4. Audition the candidates before making further generations or saving a voice. Round 4 candidate 3 was approved; batch generation is documented separately.
 
 Round 4 voice description (user requested an older Encik; same 127-character lines, model, seed and guidance):
 
@@ -31,8 +33,8 @@ This creates new candidates from a description; it does not edit or preserve the
 
 The script saves a permanent attempt marker before submitting. Re-running the same request, including after a timeout, will stop instead of spending credits again. Inspect `attempt.json` and the ElevenLabs dashboard before explicitly deciding to retry. This is not an automatic retry or batch tool. The before/after account quota difference is recorded when available; concurrent account usage may affect that measurement. The quota reserve check is conservative, not a provider-enforced per-request credit cap.
 
-Preview audio and generated voice IDs stay in the ignored cache. No voice is automatically saved to the account, and no preview is shipped in the game. The full batch remains pending the user’s audition choice.
+Preview audio and generated voice IDs stay in the ignored cache. The audition tool itself does not save voices or ship previews. The separate batch tool saved the selected voice and generated the game recordings after approval.
 
 References: [Voice Design API](https://elevenlabs.io/docs/api-reference/text-to-voice/design), [Voice Design guide](https://elevenlabs.io/docs/eleven-creative/voices/voice-design), [subscription API](https://elevenlabs.io/docs/api-reference/user/subscription/get).
 
-Checks: `node --test scripts/encik-audition.test.mjs` uses mocked responses, spends no credits and verifies subscription restrictions, one-request caching and timeout protection.
+Checks: `node --test scripts/encik-audition-check.mjs` uses mocked responses, spends no credits and verifies subscription restrictions, one-request caching and timeout protection.

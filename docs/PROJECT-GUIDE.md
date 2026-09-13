@@ -33,7 +33,7 @@ Tap **Q** once to aim and again to lower the scope; left-click fires while aim s
 
 In the ready/pause menu, open **Debug survival** for 1×, 5× or 10× maximum health, a health refill, and optional regeneration (10% of maximum HP per second after three seconds without damage). These tab-local settings persist through zone changes and apply to practice, solo bots and expeditions. Network rooms keep their normal health rules.
 
-**Encik radio** adds Singaporean callouts for combat, reloads, low health/ammo, supplies and AI movement. The pilot can request contact and stuck callouts through its action interface. Voice uses an installed local English voice (Singapore English preferred); **Encik on/off** mutes only speech, with subtitles retained. The existing sound mute silences speech too. No API key is needed.
+**Encik radio** adds Singaporean callouts for combat, reloads, low health/ammo, supplies and AI movement. The pilot can request contact and stuck callouts through its action interface. Voice uses the bundled [48-line Encik recording pack](ENCIK-VOICE.md); **Encik on/off** mutes only speech, with subtitles retained. The existing sound mute silences speech too. No API key is needed.
 
 The **Comms log** retains the latest 100 speech, kill and supply/travel entries. Filter All / Speech / Kills / System, expand to browse history, or scroll up without incoming messages pulling you back down. Expedition travel carries the log into the next district; restarting a round clears it. It is a local session log, not player text chat.
 

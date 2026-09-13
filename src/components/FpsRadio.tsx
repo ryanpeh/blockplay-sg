@@ -13,7 +13,7 @@ export default function FpsRadio({ hud }: { hud: FpsHud }) {
 }
 export function FpsRadioVoice({ hud, engine }: { hud: FpsHud; engine: FpsEngine | null }) {
   return <button className="session-button fps-radio-voice" aria-label={hud.encikVoice ? 'Mute Encik voice' : 'Enable Encik voice'} aria-pressed={hud.encikVoice}
-    title="Installed local voice when available; subtitles stay on" onClick={() => engine?.toggleEncikVoice()}>
+    title="Recorded Encik callouts; subtitles stay on" onClick={() => engine?.toggleEncikVoice()}>
     {hud.encikVoice ? <Volume2 size={14} /> : <VolumeX size={14} />} Encik {hud.encikVoice ? 'on' : 'off'}
   </button>;
 }

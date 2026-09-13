@@ -25,6 +25,8 @@ import { createScopeRenderer, getWeaponSight } from './weapon-optics';
 import { reloadMotion, reloadStage, smoothStep } from './fps-weapon-motion';
 import { createFpsComms, type CommsEntry } from './fps-comms';
 import { createEncikRadio, type EncikCallout, type EncikEvent } from './fps-callouts';
+import { createEncikAudio } from './encik-audio';
+import { encikRecordingUrl } from './encik-recordings';
 import { createPlayerPilot, normalizePilotAction, PILOT_INTERVAL, type PilotObservation, type PilotGoal, type PlayerPilot } from './fps-pilot';
 import { visiblePilotContacts, type PilotSubject } from './fps-pilot-perception';
 import { createStrategyPlanner, llmPilotStrategy } from './pilot-strategy';
@@ -208,27 +210,17 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     source.connect(filter).connect(gain).connect(audio.destination); source.start();
     source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
   }
-  let utterance: SpeechSynthesisUtterance | null = null;
-  function stopVoice() {
-    if (utterance && 'speechSynthesis' in window) { utterance = null; speechSynthesis.cancel(); }
-  }
+  const encikAudio = createEncikAudio(() => audio);
+  function stopVoice() { encikAudio.stop(); }
   function radioCall(event: EncikEvent) {
     if (disposed || !['playing', 'complete', 'defeated'].includes(hud.phase)) return;
     const line = encik.emit(event, performance.now() / 1000); if (!line) return;
     hud.encikCallout = line;
     comms.add('radio', pilotEnabled ? 'Encik · AI' : 'Encik', line.text);
-    if (hud.muted || !hud.encikVoice || !('speechSynthesis' in window)) return;
-    // Prefer an installed Singapore English voice; no network TTS or accent imitation.
-    try {
-      const voices = speechSynthesis.getVoices().filter(v => v.localService && /^en(?:-|_)/i.test(v.lang));
-      const voice = voices.find(v => /^en[-_]SG$/i.test(v.lang)) ?? voices[0];
-      if (!voice) return;
-      stopVoice();
-      const next = new SpeechSynthesisUtterance(line.text); utterance = next;
-      next.voice = voice; next.rate = 1.02; next.pitch = .85; next.volume = .7;
-      next.onend = next.onerror = () => { if (utterance === next) utterance = null; };
-      speechSynthesis.speak(next);
-    } catch { stopVoice(); }
+    if (hud.muted || !hud.encikVoice) return;
+    const recording = encikRecordingUrl(line);
+    // Bundled recordings need no TTS service during gameplay. Captions survive audio failures.
+    if (recording) void encikAudio.play(recording);
   }
   function announce(_label: string, count: number) {
     radioCall(count >= 4 ? 'multi' : count === 3 ? 'triple' : count === 2 ? 'double' : 'kill');
@@ -818,7 +810,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     toggleEncikVoice() { hud.encikVoice = !hud.encikVoice; if (!hud.encikVoice) stopVoice(); publish(); },
     toggleSound() { hud.muted = !hud.muted; if (hud.muted) stopVoice(); if (hud.phase === 'playing') { canvas.focus({ preventScroll: true }); if (!hud.muted) initAudio(); } publish(); },
     dispose() {
-      disposed = true; pilot.reset(); strategicPlanner?.reset(); stopVoice(); cancelAnimationFrame(frame); observer.disconnect(); clearInput();
+      disposed = true; pilot.reset(); strategicPlanner?.reset(); encikAudio.dispose(); cancelAnimationFrame(frame); observer.disconnect(); clearInput();
       if (document.pointerLockElement === canvas) document.exitPointerLock();
       window.removeEventListener('keydown', pilotEscape, true);
       canvas.removeEventListener('keydown', keydown); window.removeEventListener('keyup', keyup);

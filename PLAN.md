@@ -4,6 +4,13 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 
 # Blockplay project plan
 
+## Completed: recorded Encik voice pack (2026-09-13)
+
+- User chose round 4 candidate 3 after four small auditions, then approved all 48 callouts. Bundled MP3s preserve the subtitle script and need no runtime TTS key.
+- Shared FPS playback supports human/AI events, priority interruption, mute/pause/reset cancellation and an eight-clip decoded cache. Comms/captions remain when audio is off.
+- All 48 files decoded and checked; 220 app tests, nine generation checks, production build and isolated browser playback/mute/pause verification pass.
+- Batch used 776 credits; account total 1,266/40,000. See [voice pack](docs/ENCIK-VOICE.md) for review, generation and recovery.
+
 ## Completed: trackpad aim toggle (2026-09-13)
 
 - Q toggles human aim; key repeat is ignored. RMB hold remains available. Shared HUD/control guides document both.
