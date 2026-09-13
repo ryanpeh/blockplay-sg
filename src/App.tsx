@@ -1,8 +1,11 @@
-import { useState } from 'react';
-import { ArrowUpRight, Check, ChevronRight, Crosshair, Globe2, MapPin, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Check, ChevronRight, Crosshair, Globe2, MapPin, Users, X } from 'lucide-react';
 import StreetView from './components/StreetView';
 import MarinaGame from './components/MarinaGame';
 import FpsGame from './components/FpsGame';
+import ExpeditionGame from './components/ExpeditionGame';
+import LanLobby from './components/LanLobby';
+import type { LanSession } from './game/lan-peer';
 import ArmoryShop from './components/ArmoryShop';
 import { useArmory } from './game/use-armory';
 import QueenstownGame from './components/QueenstownGame';
@@ -13,15 +16,28 @@ import { locations, type Location } from './data/locations';
 
 export default function App() {
   const [location, setLocation] = useState<Location>(locations.find(place => place.id === 'marina-bay')!);
-  const [regionOpen, setRegionOpen] = useState(true);
+  const [regionOpen, setRegionOpen] = useState(() => !new URLSearchParams(window.location.search).has('room'));
   const [fpsOpen, setFpsOpen] = useState(false);
   const [armoryOpen, setArmoryOpen] = useState(false);
+  const [expeditionOpen, setExpeditionOpen] = useState(false);
+  const [lobbyOpen, setLobbyOpen] = useState(() => new URLSearchParams(window.location.search).has('room'));
+  const [arena, setArena] = useState<{ session: LanSession; botCount: number; composition: string } | undefined>();
+  const lanSession = useRef<LanSession | null>(null);
+  useEffect(() => () => { lanSession.current?.close(); }, []);
   const armory = useArmory();
   const [dialog, setDialog] = useState<'about' | 'privacy' | 'terms' | null>(null);
-  const chooseLocation = (next: Location) => { setLocation(next); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); };
-  const openStreetView = () => { setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); };
-  const openArmory = () => { if (!fpsOpen || location.id !== 'marina-bay') return; setRegionOpen(false); setArmoryOpen(true); };
-  const openFps = () => { setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setRegionOpen(false); setFpsOpen(true); };
+  const leaveSession = () => { setExpeditionOpen(false); lanSession.current?.close(); lanSession.current = null; setArena(undefined); setLobbyOpen(false); };
+  const chooseLocation = (next: Location) => { leaveSession(); setLocation(next); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); };
+  const openStreetView = () => { leaveSession(); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); };
+  const openArmory = () => { if (!fpsOpen || location.id !== 'marina-bay') return; leaveSession(); setRegionOpen(false); setArmoryOpen(true); };
+  const openFps = () => { leaveSession(); setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setRegionOpen(false); setFpsOpen(true); };
+
+  const openLobby = () => { leaveSession(); setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); setLobbyOpen(true); };
+  const openExpedition = () => { leaveSession(); setLocation(locations.find(place => place.id === 'marina-bay')!); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(false); setExpeditionOpen(true); };
+  const launchArena = (session: LanSession, bots: number, squad: 'mixed' | 'assault' | 'tank' | 'sniper') => {
+    setExpeditionOpen(false); lanSession.current?.close(); lanSession.current = session;
+    setArena({ session, botCount: bots, composition: squad }); setLobbyOpen(false); setFpsOpen(true);
+  };
 
   return <div className="app-shell">
     <header className="site-header">
@@ -51,9 +67,11 @@ export default function App() {
 
           <div className="section-label mode-label"><span>02 / MAKE IT YOURS</span></div>
           <div className="mode-list">
-            {hasRegionGame(location.id) && <button className={`mode-card ${regionOpen ? 'selected' : ''}`} aria-pressed={regionOpen} onClick={() => { setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); }}><Globe2 size={20} /><span><strong>{regionModeLabel(location.id).name}</strong><small>{regionModeLabel(location.id).subtitle}</small></span><span className="radio-dot" /></button>}
-            {location.id === 'marina-bay' && <button className={`mode-card ${fpsOpen ? 'selected' : ''}`} aria-pressed={fpsOpen} onClick={openFps}><Crosshair size={20} /><span><strong>Marina FPS</strong><small>Weapons ready. Range open.</small></span><span className="radio-dot" /></button>}
-            <button className={`mode-card ${!fpsOpen && !regionOpen ? 'selected' : ''}`} onClick={openStreetView} aria-pressed={!fpsOpen && !regionOpen}>
+            {hasRegionGame(location.id) && <button className={`mode-card ${regionOpen ? 'selected' : ''}`} aria-pressed={regionOpen} onClick={() => { leaveSession(); setArmoryOpen(false); setFpsOpen(false); setRegionOpen(true); }}><Globe2 size={20} /><span><strong>{regionModeLabel(location.id).name}</strong><small>{regionModeLabel(location.id).subtitle}</small></span><span className="radio-dot" /></button>}
+            {location.id === 'marina-bay' && <button className={`mode-card ${fpsOpen && !arena ? 'selected' : ''}`} aria-pressed={fpsOpen && !arena} onClick={openFps}><Crosshair size={20} /><span><strong>Marina FPS</strong><small>Weapons ready. Range open.</small></span><span className="radio-dot" /></button>}
+            <button className={`mode-card ${expeditionOpen ? 'selected' : ''}`} aria-pressed={expeditionOpen} onClick={openExpedition}><Globe2 size={20} /><span><strong>Open world</strong><small>Three districts. Find your way.</small></span><span className="radio-dot" /></button>
+            <button className={`mode-card ${lobbyOpen || arena ? 'selected' : ''}`} aria-pressed={lobbyOpen || !!arena} onClick={openLobby}><Users size={20} /><span><strong>LAN arena</strong><small>Your squad. Live opponents.</small></span><span className="radio-dot" /></button>
+            <button className={`mode-card ${!expeditionOpen && !lobbyOpen && !fpsOpen && !regionOpen ? 'selected' : ''}`} onClick={openStreetView} aria-pressed={!expeditionOpen && !lobbyOpen && !fpsOpen && !regionOpen}>
               <Globe2 size={20} /><span><strong>Street View</strong><small>See the real neighborhood</small></span><span className="radio-dot" />
             </button>
           </div>
@@ -61,7 +79,7 @@ export default function App() {
         </aside>
 
         <div className="experience">
-          {armoryOpen ? <ArmoryShop store={armory} onEnterRange={openFps} /> : fpsOpen ? <FpsGame profile={armory.profile} onReward={armory.award} onElimination={armory.awardElimination} onOpenShop={openArmory} suspended={dialog !== null} /> : regionOpen && hasRegionGame(location.id) ? (location.id === 'raffles-place' ? <RafflesGame key={location.id} /> : location.id === 'queenstown' ? <QueenstownGame key={location.id} /> : <MarinaGame key={location.id} />) : <>
+          {expeditionOpen ? <ExpeditionGame profile={armory.profile} onExit={openFps} suspended={dialog !== null} /> : lobbyOpen ? <LanLobby onLaunch={launchArena} onBack={openFps} /> : armoryOpen ? <ArmoryShop store={armory} onEnterRange={openFps} /> : fpsOpen ? <FpsGame key={arena?.session.id || 'practice'} arena={arena} onLeaveArena={openLobby} profile={armory.profile} onReward={armory.award} onElimination={armory.awardElimination} onOpenShop={openArmory} suspended={dialog !== null} /> : regionOpen && hasRegionGame(location.id) ? (location.id === 'raffles-place' ? <RafflesGame key={location.id} /> : location.id === 'queenstown' ? <QueenstownGame key={location.id} /> : <MarinaGame key={location.id} />) : <>
           <div className="viewport"><StreetView key={location.id} location={location} /></div>
           <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon"><Globe2 size={22} /></span><div><h3>The real {location.name}</h3><p>Google Street View · Drag to look, use arrows to travel</p></div></div></div>
           </>}
@@ -74,7 +92,7 @@ export default function App() {
 
     {dialog && <div className="modal-backdrop" onClick={() => setDialog(null)}><dialog open aria-labelledby="dialog-title" onCancel={() => setDialog(null)} onClick={event => event.stopPropagation()}><button autoFocus className="icon-button modal-close" aria-label="Close dialog" onClick={() => setDialog(null)}><X size={20} /></button>
       <span className="eyebrow">BLOCKPLAY / SINGAPORE</span><h2 id="dialog-title">{dialog === 'about' ? 'The whole island deserves to be playable.' : dialog === 'privacy' ? 'Privacy' : 'Prototype terms'}</h2>
-      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through playable 3D scenes.</p><p>Marina 3D, Queenstown 3D and Raffles 3D are distinct walkable and driveable game regions: a waterfront with gardens and landmarks, a detailed estate with an elevated station, and a city core of towers, plazas and riverfront streets. References inform authored geometry; geography is compressed, not automatically reconstructed or surveyed.</p><p>Collect each region’s orange stamps on foot or in the car. Live Street View remains available separately. Astra powers Marina’s optional Change the adventure companion, with GPT-Live-1 for voice. The companion also offers source-linked facts and reflection questions about Singapore, without changing your objective. Movement, collisions and stamp collection stay local; exploring alone makes no model calls.</p><p>Marina FPS adds a target exercise, an equipment shop, XP progression and driveable/flyable vehicles on the same Marina map. FPS and vehicle sessions support immersive fullscreen, with an expanded-view fallback when fullscreen is unavailable. No live map or model requests are made during FPS play.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Stamps and conversation history stay in memory and reset when you reset the region, leave its game mode, switch regions, or reload. Switching between Walk and Drive within a region preserves stamps. Your demo armory wallet, XP, permanent unlocks and equipped loadout are saved in this browser’s local storage. Clearing site data removes them. There are no real payments or account synchronization. Using Marina’s companion sends your request and game-state snapshot to OpenAI. Starting the microphone sends audio to OpenAI and plays an AI-generated voice; Stop ends the session. The app does not save microphone recordings or conversation history to a database.</p><p>Each region builds its game geometry locally in your browser. Live Street View and Google Fonts connect your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Its game maps are stylized interpretations with approximate or fictional layouts, not navigation tools. Marina FPS has no affiliation to the Singapore Armed Forces.</p><p>The owner confirmed permission for the saved imagery used as reference and in the earlier depth experiment; its source credits are preserved with those assets. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
+      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through playable 3D scenes.</p><p>Marina 3D, Queenstown 3D and Raffles 3D are distinct walkable and driveable game regions: a waterfront with gardens and landmarks, a detailed estate with an elevated station, and a city core of towers, plazas and riverfront streets. References inform authored geometry; geography is compressed, not automatically reconstructed or surveyed.</p><p>Collect each region’s orange stamps on foot or in the car. Live Street View remains available separately. Astra powers Marina’s optional Change the adventure companion, with GPT-Live-1 for voice. The companion also offers source-linked facts and reflection questions about Singapore, without changing your objective. Movement, collisions and stamp collection stay local; exploring alone makes no model calls.</p><p>Marina FPS adds a target exercise, an equipment shop, XP progression and driveable/flyable vehicles on the same Marina map. FPS and vehicle sessions support immersive fullscreen, with an expanded-view fallback when fullscreen is unavailable. No live map or model requests are made during FPS play.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Stamps and conversation history stay in memory and reset when you reset the region, leave its game mode, switch regions, or reload. Switching between Walk and Drive within a region preserves stamps. Your demo armory wallet, XP, permanent unlocks and equipped loadout are saved in this browser’s local storage. Clearing site data removes them. There are no real payments or account synchronization. Using Marina’s companion sends your request and game-state snapshot to OpenAI. Starting the microphone sends audio to OpenAI and plays an AI-generated voice; Stop ends the session. The app does not save microphone recordings or conversation history to a database.</p><p>Each region builds its game geometry locally in your browser. Live Street View connects your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Its game maps are stylized interpretations with approximate or fictional layouts, not navigation tools. Marina FPS has no affiliation to the Singapore Armed Forces.</p><p>The owner confirmed permission for the saved imagery used as reference and in the earlier depth experiment; its source credits are preserved with those assets. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
     </dialog></div>}
   </div>;
 }

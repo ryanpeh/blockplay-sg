@@ -23,7 +23,14 @@
     "test:fps": "node scripts/fps-smoke.mjs",
     "test:armory": "node scripts/armory-smoke.mjs",
     "test:vehicles": "node scripts/vehicle-smoke.mjs",
-    "test:fullscreen": "node scripts/fullscreen-smoke.mjs"
+    "test:fullscreen": "node scripts/fullscreen-smoke.mjs",
+    "lan": "pnpm build && node scripts/lan-server.mjs",
+    "test:lan": "node --test scripts/lan-server-check.mjs && node scripts/lan-transport-smoke.mjs",
+    "test:pointer": "node scripts/pointer-smoke.mjs",
+    "test:arena:lan": "node scripts/arena-lan-smoke.mjs",
+    "test:arena:solo": "node scripts/arena-solo-smoke.mjs",
+    "test:expedition": "node scripts/expedition-ui-smoke.mjs",
+    "test:expedition:travel": "node scripts/expedition-travel-smoke.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

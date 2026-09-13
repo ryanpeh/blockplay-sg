@@ -47,6 +47,10 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 
 ## What works
 
+- **Open world expedition:** explore connected Marina Bay, Raffles Place and Queenstown zones. Pick up randomized weapons, plates, ammo and medical supplies with E; cross checkpoints with T. The CBD has tougher patrols and better elite weapon odds. Field equipment and collected loot survive zone travel; permanent Armory purchases remain separate. See [zones and loot](docs/WORLD-ZONES.md).
+
+- **LAN arena and bots:** run `pnpm lan`, open **LAN arena**, and host or join using the room code. Supports up to four humans, six bots, Armory loadouts, assault/tank/sniper compositions, respawns and a shared scoreboard. Solo bots also work with `pnpm dev`. See [LAN setup and role plugins](docs/LAN-ARENA.md).
+
 - **Immersive fullscreen:** use the Fullscreen button or F during FPS/vehicle play. Escape pauses and releases the mouse. The same canvas, loadout, vehicle and target progress remain active across screen-mode changes. Browsers that deny native fullscreen get an expanded viewport with an exit control.
 
 - **FPS vehicles:** approach Utility 01 or Falcon 01 and press E to enter/exit. Drive with WASD and Space brake, or fly with WASD, Space climb, C/Ctrl descend and Shift boost. Land before leaving the helicopter. The Armory’s Vehicles tab offers five cosmetic wraps, equipped separately on each vehicle.

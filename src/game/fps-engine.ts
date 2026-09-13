@@ -1,14 +1,31 @@
 import * as THREE from 'three';
+import { requestFpsPointerLock, turnFpsLook } from './fps-pointer';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { buildMarinaScene } from './marina-scene';
 import { moveInMarina } from './marina-collision';
-import { advanceWeapon, beginReload, createLoadout, fireWeapon, FPS_SPAWN, FPS_TARGETS, FPS_WEAPONS, movementInput } from './fps-rules';
+import { advanceWeapon, beginReload, createLoadout, fireWeapon, FPS_SPAWN, FPS_TARGETS, FPS_WEAPONS, movementInput, type WeaponState } from './fps-rules';
 import { firstVisibleHit } from './fps-raycast';
-import { applyArmorDamage, createProfile, resolveLoadout, rewardAmount, completionXp, type ResolvedLoadout, type ExerciseReward } from './armory-state';
+import { applyArmorDamage, createProfile, resolveLoadout, rewardAmount, completionXp, type ResolvedLoadout, type ExerciseReward, type ArmoryProfile } from './armory-state';
 import { registerElimination, ELIMINATION_XP, type KillChain } from './progression';
 import { createFpsVehicles } from './fps-vehicles';
 import type { VehicleKind } from './vehicle-rules';
 import { dressWeapon } from './armory-visuals';
+import { createArenaRuntime } from './arena-runtime';
+import type { ArenaActor, ArenaEnvironment, ArenaSnapshot, ArenaVitals } from './arena-rules';
+import { createSoloSession, type LanSession } from './lan-peer';
+import { buildExpeditionWorld } from './expedition-world';
+import { createExpeditionMarkers } from './expedition-visuals';
+import { findWorldGateway, resolveWorldTransition, getWorldZone, type WorldZoneId, type WorldTransition, type ZoneSpawn } from './world-zones';
+import type { ExpeditionLoot, FieldLoot } from './expedition-loot';
+import { itemById } from './armory-catalog';
+
+export interface FpsArenaOptions { session: LanSession; botCount: number; composition?: string; profile: ArmoryProfile; environment?: ArenaEnvironment; initialVitals?: Partial<ArenaVitals> }
+export interface FpsCheckpoint { health: number; armor: number; weapon: number; ammunition: WeaponState[] }
+export interface FpsExpeditionOptions {
+  zone: WorldZoneId; spawn?: ZoneSpawn; checkpoint?: FpsCheckpoint; profile: ArmoryProfile; loot: ExpeditionLoot;
+  onTravel: (transition: WorldTransition, checkpoint: FpsCheckpoint) => void; onEquipment: (profile: ArmoryProfile) => void;
+}
+const randomRoundId = () => globalThis.crypto?.randomUUID?.() ?? `round-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 
 export interface FpsHud {
   phase: 'loading' | 'ready' | 'playing' | 'paused' | 'complete' | 'defeated' | 'error';
@@ -16,8 +33,10 @@ export interface FpsHud {
   hits: number; shots: number; landed: number; health: number; armor: number; incoming: boolean; hurt: boolean; lastDamage: number; earned: number; earnedXp: number; callout: string; chain: number; elapsed: number; aiming: boolean; hit: boolean;
   vehicle: VehicleKind | 'on-foot'; vehicleSpeed: number; altitude: number; interact: string; vehicleNotice: string; carDistance: number; helicopterDistance: number;
   locked: boolean; message: string; muted: boolean; x: number; z: number;
+  arena: ArenaSnapshot | null; arenaSelf: ArenaActor | null; arenaConnected: boolean; arenaStarted: boolean;
+  expeditionZone: WorldZoneId | null; lootPrompt: string; travelPrompt: string; lootNotice: string; fieldLoot: FieldLoot[];
 }
-export const initialFpsHud: FpsHud = { phase: 'loading', weapon: 0, magazine: 30, reserve: 120, reloading: 0, hits: 0, shots: 0, landed: 0, health: 100, armor: 0, incoming: false, hurt: false, lastDamage: 0, earned: 0, earnedXp: 0, callout: '', chain: 0, elapsed: 0, aiming: false, hit: false, vehicle: 'on-foot', vehicleSpeed: 0, altitude: 0, interact: '', vehicleNotice: '', carDistance: 0, helicopterDistance: 0, locked: false, message: '', muted: false, x: FPS_SPAWN.x, z: FPS_SPAWN.z };
+export const initialFpsHud: FpsHud = { phase: 'loading', weapon: 0, magazine: 30, reserve: 120, reloading: 0, hits: 0, shots: 0, landed: 0, health: 100, armor: 0, incoming: false, hurt: false, lastDamage: 0, earned: 0, earnedXp: 0, callout: '', chain: 0, elapsed: 0, aiming: false, hit: false, vehicle: 'on-foot', vehicleSpeed: 0, altitude: 0, interact: '', vehicleNotice: '', carDistance: 0, helicopterDistance: 0, locked: false, message: '', muted: false, x: FPS_SPAWN.x, z: FPS_SPAWN.z, arena: null, arenaSelf: null, arenaConnected: true, arenaStarted: false, expeditionZone: null, lootPrompt: '', travelPrompt: '', lootNotice: '', fieldLoot: [] };
 
 function disposeAssets(roots: THREE.Object3D[]) {
   const geometries = new Set<THREE.BufferGeometry>(), materials = new Set<THREE.Material>(), textures = new Set<THREE.Texture>();
@@ -33,8 +52,11 @@ function disposeAssets(roots: THREE.Object3D[]) {
   textures.forEach(t => { t.dispose(); if (typeof ImageBitmap !== 'undefined' && t.source.data instanceof ImageBitmap) t.source.data.close(); });
 }
 
-export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => void, options: { loadout?: ResolvedLoadout; combat?: boolean; onComplete?: (reward: ExerciseReward) => void; onElimination?: (id: string) => void; onFullscreen?: () => void } = {}) {
-  const equipment = options.loadout || resolveLoadout(createProfile()), specs = equipment.weapons;
+export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => void, options: { loadout?: ResolvedLoadout; combat?: boolean; arena?: FpsArenaOptions; expedition?: FpsExpeditionOptions; onComplete?: (reward: ExerciseReward) => void; onElimination?: (id: string) => void; onFullscreen?: () => void } = {}) {
+  const expedition = options.expedition;
+  const copyProfile = (profile: ArmoryProfile): ArmoryProfile => JSON.parse(JSON.stringify(profile));
+  let fieldProfile = copyProfile(expedition?.profile ?? options.arena?.profile ?? createProfile());
+  let equipment = expedition ? resolveLoadout(fieldProfile) : options.loadout || resolveLoadout(createProfile()), specs = equipment.weapons;
   const undress: (() => void)[] = [];
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.35));
@@ -43,10 +65,16 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   // Shadow-map rendering doubles work on this VM; the existing map still supplies its lighting.
   renderer.shadowMap.enabled = false; renderer.autoClear = false;
   const canvas = renderer.domElement; canvas.tabIndex = 0;
-  canvas.setAttribute('aria-label', 'Marina FPS range. WASD to move, mouse to look, click to fire.');
+  canvas.setAttribute('aria-label', `${expedition ? getWorldZone(expedition.zone).name + ' expedition' : 'Marina FPS range'}. WASD to move, mouse to look, click to fire.`);
   host.append(canvas);
-  const world = buildMarinaScene(); world.stamps.forEach(o => o.visible = false);
+  const zoneWorld = expedition ? buildExpeditionWorld(expedition.zone, expedition.spawn) : null;
+  const world = zoneWorld ?? buildMarinaScene(); world.stamps.forEach(o => o.visible = false);
+  const footMove = zoneWorld?.move ?? moveInMarina;
+  const expeditionSession = expedition ? createSoloSession('Explorer') : null;
+  if (expedition && zoneWorld && expeditionSession) options = { ...options, arena: { session: expeditionSession, profile: fieldProfile, botCount: zoneWorld.zone.botCount, composition: zoneWorld.zone.composition, environment: zoneWorld.environment, initialVitals: expedition.checkpoint } };
   const vehicles = createFpsVehicles(world.scene, world.obstacles, equipment.vehicleSkins);
+  if (options.arena) vehicles.root.visible = false;
+  let arenaRuntime: ReturnType<typeof createArenaRuntime> | null = null;
   const chaseRay = new THREE.Raycaster();
   const camera = new THREE.PerspectiveCamera(65, 1, 0.08, 800); camera.rotation.order = 'YXZ';
   const viewScene = new THREE.Scene(), viewCamera = new THREE.PerspectiveCamera(65, 1, 0.01, 3);
@@ -63,19 +91,23 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   const flash = new THREE.Mesh(flashGeometry, flashMaterial); flash.scale.set(1, 1, 2.6); flash.visible = false;
   const tracerGeometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]);
   const tracerMaterial = new THREE.LineBasicMaterial({ color: '#ffe8b0', transparent: true, opacity: 0.6 });
-  const tracer = new THREE.Line(tracerGeometry, tracerMaterial); tracer.frustumCulled = false; tracer.visible = false; world.scene.add(tracer);
+  const tracer = new THREE.Line(tracerGeometry, tracerMaterial); tracer.frustumCulled = false; tracer.visible = false; tracer.userData.fpsEffect = true; world.scene.add(tracer);
   const impactGeometry = new THREE.SphereGeometry(0.05, 8, 6), impactMaterial = new THREE.MeshBasicMaterial({ color: '#f3ae59' });
-  const impact = new THREE.Mesh(impactGeometry, impactMaterial); impact.visible = false; world.scene.add(impact);
-  const keys = new Set<string>(); const hud = { ...initialFpsHud, armor: equipment.armor };
+  const impact = new THREE.Mesh(impactGeometry, impactMaterial); impact.visible = false; impact.userData.fpsEffect = true; world.scene.add(impact);
+  const keys = new Set<string>(); const hud: FpsHud = { ...initialFpsHud, armor: equipment.armor, expeditionZone: expedition?.zone ?? null };
+  if (expedition && zoneWorld) hud.fieldLoot = expedition.loot.enterZone({ id: expedition.zone, spawn: zoneWorld.zone.spawn, bounds: zoneWorld.bounds, obstacles: world.obstacles, anchors: zoneWorld.zone.encounterSpawns });
+  const markers = expedition ? createExpeditionMarkers(world.scene, expedition.zone, hud.fieldLoot) : null;
+  let checkpointPending = expedition?.checkpoint;
+  let travelPending = false, lootNoticeTime = 0;
   let killChain: KillChain = { count: 0, lastAt: -Infinity }, calloutTime = 0;
-  let roundId = crypto.randomUUID(), attackTimer = 3, hurtTime = 0;
+  let roundId = randomRoundId(), attackTimer = 3, hurtTime = 0;
   let pendingAttack: { target: number; remaining: number; aim: THREE.Vector3 } | null = null;
   const attackRay = new THREE.Raycaster(), attackOrigin = new THREE.Vector3();
   const healthGeometry = new THREE.PlaneGeometry(.54, .055), healthMaterial = new THREE.MeshBasicMaterial({ color: "#e1a74e", side: THREE.DoubleSide });
   let disposed = false, loadout = createLoadout(specs), position = { x: FPS_SPAWN.x, z: FPS_SPAWN.z };
   let yaw: number = FPS_SPAWN.yaw, pitch: number = FPS_SPAWN.pitch, vertical = 0, velocityY = 0;
   let trigger = false, ads = false, touchAim = false, actualAim = false, kick = 0, bob = 0, flashTime = 0, hitTime = 0, effectTime = 0, impactActive = false;
-  let capturePending = false;
+  let capturePending = false, capturePromisePending = false;
   let lastTime = performance.now(), frame = 0, lastReport = 0, wasLocked = false;
   let drag: { id: number; x: number; y: number } | null = null;
   let motor: OscillatorNode | null = null, motorGain: GainNode | null = null;
@@ -85,7 +117,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   const publish = () => {
     if (disposed) return;
     const state = loadout[hud.weapon];
-    onHud({ ...hud, ...vehicles.hud(position), magazine: state.magazine, reserve: state.reserve, reloading: state.reloadRemaining / specs[hud.weapon].reload, aiming: actualAim, hit: hitTime > 0, locked: document.pointerLockElement === canvas, x: position.x, z: position.z });
+    onHud({ ...hud, ...(!options.arena ? vehicles.hud(position) : {}), magazine: state.magazine, reserve: state.reserve, reloading: state.reloadRemaining / specs[hud.weapon].reload, aiming: actualAim, hit: hitTime > 0, locked: document.pointerLockElement === canvas, x: position.x, z: position.z });
   };
   const clearInput = () => { keys.clear(); trigger = false; ads = false; touchAim = false; drag = null; };
   function pause() {
@@ -152,12 +184,14 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     capturePending = true;
     // Called directly by the user's Enter/Resume click. Gameplay waits for pointerlockchange.
     try {
-      Promise.resolve(canvas.requestPointerLock()).catch(captureFailed);
+      capturePromisePending = true;
+      void requestFpsPointerLock(canvas, () => capturePending && !disposed)
+        .catch(captureFailed).finally(() => { capturePromisePending = false; });
     } catch { captureFailed(); }
   }
   function reload() {
     if (hud.phase === 'playing') canvas.focus({ preventScroll: true });
-    if (hud.phase === 'playing' && !vehicles.active && beginReload(loadout[hud.weapon], hud.weapon, specs)) { ads = false; touchAim = false; publish(); }
+    if (hud.phase === 'playing' && (!options.arena || hud.arenaSelf?.alive) && !vehicles.active && beginReload(loadout[hud.weapon], hud.weapon, specs)) { arenaRuntime?.reload(hud.weapon); ads = false; touchAim = false; publish(); }
   }
   function switchWeapon(index: number) {
     if (hud.phase === 'loading' || hud.phase === 'error' || index === hud.weapon || index < 0 || index >= FPS_WEAPONS.length) return;
@@ -169,10 +203,12 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   }
   function reset() {
     if (hud.phase === 'loading' || hud.phase === 'error') return;
+    if (options.arena?.session.role === 'guest') return;
+    arenaRuntime?.reset();
     capturePending = false; hud.phase = 'ready'; hud.hits = 0; hud.shots = 0; hud.landed = 0; hud.elapsed = 0; hud.message = '';
     hud.health = 100; hud.armor = equipment.armor; hud.incoming = false; hud.hurt = false; hud.earned = 0; hud.earnedXp = 0; hud.lastDamage = 0; hud.callout = ''; hud.chain = 0;
     killChain = { count: 0, lastAt: -Infinity }; calloutTime = 0; stopVoice();
-    roundId = crypto.randomUUID(); attackTimer = 3; pendingAttack = null; hurtTime = 0;
+    roundId = randomRoundId(); attackTimer = 3; pendingAttack = null; hurtTime = 0;
     if (document.pointerLockElement === canvas) document.exitPointerLock();
     vehicles.reset(); loadout = createLoadout(specs); position = { x: FPS_SPAWN.x, z: FPS_SPAWN.z }; yaw = FPS_SPAWN.yaw; pitch = FPS_SPAWN.pitch;
     vertical = velocityY = kick = bob = hitTime = effectTime = flashTime = 0; clearInput();
@@ -180,7 +216,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     flash.visible = tracer.visible = impact.visible = false; updateCameras(0, false, false); publish();
   }
   function interactVehicle() {
-    if (hud.phase !== 'playing') return;
+    if (hud.phase !== 'playing' || options.arena) return;
     const change = vehicles.interact(position);
     if (change) {
       clearInput(); actualAim = false; loadout[hud.weapon].reloadRemaining = 0;
@@ -191,20 +227,69 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     }
     canvas.focus({ preventScroll: true }); publish();
   }
-  function jump() { if (hud.phase === 'playing') { canvas.focus({ preventScroll: true }); if (!vehicles.active && vertical === 0 && !keys.has('c')) velocityY = 5.2; } }
+  function updateExpeditionPrompts() {
+    if (!expedition) return;
+    const alive = !!hud.arenaSelf?.alive;
+    const nearest = alive ? expedition.loot.nearest(expedition.zone, position) : null;
+    const gateway = alive ? findWorldGateway(expedition.zone, position) : null;
+    hud.lootPrompt = nearest ? `E · ${nearest.tier} ${nearest.name}` : '';
+    hud.travelPrompt = gateway ? `T · Travel to ${getWorldZone(gateway.to).name}` : '';
+  }
+  function interactLoot() {
+    if (!expedition || hud.phase !== 'playing' || !hud.arenaSelf?.alive || vehicles.active || !arenaRuntime || travelPending) return;
+    const nearest = expedition.loot.nearest(expedition.zone, position); if (!nearest) return;
+    if (nearest.kind === 'medical' && hud.health >= 100) { hud.lootNotice = 'Health is full. Medical supplies remain here.'; lootNoticeTime = 3; publish(); return; }
+    if (nearest.kind === 'ammo' && loadout[hud.weapon].reserve >= 999) { hud.lootNotice = 'Ammunition reserve is full.'; lootNoticeTime = 3; publish(); return; }
+    const item = nearest.catalogId ? itemById(nearest.catalogId) : undefined;
+    if ((nearest.kind === 'weapon' && (!item || item.category !== 'weapon' || (item.family !== 0 && item.family !== 1))) || (nearest.kind === 'armor' && item?.category !== 'plate')) return;
+    const collected = expedition.loot.collect(expedition.zone, nearest.id, position); if (!collected) return;
+    if (collected.kind === 'weapon' && item && (item.family === 0 || item.family === 1)) {
+      const family = item.family, changed = fieldProfile.guns[family].variant !== item.id;
+      const next = copyProfile(fieldProfile); next.owned = [...new Set([...next.owned, item.id])]; next.guns[family].variant = item.id;
+      fieldProfile = next; equipment = resolveLoadout(fieldProfile); specs = equipment.weapons;
+      if (changed) loadout[family] = createLoadout(specs)[family];
+      else loadout[family].reserve = Math.min(999, loadout[family].reserve + specs[family].reserve);
+      arenaRuntime.updateLoadout(fieldProfile);
+      undress.splice(0).forEach(dispose => dispose()); weapons.forEach((model, index) => undress.push(dressWeapon(model, specs[index])));
+      switchWeapon(family); expedition.onEquipment(copyProfile(fieldProfile));
+      hud.lootNotice = `${item.name} equipped for this expedition.`;
+    } else if (collected.kind === 'armor' && item) {
+      const next = copyProfile(fieldProfile); next.owned = [...new Set([...next.owned, item.id])]; next.plate = item.id;
+      fieldProfile = next; equipment = resolveLoadout(fieldProfile); specs = equipment.weapons;
+      arenaRuntime.updateLoadout(fieldProfile); arenaRuntime.setVitals({ armor: equipment.armor }); hud.armor = equipment.armor;
+      expedition.onEquipment(copyProfile(fieldProfile)); hud.lootNotice = `${item.name} equipped · ${Math.round(equipment.armor)} armor.`;
+    } else if (collected.kind === 'ammo') {
+      const before = loadout[hud.weapon].reserve; loadout[hud.weapon].reserve = Math.min(999, before + collected.amount);
+      hud.lootNotice = `+${loadout[hud.weapon].reserve - before} rounds for ${specs[hud.weapon].name}.`;
+    } else if (collected.kind === 'medical') {
+      const before = hud.health; hud.health = Math.min(100, hud.health + collected.amount); arenaRuntime.setVitals({ health: hud.health });
+      hud.lootNotice = `Recovered ${Math.round(hud.health - before)} health.`;
+    }
+    markers?.remove(collected.id); hud.fieldLoot = expedition.loot.remaining(expedition.zone); lootNoticeTime = 4;
+    updateExpeditionPrompts(); canvas.focus({ preventScroll: true }); publish();
+  }
+  function travelZone() {
+    if (!expedition || travelPending || hud.phase !== 'playing' || !hud.arenaSelf?.alive || vehicles.active) return;
+    const gateway = findWorldGateway(expedition.zone, position); if (!gateway) return;
+    const transition = resolveWorldTransition(expedition.zone, gateway.id, position); if (!transition) return;
+    const checkpoint: FpsCheckpoint = { health: hud.health, armor: hud.armor, weapon: hud.weapon, ammunition: loadout.map(state => ({ ...state, cooldown: 0, reloadRemaining: 0 })) };
+    travelPending = true; pause(); expedition.onTravel(transition, checkpoint);
+  }
+  function jump() { if (hud.phase === 'playing' && (!options.arena || hud.arenaSelf?.alive)) { canvas.focus({ preventScroll: true }); if (!vehicles.active && vertical === 0 && !keys.has('c')) velocityY = 5.2; } }
   function setInput(key: string, held: boolean) {
-    if (hud.phase !== 'playing') return;
+    if (hud.phase !== 'playing' || (options.arena && !hud.arenaSelf?.alive)) return;
     if (key === 'fire') trigger = held && !vehicles.active;
     else if (held) keys.add(key); else keys.delete(key);
   }
-  const keyboardKeys = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift', 'c', ' ', 'r', '1', '2', 'e', 'f', 'control', 'escape'];
+  const keyboardKeys = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift', 'c', ' ', 'r', '1', '2', 'e', 't', 'f', 'control', 'escape'];
   const keydown = (event: KeyboardEvent) => {
     const key = event.key.toLowerCase();
     if (key === 'f' && !event.repeat) { event.preventDefault(); options.onFullscreen?.(); return; }
     if (hud.phase !== 'playing' || !keyboardKeys.includes(key)) return;
     event.preventDefault();
     if (key === 'escape') pause();
-    else if (key === 'e') { if (!event.repeat) interactVehicle(); }
+    else if (key === 'e') { if (!event.repeat) expedition ? interactLoot() : interactVehicle(); }
+    else if (key === 't') { if (!event.repeat) travelZone(); }
     else if (key === 'r') reload();
     else if (key === '1' || key === '2') switchWeapon(Number(key) - 1);
     else if (key === ' ') { if (vehicles.active) keys.add(' '); else if (!event.repeat) jump(); }
@@ -213,8 +298,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   const keyup = (event: KeyboardEvent) => keys.delete(event.key.toLowerCase());
   const look = (dx: number, dy: number) => {
     if (hud.phase !== 'playing') return;
-    const sensitivity = ads || touchAim ? 0.0013 : 0.0023;
-    yaw -= dx * sensitivity; pitch = THREE.MathUtils.clamp(pitch - dy * sensitivity, -1.35, 1.35);
+    ({ yaw, pitch } = turnFpsLook(yaw, pitch, dx, dy, ads || touchAim));
   };
   const mousemove = (event: MouseEvent) => { if (document.pointerLockElement === canvas) look(event.movementX, event.movementY); };
   const pointerdown = (event: PointerEvent) => {
@@ -242,7 +326,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     else if (locked && hud.phase !== 'playing') document.exitPointerLock();
     if (wasLocked && !locked) pause(); wasLocked = locked; publish();
   };
-  const lockerror = () => captureFailed();
+  const lockerror = () => { if (!capturePromisePending) captureFailed(); };
   const contextmenu = (event: Event) => event.preventDefault();
   const visibility = () => { if (document.hidden) pause(); };
   canvas.addEventListener('keydown', keydown); window.addEventListener('keyup', keyup);
@@ -287,12 +371,16 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     viewScene.updateMatrixWorld(true);
   }
   function shoot() {
-    if (vehicles.active || !fireWeapon(loadout[hud.weapon], hud.weapon, specs)) return;
+    if (vehicles.active || (options.arena && !hud.arenaSelf?.alive) || !fireWeapon(loadout[hud.weapon], hud.weapon, specs)) return;
     hud.shots++; shotSound();
     world.scene.updateMatrixWorld(true); ray.setFromCamera(center, camera);
     // Effects/viewmodel never obstruct the gameplay ray.
-    const hit = firstVisibleHit(ray, world.scene.children.filter(o => o !== tracer && o !== impact));
-    if (hit && typeof hit.object.userData.fpsTarget === 'number') {
+    const hit = firstVisibleHit(ray, world.scene.children.filter(o => o !== tracer && o !== impact && !o.userData.fpsEffect));
+    if (arenaRuntime) {
+      let hitActor = false;
+      for (let object: THREE.Object3D | null = hit?.object ?? null; object; object = object.parent) if (object.userData.arenaActorId) hitActor = true;
+      arenaRuntime.shoot(camera.position, ray.ray.direction, hud.weapon, hit ? hit.distance + (hitActor ? 0.7 : 0) : 125);
+    } else if (hit && typeof hit.object.userData.fpsTarget === 'number') {
       const target = targets[hit.object.userData.fpsTarget];
       if (target.alive) {
         hud.landed++; hud.lastDamage = Math.min(target.health, specs[hud.weapon].damage); target.health = Math.max(0, target.health - specs[hud.weapon].damage);
@@ -312,7 +400,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     const attr = tracerGeometry.getAttribute('position'); attr.setXYZ(0, muzzlePoint.x, muzzlePoint.y, muzzlePoint.z); attr.setXYZ(1, end.x, end.y, end.z); attr.needsUpdate = true;
     tracer.visible = true; impactActive = !!hit; impact.visible = impactActive; impact.position.copy(end); effectTime = 0.055;
     kick = Math.min(kick + specs[hud.weapon].recoil, 0.10); flashTime = 0.045; flash.visible = true;
-    if (hud.hits === FPS_TARGETS.length) {
+    if (!options.arena && hud.hits === FPS_TARGETS.length) {
       hud.phase = 'complete'; hud.incoming = false; clearInput();
       const reward = { id: roundId, hits: hud.hits, shots: hud.shots, landed: hud.landed, elapsed: hud.elapsed, combat: !!options.combat };
       hud.earned = rewardAmount(reward); hud.earnedXp += completionXp(reward); options.onComplete?.(reward);
@@ -352,6 +440,66 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (index >= 0) { pendingAttack = { target: index, remaining: .7, aim: playerPoint() }; hud.incoming = true; publish(); }
   }
 
+  function updateArena(dt: number) {
+    if (!arenaRuntime) return;
+    const frame = arenaRuntime.update(dt, {
+      x: position.x, y: (keys.has('c') ? 1.15 : 1.75) + vertical, z: position.z, yaw, pitch,
+      weapon: hud.weapon, playing: hud.phase === 'playing', reloading: loadout[hud.weapon].reloadRemaining > 0,
+    });
+    const previousSelf = hud.arenaSelf;
+    const previousMatch = hud.arena;
+    // Hosts already reset synchronously in reset(); only guests adopt a remote rematch.
+    const newRound = options.arena?.session.role === 'guest' && previousMatch && frame.snapshot && (frame.snapshot.tick < previousMatch.tick || (previousMatch.finished && !frame.snapshot.finished));
+    if (newRound) {
+      hud.phase = 'ready'; hud.shots = hud.landed = hud.earned = hud.earnedXp = hud.chain = 0;
+      hud.callout = ''; hud.message = ''; calloutTime = 0; killChain = { count: 0, lastAt: -Infinity };
+      clearInput(); loadout = createLoadout(specs);
+      if (document.pointerLockElement === canvas) document.exitPointerLock();
+    }
+    hud.arena = frame.snapshot; hud.arenaSelf = frame.self; hud.arenaConnected = frame.connected; hud.arenaStarted = frame.started;
+    if (frame.snapshot) hud.elapsed = frame.snapshot.elapsed;
+    if (frame.self) {
+      hud.hits = frame.self.kills; hud.health = frame.self.health; hud.armor = frame.self.armor;
+      if (previousSelf && frame.self.health < previousSelf.health) hurtTime = .4;
+      if (!frame.self.alive && previousSelf?.alive) { clearInput(); killChain = { count: 0, lastAt: -Infinity }; hud.chain = 0; hud.callout = ''; calloutTime = 0; }
+      if (frame.spawn) {
+        position = { x: frame.self.x, z: frame.self.z }; vertical = Math.max(0, frame.self.y - 1.75); velocityY = 0;
+        yaw = frame.self.yaw; pitch = frame.self.pitch; loadout = createLoadout(specs); clearInput();
+        if (checkpointPending) {
+          loadout = loadout.map((fresh, index) => {
+            const carried = checkpointPending?.ammunition?.[index]; if (!carried) return fresh;
+            return { magazine: Number.isFinite(carried.magazine) ? Math.max(0, Math.min(specs[index].capacity, Math.floor(carried.magazine))) : fresh.magazine,
+              reserve: Number.isFinite(carried.reserve) ? Math.max(0, Math.min(999, Math.floor(carried.reserve))) : fresh.reserve, cooldown: 0, reloadRemaining: 0 };
+          });
+          hud.weapon = checkpointPending.weapon === 1 ? 1 : 0; checkpointPending = undefined;
+          weapons.forEach((weapon, index) => weapon.visible = index === hud.weapon);
+          weapons[hud.weapon]?.getObjectByName(`${FPS_WEAPONS[hud.weapon].id}__socket_muzzle`)?.add(flash);
+        }
+        kick = 0; hitTime = 0; updateCameras(0, false, false);
+      } else if (frame.correction) {
+        position = { x: frame.self.x, z: frame.self.z };
+        vertical = Math.max(0, frame.self.y - (keys.has('c') ? 1.15 : 1.75)); velocityY = 0;
+        updateCameras(0, false, false);
+      }
+      rig.visible = frame.self.alive && !actualAim;
+    }
+    if (frame.hit?.hitId) { hud.landed++; hud.lastDamage = frame.hit.damage; hitTime = .2; }
+    for (const event of frame.feed) {
+      if (event.killerId !== options.arena!.session.id) continue;
+      const chain = registerElimination(killChain, hud.elapsed); killChain = chain; hud.chain = chain.count;
+      hud.callout = chain.label || 'ELIMINATION'; calloutTime = 2.4; announce(hud.callout, chain.count);
+    }
+    if (!frame.connected && options.arena!.session.role === 'guest' && hud.phase !== 'loading') {
+      hud.message = 'The host disconnected. Return to the lobby to join another match.';
+      if (hud.phase === 'playing') pause();
+    }
+    if (frame.snapshot?.finished && hud.phase !== 'complete') {
+      hud.phase = 'complete'; clearInput(); hud.incoming = false;
+      if (document.pointerLockElement === canvas) document.exitPointerLock();
+      publish();
+    }
+  }
+
   const resize = () => {
     const width = Math.max(1, host.clientWidth), height = Math.max(1, host.clientHeight);
     renderer.setSize(width, height); camera.aspect = viewCamera.aspect = width / height;
@@ -362,9 +510,12 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (disposed) return;
     const realDt = Math.max((now - lastTime) / 1000, 0), dt = Math.min(realDt, 0.05); lastTime = now;
     let moving = false, sprinting = false;
-    if (hud.phase === 'playing') {
+    // The arena keeps running behind pause menus, including magazine reloads.
+    if (options.arena) loadout.forEach((state, i) => advanceWeapon(state, i, realDt, specs));
+    if (hud.phase === 'playing' && (!options.arena || hud.arenaSelf?.alive)) {
       calloutTime = Math.max(0, calloutTime - realDt); if (!calloutTime) hud.callout = '';
-      hud.elapsed += realDt; loadout.forEach((state, i) => advanceWeapon(state, i, realDt, specs));
+      if (!options.arena) hud.elapsed += realDt;
+      if (!options.arena) loadout.forEach((state, i) => advanceWeapon(state, i, realDt, specs));
       if (vehicles.mounted) {
         yaw += vehicles.step(keys, dt); position = { x: vehicles.mounted.x, z: vehicles.mounted.z };
       } else {
@@ -373,7 +524,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       const side = Number(keys.has('d') || keys.has('arrowright')) - Number(keys.has('a') || keys.has('arrowleft'));
       sprinting = keys.has('shift') && forward > 0 && !keys.has('c');
       const speed = keys.has('c') ? 2.1 : sprinting ? 7 : (ads || touchAim) ? 2.5 : 4.2;
-      const delta = movementInput(forward, side, yaw, speed * equipment.mobility * specs[hud.weapon].mobility, dt), next = moveInMarina(position, delta.x, delta.z, 0.38, vehicles.footObstacles());
+      const delta = movementInput(forward, side, yaw, speed * equipment.mobility * specs[hud.weapon].mobility, dt), next = footMove(position, delta.x, delta.z, 0.38, options.arena ? world.obstacles : vehicles.footObstacles());
       moving = Math.hypot(next.x - position.x, next.z - position.z) > 0.0001; position = next;
       // Ground-plane jump; map obstacle collision remains active at every height.
       velocityY -= 15 * dt; vertical = Math.max(0, vertical + velocityY * dt); if (vertical === 0) velocityY = 0;
@@ -381,8 +532,10 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       kick = THREE.MathUtils.damp(kick, 0, 12, dt);
       updateCameras(dt, moving, sprinting);
       if (trigger && !sprinting && !vehicles.active) shoot();
-      if (hud.phase === 'playing' && options.combat) counterFire(realDt);
+      if (hud.phase === 'playing' && options.combat && !options.arena) counterFire(realDt);
     } else updateCameras(dt, false, false);
+    updateArena(realDt);
+    if (expedition) { updateExpeditionPrompts(); lootNoticeTime = Math.max(0, lootNoticeTime - realDt); if (!lootNoticeTime) hud.lootNotice = ''; }
     hurtTime = Math.max(0, hurtTime - dt); hud.hurt = hurtTime > 0;
     hitTime = Math.max(0, hitTime - dt); flashTime = Math.max(0, flashTime - dt); effectTime = Math.max(0, effectTime - dt);
     flash.visible = flashTime > 0; tracer.visible = effectTime > 0; impact.visible = effectTime > 0 && impactActive;
@@ -398,7 +551,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   };
   frame = requestAnimationFrame(animate);
 
-  const assetIds = ['sar21-inspired', 'ultimax-inspired', 'range-target', 'supply-crate', 'sandbag-wall', 'traffic-cone'];
+  const assetIds = expedition ? ['sar21-inspired', 'ultimax-inspired'] : ['sar21-inspired', 'ultimax-inspired', 'range-target', 'supply-crate', 'sandbag-wall', 'traffic-cone'];
   void Promise.all(assetIds.map(async id => {
     const gltf = await loader.loadAsync(`${import.meta.env.BASE_URL}models/field-kit/${id}.glb`);
     if (disposed) disposeAssets([gltf.scene]); else templates.push(gltf.scene);
@@ -407,7 +560,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (disposed) return;
     weapons.push(loaded[0], loaded[1]); weapons.forEach((w, i) => { undress.push(dressWeapon(w, specs[i])); rig.add(w); w.visible = i === 0; });
     weapons[0].getObjectByName('sar21-inspired__socket_muzzle')?.add(flash);
-    FPS_TARGETS.forEach((p, i) => {
+    if (!options.arena) FPS_TARGETS.forEach((p, i) => {
       const root = new THREE.Group(); root.position.set(p.x, 0.13, p.z);
       root.rotation.y = Math.atan2(FPS_SPAWN.x - p.x, FPS_SPAWN.z - p.z);
       root.add(loaded[2].clone(true));
@@ -417,17 +570,18 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       world.scene.add(root); targets.push({ root, hitZone, alive: true, health: maxHealth, maxHealth, bar });
       world.obstacles.push({ minX: p.x - 0.42, maxX: p.x + 0.42, minZ: p.z - 0.42, maxZ: p.z + 0.42 });
     });
-    for (const [asset, x, z, width, depth] of [[3, -48, 71, .77, .52], [4, -40, 63, 1.87, .41], [4, -52, 64, 1.87, .41], [5, -45, 72, .37, .37], [5, -43, 72, .37, .37]]) {
+    if (!expedition) for (const [asset, x, z, width, depth] of [[3, -48, 71, .77, .52], [4, -40, 63, 1.87, .41], [4, -52, 64, 1.87, .41], [5, -45, 72, .37, .37], [5, -43, 72, .37, .37]]) {
       const prop = loaded[asset].clone(true); prop.position.set(x, 0.14, z); decorations.add(prop);
-      world.obstacles.push({ minX: x - width / 2, maxX: x + width / 2, minZ: z - depth / 2, maxZ: z + depth / 2 });
+      world.obstacles.push({ minX: x - width / 2, maxX: x + width / 2, minZ: z - depth / 2, maxZ: z + depth / 2, maxY: asset === 3 ? 0.8 : asset === 4 ? 0.9 : 0.7 });
     }
+    if (options.arena) arenaRuntime = createArenaRuntime({ scene: world.scene, obstacles: world.obstacles, ...options.arena });
     hud.phase = 'ready'; updateCameras(0, false, false); publish();
   }).catch(() => {
     if (!disposed) { hud.phase = 'error'; hud.message = 'The range assets could not load. Retry to load the local models.'; publish(); }
   });
 
   return {
-    start, pause, reset, reload, switchWeapon, jump, setInput, interactVehicle,
+    start, pause, reset, reload, switchWeapon, jump, setInput, interactVehicle, interactLoot, travelZone,
     toggleAim() { if (hud.phase === 'playing' && !vehicles.active) { touchAim = !touchAim; canvas.focus({ preventScroll: true }); publish(); } },
     toggleSound() { hud.muted = !hud.muted; if (hud.muted) stopVoice(); if (hud.phase === 'playing') { canvas.focus({ preventScroll: true }); if (!hud.muted) initAudio(); } publish(); },
     dispose() {
@@ -439,7 +593,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       canvas.removeEventListener('contextmenu', contextmenu); document.removeEventListener('mousemove', mousemove);
       document.removeEventListener('pointerlockchange', lockchange); document.removeEventListener('pointerlockerror', lockerror);
       window.removeEventListener('blur', pause); document.removeEventListener('visibilitychange', visibility);
-      void audio?.close().catch(() => {}); vehicles.dispose(); undress.forEach(fn => fn()); disposeAssets(templates); world.dispose();
+      void audio?.close().catch(() => {}); arenaRuntime?.dispose(); expeditionSession?.close(); markers?.dispose(); vehicles.dispose(); undress.forEach(fn => fn()); disposeAssets(templates); world.dispose();
       healthGeometry.dispose(); healthMaterial.dispose();
       targetGeometry.dispose(); targetMaterial.dispose(); flashGeometry.dispose(); flashMaterial.dispose(); tracerGeometry.dispose(); tracerMaterial.dispose(); impactGeometry.dispose(); impactMaterial.dispose();
       renderer.dispose(); canvas.remove();

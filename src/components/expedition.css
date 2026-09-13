@@ -1,0 +1,22 @@
+.expedition-game{background:#17201d;color:#e1e8df}
+.expedition-game .fps-start-card,.expedition-game .fps-toolbar,.expedition-game .fps-loadout,.expedition-game .fps-inputs{color:#243b2a}
+.expedition-game .fps-toolbar h3{color:#dce7d7}.expedition-game .fps-toolbar p{color:#a5b69e}
+.expedition-game .fps-viewport{min-height:520px}
+.expedition-risk{font-size:10px;font-weight:800;letter-spacing:.12em;padding:8px 11px;border:1px solid currentColor;border-radius:3px;background:#10211ce6}
+.risk-low{color:#a6caa7}.risk-medium{color:#ebc079}.risk-high{color:#f39982}
+.expedition-prompts{position:absolute;top:62%;left:50%;transform:translate(-50%,-50%);display:grid;gap:7px;text-align:center;pointer-events:none;max-width:80%;z-index:5}
+.expedition-prompts strong,.expedition-prompts span{background:#14231de8;color:#eaf1e6;padding:9px 15px;font-size:12px;border:1px solid #75988466;border-radius:4px}
+.expedition-prompts span{color:#e7c67e;font-size:11px}
+.expedition-route-hud{position:absolute;top:70px;right:20px;display:grid;gap:6px;font-size:10px;text-align:right;color:#e2eadf;pointer-events:none;text-shadow:0 1px 3px #000}
+.expedition-route-hud b{color:#e7c67e;margin-left:8px}
+.expedition-respawn{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#15191a99;gap:10px;z-index:7;pointer-events:none}
+.expedition-respawn span{letter-spacing:.2em;color:#f0ae91;font-size:12px}.expedition-respawn strong{font-size:26px}
+.expedition-intel{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:22px;padding:22px;border-top:1px solid #ffffff18}
+.expedition-intel h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#d8c395;margin:0 0 16px}
+.expedition-intel p{font-size:11px;line-height:1.6;color:#abb9ad;margin:0 0 12px}.expedition-intel strong{color:#e0e7dd;font-weight:600}.expedition-intel small{font-size:10px;color:#91a18f;line-height:1.5}
+.expedition-network{display:grid;gap:6px;margin-bottom:12px}.expedition-network>div{border:1px solid #ffffff16;padding:9px 10px;display:grid;gap:4px;font-size:11px;border-radius:4px}.expedition-network .current{border-color:#bdc99788;background:#b1bd8310}.expedition-network span{font-size:10px}.expedition-network small{font-size:8px;letter-spacing:.12em;color:#d5dfb9}
+.expedition-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;background:#101915;font-size:10px;color:#a1b099}
+.expedition-footer button{display:flex;align-items:center;gap:7px;border:0;background:none;color:#d6e1c3;cursor:pointer;font:inherit}
+.expedition-game.is-immersive .expedition-intel,.expedition-game.is-immersive .expedition-footer{display:none}
+.expedition-game.is-immersive .fps-viewport{min-height:0}
+@media(max-width:700px){.expedition-intel{grid-template-columns:1fr;gap:18px;padding:18px}.expedition-network{grid-template-columns:repeat(3,minmax(0,1fr))}.expedition-network>div{padding:8px 5px}.expedition-risk{font-size:8px;padding:6px}.expedition-footer{flex-wrap:wrap}.expedition-route-hud{top:62px;right:12px}.expedition-game .fps-viewport{min-height:520px}.expedition-game .fps-top{gap:8px}.expedition-game .fps-badge{font-size:8px}.expedition-game .fps-objective{max-width:52%;font-size:10px}}
