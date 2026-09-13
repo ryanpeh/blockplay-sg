@@ -1,5 +1,19 @@
 # Blockplay project plan
 
+## Completed: armory, XP and arcade FPS feedback (2026-09-13)
+
+- [x] 27-item permanent shop, stat comparisons, 3D previews, demo credit/token wallet and saved inventory.
+- [x] Stronger premium weapon variants, cosmetic finishes, per-weapon attachment slots and actual FPS stat application.
+- [x] ILBV/LBS-inspired rig slot plus separate soft/ceramic inserts, reserve/mobility tradeoffs and optional counter-fire damage/defeat.
+- [x] Level 1–50 progression, purchase unlock gates, per-elimination XP and completion rewards without replaying awards on rerender.
+- [x] Three-second elimination chains with Double Kill through Rampage banners, stingers and available local voice announcements.
+- [x] Integrate the car and flyable helicopter into the FPS session, with chase cameras, collision/landing checks, safe dismounts and five shop wraps.
+- [x] Fix desktop pointer escape: start only on successful capture, Escape pauses/releases, failed capture leaves play stopped.
+- [x] 47 tests and production build; isolated Chrome shop/FPS flows, saves, armor, rewards, pointer capture, mobile layout and cleanup checked. Zero map requests; no added dependencies.
+
+Details, limitations and reference links: [docs/ARMORY.md](docs/ARMORY.md). Demo currency is local only; real payments and multiplayer authority are outside this implementation.
+
+
 Last updated: 2026-09-13 (Singapore time).
 
 ## Completed current pass: targeted Static API references and model quality
@@ -68,6 +82,14 @@ Used the cached browser references to improve actual game geometry: angular muse
 The user clarified that screenshots **do not count against Static API limits**. Implemented this for both the 50-additional-image allowance and the 1,000-Static-attempt cap, preserving all historical ledger entries. Current Static allowance: **15/50 used, 35 remaining**. Static attempts: 23 images + 7 metadata = 30/1000 (970 remaining, metadata conservatively included). Browser events are separate: 9 screenshots, 5 panorama loads/changes, 4 selections; 48 total ledger events are not 48 Static calls. Any older shared-allowance figures below are superseded.
 
 Completed the editable browser batch workflow (`reconstruction/marina-browser-plan.json`, `pnpm marina:browser-capture --batch`, `--dry-run`): grouped panorama reuse, per-run bounds, preflight cache validation, no silent overwrites/retries, Static endpoint blocking, PNG/metadata/checksum cache, timing reports and local review gallery. Tested **8 captures / 4 panorama loads / 0 failures / 0 Static calls in 21.826s**, ~11.4 MiB output. Cache-only rerun: **8 hits in 33ms**, no browser/network. All eight images reviewed; detailed reference views are useful, but dates/occlusions prevent claims of calibrated reconstruction. **20 tests and build pass**. See `reconstruction/marina-bay/references/WORKFLOW.md` for commands, reports, limitations and next steps. No game geometry changed in this workflow pass.
+
+## Local FPS integration — 2026-09-13
+
+Implemented as **Marina FPS**, a separate mode on the existing Marina map. Includes local weapon/prop GLBs, free movement and collision, sprint/crouch/jump, mouse capture and drag fallback, automatic hitscan fire with scenery occlusion, aim overlay, recoil/effects/sound, ammo/reserves, reload poses, weapon switching, eight-target exercise, timer/accuracy, pause/reset/fullscreen and on-screen controls. Main walk/drive geometry remains owned by the existing Marina scene. No capture calls or runtime dependency additions.
+
+Verification for FPS: **26 tests and production build pass**. Local Chrome smoke passed model loading, target hits, ammo/reload with pause, switching, movement, aim, all-eight-target completion, reset, 390px layout and mode cleanup, with zero map requests and no uncaught browser exceptions. Gameplay/aim/completion screenshots were visually inspected. Actual touchscreen play and physical-device performance remain unmeasured.
+
+Next FPS work: visual feedback, hand rig and authored reload clips, world-model LODs, richer moving targets or enemy gameplay, and actual-device performance/accessibility testing. This is not multiplayer or a complete high-fidelity combat game.
 
 ## Current milestone: modeled Marina game
 

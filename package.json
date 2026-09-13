@@ -17,7 +17,10 @@
     "marina:references": "node scripts/capture-marina-references.mjs",
     "marina:browser-capture": "node scripts/capture-marina-browser.mjs",
     "marina:reconstruct": "node scripts/reconstruct-marina.mjs",
-    "marina:usage": "node scripts/api-usage.mjs"
+    "marina:usage": "node scripts/api-usage.mjs",
+    "test:fps": "node scripts/fps-smoke.mjs",
+    "test:armory": "node scripts/armory-smoke.mjs",
+    "test:vehicles": "node scripts/vehicle-smoke.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -36,5 +39,8 @@
     "vite": "^6.1.0",
     "vitest": "^3.0.5"
   },
-  "engines": { "node": ">=22.12.0", "pnpm": ">=11 <12" }
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=11 <12"
+  }
 }

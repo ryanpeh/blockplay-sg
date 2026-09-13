@@ -46,7 +46,7 @@ export function buildMarinaScene() {
   sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.3; scene.add(sun);
   const geometries: THREE.BufferGeometry[] = [], materials: THREE.Material[] = [];
   const qualityDetails = { esplanadeSunshades: 0, wheelCapsules: 0, conservatoryGlazingSegments: 0, sandsMullions: 0 };
-  const obstacles: Obstacle[] = [{ minX: -80, maxX: 80, minZ: -90, maxZ: 50 }];
+  const obstacles: Obstacle[] = [{ minX: -80, maxX: 80, minZ: -90, maxZ: 50, maxY: 2 }];
   const geo = <T extends THREE.BufferGeometry>(g: T) => { geometries.push(g); return g; };
   const mat = (color: string, extra: THREE.MeshStandardMaterialParameters = {}) => {
     const material = new THREE.MeshStandardMaterial({ color, roughness: 0.9, ...extra }); materials.push(material); return material;
@@ -56,7 +56,7 @@ export function buildMarinaScene() {
   const sand = mat('#92938f'), road = mat('#45494c'), white = mat('#eeeeea'), leaf = mat('#316c35'), trunk = mat('#83776a');
   const orange = mat('#ed8e42'), mint = mat('#5dafa6'), water = mat('#315e65', { roughness: 0.28, metalness: 0.22 });
   const steel = mat('#a6afb2', { roughness: 0.35, metalness: 0.65 }), wood = mat('#766257'), hedge = mat('#466b2d');
-  const collider = (x: number, z: number, w: number, d: number) => obstacles.push({ minX: x - w / 2, maxX: x + w / 2, minZ: z - d / 2, maxZ: z + d / 2 });
+  const collider = (x: number, z: number, w: number, d: number, maxY = 6.8) => obstacles.push({ maxY, minX: x - w / 2, maxX: x + w / 2, minZ: z - d / 2, maxZ: z + d / 2 });
   function box(x: number, y: number, z: number, w: number, h: number, d: number, material: THREE.Material, parent: THREE.Object3D = scene, shadow = false) {
     const mesh = new THREE.Mesh(boxGeo, material); mesh.position.set(x, y, z); mesh.scale.set(w, h, d);
     mesh.castShadow = shadow; mesh.receiveShadow = true; parent.add(mesh); return mesh;
@@ -97,7 +97,7 @@ export function buildMarinaScene() {
   for (let x = -76; x <= 76; x += 38) {
     box(x, 3.7, 81, 0.17, 7.4, 0.17, steel, scene, true);
     box(x, 7.45, 80.4, 0.65, 0.16, 1.5, dark);
-    box(x, 0.6, 80.5, 0.75, 1.2, 0.65, dark); collider(x, 81, 0.8, 0.8);
+    box(x, 0.6, 80.5, 0.75, 1.2, 0.65, dark); collider(x, 81, 0.8, 0.8, 7.8);
   }
   // Broad, darker expansion bands observed in south-waterfront.png.
   for (const x of [-64, -32, 0, 32, 64]) box(x, 0.115, 66, 0.7, 0.025, 27, mat('#777b79'));
@@ -130,12 +130,12 @@ export function buildMarinaScene() {
       frond.position.set(x, height, z); frond.rotation.y = j / 10 * Math.PI * 2; frond.rotation.z = (j % 3) * 0.15;
       frond.castShadow = true; parent.add(frond);
     }
-    if (collision) collider(x, z, 1, 1);
+    if (collision) collider(x, z, 1, 1, height + 1);
   }
   for (let x = -84; x <= 84; x += 14) { palm(x, 75, 8.5 + Math.abs(x % 3)); box(x, 0.12, 75, 2, 0.24, 2, hedge); }
   for (let z = -80; z < 50; z += 26) { palm(-89, z); palm(89, z); }
   for (let x = -65; x <= 70; x += 45) {
-    box(x, 0.7, 58, 4, 0.25, 1, trunk); box(x - 1.4, 0.35, 58, 0.2, 0.7, 0.6, dark); box(x + 1.4, 0.35, 58, 0.2, 0.7, 0.6, dark); collider(x, 58, 4, 1);
+    box(x, 0.7, 58, 4, 0.25, 1, trunk); box(x - 1.4, 0.35, 58, 0.2, 0.7, 0.6, dark); box(x + 1.4, 0.35, 58, 0.2, 0.7, 0.6, dark); collider(x, 58, 4, 1, 1.4);
     box(x, 1.05, 58.45, 4, 0.55, 0.12, wood);
     for (const dx of [-1.8, 1.8]) box(x + dx, 0.95, 58, 0.12, 0.12, 1.1, steel);
   }
@@ -158,14 +158,14 @@ export function buildMarinaScene() {
     shrub.position.set(x, 0.55, 82.5); shrub.scale.set(2.8, 0.7, 0.75); scene.add(shrub);
   }
   for (const x of [-77, -7, 63]) {
-    box(x, 2.8, 83.5, 0.65, 5.6, 0.65, trunk, scene, true); collider(x, 83.5, 1, 1);
+    box(x, 2.8, 83.5, 0.65, 5.6, 0.65, trunk, scene, true); collider(x, 83.5, 1, 1, 10);
     for (let j = 0; j < 5; j++) {
       const crown = new THREE.Mesh(shrubGeo, j % 2 ? leaf : hedge); crown.position.set(x + Math.cos(j * 2.4) * 1.8, 6.3 + j % 2, 83.5 + Math.sin(j * 2.4)); crown.scale.set(3.3, 2.3, 2.8); crown.castShadow = true; scene.add(crown);
     }
   }
 
   // Shoppes podium: low glazed frontage and a segmented barrel roof.
-  box(123, 4, -12, 20, 8, 134, glass, scene, true); collider(123, -12, 20, 134);
+  box(123, 4, -12, 20, 8, 134, glass, scene, true); collider(123, -12, 20, 134, 12);
   for (let z = -76; z <= 52; z += 8) {
     box(112.8, 4, z, 0.45, 8, 0.45, steel);
     const archPoints: THREE.Vector3[] = [];
@@ -195,17 +195,17 @@ export function buildMarinaScene() {
   for (let x = 114; x <= 132; x += 1.5) { box(x, 3.2, 55.25, 0.35, 6.4, 0.5, x % 3 === 0 ? pale : blueFin); }
   const bollardGeo = geo(new THREE.CylinderGeometry(0.2, 0.2, 1, 8));
   for (const x of [113, 116, 130, 133]) {
-    const bollard = new THREE.Mesh(bollardGeo, steel); bollard.position.set(x, 0.5, 70); scene.add(bollard); collider(x, 70, 0.4, 0.4);
+    const bollard = new THREE.Mesh(bollardGeo, steel); bollard.position.set(x, 0.5, 70); scene.add(bollard); collider(x, 70, 0.4, 0.4, 1);
     box(x, 0.74, 70.21, 0.35, 0.25, 0.025, orange);
     const stripe = box(x, 0.74, 70.23, 0.07, 0.29, 0.025, dark); stripe.rotation.z = -0.5;
   }
-  for (const x of [-70, -14, 42, 70]) { box(x, 0.35, 81, 11, 0.7, 2.6, cream); box(x, 0.9, 81, 10.5, 0.6, 2.1, hedge); collider(x, 81, 11, 2.6); }
+  for (const x of [-70, -14, 42, 70]) { box(x, 0.35, 81, 11, 0.7, 2.6, cream); box(x, 0.9, 81, 10.5, 0.6, 2.1, hedge); collider(x, 81, 11, 2.6, 1.6); }
 
   // Three slender blue-glass towers. Curved/splayed lower legs are approximated
   // by offset floor bands; dimensions share the same 0.54 landmark scale.
   const h = MARINA_LANDMARKS.towerHeight;
   for (const z of [-65, -15, 35]) {
-    collider(151, z, 24, 32);
+    collider(151, z, 24, 32, 114);
     for (let floor = 0; floor < 54; floor++) {
       const y = floor * 2 + 1, splay = Math.pow(1 - y / h, 2) * 8;
       box(147 - splay * 0.2, y, z, 9, 1.94, 30, glass, scene, true);
@@ -237,7 +237,7 @@ export function buildMarinaScene() {
   for (let z = -74; z < 65; z += 13) { const crown = new THREE.Mesh(crownGeo, leaf); crown.position.set(154, h + 4, z); crown.scale.setScalar(0.65); scene.add(crown); }
   // Lotus-like ArtScience Museum, fully modeled petals.
   const baseGeo = geo(new THREE.CylinderGeometry(8, 5, 7, 10));
-  const museumBase = new THREE.Mesh(baseGeo, pale); museumBase.position.set(135, 9, -110); scene.add(museumBase); collider(135, -110, 44, 44);
+  const museumBase = new THREE.Mesh(baseGeo, pale); museumBase.position.set(135, 9, -110); scene.add(museumBase); collider(135, -110, 44, 44, 34);
   const pond = new THREE.Mesh(geo(new THREE.CylinderGeometry(22, 22, 0.2, 40)), water); pond.position.set(135, 0.1, -110); scene.add(pond);
   for (let i = 0; i < 8; i++) {
     const a = i / 8 * Math.PI * 2;
@@ -283,7 +283,7 @@ export function buildMarinaScene() {
   const towerColors = ['#557c96', '#81969f', '#607c94', '#98a1a4'];
   function tower(x: number, z: number, w: number, h: number, d: number, index: number) {
     const face = mat(towerColors[index % towerColors.length], { roughness: 0.35, metalness: 0.1 });
-    box(x, h / 2, z, w, h, d, face, scene, true); collider(x, z, w, d);
+    box(x, h / 2, z, w, h, d, face, scene, true); collider(x, z, w, d, h + 4);
     box(x, h + 1, z, w - 3, 2, d - 3, cream);
     for (let y = 3; y < h; y += 3) {
       box(x + w / 2 + 0.05, y, z, 0.1, 0.22, d, steel);
@@ -574,7 +574,7 @@ export function buildMarinaScene() {
   // Fullerton-side stone arcade: arched openings, cornices and planted frontage
   // observed in fullerton-materials.png, compressed into the city-side block.
   const stone = mat('#b3b6b4'), insetGlass = mat('#273f4a', { roughness: 0.4 });
-  box(-133, 6.5, 30, 24, 13, 38, stone, scene, true); collider(-133, 30, 24, 38);
+  box(-133, 6.5, 30, 24, 13, 38, stone, scene, true); collider(-133, 30, 24, 38, 15);
   box(-133, 13.4, 30, 25.5, 0.8, 39.5, cream);
   for (const y of [1.1, 3.5, 6, 8.5, 11, 12.7]) box(-120.7, y, 30, 0.55, 0.22, 38.5, cream);
   const arch = new THREE.Shape(); arch.moveTo(-1.8, 0); arch.lineTo(-1.8, 4.5); arch.absarc(0, 4.5, 1.8, Math.PI, 0, true); arch.lineTo(1.8, 0); arch.closePath();
@@ -583,7 +583,7 @@ export function buildMarinaScene() {
     const opening = new THREE.Mesh(archGeo, insetGlass); opening.rotation.y = Math.PI / 2; opening.position.set(-120.35, 0.2, z); scene.add(opening);
     box(-120.2, 3, z + 2.3, 0.6, 6, 0.5, pale);
     box(-120.2, 3, z - 2.3, 0.6, 6, 0.5, pale);
-    box(-117, 0.35, z, 1.5, 0.7, 4.5, cream); box(-117, 1, z, 1.2, 0.9, 4.2, hedge); collider(-117, z, 1.5, 4.5);
+    box(-117, 0.35, z, 1.5, 0.7, 4.5, cream); box(-117, 1, z, 1.2, 0.9, 4.2, hedge); collider(-117, z, 1.5, 4.5, 1.5);
   }
   // Record which reviewed images informed authored features (not photogrammetry).
   scene.userData.qualityDetails = qualityDetails;

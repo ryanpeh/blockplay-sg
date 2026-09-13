@@ -1,0 +1,126 @@
+[
+  {
+    "id": "sar21-inspired",
+    "title": "SAR 21 / Bullpup",
+    "category": "Weapon",
+    "description": "SAR 21-inspired silhouette with elevated optic, olive polymer and detachable rear magazine.",
+    "file": "/models/sar21-inspired.glb",
+    "triangles": 17556,
+    "bytes": 1070040,
+    "dimensions": [
+      0.085,
+      0.51,
+      0.856
+    ],
+    "sockets": [
+      "sar21-inspired__socket_eject",
+      "sar21-inspired__socket_grip",
+      "sar21-inspired__socket_muzzle",
+      "sar21-inspired__socket_sight",
+      "sar21-inspired__socket_support"
+    ],
+    "root": "sar21-inspired"
+  },
+  {
+    "id": "ultimax-inspired",
+    "title": "Ultimax / Support",
+    "category": "Weapon",
+    "description": "Ultimax-inspired support weapon with drum magazine, carry handle and folded bipod.",
+    "file": "/models/ultimax-inspired.glb",
+    "triangles": 21232,
+    "bytes": 1075052,
+    "dimensions": [
+      0.198,
+      0.411,
+      1.091
+    ],
+    "sockets": [
+      "ultimax-inspired__socket_eject",
+      "ultimax-inspired__socket_grip",
+      "ultimax-inspired__socket_muzzle",
+      "ultimax-inspired__socket_sight",
+      "ultimax-inspired__socket_support"
+    ],
+    "root": "ultimax-inspired"
+  },
+  {
+    "id": "supply-crate",
+    "title": "Equipment case",
+    "category": "Prop",
+    "description": "Stackable olive transit case with reinforced corners, latches and inventory plate.",
+    "file": "/models/supply-crate.glb",
+    "triangles": 5264,
+    "bytes": 608336,
+    "dimensions": [
+      0.764,
+      0.49,
+      0.52
+    ],
+    "sockets": [],
+    "root": "supply-crate"
+  },
+  {
+    "id": "jersey-barrier",
+    "title": "Concrete barrier",
+    "category": "Prop",
+    "description": "Road-scale concrete cover with inset lift points and reflective orange markers.",
+    "file": "/models/jersey-barrier.glb",
+    "triangles": 2584,
+    "bytes": 385940,
+    "dimensions": [
+      1.8,
+      0.854,
+      0.58
+    ],
+    "sockets": [],
+    "root": "jersey-barrier"
+  },
+  {
+    "id": "sandbag-wall",
+    "title": "Sandbag cover",
+    "category": "Prop",
+    "description": "Three staggered courses of rounded canvas sandbags; a single placeable cover module.",
+    "file": "/models/sandbag-wall.glb",
+    "triangles": 4136,
+    "bytes": 285400,
+    "dimensions": [
+      1.864,
+      0.581,
+      0.402
+    ],
+    "sockets": [],
+    "root": "sandbag-wall"
+  },
+  {
+    "id": "range-target",
+    "title": "Range target",
+    "category": "Prop",
+    "description": "Freestanding circular scoring target with steel feet and replaceable board.",
+    "file": "/models/range-target.glb",
+    "triangles": 6792,
+    "bytes": 723240,
+    "dimensions": [
+      0.62,
+      1.7,
+      0.58
+    ],
+    "sockets": [],
+    "root": "range-target"
+  },
+  {
+    "id": "traffic-cone",
+    "title": "Traffic cone",
+    "category": "Prop",
+    "description": "Weighted road cone with two reflective bands for Singapore street dressing.",
+    "file": "/models/traffic-cone.glb",
+    "triangles": 1316,
+    "bytes": 288040,
+    "dimensions": [
+      0.37,
+      0.637,
+      0.37
+    ],
+    "sockets": [],
+    "root": "traffic-cone"
+  }
+]

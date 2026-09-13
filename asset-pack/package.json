@@ -1,0 +1,7 @@
+{
+  "name": "sg-field-kit", "private": true, "version": "0.1.0", "type": "module",
+  "packageManager": "pnpm@11.15.0",
+  "scripts": {"dev": "vite --host 127.0.0.1", "build": "vite build", "validate": "node scripts/validate.mjs"},
+  "dependencies": {"three": "0.180.0"},
+  "devDependencies": {"vite": "7.1.7"}
+}

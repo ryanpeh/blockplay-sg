@@ -45,6 +45,15 @@ Dependency installs enforce a two-week cooldown (`minimumReleaseAge: 20160`) in 
 
 ## What works
 
+- **FPS vehicles:** approach Utility 01 or Falcon 01 and press E to enter/exit. Drive with WASD and Space brake, or fly with WASD, Space climb, C/Ctrl descend and Shift boost. Land before leaving the helicopter. The Armory’s Vehicles tab offers five cosmetic wraps, equipped separately on each vehicle.
+
+- **Field exchange:** the Armory sidebar opens a 27-item equipment shop with interactive 3D previews, permanent purchases, skins, attachment slots, and ILBV/LBS-inspired rigs with separate soft/ceramic inserts. Premium variants provide stronger stats, applied to the FPS. See [armory balance and architecture](docs/ARMORY.md).
+- **Progression:** 50 XP levels, rank badges and level-gated purchases. Target eliminations award 25 XP; completing a drill adds XP and earned credits. Double/triple/multi-kill announcements escalate through Rampage for eliminations within three seconds. Stingers and available installed English voices follow the sound toggle.
+- **Counter-fire drill:** optional return fire makes armor and movement matter. Incoming shots have a dodge warning, respect scenery, deplete armor and can end the exercise. The default practice drill has no incoming damage.
+
+- **Marina FPS:** choose Marina Bay → Marina FPS → Enter range. A free-moving, eight-target practice exercise on the Marina map, with SAR 21-inspired and Ultimax-inspired GLB viewmodels, automatic hitscan fire, optical aiming overlay, recoil, muzzle flashes/tracers, magazine/reserve ammo, animated reload poses, weapon switching, and completion time/accuracy. WASD moves, mouse looks, left mouse fires, right mouse aims, R reloads, 1/2 switches, Shift sprints, C crouches and Space jumps. Esc pauses and releases the mouse. On-screen controls support touch-device drag-look; desktop play requires mouse capture; sound can be muted and the range can go fullscreen. Scenery blocks shots; player collision reuses the map's ground-plane obstacles. This is a target range with arcade tuning, not PvP or an enemy-AI mode. No Maps calls or credentials are needed.
+
+
 Latest Marina pass adds reference-matched gray paving, blue glass, deeper water, silver railings, fuller palms, planting, lights and a detailed Shoppes roofline. Sands landmark proportions use published dimensions; the overall map remains compressed. Static and browser reference images are cached in [the reference folder](reconstruction/marina-bay/references/README.md); use `pnpm marina:usage` for live usage counts.
 
 - **Marina 3D / Queenstown 3D / Raffles 3D:** location-specific low-poly games. Click the scene; WASD walks, drag looks, Shift runs. Drive switches to a visible car with a chase camera; W/S accelerate/reverse, A/D steer, Space brakes. Collect 14 orange rings in Marina, eight in Queenstown or 11 in Raffles Place. Water/buildings block movement; reset clears progress. Arcade handling, not full vehicle physics. No Google requests while playing.
@@ -89,6 +98,14 @@ The live viewer lives in `src/lib/google-maps.ts` and `src/components/StreetView
 
 Terms and privacy disclosures are available from the footer. Review them for your deployed operator and any services you add before launch.
 
+## FPS implementation and checks
+
+The FPS UI is `src/components/FpsGame.tsx`; rendering/input/resource cleanup live in `src/game/fps-engine.ts`. `fps-rules.ts` handles ammo/cadence/reloading and normalized movement, and `fps-raycast.ts` filters visible, nearest surface hits. Six original GLBs are included under `public/models/field-kit/`; no Blender installation is needed to run the app. Editable art sources and the standalone inspection viewer are under `asset-pack/` in the working copy.
+
+The close-up weapons have approximately 18k/21k triangles. A separate viewmodel camera prevents clipping into world geometry. Pixel ratio is capped at 1.35 and dynamic shadows are disabled in FPS mode for the VM. These choices do not guarantee a particular frame rate. Jumping is ground-plane motion: buildings remain solid at all heights, with no climbing, slopes or interiors. Optional target counter-fire now supplies a player/armor damage loop. There are no skeletal hands, navigating enemy AI or multiplayer yet; aiming uses an overlay because the GLB optic lenses are opaque.
+
+Run `pnpm test` and `pnpm build`. The portable browser smoke test requires a running app and an isolated Chrome debugging session on loopback. It defaults to app port 5175 and Chrome port 9224; override with `FPS_APP_ORIGIN` and `FPS_CHROME_ORIGIN`. Then run `pnpm test:fps` (Node 22.12+ with built-in WebSocket support). If your VPN proxies localhost, use `NO_PROXY=127.0.0.1,localhost pnpm test:fps`. Screenshots go to ignored `.cache/fps-smoke/`. The script checks loading, center-target hits, ammo/reload, pause, weapon switching, movement, aiming, all-eight-target completion, reset, mobile layout, mode cleanup and zero map requests. It uses the isolated browser's DevTools endpoint; do not point it at a personal browser profile.
+
 ## Project layout
 
 ```text
@@ -106,7 +123,7 @@ src/
   lib/google-maps.ts         Optional browser SDK loader
 ```
 
-The game and Google viewer are independent. Extend the original world without mixing Google imagery into custom 3D materials. All gameplay state is currently in memory; there is no backend, account system, leaderboard, or persistence.
+The game and Google viewer are independent. Extend the original world without mixing Google imagery into custom 3D materials. Exercises run in memory. Armory currency, XP, ownership and equipped items persist in browser local storage. There is no backend, account system, synchronization or leaderboard.
 
 ## Deploy
 
@@ -130,3 +147,16 @@ Add your deployed origin to the Google key's allowed referrers. Rebuild after ch
 Suggested video: show the neighborhood selection (10 s), complete the driving circuit (25 s), show target practice (15 s), explore a real neighborhood in Street View (20 s), and explain Astra's concrete engineering contributions and the next milestone (20 s).
 
 Before presenting, verify the live Google integration with your own key and test desktop + phone controls. No public deployment is created by this scaffold itself.
+
+## Armory browser checks
+
+With Vite running and an isolated Chrome started with `--remote-debugging-port=9224`, run:
+
+```sh
+NO_PROXY=127.0.0.1,localhost pnpm test:fps
+NO_PROXY=127.0.0.1,localhost pnpm test:armory
+```
+
+Both scripts default to `http://127.0.0.1:5175`; set `FPS_APP_ORIGIN` and `FPS_CHROME_ORIGIN` if needed. Use a separate Chrome `--user-data-dir`: the checks reset the demo armory save on the test origin. Screenshots go to `.cache/fps-smoke/` and `.cache/armory-smoke/`. No browser-testing dependencies were added.
+
+Desktop FPS starts only after the browser captures the pointer. Escape releases it and pauses; Resume recaptures it. Capture denial leaves the exercise stopped and displays a retry message. Touch devices retain drag-look.

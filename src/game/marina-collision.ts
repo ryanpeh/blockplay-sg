@@ -1,4 +1,4 @@
-export interface Obstacle { minX: number; maxX: number; minZ: number; maxZ: number }
+export interface Obstacle { minX: number; maxX: number; minZ: number; maxZ: number; maxY?: number }
 export interface Position2D { x: number; z: number }
 export const MARINA_BOUNDS = { minX: -338, maxX: 388, minZ: -328, maxZ: 288 };
 
