@@ -34,7 +34,7 @@ export const locations = [
   },
   {
     id: 'marina-bay', name: 'Marina Bay', subtitle: 'The postcard route', district: 'DOWNTOWN',
-    description: 'A first step into image-derived 3D: explore a small waterfront scene built from four Street View photographs. February 2012 imagery, approximate depth.',
+    description: 'Palm-lined paths, a skyline you know, and a whole bay to play. A low-poly take on Marina Bay, with five little discoveries along the way.',
     lat: 1.2867, lng: 103.8545, heading: 110, color: '#9bb9cc', block: 18,
     tags: ['Waterfront', 'City skyline'],
     viewpoints: [

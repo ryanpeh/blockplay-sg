@@ -1,5 +1,7 @@
 # Marina Bay reconstruction and API budget
 
+**Historical experiment:** the default Marina 3D mode now uses authored low-poly geometry in `src/game/marina-scene.ts`, following the user's Joyride-style clarification. It does not load these photo-depth assets. The pipeline and assets below are retained for reference, not the active rendering path. No recapture or inference is needed to run the game.
+
 The owner has confirmed permission to use the source Street View imagery for this project. Current scope: **Marina Bay only**.
 
 ## Request ledger
@@ -28,7 +30,7 @@ If the saved panorama ID expires, select a replacement explicitly and review one
 
 The depth build runs locally using Transformers.js and `onnx-community/depth-anything-v2-small`; its first run downloads model weights into `.cache/models`. No source photographs are uploaded to an inference service. Package dependencies use pnpm 11 and the 14-day cooldown. The scene records the downloaded weights' SHA-256; the download still uses the model repository's default revision, so pin a revision for long-lived reproducibility. An interrupted early download produced a corrupt ONNX cache; it was preserved as `.incomplete` and replaced successfully.
 
-Output: `public/reconstruction/marina-bay/scene.json`, four geometry JSON files, and four textures. The frontend's **Marina 3D** mode loads these assets. The model/runtime are build tools, not part of the browser bundle. Generated output can be transferred to another computer or static host without rerunning inference; capture sources and the API key are not required by the resulting scene viewer.
+Output: `public/reconstruction/marina-bay/scene.json`, four geometry JSON files, and four textures. The historical `src/components/MarinaWorld.tsx` viewer loads these assets but is no longer mounted by the app. The model/runtime are build tools, not part of the browser bundle. Generated output remains portable without rerunning inference; capture sources and the API key are not required by that viewer.
 
 ## Honest scope of this first experiment
 

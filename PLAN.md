@@ -2,7 +2,36 @@
 
 Last updated: 2026-09-13 (Singapore time).
 
-## Handoff milestone
+## Current milestone: modeled Marina game
+
+The latest user clarification requests **Joyride-style low-poly 3D game art**, not photographs or stretched photo-depth meshes. The default scene now uses authored solid geometry informed by saved waterfront images. Geography and scale are deliberately compressed; this is not automatic or surveyed reconstruction.
+
+**Confirmed rollout scope:** this same location-specific, walkable/drivable 3D treatment is eventually required for **all locations: Marina Bay, Tampines, Toa Payoh and Queenstown**, and should extend to future destinations. **Work only on Marina Bay for now** to establish and validate the approach. The other locations are planned deliverables, not optional palette variants or completed reconstructions.
+
+Completed in this pass:
+
+- Modeled Marina Bay Sands/SkyPark, lotus-like ArtScience Museum, stylized Helix crossing, city skyline, water/bumboat, palm promenade, railing, benches and shade pavilion.
+- Continuous road loop; first-person walking/running; third-person arcade driving with a visible car; drag-to-look and touch movement.
+- Ground-plane obstacle collisions and wall sliding, map bounds, five collectible stamps, minimap/progress, and reset. The old 4-unit exploration limit no longer applies.
+- `MarinaGame.tsx` is the active component; `marina-scene.ts` authors geometry and `marina-collision.ts` handles movement. Historical `MarinaWorld.tsx` and depth assets are retained but unmounted.
+- No new dependencies, capture requests, or image-generation calls. Ledger unchanged at **13 attempts**, including 8 Static images. Preserve pnpm 11 and strict 14-day release age.
+- Updated README, portable handoff and in-app descriptions to distinguish authored art from photo reconstruction.
+
+Verification: production build and **14 tests passed**, including 3 new collision tests for water/high-speed movement, wall sliding and map limits. Browser checks passed rendering, walk/drive translation, reset, 390px width, no uncaught errors and zero live Static image requests. Desktop walk/drive screenshots inspected. Three.js has a non-blocking bundle-size warning. Full five-stamp completion and a full road lap are not yet browser-tested.
+
+## Current next steps (supersedes historical roadmap below)
+
+1. Get the user's visual feedback on the modeled direction; refine landmark proportions, framing and resemblance to the saved references. Keep observed details distinct from invented/compressed layout.
+2. Validate all five stamps and a full road lap; add portable browser integration tests. Improve camera collision, vehicle steering/wheel animation, touch camera controls and accessibility. Current motion is flat-plane arcade movement, without gravity, slopes, interiors, traffic or suspension.
+3. If tighter location matching is wanted, derive a reviewed structured scene layout from source references. Do not silently increase capture volume. No recapture or inference is needed to run this game.
+4. After Marina is accepted, reuse its controls/rendering/collision approach to author distinct reference-informed maps for **Tampines, Toa Payoh and Queenstown**. Each must have recognizable local layout/details and continuous walking/driving in the same low-poly style. Their generic Joyride layouts currently vary color/height rather than real geography and do not complete this rollout. Choose the next location after Marina; do not begin parallel location builds now. Combat/NS equipment remains later work.
+5. Add an optional server-side Astra mission feature using event-provided access, then deploy, test on an actual phone and record the 90-second video. No runtime model integration or public deployment exists yet.
+
+## Historical implementation and roadmap
+
+The sections below preserve what was previously done/tried/planned. References to the depth scene as current/default, its 4-unit limit, 11 tests, or photogrammetry as the next priority describe the **previous milestone**, not the active game. The latest steering above supersedes that roadmap. The depth attempt worked technically but did not match the requested art style.
+
+### Previous handoff milestone
 
 The Marina Bay **small-area prototype is ready for review**. Generated geometry/textures are included in the repository, so a new machine can run `pnpm install --frozen-lockfile && pnpm dev` without a Maps key or another capture. Production build and 11 unit tests pass; real-browser checks covered rendering, walking/driving, reset, mobile width, and zero live Static API calls. No public deployment or submission video has been produced.
 

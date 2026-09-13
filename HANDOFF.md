@@ -2,7 +2,29 @@
 
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
-## Product context
+## Latest steering — read first
+
+The user clarified: **3D game rendering of Marina Bay in Joyride's low-poly art style**, not photographs or depth-warped imagery. The active default is now `src/components/MarinaGame.tsx`, using authored solid geometry in `src/game/marina-scene.ts`. Saved photos informed waterfront details, but the map is compressed and authored, **not automatically reconstructed or surveyed**.
+
+**Confirmed scope:** eventually apply this location-specific walkable/drivable 3D treatment to **all locations**, including Tampines, Toa Payoh and Queenstown. **Marina Bay is the only current implementation focus.** Establish and validate the approach there before expanding; existing generic Joyride presets do not count as completed location maps.
+
+Current game: modeled Sands/SkyPark, lotus-like museum, Helix crossing, city skyline, palm promenade, bay road loop, visible mint car, walk/run/drive, obstacle collisions, five collectible stamps, minimap and reset. `src/game/marina-collision.ts` provides subdivided AABB collision and wall sliding. The historical `MarinaWorld.tsx` depth viewer is unmounted; assets/pipeline remain for reference. Do not restore it as the default.
+
+Validation: production build and **14 tests pass**. Local browser smoke checks passed rendering, walk/drive movement, reset, mobile width, no uncaught errors and zero live Static requests; walk/drive screenshots inspected. Full five-stamp completion, full road-lap verification, actual-phone performance and portable end-to-end tests remain open. A non-blocking Three.js chunk-size warning remains.
+
+Controls: click canvas; WASD walks, drag looks, Shift runs. Drive gives a chase camera and visible car; W/S throttle/reverse, A/D steer, Space brakes. Switching modes preserves location. Reset clears stamps and distance. Movement is flat-ground arcade handling, with water/building obstacles but no gravity, slopes, suspension or camera collision. Distances are game-scale estimates.
+
+No new API or image-generation calls were made for this pass; ledger stays **13 attempts (8 images)**. No key, capture, model inference or saved photo asset is needed to play the new game. Keep pnpm 11.22.0 and strict 14-day cooldown. Never reset the capture ledger or print/commit environment secrets.
+
+Next: get visual feedback; refine landmark proportions/reference fidelity; validate all stamps and the road loop; improve camera/vehicle/accessibility; then expand other locations only after Marina is accepted. See the top of `PLAN.md`. No public deployment or video yet.
+
+Portable setup remains `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm build`, `pnpm marina:usage`, `pnpm dev`, using Node 22.12+ and pnpm 11.22.0. If absent, bootstrap with `npx --yes pnpm@11.22.0`. Never copy the original machine's absolute cache paths or process IDs. The repository's initial published milestone is `a8a6eba`; inspect checkout status for subsequent work.
+
+## Historical handoff below
+
+The remaining sections preserve prior implementation history and detailed setup. Statements describing the depth viewer as the current/default scene, no collisions, 11 tests, or improving depth as the highest priority are historical and superseded by the section above. Setup, secret handling and budget constraints still apply.
+
+## Product context (previous depth milestone)
 
 Two-person Singapore hackathon prototype, built with Astra as an engineering collaborator. The user wants realistic, playable experiences in everyday Singapore as well as tourist destinations. Driving and an NS-inspired FPS were the original ideas. A deployed URL and 90-second video are the final event deliverables; neither has been produced yet.
 

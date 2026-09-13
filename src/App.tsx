@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, CarFront, Check, ChevronRight, Crosshair, Flag, Globe2, MapPin, Pause, Play, RotateCcw, X } from 'lucide-react';
 import World, { type GameStats } from './game/World';
 import StreetView from './components/StreetView';
-import MarinaWorld from './components/MarinaWorld';
+import MarinaGame from './components/MarinaGame';
 import { locations, type Location, type Mode } from './data/locations';
 
 const emptyStats: GameStats = { speed: 0, distance: 0, score: 0, elapsed: 0 };
@@ -59,7 +59,7 @@ export default function App() {
 
           <div className="section-label mode-label"><span>02 / MAKE IT YOURS</span></div>
           <div className="mode-list">
-            {location.id === 'marina-bay' && <button className={`mode-card ${marinaOpen ? 'selected' : ''}`} aria-pressed={marinaOpen} onClick={() => { reset(); setMarinaOpen(true); }}><Globe2 size={20} /><span><strong>Marina 3D</strong><small>Walk / drive the reconstruction</small></span><span className="radio-dot" /></button>}
+            {location.id === 'marina-bay' && <button className={`mode-card ${marinaOpen ? 'selected' : ''}`} aria-pressed={marinaOpen} onClick={() => { reset(); setMarinaOpen(true); }}><Globe2 size={20} /><span><strong>Marina 3D</strong><small>Explore the low-poly bay</small></span><span className="radio-dot" /></button>}
             {modes.map(({ id, name, label, icon: Icon }) => <button key={id} className={`mode-card ${!marinaOpen && mode === id ? 'selected' : ''}`} onClick={() => chooseMode(id)} aria-pressed={!marinaOpen && mode === id}>
               <Icon size={20} strokeWidth={1.6} /><span><strong>{name}</strong><small>{label}</small></span><span className="radio-dot" />
             </button>)}
@@ -68,7 +68,7 @@ export default function App() {
         </aside>
 
         <div className="experience">
-          {marinaOpen ? <MarinaWorld /> : <>
+          {marinaOpen ? <MarinaGame /> : <>
           <div className={`viewport ${mode === 'training' && running ? 'training-active' : ''}`}>
             {mode === 'explore' ? <StreetView key={location.id} location={location} /> : <>
               <World key={epoch} location={location} mode={mode} running={running} controls={controls} onStats={onStats} onFinish={onFinish} />
@@ -112,7 +112,7 @@ export default function App() {
 
     {dialog && <div className="modal-backdrop" onClick={() => setDialog(null)}><dialog open aria-labelledby="dialog-title" onCancel={() => setDialog(null)} onClick={event => event.stopPropagation()}><button autoFocus className="icon-button modal-close" aria-label="Close dialog" onClick={() => setDialog(null)}><X size={20} /></button>
       <span className="eyebrow">BLOCKPLAY / SINGAPORE</span><h2 id="dialog-title">{dialog === 'about' ? 'The whole island deserves to be playable.' : dialog === 'privacy' ? 'Privacy' : 'Prototype terms'}</h2>
-      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through real imagery and playable 3D scenes.</p><p>Marina 3D uses depth estimated locally from four authorized Street View images captured in February 2012. Walk or drive inside a small exploration boundary. Geometry, scale, and ground elevation are approximate; this is not a complete district reconstruction.</p><p>The other game modes use original procedural geometry. Live Street View remains available separately. Astra assists engineering; the reconstruction build uses Depth Anything V2 locally, with no live model calls while you play.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Session progress stays in memory and resets when the page reloads.</p><p>Marina 3D loads saved assets from this host. Live Street View and Google Fonts connect your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Marina 3D has approximate image-derived depth, and the other game scenes have fictional layouts. Neither is a navigation tool. Target practice has no affiliation to the Singapore Armed Forces.</p><p>Marina 3D uses source imagery with permission confirmed by the project owner and retains source credits. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
+      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through playable 3D scenes.</p><p>Marina 3D is a low-poly game interpretation of Marina Bay: modeled landmarks, a palm-lined promenade, and a walkable and driveable bay loop. Saved waterfront photographs inform the details; geometry is authored, with compressed geography, not automatically reconstructed or surveyed.</p><p>Collect five orange stamps on foot or in the car. Live Street View remains available separately. Astra assists engineering; there are no live model or image API calls while playing Marina 3D.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Session progress stays in memory and resets when the page reloads.</p><p>Marina 3D builds its game geometry locally in your browser. Live Street View and Google Fonts connect your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Its game maps are stylized interpretations with approximate or fictional layouts, not navigation tools. Target practice has no affiliation to the Singapore Armed Forces.</p><p>The owner confirmed permission for the saved imagery used as reference and in the earlier depth experiment; its source credits are preserved with those assets. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
     </dialog></div>}
   </div>;
 }
