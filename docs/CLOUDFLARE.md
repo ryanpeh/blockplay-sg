@@ -1,5 +1,7 @@
 # Deploy to Cloudflare Workers
 
+Live deployment: **https://blockplay-sg.sunjc826.workers.dev** in the Sunjc826 account. `wrangler.jsonc` selects that account explicitly. This is a direct CLI deployment from the local checkout: no GitHub integration or repository administrator privileges are required. Ryan only needs to authorize repository access if you later enable the GitHub integration below. To deploy a separate copy in another account, change `account_id` and, if needed, `name` first.
+
 This deployment serves the Vite game and companion API together on HTTPS. It includes all three maps, FPS, open world, solo bots, loadouts, vehicles and bundled Encik recordings. Text/voice companions and the optional LLM strategist use a private Worker secret. Without that secret, gameplay still works and companion requests return a clear unavailable response.
 
 The Node LAN rendezvous server is not deployed: the cloud build offers Solo arena and disables Host/Join. Internet matchmaking would need shared room storage and STUN/TURN support; uploading the frontend does not provide either. `pnpm lan` continues to work locally.

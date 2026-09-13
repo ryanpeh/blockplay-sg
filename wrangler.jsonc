@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "blockplay-sg",
+  "account_id": "4ee7722d6f7a511f54b62371f6a3c6ab",
   "main": "cloudflare/worker.js",
   "compatibility_date": "2026-08-28",
   "compatibility_flags": ["nodejs_compat"],
