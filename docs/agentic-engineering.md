@@ -98,4 +98,4 @@ This is evidence of implementation, correction, and regression protection. The n
 - [Voice tests](../src/lib/live-voice.test.ts): transcript/delegation and cleanup behavior with test doubles, not human audio evaluation.
 - [Native import test](../server/native-import.test.ts): the actual Node loader can load the server dependency graph.
 
-The [verification record](evidence/verification.md) contains the commands and results: 66 focused tests passed: 19 world/camera/capture tests and 47 companion/server tests. This documentation pass did not rerun the complete test suite, production build, live model calls, or public deployment.
+The [verification record](evidence/verification.md) contains the commands and results: 66 focused tests passed: 19 world/camera/capture tests and 47 companion/server tests. A subsequent verification rerun passed the complete 200-test suite, TypeScript compilation and the Sites production build. Live model calls and public deployment were not reverified.

@@ -4,7 +4,19 @@ Reviewed 13 September 2026, against application commit `ecf5469721b2f9adcc012407
 
 The team reports that the deadline was extended to end of day on 13 September. This review does not establish the exact submitted revision.
 
-## Current checks
+## Latest verification rerun
+
+After the README workflow clarification and visual-iteration context were added, checks were rerun on 13 September 2026 at approximately 19:49 SGT, with application code unchanged from `ecf5469` and documentation based on `694880b` plus working-tree edits:
+
+- `node node_modules/vitest/vitest.mjs run`: **200 tests passed across 41 files**.
+- `node node_modules/typescript/bin/tsc -b` and `node node_modules/vite/bin/vite.js build --mode sites`: passed; the existing warning about chunks larger than 500 kB remains.
+- `node scripts/reference-inventory.mjs`: all **285 cached images** checked, with no invalid entries.
+- README and the five evidence documents: **77 local file links resolve**; link fragments and external URLs were not checked.
+- All six reference/render image hashes match the manifest; capture helper syntax and `git diff --check` pass.
+
+This rerun made no live model requests or new image captures and did not verify deployment or browser gameplay.
+
+## Earlier focused checks
 
 | Command | Outcome | Scope |
 | --- | --- | --- |

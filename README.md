@@ -25,7 +25,7 @@ Our workflow starts with a place and its Google Maps Street View imagery. We sel
 
 We connect each scene to reusable walking and driving controls, collision rules, collectible objectives and minimaps. Comparing rendered views with the references, running automated checks and playtesting lets us refine both resemblance and playability. See the [build story](docs/BUILD-STORY.md) and [three reference-to-game comparisons](docs/visual-understanding.md).
 
-The same workflow could support many more neighbourhoods and cities: gather suitable references for a new location, use Astra to help author its scene, and reuse the existing gameplay systems. Today, each location still needs reference review, layout decisions and validation. Expanding this into reliable generation for arbitrary places would require further automation of reference selection, scene layout and quality checks.
+The same agentic workflow could support many more neighbourhoods and cities. Reference review, layout decisions, scene implementation and validation are already part of the Astra-assisted development process: region agents build and refine worlds in parallel, while shared browser capture and visual QA are coordinated in sequence. New locations can follow this process and reuse the existing gameplay systems, with human direction and review. We have demonstrated it across three Singapore regions; reliable generation for arbitrary places has not yet been validated.
 
 ## Run locally
 

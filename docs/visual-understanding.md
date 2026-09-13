@@ -6,6 +6,12 @@ These comparisons show how specific visible features in Google Maps Street View 
 
 The right-hand images are new renders of the **current game scene builders**, using fixed documentation cameras to expose the relevant details. They are not matched/calibrated camera reconstructions or screenshots of a player's movement. [Capture settings](evidence/render-settings.json) and the [reproduction script](evidence/capture-project-evidence.mjs) make the framing explicit.
 
+## Iteration and hackathon scope
+
+The workflow supports progressive refinement: additional useful reference images can reveal details that earlier views obscured, and successive Astra-assisted modeling, comparison and correction passes can improve visual fidelity. The museum's support refinements below provide a concrete example. Improvement depends on reference quality and review, rather than image count alone.
+
+The team reports that **Marina Bay received the most iterations within the hackathon's limited time**. Queenstown and Raffles Place received fewer refinement passes, which helps explain the uneven detail across the three regions. The [development history](../PLAN.md) records successive regional expansion and reference-quality passes. These comparisons show the results reached within that time budget; further reviewed references and targeted iterations offer a path to improve the remaining mismatches, without guaranteeing exact reconstruction.
+
 ## Marina Bay — museum shell and supports
 
 | Google Street View reference | Current Marina scene geometry |
