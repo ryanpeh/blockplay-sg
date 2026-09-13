@@ -4,6 +4,12 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 
 # Blockplay project plan
 
+## Completed: trackpad aim toggle (2026-09-13)
+
+- Q toggles human aim; key repeat is ignored. RMB hold remains available. Shared HUD/control guides document both.
+- The human aim toggle is ignored during AI play. Existing direct AI aim commands are unchanged.
+- Build and 14 focused tests pass. Browser regression verifies scoped left-click firing after releasing Q, aim reset transitions, and all eight AI targets after attempted human toggles.
+
 ## Completed: Encik callouts and comms history (2026-09-13)
 
 - 48 local Encik lines; human and AI action events share cooldowns, priority, subtitles and optional installed-voice speech.

@@ -16,7 +16,7 @@ export default function FpsWeaponHud({ hud, weapon, canFight }: { hud: FpsHud; w
     <div className={`fps-ammo ${hud.magazine === 0 ? 'is-empty' : ''}`}>
       <span>{weapon.name} <small>{hud.aiming ? 'ADS' : 'AUTO'}</small></span>
       <strong>{hud.magazine.toString().padStart(2, '0')}<small>/ {hud.reserve}</small></strong>
-      <p>{reloading ? `${hud.reloadEmpty ? 'EMPTY' : 'TACTICAL'} RELOAD · ${stage}` : hud.magazine === 0 ? 'EMPTY · PRESS R' : 'R RELOAD · HOLD RMB TO AIM'}</p>
+      <p>{reloading ? `${hud.reloadEmpty ? 'EMPTY' : 'TACTICAL'} RELOAD · ${stage}` : hud.magazine === 0 ? 'EMPTY · PRESS R' : 'R RELOAD · Q TOGGLE AIM · RMB HOLD'}</p>
       {reloading && <div className="fps-reload-track" role="progressbar" aria-label="Reload progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round((1 - hud.reloading) * 100)}><i style={{ width: `${(1 - hud.reloading) * 100}%` }} /></div>}
     </div>
   </div>;

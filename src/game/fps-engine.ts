@@ -366,12 +366,17 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (key === 'fire') trigger = held && !vehicles.active;
     else if (held) keys.add(key); else keys.delete(key);
   }
-  const keyboardKeys = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift', 'c', ' ', 'r', '1', '2', 'e', 't', 'f', 'control', 'escape'];
+  function toggleAim() {
+    if (pilotEnabled || hud.phase !== 'playing' || vehicles.active || hud.arenaSelf?.alive === false || loadout[hud.weapon].reloadRemaining > 0) return;
+    touchAim = !touchAim; canvas.focus({ preventScroll: true }); publish();
+  }
+  const keyboardKeys = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'shift', 'c', ' ', 'r', 'q', '1', '2', 'e', 't', 'f', 'control', 'escape'];
   const keydown = (event: KeyboardEvent) => {
     const key = event.key.toLowerCase();
     if (key === 'f' && !event.repeat) { event.preventDefault(); options.onFullscreen?.(); return; }
     if (hud.phase !== 'playing' || !keyboardKeys.includes(key)) return;
     event.preventDefault();
+    if (key === 'q') { if (!event.repeat) toggleAim(); return; }
     if (key === 'escape') pause();
     else if (pilotEnabled) { pause(); hud.message = 'AI stopped. Click Resume to take control.'; publish(); }
     else if (key === 'e') { if (!event.repeat) expedition ? interactLoot() : interactVehicle(); }
@@ -809,7 +814,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     start, startPilot, setPilotStrategy, takeControl, pause, reset, reload, switchWeapon, jump, setInput, interactVehicle, interactLoot, travelZone, configureDebug, refillHealth,
     setPilotDestination(destination?: WorldZoneId) { pilotDestination = destination; },
     getPilotObservation() { return lastPilotObservation ? structuredClone(lastPilotObservation) : null; },
-    toggleAim() { if (hud.phase === 'playing' && !vehicles.active) { touchAim = !touchAim; canvas.focus({ preventScroll: true }); publish(); } },
+    toggleAim,
     toggleEncikVoice() { hud.encikVoice = !hud.encikVoice; if (!hud.encikVoice) stopVoice(); publish(); },
     toggleSound() { hud.muted = !hud.muted; if (hud.muted) stopVoice(); if (hud.phase === 'playing') { canvas.focus({ preventScroll: true }); if (!hud.muted) initAudio(); } publish(); },
     dispose() {
