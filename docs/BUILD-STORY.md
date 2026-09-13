@@ -17,7 +17,7 @@ The [independent documentation review](evidence/review-notes.md) records the gap
 
 ## Experience and availability
 
-The [public demo URL listed by the project](https://blockplay-sg.qwertz0808.chatgpt.site) is **game-only**, according to the [current project guide](PROJECT-GUIDE.md). AI companions and live Street View are not enabled there. The link could not be independently opened by the web verification tool during this documentation pass; public availability and browser behavior are not verified here.
+The [public demo URL listed by the project](https://blockplaysg.fun/) is **game-only**, according to the [current project guide](PROJECT-GUIDE.md). AI companions and live Street View are not enabled there. The link could not be independently opened by the web verification tool during this documentation pass; public availability and browser behavior are not verified here.
 
 For the companion example, follow [local setup](PROJECT-GUIDE.md#optional-ai-companions), open Marina 3D, request “take me to the museum,” then “give me something closer.” Observe the objective and minimap. Collect a stamp and change the objective again: existing progress should remain. Runtime requests require the configured backend and credentials; the focused unit checks below require neither.
 

@@ -1,6 +1,6 @@
 # blockplaySG project guide
 
-[Back to README](../README.md) · [Play the public demo](https://blockplay-sg.qwertz0808.chatgpt.site)
+[Back to README](../README.md) · [Play the public demo](https://blockplaysg.fun/)
 
 ## Game modes and controls
 
@@ -161,7 +161,7 @@ LAN transport/multiplayer and checkpoint-travel checks have separate prerequisit
 
 ### Current GPT Sites demo
 
-The [public deployment](https://blockplay-sg.qwertz0808.chatgpt.site) contains solo gameplay only.
+The [public deployment](https://blockplaysg.fun/) contains solo gameplay only.
 
 `pnpm build:sites` emits `dist`; `.openai/hosting.json` identifies the existing Site and its static output. The build disables AI companions, host/join and Street View, and deliberately excludes the local Google browser key. Do not include `.env` files or server secrets in an archive.
 

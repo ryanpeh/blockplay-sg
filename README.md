@@ -4,9 +4,9 @@
 
 Explore familiar Singapore neighborhoods as stylized 3D game worlds, created using **Google Maps Street View imagery as visual references** and **GPT-6 Astra to help build and refine the worlds and game code**.
 
-**[Play the demo](https://blockplay-sg.qwertz0808.chatgpt.site)**
+**[Play the demo](https://blockplaysg.fun/)**
 
-[![Blockplay SG: panoramic in-game view of Marina Bay, its waterfront, three landmark towers and lotus-shaped museum](docs/images/blockplay-sg-marina.png)](https://blockplay-sg.qwertz0808.chatgpt.site)
+[![Blockplay SG: panoramic in-game view of Marina Bay, its waterfront, three landmark towers and lotus-shaped museum](docs/images/blockplay-sg-marina.png)](https://blockplaysg.fun/)
 
 [How we built it: engineering and visual understanding](docs/BUILD-STORY.md) · [Reference-to-game comparisons](docs/visual-understanding.md)
 

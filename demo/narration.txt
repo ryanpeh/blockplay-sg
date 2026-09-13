@@ -1,0 +1,13 @@
+0–9s: What if the places we pass every day became worlds we could play in? Meet Blockplay S G. Singapore, playable.
+
+9–20s: Walk, drive, and discover familiar places across Marina Bay, Queenstown, and Raffles Place. Collect stamps as you explore each neighbourhood.
+
+20–34s: Want somewhere closer? Ask your companion, and your destination updates on the map. Luna interprets the request, while the game checks and applies the change.
+
+34–45s: In Queenstown, everyday spaces become places to explore and learn. Ask about a nearby stop, and discover local stories with links to their sources.
+
+45–62s: Our worlds start with Google Maps Street View references. Here, Astra helped refine Raffles Place using new images: two window bands, green trim, and a sloping awning. Each reviewed iteration can bring more detail into the playable world.
+
+62–80s: As a team of two, we used Astra to coordinate region agents, build the worlds, fix gameplay issues, and check the results. Agents worked in parallel, with shared browser checks coordinated in sequence. The optional voice companion uses G P T Live One.
+
+80–90s: This workflow can bring more neighbourhoods and cities into play. Your neighbourhood. Your playground. Blockplay S G. Try it at the link on screen.
