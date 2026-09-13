@@ -1,6 +1,6 @@
 # Adventure and educational companions
 
-Security hardening: see [companion abuse protections](docs/COMPANION-SECURITY.md) for trusted destination validation, prompt-override checks, request/voice quotas, emergency switches and remaining public-deployment requirements. Older verification notes below describe earlier versions.
+Security hardening: see [companion abuse protections](COMPANION-SECURITY.md) for trusted destination validation, prompt-override checks, request/voice quotas, emergency switches and remaining public-deployment requirements. Older verification notes below describe earlier versions.
 
 Luna migration check: the initial live browser failure was traced to a stale Vite process returning HTTP 404 for `/api/adventure/change`, while the backend returned HTTP 200. Restarting `pnpm dev` loaded the existing proxy configuration. Live Luna browser questions for museum/Queenstown and closer/museum/skip objective changes now pass. The client explains missing API routes explicitly. 109 unit tests and production build pass. GPT-Live transport remains unchanged; physical microphone quality still needs human checking.
 

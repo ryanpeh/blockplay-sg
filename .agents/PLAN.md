@@ -1,3 +1,7 @@
+## Housekeeping: agent notes and capture tooling
+
+Moved handoff and plan into `.agents/`; Marina expansion history and companion documentation into `docs/MARINA-EXPANSION.md` and `docs/ADVENTURE.md`; the local capture page into `scripts/pages/capture-streetview.html`. Updated documentation links and both capture callers. Verified 135 local Markdown file links, capture-script syntax, TypeScript compilation, Sites production build and the relocated HTML served by local Vite. Existing bundle-size warning remains. No new Google requests or browser captures; gameplay tests were not rerun for this relocation.
+
 ## Completed capture and implementation: documented Raffles visual refinement (13 September evening)
 
 User authorized 25 additional Raffles Place Static API image attempts after documentation commit `19ba0c7`. Use cached panorama metadata, preserve ledger history, and record observed image features, a targeted scene change, before/after renders and validation. This adds 25 to the aggregate and Raffles allowances only; failures count and no automatic retries are authorized. All 25 images were captured and directly reviewed (23 accepted, two limited), with zero failures and zero metadata requests. The additional allowance is now exhausted; total Static attempts are 130/1000. One quay facade now has two white window bands, green trim and vents, a sloped scalloped red canopy and low front parapet. See `docs/raffles-refinement.md` for observations, source hashes, before/after renders and validation. Earlier exhausted-allowance statements below describe previous batches.
@@ -9,14 +13,14 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 - Direct FPS entry now exists on Marina Bay, Queenstown and Raffles Place, with eight targets and regional vehicles/minimaps. Shared scene adapters, range configuration and physics retain Marina defaults.
 - FPS mode survives map selection; range progress resets, while permanent loadout/XP persist. Shop/deploy returns to the selected region.
 - Rebased onto upstream `e2f2de1`; 236 tests and build pass. Browser clears all 24 targets using captured mouse input and checks map/armory return, vehicles, fullscreen and mobile on both new maps.
-- Queenstown AI pilot stalled at 5/8 in exploratory testing; its aiming/reacquisition remains follow-up work. See [FPS districts](docs/FPS-DISTRICTS.md).
+- Queenstown AI pilot stalled at 5/8 in exploratory testing; its aiming/reacquisition remains follow-up work. See [FPS districts](../docs/FPS-DISTRICTS.md).
 
 ## Completed: recorded Encik voice pack (2026-09-13)
 
 - User chose round 4 candidate 3 after four small auditions, then approved all 48 callouts. Bundled MP3s preserve the subtitle script and need no runtime TTS key.
 - Shared FPS playback supports human/AI events, priority interruption, mute/pause/reset cancellation and an eight-clip decoded cache. Comms/captions remain when audio is off.
 - All 48 files decoded and checked; 220 app tests, nine generation checks, production build and isolated browser playback/mute/pause verification pass.
-- Batch used 776 credits; account total 1,266/40,000. See [voice pack](docs/ENCIK-VOICE.md) for review, generation and recovery.
+- Batch used 776 credits; account total 1,266/40,000. See [voice pack](../docs/ENCIK-VOICE.md) for review, generation and recovery.
 
 ## Completed: trackpad aim toggle (2026-09-13)
 
@@ -58,7 +62,7 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 - Rebased LAN multiplayer, role bots, loot, connected districts and pointer fixes onto `dbeb858`, preserving upstream's companion, locator and simplified navigation. Armory remains accessible from the FPS menu.
 - Connected the Singapore locator to actual expedition arrivals. Map/card selections preview graph-derived routes and destination threat/loot; they do not unload the current district. New expeditions start in the selected district.
 - Kept checkpoint proximity validation and one-scene rendering. Health/armor/ammo/loadout and collected supplies still carry across travel.
-- Compared regional Walk/Drive and FPS features in [docs/FEATURE-PARITY.md](docs/FEATURE-PARITY.md). Local minimaps exist in the regional views only; the new locator is district-level navigation. The following pass added a shared FPS minimap, described above.
+- Compared regional Walk/Drive and FPS features in [docs/FEATURE-PARITY.md](../docs/FEATURE-PARITY.md). Local minimaps exist in the regional views only; the new locator is district-level navigation. The following pass added a shared FPS minimap, described above.
 - Verification: 163 tests and production build pass. Browser expedition checks cover route selection, keyboard map access, selected-district starts, session preservation, capture/fullscreen/mobile and cleanup; the engine travel check passes all four links with loot/vitals persistence. Upstream three-region walk/drive/map/mobile checks and two-browser LAN gameplay also pass. LAN smoke observes death/respawn DOM transitions so slow VM polling cannot miss them, and waits for Chrome exit before removing test profiles.
 
 ## Completed: integrated rebase and immersive screen mode
@@ -79,7 +83,7 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 - [x] Fix desktop pointer escape: start only on successful capture, Escape pauses/releases, failed capture leaves play stopped.
 - [x] 47 tests and production build; isolated Chrome shop/FPS flows, saves, armor, rewards, pointer capture, mobile layout and cleanup checked. Zero map requests; no added dependencies.
 
-Details, limitations and reference links: [docs/ARMORY.md](docs/ARMORY.md). Demo currency is local only; real payments and multiplayer authority are outside this implementation.
+Details, limitations and reference links: [docs/ARMORY.md](../docs/ARMORY.md). Demo currency is local only; real payments and multiplayer authority are outside this implementation.
 
 
 Last updated: 2026-09-13 (Singapore time).
@@ -98,7 +102,7 @@ Objective visibility follow-up complete: larger white-rimmed purple minimap diam
 
 Implemented Marina-only typed/voice objective changes using existing collectible IDs and collision/arrival logic. A default Waterfront objective, named/closer/skip requests, purple minimap highlight, compact companion UI and collected-stamp preservation are in place. Rendering and completion remain local. Astra proposes structured IDs through a private server endpoint; GPT-Live-1 uses its documented WebRTC/client-delegation session API, not a substitute voice model. Request/session/revision guards reject old responses after newer requests, reset, collection or region switching. Closer uses straight-line game-coordinate distance, not route finding.
 
-Setup, module boundaries, test commands and deployment safeguards: `ADVENTURE.md`. No new packages; pnpm 11/two-week release age preserved. The user supplied `OPENAI_API_KEY` in private `.env`; both model access checks succeeded, and live Astra typed closer/museum/skip browser checks changed the HUD/minimap. Failure/race/denied-microphone checks passed with mocked transport. Final code: **72 tests and production build pass**. Live synthetic speech completed GPT-Live transcription, Astra selection, applied City skyline objective and GPT-Live spoken confirmation with non-silent output after playback approval. A real microphone/human listening-quality check is still needed. Initial synthetic tests stopped their audio clock; padding the input fixed the harness, with no voice-model substitution. No Google captures or allowance changes.
+Setup, module boundaries, test commands and deployment safeguards: `docs/ADVENTURE.md`. No new packages; pnpm 11/two-week release age preserved. The user supplied `OPENAI_API_KEY` in private `.env`; both model access checks succeeded, and live Astra typed closer/museum/skip browser checks changed the HUD/minimap. Failure/race/denied-microphone checks passed with mocked transport. Final code: **72 tests and production build pass**. Live synthetic speech completed GPT-Live transcription, Astra selection, applied City skyline objective and GPT-Live spoken confirmation with non-silent output after playback approval. A real microphone/human listening-quality check is still needed. Initial synthetic tests stopped their audio clock; padding the input fixed the harness, with no voice-model substitution. No Google captures or allowance changes.
 
 The adventure feature also passed the final companion browser suite and existing three-region walk/drive/camera/mobile regression suite, with no uncaught errors or Google Maps requests.
 
@@ -150,7 +154,7 @@ The user requested parallel subagents for both regions, then authorized further 
 
 **Current Static allowance: 50 further Marina Bay images**, renewed by the user after this expansion. All 23 image attempts and 7 metadata attempts remain recorded; the conservative total remains 30/1000. The ledger keeps baseline 8 and raises total additional authorization to 65 (15 already used + 50 remaining), without resetting history. Browser screenshots do not consume this allowance. Older allowance figures below are historical; README intentionally omits limits.
 
-- Marina bounds expanded from 396 × 316 to **556 × 466** game units (2.07× area), with inner/outer road loops, three connectors, four added districts and nine stamps. Minimap projects from current bounds and shared road paths; stamp HUD is dynamic. See `MARINA-EXPANSION.md` for scoped detail/reference notes.
+- Marina bounds expanded from 396 × 316 to **556 × 466** game units (2.07× area), with inner/outer road loops, three connectors, four added districts and nine stamps. Minimap projects from current bounds and shared road paths; stamp HUD is dynamic. See `docs/MARINA-EXPANSION.md` for scoped detail/reference notes.
 - Queenstown has a **distinct 368 × 288-unit** authored estate, open void decks, covered paths, elevated station/train, shops, court and library-inspired garden; five stamps. Region selection opens its own component, rather than a palette variant. See `reconstruction/queenstown/REGION.md`.
 - Captured **8 new Marina + 4 Queenstown browser screenshots** across 4 + 2 selected positions. They are cached with source identity, camera settings, attribution/date, checksums, galleries and run reports. No Static API requests. Ledger events identify their region. Two indoor Marina frames were rejected; one Queenstown frame is occluded/limited.
 - Browser smoke script included as source (`scripts/smoke-regions.mjs`, `pnpm test:browser`): both regions render, walk/drive/reset, switch and fit a 390px viewport with zero Maps/Street View requests or uncaught errors. Unit coverage includes region selection, minimap projection, both road loops/connectors, bounds and reachability of every stamp. Final verification: **29 tests passed, production build passed, browser checks passed**; nonblocking Three.js chunk-size warning remains. Credential scan and whitespace checks passed. Marina aerial/greenway and Queenstown station renders were visually reviewed.

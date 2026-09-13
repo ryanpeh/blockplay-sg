@@ -23,7 +23,7 @@ For the companion example, follow [local setup](PROJECT-GUIDE.md#optional-ai-com
 
 ## Roles and scope
 
-- **Astra:** the team's documented development collaborator for interpreting visual references, writing environment/game code, and iterative verification. See [README](../README.md), [development plan](../PLAN.md), and the linked history in the engineering example. These records support the workflow description; this repository is not a complete transcript of model activity.
+- **Astra:** the team's documented development collaborator for interpreting visual references, writing environment/game code, and iterative verification. See [README](../README.md), [development plan](../.agents/PLAN.md), and the linked history in the engineering example. These records support the workflow description; this repository is not a complete transcript of model activity.
 - **Luna:** the current companion request interpreter, configured as `gpt-5.6-luna` in [the server](../server/adventure-api.ts). Educational output is assembled from curated, source-linked topics.
 - **GPT-Live-1:** the optional speech interface delegates requests to the same application path. Automated voice lifecycle tests are not evidence of physical-microphone quality or publicly deployed voice access.
 - **Game code:** owns movement, collision, collection, destination validation, and state changes. There is no evidenced Agents API integration in this feature.

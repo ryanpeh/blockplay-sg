@@ -4,7 +4,7 @@
 
 ## Astra-assisted development workflow
 
-The strongest category example is the development process: the team used Astra to coordinate region work, interpret references, integrate shared game systems, diagnose failures, and verify corrections. [PLAN.md](../PLAN.md#expanded-scope-larger-maps-and-large-reference-batches-for-all-three-regions) records three modeling agents, one per region, with a camera-QA agent reassigned after its checks. Modeling proceeded in parallel; browser capture, reference selection, and visual QA used a serialized queue because they shared Chrome's foreground state.
+The strongest category example is the development process: the team used Astra to coordinate region work, interpret references, integrate shared game systems, diagnose failures, and verify corrections. [PLAN.md](../.agents/PLAN.md#expanded-scope-larger-maps-and-large-reference-batches-for-all-three-regions) records three modeling agents, one per region, with a camera-QA agent reassigned after its checks. Modeling proceeded in parallel; browser capture, reference selection, and visual QA used a serialized queue because they shared Chrome's foreground state.
 
 ```mermaid
 flowchart LR
@@ -22,7 +22,7 @@ flowchart LR
 
 **Before:** dragging the driving camera changed the yaw used to move the car, so looking around could steer it. **After:** camera orbit and vehicle heading are separate; vertical orbit is clamped, stationary views persist, and movement recenters the view after an idle delay. Commit `ef1ddfb` records the integrated correction. [drive-camera.ts](../src/game/drive-camera.ts) contains the shared implementation; [drive-camera.test.ts](../src/game/drive-camera.test.ts) protects orbit, clamping and damping behavior.
 
-A second failure affected the visual inputs: browser metadata could update while background panorama pixels remained stale. The [development record](../PLAN.md#earlier-milestone-raffles-place-richer-queenstown-and-independent-car-camera) describes foreground/POV checks, overlay rejection, animation-frame warm-up and duplicate detection. [Capture readiness tests](../src/game/capture-readiness.test.ts) cover readiness conditions. Manual visual acceptance remains necessary because changing UI pixels can hide a stale panorama from simple duplicate checks.
+A second failure affected the visual inputs: browser metadata could update while background panorama pixels remained stale. The [development record](../.agents/PLAN.md#earlier-milestone-raffles-place-richer-queenstown-and-independent-car-camera) describes foreground/POV checks, overlay rejection, animation-frame warm-up and duplicate detection. [Capture readiness tests](../src/game/capture-readiness.test.ts) cover readiness conditions. Manual visual acceptance remains necessary because changing UI pixels can hide a stale panorama from simple duplicate checks.
 
 This illustrates why the workflow used both parallel agents and serialized shared resources. The records describe team/model participation; the code and Git diffs independently establish the implementation. They do not recover every agent prompt or prove authorship of each line.
 
@@ -76,7 +76,7 @@ flowchart LR
 The repository establishes this sequence:
 
 1. Commit `5a30c9f` added the adventure companion and educational guide.
-2. Commit `cf3d02f` changed companion text interpretation to Luna. Older passages in [ADVENTURE.md](../ADVENTURE.md) still describe the initial Astra backend; the current server configuration is authoritative.
+2. Commit `cf3d02f` changed companion text interpretation to Luna. Older passages in [ADVENTURE.md](ADVENTURE.md) still describe the initial Astra backend; the current server configuration is authoritative.
 3. Commit `ca47a25` corrected the import of `random-id` in `adventure.ts` to include `.ts`, and added [native-import.test.ts](../server/native-import.test.ts). This addresses a real distinction: Vite/Vitest resolution can accept imports that native Node ESM cannot load.
 4. Commit `ecf5469` added companion input safeguards and regression cases for rejected/throttled requests. See [security design](COMPANION-SECURITY.md).
 

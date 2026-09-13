@@ -47,6 +47,6 @@ Documentation validation: local links in the build-story, engineering, visual-un
 
 ## Historical reports, not rerun here
 
-[ADVENTURE.md](../../ADVENTURE.md) records earlier live typed requests, synthetic-audio GPT-Live tests, browser checks, and builds. Those statements are historical reports with their own limitations. In particular, a synthetic audio test is not a physical-microphone or human listening-quality test. Some early model references in that document predate the switch to Luna.
+[ADVENTURE.md](../ADVENTURE.md) records earlier live typed requests, synthetic-audio GPT-Live tests, browser checks, and builds. Those statements are historical reports with their own limitations. In particular, a synthetic audio test is not a physical-microphone or human listening-quality test. Some early model references in that document predate the switch to Luna.
 
 The earlier demo recording in this workspace captured real local text responses, but it is not evidence that the latest server revision is deployed. No demo footage, narration, or script was changed for this documentation task.

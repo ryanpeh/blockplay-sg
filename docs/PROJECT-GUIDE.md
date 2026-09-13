@@ -82,7 +82,7 @@ The key needs access to **gpt-5.6-luna** for request interpretation and **gpt-li
 - **All three regional worlds:** educational questions select from 18 curated, source-linked learning cards. Queenstown and Raffles Place guides are education-only.
 - **Voice:** requires microphone permission and HTTPS or localhost. Plain HTTP at another computer’s LAN address is insufficient. Audio failure leaves text usable.
 
-“Closer” uses deterministic straight-line distance, not navigable route finding. Local game logic validates destination IDs, checks arrival and rejects stale responses after resets or region changes. See [companion architecture and tests](../ADVENTURE.md).
+“Closer” uses deterministic straight-line distance, not navigable route finding. Local game logic validates destination IDs, checks arrival and rejects stale responses after resets or region changes. See [companion architecture and tests](ADVENTURE.md).
 
 ### Optional LAN multiplayer
 
@@ -128,7 +128,7 @@ Remove `--dry-run` only when intentionally fetching missing references. Complete
 
 Run captures serially and keep the capture tab foregrounded. Do not run browser smoke checks during capture: metadata can change before pixels repaint. Successful capture still needs visual review.
 
-See [capture history](../reconstruction/README.md) and the [Marina workflow](../reconstruction/marina-bay/references/WORKFLOW.md). Static authorization and usage limits belong in [PLAN.md](../PLAN.md) and the usage ledger.
+See [capture history](../reconstruction/README.md) and the [Marina workflow](../reconstruction/marina-bay/references/WORKFLOW.md). Static authorization and usage limits belong in [PLAN.md](../.agents/PLAN.md) and the usage ledger.
 
 ## Testing
 
@@ -191,4 +191,4 @@ To serve companions and LAN from one origin, route `/api/adventure/*` to the com
 
 Stamps, conversations, expedition loot and arena scores are session-only. Armory credits, XP, ownership and equipped loadouts persist in browser local storage. There are no accounts, cloud saves or persistent online leaderboards.
 
-See [PLAN.md](../PLAN.md) for experiments and future work, and [HANDOFF.md](../HANDOFF.md) for continuing on another computer.
+See [PLAN.md](../.agents/PLAN.md) for experiments and future work, and [HANDOFF.md](../.agents/HANDOFF.md) for continuing on another computer.

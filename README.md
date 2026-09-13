@@ -50,6 +50,6 @@ Built with React, TypeScript, Vite and Three.js.
 ## Documentation
 
 - [Project guide](docs/PROJECT-GUIDE.md) — controls, optional services, testing and deployment.
-- [Adventure companions](ADVENTURE.md) — objective changes, educational guides and voice.
+- [Adventure companions](docs/ADVENTURE.md) — objective changes, educational guides and voice.
 - [Open world](docs/WORLD-ZONES.md), [LAN arena](docs/LAN-ARENA.md) and [Armory](docs/ARMORY.md) — mode-specific details.
-- [Plan](PLAN.md) and [Handoff](HANDOFF.md) — progress, experiments and continuing development.
+- [Agent workspace notes](.agents/README.md) — planning, handoff, experiments and continuing development.

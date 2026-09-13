@@ -24,7 +24,7 @@ const send = (method, params = {}) => new Promise((resolve, reject) => { const n
 try {
   await send('Network.enable');
   await send('Network.setBlockedURLs', { urls: ['https://maps.googleapis.com/maps/api/streetview*'] });
-  await send('Page.navigate', { url: `${appOrigin}/capture-streetview.html` });
+  await send('Page.navigate', { url: `${appOrigin}/scripts/pages/capture-streetview.html` });
   await new Promise(resolve => setTimeout(resolve, 1500));
   await withBudget(async request => {
     for (const name of sources) {

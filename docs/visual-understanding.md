@@ -10,7 +10,7 @@ The right-hand images are new renders of the **current game scene builders**, us
 
 The workflow supports progressive refinement: additional useful reference images can reveal details that earlier views obscured, and successive Astra-assisted modeling, comparison and correction passes can improve visual fidelity. The museum's support refinements below provide a concrete example. Improvement depends on reference quality and review, rather than image count alone.
 
-The team reports that **Marina Bay received the most iterations within the hackathon's limited time**. Queenstown and Raffles Place received fewer refinement passes, which helps explain the uneven detail across the three regions. The [development history](../PLAN.md) records successive regional expansion and reference-quality passes. These comparisons show the results reached within that time budget; further reviewed references and targeted iterations offer a path to improve the remaining mismatches, without guaranteeing exact reconstruction.
+The team reports that **Marina Bay received the most iterations within the hackathon's limited time**. Queenstown and Raffles Place received fewer refinement passes, which helps explain the uneven detail across the three regions. The [development history](../.agents/PLAN.md) records successive regional expansion and reference-quality passes. These comparisons show the results reached within that time budget; further reviewed references and targeted iterations offer a path to improve the remaining mismatches, without guaranteeing exact reconstruction.
 
 ## Marina Bay — museum shell and supports
 
@@ -66,7 +66,7 @@ The museum provides the clearest documented chain: an accepted reference identif
 
 ## What this evidence establishes
 
-The comparisons establish visible correspondences and limitations; the source metadata and scene code make them inspectable. The team's use of Astra is documented in [README](../README.md), [PLAN](../PLAN.md), and existing reference reviews. A visual resemblance alone cannot prove a particular model inspected a particular image. No complete historical image-input transcript is included. The new [Raffles session record](evidence/raffles-refinement/session-record.md) preserves observations made during this refinement, with their scope stated explicitly.
+The comparisons establish visible correspondences and limitations; the source metadata and scene code make them inspectable. The team's use of Astra is documented in [README](../README.md), [PLAN](../.agents/PLAN.md), and existing reference reviews. A visual resemblance alone cannot prove a particular model inspected a particular image. No complete historical image-input transcript is included. The new [Raffles session record](evidence/raffles-refinement/session-record.md) preserves observations made during this refinement, with their scope stated explicitly.
 
 To reproduce the model renders, install dependencies using the [project setup](../README.md), and use Node with the built-in WebSocket client (Node 22 or newer). From the repository root, start Vite in one terminal:
 

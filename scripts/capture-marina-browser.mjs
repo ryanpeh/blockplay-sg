@@ -83,7 +83,7 @@ async function main() {
     await page.send('Page.bringToFront');
     await page.send('Network.setBlockedURLs', { urls: ['https://maps.googleapis.com/maps/api/streetview*'] });
     await page.send('Emulation.setDeviceMetricsOverride', { width: plan.width, height: plan.height, deviceScaleFactor: 1, mobile: false });
-    await page.send('Page.navigate', { url: `${appOrigin}/capture-streetview.html` });
+    await page.send('Page.navigate', { url: `${appOrigin}/scripts/pages/capture-streetview.html` });
     for (let i = 0; i < 50; i++) {
       if (await evaluate(`!!document.getElementById('panorama')`)) break;
       await new Promise(resolve => setTimeout(resolve, 100));
