@@ -35,6 +35,8 @@ In the ready/pause menu, open **Debug survival** for 1×, 5× or 10× maximum he
 
 Use Fullscreen or F for immersive play. A denied fullscreen request falls back to an expanded viewport.
 
+**Watch AI play** lets a local controller operate your character in practice, solo arena or expeditions. **Take control** returns to mouse capture; **Stop AI** or Escape pauses it. Choose Local planner for offline play, or LLM strategist for optional server-backed goals. Select an expedition destination on the island map to give it a checkpoint route. See [AI pilot and strategy plugins](AI-PILOT.md) for setup and limitations.
+
 Approach Utility 01 or Falcon 01 and press E to enter or exit. Drive with WASD and Space brake; fly with WASD, Space climb, C/Ctrl descend and Shift boost. Land before leaving the helicopter.
 
 The armory is accessed from Marina FPS, not regional exploration. It includes equipment, attachments, armor and cosmetic vehicle wraps. Purchases, equipped loadouts, credits and XP persist in this browser. There are no real payments. See [armory details](ARMORY.md).

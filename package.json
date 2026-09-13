@@ -34,7 +34,9 @@
     "test:expedition:travel": "node scripts/expedition-travel-smoke.mjs",
     "test:fps:optics": "node scripts/fps-optics-smoke.mjs",
     "test:fps:handling": "node scripts/fps-handling-smoke.mjs",
-    "test:fps:survival": "node scripts/fps-survival-smoke.mjs"
+    "test:fps:survival": "node scripts/fps-survival-smoke.mjs",
+    "test:fps:pilot": "node scripts/fps-pilot-smoke.mjs",
+    "test:fps:pilot:travel": "node scripts/fps-pilot-expedition-smoke.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

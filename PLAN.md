@@ -4,6 +4,14 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 
 # Blockplay project plan
 
+## Completed: player AI pilot and strategy plugins (2026-09-13)
+
+- Added Watch AI play / Take control / Stop AI in FPS and expeditions, with shared human action functions and restricted visible-contact/HUD observations.
+- Local controller handles combat, reloads, supply collection and planned district travel. Stabilized ADS after reproducing repeated scope toggling at four targets; the browser then cleared all eight targets.
+- Optional LLM goal selection uses a server-only Responses endpoint, constrained goals/known waypoints, cancellation, stale-plan rejection and local fallback. Local play requires no key.
+- Verified 207 unit tests, production build, eight-target browser completion, pause/takeover, live LLM endpoint and UI selection, and autonomous seeded pickup/checkpoint travel with control resuming in CBD. Screenshots are in `.cache/fps-handling/` and `.cache/fps-pilot-expedition/`.
+- Navigation uses waypoint steering and bump recovery, not full pathfinding. Existing squad NPCs retain their prior role system; persistent NPC lives remain future work. Setup and plugin contracts: `docs/AI-PILOT.md`.
+
 ## Completed: prevent unlocked FPS mouse play (2026-09-13)
 
 - Removed the media-query shortcut that allowed mouse play without pointer lock on devices reporting a coarse primary pointer.

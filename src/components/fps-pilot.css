@@ -1,0 +1,13 @@
+.fps-pilot-panel{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;margin:8px 0;border:1px solid #b8c5b1;background:#e9eee2;border-radius:6px;color:#273c30}
+.fps-pilot-panel>div{flex:1;min-width:180px;display:grid;gap:4px}
+.fps-pilot-panel strong{font:700 10px system-ui;letter-spacing:1.4px}
+.fps-pilot-panel span{font:12px system-ui}
+.fps-pilot-panel button{padding:9px 13px;background:#294a36;border:1px solid #294a36;border-radius:4px;color:#fff;font:600 12px system-ui;cursor:pointer}
+.fps-pilot-panel button:disabled{opacity:.45;cursor:default}
+.fps-pilot-panel>small{flex-basis:100%;font:10px system-ui;color:#596954}
+.fps-pilot-panel[data-pilot-active=true]{border-color:#819d4c;background:#e6edcc}
+.fps-pilot-indicator{position:absolute;left:50%;top:52px;transform:translateX(-50%);padding:7px 12px;background:#16291fe8;color:#dfefad;font:10px monospace;max-width:58%;text-align:center;pointer-events:none;z-index:4}
+@media(max-width:720px){.fps-pilot-panel{padding:10px}.fps-pilot-indicator{top:auto;bottom:105px;font-size:9px}}
+
+.fps-pilot-panel label{display:grid;gap:4px;font:10px system-ui;color:#53624d}
+.fps-pilot-panel select{padding:8px;border:1px solid #98ad91;border-radius:4px;background:#f8faef;color:#263d2d;font:12px system-ui}
