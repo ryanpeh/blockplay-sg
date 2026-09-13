@@ -11,6 +11,11 @@ export const MARINA_MAP_ROADS = [
   { points: [{ x: -103, z: 94 }, { x: -103, z: 164 }] },
   { points: [{ x: 103, z: 94 }, { x: 103, z: 164 }] },
   { points: [{ x: 103, z: -112 }, { x: 103, z: -218 }] },
+  { points: [{ x: -310, z: 252 }, { x: 350, z: 252 }, { x: 350, z: -295 }, { x: -310, z: -295 }, { x: -310, z: 252 }] },
+  { points: [{ x: 238, z: 164 }, { x: 350, z: 164 }] },
+  { points: [{ x: -223, z: 164 }, { x: -310, z: 164 }] },
+  { points: [{ x: 103, z: -218 }, { x: 103, z: -295 }] },
+  { points: [{ x: 0, z: 164 }, { x: 0, z: 252 }] },
 ];
 export const MARINA_STAMPS = [
   { name: 'Waterfront', x: 45, z: 65 },
@@ -22,6 +27,11 @@ export const MARINA_STAMPS = [
   { name: 'Esplanade gardens', x: -25, z: -185 },
   { name: 'Bayfront greenway', x: 214, z: 17 },
   { name: 'Southern gardens', x: 25, z: 140 },
+  { name: 'Garden canopy walk', x: 320, z: 135 },
+  { name: 'Conservatory avenue', x: 326, z: -130 },
+  { name: 'Observation wheel', x: 246, z: -265 },
+  { name: 'Harbour promenade', x: 85, z: 228 },
+  { name: 'Civic arcade', x: -280, z: 130 },
 ];
 
 /** Authored, compressed game map. Photos inform the promenade; geometry is not surveyed. */
@@ -32,7 +42,7 @@ export function buildMarinaScene() {
   const sun = new THREE.DirectionalLight('#fff5e7', 2.1);
   sun.position.set(-120, 190, 90); sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
-  Object.assign(sun.shadow.camera, { left: -310, right: 310, top: 290, bottom: -290, near: 1, far: 700 });
+  Object.assign(sun.shadow.camera, { left: -405, right: 405, top: 370, bottom: -370, near: 1, far: 850 });
   sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.3; scene.add(sun);
   const geometries: THREE.BufferGeometry[] = [], materials: THREE.Material[] = [];
   const obstacles: Obstacle[] = [{ minX: -80, maxX: 80, minZ: -90, maxZ: 50 }];
@@ -55,7 +65,7 @@ export function buildMarinaScene() {
     const mesh = box(middle.x, middle.y, middle.z, width, from.distanceTo(to), width, material, scene, true);
     mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), to.clone().sub(from).normalize()); return mesh;
   }
-  box(10, -0.6, -25, 590, 1, 510, mat('#687d4e'));
+  box(25, -0.6, -20, 770, 1, 660, mat('#687d4e'));
   box(0, -0.18, -20, 188, 0.35, 168, sand);
   box(0, -0.05, -20, 160, 0.15, 140, water);
   // The road completes a continuous loop around the bay.
@@ -369,6 +379,141 @@ export function buildMarinaScene() {
   }
   box(-242, 2.5, 59, 0.3, 5, 18, glass);
 
+  // Third district ring: a walkable garden/observation-wheel district and
+  // inhabited southern/western edges. This is a compressed authored layout.
+  // New source captures refine materials, not an assertion of surveyed placement.
+  const canopyFrame = mat('#703b5d'); // gardens-grove-03: wine-purple steel, not timber.
+  box(324, 0.025, -25, 10, 0.16, 355, sand);
+  for (const z of [-130, 80, 135]) box(291, 0.035, z, 67, 0.17, 7, sand);
+  for (const [x, z, radius] of [[291, 15, 11], [304, 65, 14], [289, 116, 10]]) {
+    const stem = new THREE.Mesh(geo(new THREE.CylinderGeometry(1.4, 2.5, 21, 9)), sand);
+    stem.position.set(x, 10.5, z); scene.add(stem); collider(x, z, 5, 5);
+    const rim = new THREE.Mesh(geo(new THREE.TorusGeometry(radius, 0.2, 5, 18)), canopyFrame);
+    rim.rotation.x = Math.PI / 2; rim.position.set(x, 25, z); scene.add(rim);
+    for (let i = 0; i < 12; i++) {
+      const angle = i * Math.PI / 6;
+      beam(new THREE.Vector3(x + Math.cos(angle) * 1.5, 1, z + Math.sin(angle) * 1.5), new THREE.Vector3(x + Math.cos(angle) * radius, 25, z + Math.sin(angle) * radius), 0.3, canopyFrame);
+      for (const fork of [-0.16, 0.16]) beam(new THREE.Vector3(x + Math.cos(angle) * radius * 0.7, 22, z + Math.sin(angle) * radius * 0.7), new THREE.Vector3(x + Math.cos(angle + fork) * (radius + 2), 26, z + Math.sin(angle + fork) * (radius + 2)), 0.15, canopyFrame);
+      for (const y of [3, 6, 9, 12, 15]) {
+        const planting = new THREE.Mesh(shrubGeo, hedge); planting.position.set(x + Math.cos(angle) * 2.2, y, z + Math.sin(angle) * 2.2); planting.scale.set(0.65, 1.5, 0.65); scene.add(planting);
+      }
+    }
+  }
+  // Golden rails and grey decking echo the skywalk palette at ground level;
+  // elevated walkability is deliberately not implied by this flat controller.
+  for (const x of [319, 329]) {
+    box(x, 1.1, 92, 0.08, 0.08, 24, yellow);
+    for (let z = 80; z <= 104; z += 3) box(x, 0.55, z, 0.08, 1.1, 0.08, yellow);
+  }
+  // Ribbed conservatory-inspired shells, kept to the side of the public path.
+  const conservatoryGlass = mat('#718e89', { roughness: 0.35, metalness: 0.08 });
+  for (const [x, z, width, height, depth] of [[287, -168, 22, 20, 32], [289, -95, 25, 15, 26]]) {
+    const shell = new THREE.Mesh(pavilionGeo, conservatoryGlass); shell.position.set(x, 0.4, z); shell.scale.set(width, height, depth); scene.add(shell); collider(x, z, width * 2, depth * 2);
+    for (let rib = -4; rib <= 4; rib++) {
+      const fraction = rib / 5, ringRadius = Math.sqrt(1 - fraction * fraction);
+      const curve: THREE.Vector3[] = [];
+      for (let i = 0; i <= 16; i++) {
+        const angle = i / 16 * Math.PI;
+        curve.push(new THREE.Vector3(x + Math.cos(angle) * width * ringRadius, 0.7 + Math.sin(angle) * height * ringRadius, z + depth * fraction));
+      }
+      scene.add(new THREE.Mesh(geo(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(curve), 20, 0.4, 4, false)), pale));
+    }
+    box(x, 1.8, z + depth + 0.5, 12, 3.6, 1, dark);
+    for (const dx of [-4, 0, 4]) box(x + dx, 1.8, z + depth + 1.05, 3.5, 3.2, 0.1, glass);
+  }
+  for (let z = -190; z <= -70; z += 15) { box(317, 0.65, z, 0.25, 1.3, 0.25, canopyFrame); collider(317, z, 0.3, 0.3); }
+  // Promenade-road references show planted flyover supports and coach bays.
+  // This is scenery above the ground route, not a second driveable level.
+  box(257, 16, -227, 150, 1.7, 14, cream);
+  for (const z of [-233.7, -220.3]) box(257, 17.3, z, 150, 1, 0.4, pale);
+  for (const x of [193, 253, 313]) {
+    for (const z of [-231, -223]) {
+      box(x, 4, z, 1.8, 8, 1.8, cream); collider(x, z, 2, 2);
+      beam(new THREE.Vector3(x, 7, z), new THREE.Vector3(x - 4, 15.5, z), 1.4, cream);
+      beam(new THREE.Vector3(x, 7, z), new THREE.Vector3(x + 4, 15.5, z), 1.4, cream);
+      box(x + 0.95, 5.5, z, 0.18, 10, 1.6, hedge);
+    }
+  }
+  // Observation wheel with paired rims, radial spokes, capsule glazing and
+  // splayed supports; the ground-level forecourt remains flat and accessible.
+  box(250, 0.015, -267, 70, 0.12, 35, sand);
+  for (const z of [-270, -264]) {
+    const rim = new THREE.Mesh(geo(new THREE.TorusGeometry(25, 0.4, 5, 40)), pale); rim.position.set(258, 30, z); scene.add(rim);
+    for (let i = 0; i < 16; i++) {
+      const angle = i / 16 * Math.PI * 2;
+      beam(new THREE.Vector3(258, 30, z), new THREE.Vector3(258 + Math.cos(angle) * 25, 30 + Math.sin(angle) * 25, z), 0.12, steel);
+      if (z === -264) {
+        box(258 + Math.cos(angle) * 25, 30 + Math.sin(angle) * 25, -267, 3.2, 2.1, 6.8, glass);
+        box(258 + Math.cos(angle) * 25, 31.2 + Math.sin(angle) * 25, -267, 3.4, 0.2, 7, pale);
+      }
+    }
+    for (const x of [245, 271]) { beam(new THREE.Vector3(x, 0, z + (z === -270 ? -6 : 6)), new THREE.Vector3(258, 30, z), 1, pale); collider(x, z + (z === -270 ? -6 : 6), 2, 2); }
+  }
+  // Southern civic promenade with arcaded retail, loading bays and planted
+  // central reservations. Keep the north/south connector at x=0 unobstructed.
+  box(33, 0.015, 227, 480, 0.12, 18, sand);
+  for (const x of [-185, -133, -81, 67, 119, 171]) {
+    box(x, 5, 201, 40, 10, 24, cream, scene, true); collider(x, 201, 40, 24);
+    box(x, 10.4, 201, 43, 0.8, 26, pale);
+    box(x, 4.2, 215, 44, 0.3, 5, steel);
+    for (let dx = -17; dx <= 17; dx += 6.8) {
+      box(x + dx, 2, 213.1, 5.3, 3.7, 0.15, glass);
+      box(x + dx, 7.3, 213.1, 4.8, 2.7, 0.15, glass);
+    }
+    box(x, 3.5, 213.3, 35, 0.7, 0.1, dark);
+    for (const dx of [-18, 18]) { box(x + dx, 2, 217, 0.3, 4, 0.3, steel); collider(x + dx, 217, 0.4, 0.4); }
+  }
+  // Dense but batched west-side offices and open civic arcades.
+  for (const z of [-230, -140, -50, 45]) {
+    box(-281, 16, z, 24, 32, 34, cream, scene, true); collider(-281, z, 24, 34);
+    box(-281, 33, z, 26, 2, 36, pale);
+    for (let floor = 0; floor < 8; floor++) for (let dz = -12; dz <= 12; dz += 6) box(-268.9, 3 + floor * 3.6, z + dz, 0.15, 2.5, 3.8, glass);
+    box(-264, 4, z, 8, 0.18, 36, glass);
+    for (let dz = -18; dz <= 18; dz += 3) box(-264, 3.95, z + dz, 8, 0.24, 0.15, dark);
+    for (const dx of [-267, -263, -260.2]) box(dx, 3.95, z, 0.15, 0.24, 36, dark);
+    for (const dz of [-16, -8, 0, 8, 16]) { box(-260.5, 2, z + dz, 0.5, 4, 0.5, pale); collider(-260.5, z + dz, 0.6, 0.6); }
+  }
+  box(-280, 0.015, 124, 40, 0.12, 39, sand);
+  // Consistent street furniture fills long walks while preserving lane edges.
+  for (let x = -280; x <= 325; x += 30) for (const z of [239, -282]) {
+    box(x, 3.6, z, 0.14, 7.2, 0.14, steel); box(x + 0.7, 7.2, z, 1.5, 0.15, 0.45, dark); collider(x, z, 0.35, 0.35);
+    if (x % 60 === 20) { box(x + 7, 0.6, z, 3.5, 0.3, 0.8, wood); collider(x + 7, z, 3.5, 0.8); }
+  }
+  for (let z = -260; z <= 235; z += 33) for (const x of [-325, 368]) {
+    palm(x, z, 9 + Math.abs(z % 3));
+    box(x, 0.25, z, 4, 0.5, 4, cream); collider(x, z, 4, 4);
+  }
+  for (const x of [320, -296]) for (let z = -235; z <= 110; z += 27) {
+    box(x, 0.45, z, 3.5, 0.9, 8, hedge); collider(x, z, 3.5, 8);
+  }
+  // Black/white kerb blocks, paired yellow edge lines and gullies observed in
+  // the 2024 Marina Gardens Drive and 2018 Esplanade exterior references.
+  for (let z = -270; z < 240; z += 3) {
+    if (z > 151 && z < 177) continue; // Open the connector junction.
+    box(340, 0.16, z, 0.4, 0.32, 2.95, Math.abs(z / 3) % 2 ? white : dark);
+  }
+  for (const x of [341.1, 341.5]) box(x, 0.085, -15, 0.12, 0.025, 510, yellow);
+  for (let z = -260; z < 230; z += 30) { box(338.8, 0.1, z, 0.65, 0.05, 1.1, dark); for (let i = 0; i < 5; i++) box(338.8, 0.13, z - 0.4 + i * 0.2, 0.65, 0.02, 0.04, steel); }
+  // Bicycle racks, litter bins and sheltered seating add human-scale detail.
+  for (const [x, z] of [[313, 134], [315, -130], [-285, 139], [95, 230]]) {
+    box(x, 0.65, z, 0.8, 1.3, 0.8, dark); collider(x, z, 0.8, 0.8);
+    box(x, 1.34, z, 0.95, 0.12, 0.95, steel);
+    for (let i = 0; i < 4; i++) {
+      box(x + 3 + i * 1.4, 0.6, z, 0.1, 1.2, 0.1, steel);
+      box(x + 3 + i * 1.4, 0.6, z + 1.2, 0.1, 1.2, 0.1, steel);
+      box(x + 3 + i * 1.4, 1.2, z + 0.6, 0.1, 0.1, 1.3, steel);
+    }
+  }
+  const walkers: { group: THREE.Group; x: number; z: number; axis: 'x' | 'z'; phase: number }[] = [];
+  const headGeo = geo(new THREE.IcosahedronGeometry(0.27, 1));
+  for (const [index, [x, z, axis]] of ([[327, 105, 'z'], [305, 135, 'x'], [120, 229, 'x'], [-280, 116, 'z']] as const).entries()) {
+    const group = new THREE.Group(); scene.add(group);
+    box(0, 1, 0, 0.55, 0.85, 0.3, index % 2 ? mint : orange, group);
+    box(-0.17, 0.35, 0, 0.2, 0.7, 0.24, dark, group); box(0.17, 0.35, 0, 0.2, 0.7, 0.24, dark, group);
+    const head = new THREE.Mesh(headGeo, wood); head.position.y = 1.65; group.add(head);
+    walkers.push({ group, x, z, axis, phase: index * 1.7 });
+  }
+
   // Fullerton-side stone arcade: arched openings, cornices and planted frontage
   // observed in fullerton-materials.png, compressed into the city-side block.
   const stone = mat('#b3b6b4'), insetGlass = mat('#273f4a', { roughness: 0.4 });
@@ -384,7 +529,7 @@ export function buildMarinaScene() {
     box(-117, 0.35, z, 1.5, 0.7, 4.5, cream); box(-117, 1, z, 1.2, 0.9, 4.2, hedge); collider(-117, z, 1.5, 4.5);
   }
   // Record which reviewed images informed authored features (not photogrammetry).
-  scene.userData.referenceFeatures = ['museum-shell', 'bay-skyline', 'fullerton-materials', 'fullerton-glazing', 'sands-canopy', 'sands-streetscape', 'south-waterfront', 'south-palms', 'merlion-waterfront-east', 'bayfront-gardens-east', 'south-promenade-north'];
+  scene.userData.referenceFeatures = ['museum-shell', 'bay-skyline', 'fullerton-materials', 'fullerton-glazing', 'sands-canopy', 'sands-streetscape', 'south-waterfront', 'south-palms', 'merlion-waterfront-east', 'bayfront-gardens-east', 'south-promenade-north', 'gardens-grove-03-0', 'conservatory-road-03-90', 'barrage-approach-03-180', 'east-garden-03-180', 'flyer-road-03-270', 'float-waterfront-03-90', 'esplanade-road-03-180', 'promenade-road-03-180', 'downtown-green-03-180', 'marina-one-street-03-90'];
 
   const waves: THREE.Mesh[] = [];
   const foam = mat('#b6d9d0', { transparent: true, opacity: 0.4 });
@@ -423,7 +568,9 @@ export function buildMarinaScene() {
   }
   return {
     scene, obstacles, car, stamps,
-    animate(time: number) { waves.forEach((wave, i) => { wave.position.x = wave.userData.baseX + Math.sin(time * 0.45 + i) * 1.4; }); stamps.forEach((stamp, i) => { stamp.rotation.y = time * 0.5; stamp.position.y = 3 + Math.sin(time * 1.7 + i) * 0.35; }); boatGroup.position.y = 0.5 + Math.sin(time) * 0.13; },
+    animate(time: number) { waves.forEach((wave, i) => { wave.position.x = wave.userData.baseX + Math.sin(time * 0.45 + i) * 1.4; }); stamps.forEach((stamp, i) => { stamp.rotation.y = time * 0.5; stamp.position.y = 3 + Math.sin(time * 1.7 + i) * 0.35; }); boatGroup.position.y = 0.5 + Math.sin(time) * 0.13;
+      walkers.forEach(({ group, x, z, axis, phase }) => { const offset = Math.sin(time * 0.09 + phase) * 10; group.position.set(x + (axis === 'x' ? offset : 0), Math.abs(Math.sin(time * 4 + phase)) * 0.04, z + (axis === 'z' ? offset : 0)); group.rotation.y = (axis === 'x' ? Math.PI / 2 : 0) + (Math.cos(time * 0.09 + phase) > 0 ? Math.PI : 0); });
+    },
     dispose() { instances.forEach(mesh => mesh.dispose()); geometries.forEach(g => g.dispose()); materials.forEach(m => m.dispose()); sun.shadow.map?.dispose(); },
   };
 }

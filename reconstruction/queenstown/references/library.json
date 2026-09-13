@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "CUXme4r0XEEC9WkKQA2d3Q",
+  "location": {
+    "lat": 1.2985824282387217,
+    "lng": 103.80489108222561
+  },
+  "description": "74 Margaret Dr, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.29876,
+    "lng": 103.80501
+  },
+  "selectedGoogle": true
+}

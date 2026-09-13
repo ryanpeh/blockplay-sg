@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "esplanade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-11",
+  "pano_id": "zRv-u0DQNcflwiBnZxFYCw",
+  "position": {
+    "lat": 1.2911211162247562,
+    "lng": 103.85500638517166
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:54.831Z",
+  "file": "reconstruction/marina-bay/references/esplanade-road-03-0.png",
+  "fingerprint": "173153772bc5f0584862091bff2ccfc9b1828012319d3007e4f3a1db1242ffde",
+  "sha256": "e9a3306592caed8f115655241e71fff5aef30c2d0615db7f19592128eac7183d",
+  "bytes": 1682929,
+  "durationMs": 3308,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: outdoor junction, traffic island, black-white kerb and tower bases; replaces earlier indoor-only Esplanade context"
+}

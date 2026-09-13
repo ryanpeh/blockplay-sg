@@ -2,7 +2,21 @@
 
 Last updated: 2026-09-13. Start by reading this file, `PLAN.md`, and `README.md`, then inspect the checkout and any applicable `AGENTS.md` instructions.
 
-## Current entry point: two region games
+## Latest scope: all three regions expanded
+
+Completed the further large reference-and-map expansion with one modeling agent per region; browser operations remain serialized. Current worlds: Marina **726 × 616 / 14 stamps**, Raffles **580 × 399 / 11 stamps**, Queenstown **520 × 424 / eight stamps**. Latest pass added 114 screenshots; the full portable cache contains **210 images** (72 Marina, 64 Raffles, 74 Queenstown), all checksum-valid. Read the newest PLAN section and scoped region documents first. `pnpm references:inventory` is an offline checksum/review inventory; keep the cache and manifests together and preserve rejected captures. Queenstown now uses bounds-derived minimap projection and exported road paths, matching Marina/Raffles; all region HUD stamp counts must remain dynamic.
+
+Latest capture plans: `reconstruction/marina-district-browser-plan.json`, `reconstruction/raffles-expansion-browser-plan.json`, `reconstruction/queenstown-district-browser-plan.json`. Marina/Raffles are fully cached; Queenstown saved 34/40 before stopping, so a full run without `--dry-run` would intentionally fetch missing images. Do not blindly rerun it. Earlier Queenstown plans retain original/replacement frames and their review outcomes. No new dependencies; pnpm 11 and strict two-week cooldown remain intact.
+
+Verification at handoff: **41 tests, production build, three-region browser/camera/mobile checks and cache checksums pass**. No live Maps calls occur during game checks. Credential scan passed. The build still emits the nonblocking Three.js chunk-size warning. Remaining follow-ups are human full-objective play-through, actual-phone performance, camera collision/occlusion and geographic refinement; current agents' expansion work is complete.
+
+## Current entry point: three regions and independent car camera
+
+Raffles Place is integrated alongside Marina and the richer Queenstown estate. Read `reconstruction/raffles-place/REGION.md` and `reconstruction/queenstown/REGION.md` for geometry, references and review limitations. App uses location ID for default selection, so adding a location no longer changes the default via an array index. `src/game/drive-camera.ts` is the shared driving orbit helper: drag must never modify vehicle heading while in Drive. All three controllers use independent look state, reset it on travel-mode changes, and recenter only while moving after an idle delay. Preserve this behavior in new controllers. Browser smoke covers stationary/moving drag, no accidental steering, recenter/reset/mode switching in all three regions with test-only WebGL camera observation.
+
+**Capture reliability:** serialize capture, selection AND browser smoke runs; do not switch tabs while capturing. Background Street View may report the right POV with old pixels. `capture-readiness.mjs` and the runner enforce foreground/POV/zoom/overlay/repaint checks and detect exact duplicate images; still inspect every frame. Older rejected files are retained and marked in manifests/region notes, replacements use new IDs. Transfer complete region reference directories plus plans/ledger, never environment credentials. Raffles batch: `reconstruction/raffles-browser-plan.json`; Queenstown expansion and replacement plans are in `reconstruction/`. Use `--dry-run` first; cache-only reruns make no requests. Source cache is not copied to public game assets.
+
+## Previous milestone: two region games
 
 **Latest allowance update:** user renewed the remaining Static allowance to **50 images**. The ledger preserves baseline 8 and all history, with `maxAdditionalImages: 65` (15 used + 50 remaining). PLAN.md is authoritative; older budget figures below are historical. README intentionally omits limits.
 

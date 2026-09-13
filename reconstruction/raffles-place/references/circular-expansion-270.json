@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "circular-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-07",
+  "pano_id": "CJnPGKVT9e5Z31pmK2qNkw",
+  "position": {
+    "lat": 1.2867816790253932,
+    "lng": 103.84832925501327
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:40:08.892Z",
+  "file": "reconstruction/raffles-place/references/circular-expansion-270.png",
+  "fingerprint": "205d8000eccd8bfe39ca92605aaef06103c1d22c185a3c1602130146d28a1986",
+  "sha256": "7e9298f2cc3903dd4a173e10379ee8619c66a5057128d00bac1cc590e4c69322",
+  "bytes": 1236179,
+  "durationMs": 3071,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: near utility wall; AC and fence details only"
+}

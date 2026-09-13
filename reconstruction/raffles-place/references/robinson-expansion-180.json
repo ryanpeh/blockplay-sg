@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "robinson-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "8vqvLSs6Rb1BYuRk_R7BIA",
+  "position": {
+    "lat": 1.2802098374474813,
+    "lng": 103.85017105497431
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Boon Tat St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:39:14.270Z",
+  "file": "reconstruction/raffles-place/references/robinson-expansion-180.png",
+  "fingerprint": "005be98c720a085e780ef6912f9971dda25c5ea28c8c28b0b01affe9e0d0b3a0",
+  "sha256": "d1b3218c5a37ea8e78c6251280146d0feaf6881ab7f37b41585119bcab6503b0",
+  "bytes": 1651504,
+  "durationMs": 3140,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

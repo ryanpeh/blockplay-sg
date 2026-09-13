@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson-east.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "iVUgjepDr1eKbbI4-k6sSg",
+  "position": {
+    "lat": 1.2949005713223212,
+    "lng": 103.81139043414261
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:42.386Z",
+  "file": "reconstruction/queenstown/references/dawson-east-270.png",
+  "fingerprint": "585f57adefe77d61b36fd71ad4cb5eb7579ba804e91f25a0563da80078bbc960",
+  "sha256": "b1f62598b11ae45602cfdd00a9caf3c9128cfd5f0a8917d073c95a9fddd3106d",
+  "bytes": 2311425,
+  "durationMs": 3050,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: dense layered planting and long paved estate access"
+}

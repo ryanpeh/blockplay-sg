@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson-east.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "iVUgjepDr1eKbbI4-k6sSg",
+  "position": {
+    "lat": 1.2949005713223212,
+    "lng": 103.81139043414261
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:33.233Z",
+  "file": "reconstruction/queenstown/references/dawson-east-0.png",
+  "fingerprint": "936720163c2d7fbbd785872642dc9681ec016dafb7111234ee1842a8144d4b24",
+  "sha256": "6fb21f1e135b4e6a85b671e02d3bcd3808d70b35874a4b0ef901266fbe885408",
+  "bytes": 2435516,
+  "durationMs": 4051,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: temporary works and foreground clutter; planting palette only"
+}

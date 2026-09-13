@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "station-clear.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "uPOEK2v2dHe1SNAXoJmchw",
+  "position": {
+    "lat": 1.2937781641813975,
+    "lng": 103.80671115578087
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:20.559Z",
+  "file": "reconstruction/queenstown/references/station-clear-180.png",
+  "fingerprint": "c313b1fe325647ba575aa0e2cb1ee15ff02e61598df65c6b1f4bb4fbce536515",
+  "sha256": "125293c7d6717bfd20dff60bbd0b5b5f81549fa89348059423d084f4b4e83326",
+  "bytes": 1978752,
+  "durationMs": 2457,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: viaduct profile, red train stripe and layered roadside hedges"
+}

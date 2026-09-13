@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "marina-one-street-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "dlFatS0d3HyUpwje4d54Vw",
+  "position": {
+    "lat": 1.2776617136881363,
+    "lng": 103.852375851504
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:42.895Z",
+  "file": "reconstruction/marina-bay/references/marina-one-street-03-270.png",
+  "fingerprint": "d8d47a1e25f4c9a8660d860445431dc852a2a5b70c72834c143142b8cf750d15",
+  "sha256": "e01f83b0305269c1c4bc9a36417237282a8703ab2072a0afb993740960a9731b",
+  "bytes": 1337038,
+  "durationMs": 3214,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: foreground hoarding blocks ground layout; distant tower facade and canopy edge only"
+}

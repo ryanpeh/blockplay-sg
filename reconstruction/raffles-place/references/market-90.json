@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "market.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "EB_GmjwNeRqJlEMCxmdSLg",
+  "position": {
+    "lat": 1.2827531938541776,
+    "lng": 103.85201111059746
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 12,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "10 Collyer Quay, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:16:49.538Z",
+  "file": "reconstruction/raffles-place/references/market-90.png",
+  "fingerprint": "0e4d59c68f73ca0192db1466fa7b244bf95d1bb2b46cef111d889700f98b3c23",
+  "sha256": "648b20dfc643b9b609c04f0d1b8939106cb53d48b5615bd2f87b43ff8e78ac34",
+  "bytes": 1811056,
+  "durationMs": 2451,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: visually inspected outdoor view, distinct heading, useful material/detail or street context"
+}

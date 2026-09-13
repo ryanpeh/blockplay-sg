@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "boat-quay.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2017-12",
+  "pano_id": "AUX1RbW7VvlfxgNQpJ9ktg",
+  "position": {
+    "lat": 1.2863837518495431,
+    "lng": 103.8494671518214
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 12,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:16:29.833Z",
+  "file": "reconstruction/raffles-place/references/boat-quay-180.png",
+  "fingerprint": "45e131da05d72c1462853dd9040e6a716aedcc9a405acaac7cffcb4259cb602d",
+  "sha256": "b9f83312a99564ca5e02588f9a69b85fa32b3723145c62db83744bfcd272e1ec",
+  "bytes": 1640198,
+  "durationMs": 2478,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: visually inspected outdoor view, distinct heading, useful material/detail or street context"
+}

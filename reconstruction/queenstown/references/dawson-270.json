@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "_7E763z20DuvVk0jyMJO6w",
+  "position": {
+    "lat": 1.2959333863881268,
+    "lng": 103.80888721098805
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:26:59.980Z",
+  "file": "reconstruction/queenstown/references/dawson-270.png",
+  "fingerprint": "7d0f4382fb7e4599cbb5960324ff1475bdf50d7646600ee58cb04bab1ebf44b4",
+  "sha256": "6483b09fd9b22408b65a64aa460059aab64dd82944d23fd26a824f4906d3578b",
+  "bytes": 2318536,
+  "durationMs": 3297,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: older low slab, palms and parking wheel stops"
+}

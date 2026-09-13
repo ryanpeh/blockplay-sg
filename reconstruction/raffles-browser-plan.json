@@ -1,0 +1,227 @@
+{
+  "name": "raffles-reference-batch-01",
+  "region": "raffles-place",
+  "width": 1280,
+  "height": 900,
+  "maxNewImages": 24,
+  "sources": {
+    "square.json": {
+      "lat": 1.28375,
+      "lng": 103.8511
+    },
+    "chulia.json": {
+      "lat": 1.2849,
+      "lng": 103.8502
+    },
+    "battery.json": {
+      "lat": 1.2847,
+      "lng": 103.8521
+    },
+    "boat-quay.json": {
+      "lat": 1.2864,
+      "lng": 103.8494
+    },
+    "cecil.json": {
+      "lat": 1.2823,
+      "lng": 103.8503
+    },
+    "market.json": {
+      "lat": 1.2827,
+      "lng": 103.852
+    }
+  },
+  "views": [
+    {
+      "id": "square-0",
+      "source": "square.json",
+      "heading": 0,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "square-90",
+      "source": "square.json",
+      "heading": 90,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "square-180",
+      "source": "square.json",
+      "heading": 180,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "square-270",
+      "source": "square.json",
+      "heading": 270,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "chulia-0",
+      "source": "chulia.json",
+      "heading": 0,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "chulia-90",
+      "source": "chulia.json",
+      "heading": 90,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "chulia-180",
+      "source": "chulia.json",
+      "heading": 180,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "chulia-270",
+      "source": "chulia.json",
+      "heading": 270,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "battery-0",
+      "source": "battery.json",
+      "heading": 0,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "battery-90",
+      "source": "battery.json",
+      "heading": 90,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "battery-180",
+      "source": "battery.json",
+      "heading": 180,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "battery-270",
+      "source": "battery.json",
+      "heading": 270,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "boat-quay-0",
+      "source": "boat-quay.json",
+      "heading": 0,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "boat-quay-90",
+      "source": "boat-quay.json",
+      "heading": 90,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "boat-quay-180",
+      "source": "boat-quay.json",
+      "heading": 180,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "boat-quay-270",
+      "source": "boat-quay.json",
+      "heading": 270,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "cecil-0",
+      "source": "cecil.json",
+      "heading": 0,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "cecil-90",
+      "source": "cecil.json",
+      "heading": 90,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "cecil-180",
+      "source": "cecil.json",
+      "heading": 180,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "cecil-270",
+      "source": "cecil.json",
+      "heading": 270,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "market-0",
+      "source": "market.json",
+      "heading": 0,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "market-90",
+      "source": "market.json",
+      "heading": 90,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "market-180",
+      "source": "market.json",
+      "heading": 180,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    },
+    {
+      "id": "market-270",
+      "source": "market.json",
+      "heading": 270,
+      "pitch": 12,
+      "zoom": 1,
+      "purpose": "Review street scale, facades, planting and pedestrian details for authored Raffles Place"
+    }
+  ]
+}

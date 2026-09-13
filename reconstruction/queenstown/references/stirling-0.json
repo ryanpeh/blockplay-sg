@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "JRP1H9pbZ5q2zznzrqE5CQ",
+  "position": {
+    "lat": 1.292756887361008,
+    "lng": 103.80401408454576
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "160 Mei Ling St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:26.158Z",
+  "file": "reconstruction/queenstown/references/stirling-0.png",
+  "fingerprint": "a1f56f26af5b79157874dc1b99b04bf798903f4bcff65c4046c866169e5f6a80",
+  "sha256": "d065f274acb7509d8b07185d4f4af5ea4e0b8332817f1a43af3cafd72c0f19fc",
+  "bytes": 2259121,
+  "durationMs": 3093,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: coral slab facades, mature road canopy, green rails"
+}

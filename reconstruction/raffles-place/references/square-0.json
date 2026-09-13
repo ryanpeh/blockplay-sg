@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "square.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "x-yEYc02g45kEqGGAixkkA",
+  "position": {
+    "lat": 1.2837148661510418,
+    "lng": 103.85109276049249
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 12,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "22 Malacca St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:15:53.070Z",
+  "file": "reconstruction/raffles-place/references/square-0.png",
+  "fingerprint": "2967ac30497276ead9929644ab66d4acf8af145d9abea88e701f89464996887a",
+  "sha256": "61f61c50f4305db6e8a45e7eadb752fcbb3647600368b69c227bee1b2320f534",
+  "bytes": 2043704,
+  "durationMs": 2893,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: visually inspected outdoor view, distinct heading, useful material/detail or street context"
+}

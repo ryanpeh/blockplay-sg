@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "promenade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-08",
+  "pano_id": "x8L7_sxIVdllJJ8VLOyeSw",
+  "position": {
+    "lat": 1.2920129560275748,
+    "lng": 103.86163810359794
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:07.450Z",
+  "file": "reconstruction/marina-bay/references/promenade-road-03-0.png",
+  "fingerprint": "a9f73f6796279a09cf0c0944e407e6731a79ee4828a43fe907a31dfd839e7c6c",
+  "sha256": "07a4643b1b725de321d257d7a78a1a86cb87fda01e86ed97a875cc5af547c378",
+  "bytes": 1934307,
+  "durationMs": 3298,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: under-flyover coach bays, vine-covered supports, planting and asphalt patch repairs"
+}

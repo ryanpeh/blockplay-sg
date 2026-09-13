@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "2Gf-qpSG9KEtCp8xXaLKTg",
+  "location": {
+    "lat": 1.2836004501027491,
+    "lng": 103.8528586061318
+  },
+  "description": "60 Collyer Quay, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2835,
+    "lng": 103.853
+  },
+  "selectedGoogle": true
+}

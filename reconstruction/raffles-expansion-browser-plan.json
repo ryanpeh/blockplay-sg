@@ -1,0 +1,371 @@
+{
+  "name": "raffles-expansion-batch-02",
+  "region": "raffles-place",
+  "width": 1280,
+  "height": 900,
+  "maxNewImages": 40,
+  "sources": {
+    "church-expansion.json": {
+      "lat": 1.2835,
+      "lng": 103.8485
+    },
+    "cross-expansion.json": {
+      "lat": 1.2823,
+      "lng": 103.8488
+    },
+    "telok-expansion.json": {
+      "lat": 1.2811,
+      "lng": 103.8495
+    },
+    "robinson-expansion.json": {
+      "lat": 1.2803,
+      "lng": 103.8502
+    },
+    "lau-pa-sat-expansion.json": {
+      "lat": 1.2805,
+      "lng": 103.8509
+    },
+    "cecil-south-expansion.json": {
+      "lat": 1.2798,
+      "lng": 103.8483
+    },
+    "quay-west-expansion.json": {
+      "lat": 1.2871,
+      "lng": 103.849
+    },
+    "circular-expansion.json": {
+      "lat": 1.2867,
+      "lng": 103.8484
+    },
+    "collyer-expansion.json": {
+      "lat": 1.2835,
+      "lng": 103.853
+    },
+    "fullerton-road-expansion.json": {
+      "lat": 1.2851,
+      "lng": 103.8534
+    }
+  },
+  "views": [
+    {
+      "id": "church-expansion-0",
+      "source": "church-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "church-expansion-90",
+      "source": "church-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "church-expansion-180",
+      "source": "church-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "church-expansion-270",
+      "source": "church-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cross-expansion-0",
+      "source": "cross-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cross-expansion-90",
+      "source": "cross-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cross-expansion-180",
+      "source": "cross-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cross-expansion-270",
+      "source": "cross-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "telok-expansion-0",
+      "source": "telok-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "telok-expansion-90",
+      "source": "telok-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "telok-expansion-180",
+      "source": "telok-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "telok-expansion-270",
+      "source": "telok-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "robinson-expansion-0",
+      "source": "robinson-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "robinson-expansion-90",
+      "source": "robinson-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "robinson-expansion-180",
+      "source": "robinson-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "robinson-expansion-270",
+      "source": "robinson-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "lau-pa-sat-expansion-0",
+      "source": "lau-pa-sat-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "lau-pa-sat-expansion-90",
+      "source": "lau-pa-sat-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "lau-pa-sat-expansion-180",
+      "source": "lau-pa-sat-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "lau-pa-sat-expansion-270",
+      "source": "lau-pa-sat-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cecil-south-expansion-0",
+      "source": "cecil-south-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cecil-south-expansion-90",
+      "source": "cecil-south-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cecil-south-expansion-180",
+      "source": "cecil-south-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "cecil-south-expansion-270",
+      "source": "cecil-south-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "quay-west-expansion-0",
+      "source": "quay-west-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "quay-west-expansion-90",
+      "source": "quay-west-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "quay-west-expansion-180",
+      "source": "quay-west-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "quay-west-expansion-270",
+      "source": "quay-west-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "circular-expansion-0",
+      "source": "circular-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "circular-expansion-90",
+      "source": "circular-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "circular-expansion-180",
+      "source": "circular-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "circular-expansion-270",
+      "source": "circular-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "collyer-expansion-0",
+      "source": "collyer-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "collyer-expansion-90",
+      "source": "collyer-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "collyer-expansion-180",
+      "source": "collyer-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "collyer-expansion-270",
+      "source": "collyer-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "fullerton-road-expansion-0",
+      "source": "fullerton-road-expansion.json",
+      "heading": 0,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "fullerton-road-expansion-90",
+      "source": "fullerton-road-expansion.json",
+      "heading": 90,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "fullerton-road-expansion-180",
+      "source": "fullerton-road-expansion.json",
+      "heading": 180,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    },
+    {
+      "id": "fullerton-road-expansion-270",
+      "source": "fullerton-road-expansion.json",
+      "heading": 270,
+      "pitch": 10,
+      "zoom": 1,
+      "purpose": "Expand district street coverage and review street furniture, shophouses, arcades, tower setbacks and materials"
+    }
+  ]
+}

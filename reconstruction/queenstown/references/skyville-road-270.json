@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "skyville-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "de74bBdAaN7BW4CZYx56XQ",
+  "position": {
+    "lat": 1.2967019757350113,
+    "lng": 103.80866656167389
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "499 Margaret Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:54.866Z",
+  "file": "reconstruction/queenstown/references/skyville-road-270.png",
+  "fingerprint": "1add1af48c9ff9e2f70fe26a459eb3e9b2da7af3ce2ea9a33e9330ee4060fedc",
+  "sha256": "cc5478909b46230b55a5b79d84f68046dca03dc0f39be15910a027a33a416ce1",
+  "bytes": 1967426,
+  "durationMs": 3087,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: covered crossing with open underside and road-width context"
+}

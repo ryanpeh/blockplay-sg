@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "margaret.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "rawGq7vugQAsCwX_SL6jQg",
+  "position": {
+    "lat": 1.2976944022246522,
+    "lng": 103.80396040543337
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "38 Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:54.482Z",
+  "file": "reconstruction/queenstown/references/margaret-180.png",
+  "fingerprint": "488a3d7c38a62a94d7481f59509a757748f3aaf0243f953af0f4b6fd652614c4",
+  "sha256": "4880c0fe31734e6b3c306affdc10dcf1497bec32bb2cb54e506a7a2679149467",
+  "bytes": 1955767,
+  "durationMs": 2457,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: viaduct acoustic panels, low hedge and street trees"
+}

@@ -1,0 +1,253 @@
+{
+  "plan": "raffles-expansion-batch-02",
+  "startedAt": "2026-09-13T04:38:11.152Z",
+  "cached": 0,
+  "captured": 40,
+  "failed": 0,
+  "panoramaLoads": 10,
+  "staticApiRequests": 0,
+  "totalMs": 143205,
+  "bytes": 70711871,
+  "views": [
+    {
+      "id": "church-expansion-0",
+      "status": "captured",
+      "durationMs": 3550,
+      "bytes": 1732608
+    },
+    {
+      "id": "church-expansion-90",
+      "status": "captured",
+      "durationMs": 3090,
+      "bytes": 2123125
+    },
+    {
+      "id": "church-expansion-180",
+      "status": "captured",
+      "durationMs": 3114,
+      "bytes": 1950728
+    },
+    {
+      "id": "church-expansion-270",
+      "status": "captured",
+      "durationMs": 3155,
+      "bytes": 1813468
+    },
+    {
+      "id": "cross-expansion-0",
+      "status": "captured",
+      "durationMs": 3562,
+      "bytes": 1858952
+    },
+    {
+      "id": "cross-expansion-90",
+      "status": "captured",
+      "durationMs": 3178,
+      "bytes": 1759509
+    },
+    {
+      "id": "cross-expansion-180",
+      "status": "captured",
+      "durationMs": 3094,
+      "bytes": 1678250
+    },
+    {
+      "id": "cross-expansion-270",
+      "status": "captured",
+      "durationMs": 3106,
+      "bytes": 1684932
+    },
+    {
+      "id": "telok-expansion-0",
+      "status": "captured",
+      "durationMs": 3079,
+      "bytes": 1989515
+    },
+    {
+      "id": "telok-expansion-90",
+      "status": "captured",
+      "durationMs": 3166,
+      "bytes": 1864871
+    },
+    {
+      "id": "telok-expansion-180",
+      "status": "captured",
+      "durationMs": 18145,
+      "bytes": 1823955
+    },
+    {
+      "id": "telok-expansion-270",
+      "status": "captured",
+      "durationMs": 3122,
+      "bytes": 1871045
+    },
+    {
+      "id": "robinson-expansion-0",
+      "status": "captured",
+      "durationMs": 3378,
+      "bytes": 1958549
+    },
+    {
+      "id": "robinson-expansion-90",
+      "status": "captured",
+      "durationMs": 3157,
+      "bytes": 1825883
+    },
+    {
+      "id": "robinson-expansion-180",
+      "status": "captured",
+      "durationMs": 3140,
+      "bytes": 1651504
+    },
+    {
+      "id": "robinson-expansion-270",
+      "status": "captured",
+      "durationMs": 3112,
+      "bytes": 1856216
+    },
+    {
+      "id": "lau-pa-sat-expansion-0",
+      "status": "captured",
+      "durationMs": 3473,
+      "bytes": 1792070
+    },
+    {
+      "id": "lau-pa-sat-expansion-90",
+      "status": "captured",
+      "durationMs": 3074,
+      "bytes": 2048916
+    },
+    {
+      "id": "lau-pa-sat-expansion-180",
+      "status": "captured",
+      "durationMs": 3111,
+      "bytes": 2013611
+    },
+    {
+      "id": "lau-pa-sat-expansion-270",
+      "status": "captured",
+      "durationMs": 3084,
+      "bytes": 1895049
+    },
+    {
+      "id": "cecil-south-expansion-0",
+      "status": "captured",
+      "durationMs": 3292,
+      "bytes": 1826351
+    },
+    {
+      "id": "cecil-south-expansion-90",
+      "status": "captured",
+      "durationMs": 3088,
+      "bytes": 2040539
+    },
+    {
+      "id": "cecil-south-expansion-180",
+      "status": "captured",
+      "durationMs": 3402,
+      "bytes": 1992299
+    },
+    {
+      "id": "cecil-south-expansion-270",
+      "status": "captured",
+      "durationMs": 3077,
+      "bytes": 1887813
+    },
+    {
+      "id": "quay-west-expansion-0",
+      "status": "captured",
+      "durationMs": 3282,
+      "bytes": 1675606
+    },
+    {
+      "id": "quay-west-expansion-90",
+      "status": "captured",
+      "durationMs": 3111,
+      "bytes": 1770263
+    },
+    {
+      "id": "quay-west-expansion-180",
+      "status": "captured",
+      "durationMs": 3076,
+      "bytes": 1738647
+    },
+    {
+      "id": "quay-west-expansion-270",
+      "status": "captured",
+      "durationMs": 3038,
+      "bytes": 1417401
+    },
+    {
+      "id": "circular-expansion-0",
+      "status": "captured",
+      "durationMs": 4082,
+      "bytes": 1421914
+    },
+    {
+      "id": "circular-expansion-90",
+      "status": "captured",
+      "durationMs": 3122,
+      "bytes": 1584520
+    },
+    {
+      "id": "circular-expansion-180",
+      "status": "captured",
+      "durationMs": 3102,
+      "bytes": 1573319
+    },
+    {
+      "id": "circular-expansion-270",
+      "status": "captured",
+      "durationMs": 3071,
+      "bytes": 1236179
+    },
+    {
+      "id": "collyer-expansion-0",
+      "status": "captured",
+      "durationMs": 3297,
+      "bytes": 1934206
+    },
+    {
+      "id": "collyer-expansion-90",
+      "status": "captured",
+      "durationMs": 3051,
+      "bytes": 1534361
+    },
+    {
+      "id": "collyer-expansion-180",
+      "status": "captured",
+      "durationMs": 3111,
+      "bytes": 1870389
+    },
+    {
+      "id": "collyer-expansion-270",
+      "status": "captured",
+      "durationMs": 3067,
+      "bytes": 2152362
+    },
+    {
+      "id": "fullerton-road-expansion-0",
+      "status": "captured",
+      "durationMs": 3539,
+      "bytes": 1439672
+    },
+    {
+      "id": "fullerton-road-expansion-90",
+      "status": "captured",
+      "durationMs": 3140,
+      "bytes": 1249676
+    },
+    {
+      "id": "fullerton-road-expansion-180",
+      "status": "captured",
+      "durationMs": 3102,
+      "bytes": 1463201
+    },
+    {
+      "id": "fullerton-road-expansion-270",
+      "status": "captured",
+      "durationMs": 3138,
+      "bytes": 1710397
+    }
+  ]
+}

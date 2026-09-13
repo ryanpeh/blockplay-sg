@@ -4,14 +4,37 @@ Queenstown is a separate, playable low-poly estate, not a colour variant of Mari
 
 ## Implemented
 
-- An approximately 368 × 288 game-unit extent: continuous estate road loop, central Commonwealth Avenue-inspired arterial and western green walking path.
+- Detail pass: platform screen/edge rhythm, track sleepers, lift-lobby doors/mailboxes and ceiling beams in open decks, end-facade windows and roof service volumes, covered bus waiting areas, community pavilion, playground, permeable court fencing, benches/bins and cars in marked parking bays. Roadside vegetation is layered into mature crowns, curb planters and pocket gardens.
+- A 520 × 424 game-unit extent (2.08× the initial 368 × 288 area): original estate loop, central Commonwealth Avenue-inspired arterial, western green walking path and new outer district circuit with four road connectors.
 - Elevated Queenstown station-inspired platforms, green roof, EW19 signage, support piers, lift entrances and an animated train.
-- Four slab-block clusters with repeated windows, air-conditioning units, accent panels, genuinely open void decks, ground columns and covered walkways.
+- Six slab-block clusters with repeated windows, air-conditioning units, accent panels, genuinely open void decks, ground columns and covered walkways; four taller modern residential podium/towers and an older two-storey neighbourhood service row distinguish the outer districts.
 - Low neighbourhood shops, kopi tables, a basketball court, trees and a low-rise library-inspired building/garden.
-- Walk/run, chase-camera driving with visible car, collision sliding, reset, minimap and five reachable collectibles.
+- Walk/run, chase-camera driving with visible car, collision sliding, reset, minimap and eight reachable collectibles. New destinations: Commonwealth gardens, Dawson courtyard and the neighbourhood gateway.
 - Resources and event handlers are disposed on region changes. Canvas labels and controls identify Queenstown.
 
 ## References and accuracy
+
+### September detail expansion
+
+Seventy new browser screenshot files were stored in this session: 20 initial detail views, four clean replacement frames, 12 additional exterior views and 34 district expansion views. Together with the four earlier frames, Queenstown now has 74 cached PNG references. Every new frame was visually reviewed; individual JSON `visualReview` fields distinguish accepted, limited and rejected imagery. The latest 40-view district plan stopped after 34 captures and one failure at `margaret-north-180`; six views remain uncaptured. Raw error details are intentionally withheld by the capture helper to protect credentials. No automatic retries were spent; rerunning the plan later will reuse the 34 valid cache entries. All screenshot attempts remain recorded even when rejected.
+
+The new district plan is `reconstruction/queenstown-district-browser-plan.json`, with requested areas Commonwealth Close/Crescent, Tanglin Halt, Queen's Close, Stirling, Dawson and Margaret Drive. Capture geography is broader than this compressed authored game map. Several Google-selected sources are pedestrian estate courtyards rather than roads, useful for public-realm details; `margaret-north` selected a landed enclave and is limited rather than treated as HDB reference. Dates range from 2019 to 2025 across the cache and are retained per frame; do not present the composite as a current geographic reconstruction.
+
+The new `queenstown-expansion-browser-plan.json`, `queenstown-retry-browser-plan.json` and `queenstown-exterior-browser-plan.json` broaden coverage around Commonwealth Avenue, Mei Ling Street, Margaret Drive, Dawson and Tanglin Halt. Plan source names describe requested areas, not verified landmark identity: for example `library` selected 74 Margaret Drive, and `margaret` selected 38 Commonwealth Avenue. Source metadata records the actual selected position and date.
+
+Image-to-geometry mapping:
+
+- `stirling-0`, `stirling-90`, `stirling-270-retry`: coral slab end walls, cream galleries, red covered links, teal guard rails and layered mature canopy. Applied to the community pavilion canopy/rails and the estate planting palette; steep terrain remains unmodeled.
+- `margaret-0`, `margaret-90`, `library-270`: white vertical residential fins, dark window recesses and planted podiums. Applied to distant modern tower context outside the gameplay boundary, contrasting with the older open-deck slabs.
+- `margaret-90`: blue barrel-roof low-rise hall and pale colonnade. Applied as a roof/column motif on the compact authored market, not an exact reconstruction of that hall.
+- `margaret-0`, `margaret-180`, `library-270`: red parallel paths, planted verges, clear kerbs, hedges and street lamps. Applied along the station approach/spawn lane and roadside pockets.
+- `station-clear-180` and the clean station retries: pale concrete viaduct, train stripe and dense roadside greenery. Supports the existing elevated rail palette and layered planting.
+- `commonwealth-close-0/90/180/270`, `commonwealth-crescent-0/90`: cyan/peach access-gallery accents, red roof shelters and pale curved garden benches. Applied to the new northern slab and western sheltered garden; the real slopes remain compressed into a level playable world.
+- `mei-ling-road-90/270`: tall red-roof gateway with open passage. Applied to the northern district gateway above a clear road connector.
+- `tanglin-market-road-90/180`: older two-storey red-roof service row with small windows and rear air-conditioning units. Applied to the western neighbourhood shops and shaded court.
+- `dawson-90/180`, `dawson-east-90/270`: planted podiums and paved residential courts. Applied to the eastern tower district/courtyard; no inaccessible ramps or elevated objectives were introduced.
+
+The first detail run exposed two capture failures despite the helper reporting success: two images contain a development error overlay, and four have stale WebGL pixels after heading/panorama changes. One additional Mei Ling frame is an indoor market. These seven are explicitly rejected in their JSON manifests, retained for audit/cache history, and not used to model exterior geometry. Three other frames are marked limited for foreground occlusion. Four replacement views have clean, distinct pixels after the shared foreground/POV/repaint readiness fix. No Static API calls were made.
 
 Primary public references establish the neighbourhood identity, rather than surveyed dimensions:
 
@@ -29,8 +52,10 @@ Visual review accepted three images; station-west is limited by a foreground bus
 
 ## Validation and next work
 
-`src/game/queenstown-scene.test.ts` checks safe walking/driving spawn, all five collectibles reachable with driving clearance, open void-deck passage, solid columns and map bounds. Browser checks should cover both travel modes, reset, switching regions and mobile overflow.
+`src/game/queenstown-scene.test.ts` checks safe walking/driving spawn, all eight collectibles reachable with driving clearance, open void-deck passage, solid columns and map bounds. It also checks that the larger area is genuinely more than twice the initial map and that all outer road/connector centerlines remain clear. Browser checks should cover both travel modes, reset, switching regions and mobile overflow.
 
 Static scene detail is grouped into instanced draws by geometry, material and shadow flags; train, car and collectibles remain separate animated objects. The regression test checks that more than500 authored static details batch into fewer than100 root scene children.
 
-Next: capture clearer station roof/street views and Margaret Drive/library references, then refine road widths and relative layout. Keep panorama identity, heading, capture date and attribution with cached screenshots; do not spend the Marina Static allowance on Queenstown. Move from this composite into connected geographically calibrated subareas incrementally. Existing four captures do not justify claiming survey accuracy.
+The detail-pass regression also checks the full road-loop lanes and station arterial, open waiting areas, and solid parked cars. More than 2,000 static meshes are authored, then instanced into fewer than 100 root scene children; decorative detail must not turn into thousands of draw calls.
+
+Next: move from this composite into connected geographically calibrated subareas incrementally. Keep panorama identity, heading, capture date and attribution with cached screenshots; do not spend the Static allowance on browser reference collection. Reference images inform material/layout motifs but do not establish surveyed scale. The playground, pavilion and generic shops are gameplay-authored amenities, not claims that these exact structures occupy these positions.

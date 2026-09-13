@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "_7E763z20DuvVk0jyMJO6w",
+  "position": {
+    "lat": 1.2959333863881268,
+    "lng": 103.80888721098805
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:26:50.587Z",
+  "file": "reconstruction/queenstown/references/dawson-0.png",
+  "fingerprint": "85a12e89a9b765ec4a8553ac2349ab2f42a1c33994f3fc83ac9b498430e0e774",
+  "sha256": "f7c4cd014215f73a86f1f70fd50110443a0e62eeab7709d640183445e3ba4db7",
+  "bytes": 1925655,
+  "durationMs": 3249,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: mature canopy, parking bays, low civic buildings"
+}

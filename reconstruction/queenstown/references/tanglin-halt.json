@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "yWsAohnyGeYj1ArH3FXN4w",
+  "location": {
+    "lat": 1.2993470539405965,
+    "lng": 103.79901856960791
+  },
+  "description": "57 Tanglin Halt Rd, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.2993,
+    "lng": 103.7988
+  },
+  "selectedGoogle": true
+}

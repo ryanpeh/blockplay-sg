@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling-south.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-02",
+  "pano_id": "vY61TPGngejtp1nZU3iMVQ",
+  "position": {
+    "lat": 1.2890636123963841,
+    "lng": 103.80556848878837
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:20.044Z",
+  "file": "reconstruction/queenstown/references/stirling-south-0.png",
+  "fingerprint": "0b0cceff8ecebb5399fa7da6e464717763551179917573596d62c909debd8bab",
+  "sha256": "d85b8b9804cc2b75561abd0e4ff1fcc6521c17d219333ade16639339bc235dcc",
+  "bytes": 1949988,
+  "durationMs": 3279,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: outdoor retail glass canopy, stone pier and palms"
+}

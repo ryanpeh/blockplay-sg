@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "cecil.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "PUxFa-L5ilZ8j5iNcqDuvg",
+  "position": {
+    "lat": 1.2823277239636524,
+    "lng": 103.8503366589604
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 12,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "146 Market St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:16:40.115Z",
+  "file": "reconstruction/raffles-place/references/cecil-180.png",
+  "fingerprint": "c05aef8fafe53923883fb4636a8e5d64a3998b9313a1c7fcf00657074f69b2c5",
+  "sha256": "f8e2010b35e59d873ed837671b5101196a807e5e4b390935b2d31f574e130c73",
+  "bytes": 1789046,
+  "durationMs": 2463,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: visually inspected outdoor view, distinct heading, useful material/detail or street context"
+}

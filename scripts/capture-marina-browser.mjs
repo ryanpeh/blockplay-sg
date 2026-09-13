@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { parseEnv } from 'node:util';
 import { withBudget } from './api-budget.mjs';
+import { isCaptureReady, assertFreshPixels, captureFailureCode } from './capture-readiness.mjs';
 import { planDirectory, parsePlanArgs, sha256, prepareViews, checkAllowance } from './browser-capture-plan.mjs';
 
 // Default single view, or --batch for the editable reviewed Marina plan.
@@ -78,6 +79,8 @@ async function main() {
       if (['Network.loadingFinished', 'Network.loadingFailed'].includes(message.method) && pendingTiles.delete(message.params.requestId)) lastTileActivity = Date.now();
     });
     await page.send('Network.enable');
+    await page.send('Page.enable');
+    await page.send('Page.bringToFront');
     await page.send('Network.setBlockedURLs', { urls: ['https://maps.googleapis.com/maps/api/streetview*'] });
     await page.send('Emulation.setDeviceMetricsOverride', { width: plan.width, height: plan.height, deviceScaleFactor: 1, mobile: false });
     await page.send('Page.navigate', { url: `${appOrigin}/capture-streetview.html` });
@@ -87,11 +90,13 @@ async function main() {
     }
     await withBudget(async request => {
       let activePano;
+      const seenPixels = new Map(views.filter(view => view.cached).map(view => [view.cached.sha256, view.fingerprint]));
       for (const view of views.filter(view => !view.cached)) {
       const { source, imageFile, manifestFile } = view, frameStarted = performance.now();
       try {
       // Record screenshots separately; these do not use the Static API allowance.
       await request(`browser-screenshot-${view.id}`, async () => {
+        await page.send('Page.bringToFront');
         const changePanorama = activePano !== source.pano_id;
         const loadOrAim = async () => {
           if (!activePano) {
@@ -119,9 +124,10 @@ async function main() {
           })()`);
           let ready = false;
           for (let i = 0; i < 100; i++) {
-            const state = await evaluate(`({status:window.__capturePano.getStatus(),pano:window.__capturePano.getPano(),authFailed:window.__captureAuthFailed,bad:!!document.querySelector('.gm-err-container')})`);
+            const state = await evaluate(`({status:window.__capturePano.getStatus(),pano:window.__capturePano.getPano(),pov:window.__capturePano.getPov(),zoom:window.__capturePano.getZoom(),hidden:document.hidden,overlay:!!document.querySelector('vite-error-overlay'),authFailed:window.__captureAuthFailed,bad:!!document.querySelector('.gm-err-container')})`);
             if (state.authFailed || state.bad) throw new Error('Demo key authorization failed.');
-            if (state.status === 'OK' && state.pano === source.pano_id && pendingTiles.size === 0 && Date.now() - lastTileActivity > 2000) { ready = true; break; }
+            if (state.overlay) throw new Error('Development error overlay; capture rejected.');
+            if (isCaptureReady(state, view) && pendingTiles.size === 0 && Date.now() - lastTileActivity > 2000) { ready = true; break; }
             await new Promise(resolve => setTimeout(resolve, 200));
           }
           if (!ready || staticRequests) throw new Error('Panorama not ready or unexpected Static request detected.');
@@ -130,17 +136,27 @@ async function main() {
         if (changePanorama) { report.panoramaLoads++; await request('maps-javascript-panorama-load', loadOrAim); }
         else await loadOrAim();
         activePano = source.pano_id;
+        const painted = await evaluate(`Promise.race([new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))),new Promise(resolve=>setTimeout(()=>resolve(false),3000))])`);
+        if (!painted) throw new Error('Foreground repaint timed out; capture rejected.');
+        // Flush a composited frame before saving; background Street View can lag
+        // behind getPov/getPano even when tile requests have finished.
+        await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+        await new Promise(resolve => setTimeout(resolve, 350));
+        const finalState = await evaluate(`({status:window.__capturePano.getStatus(),pano:window.__capturePano.getPano(),pov:window.__capturePano.getPov(),zoom:window.__capturePano.getZoom(),hidden:document.hidden,overlay:!!document.querySelector('vite-error-overlay')})`);
+        if (!isCaptureReady(finalState, view)) throw new Error('View changed before screenshot; capture rejected.');
         const actual = await evaluate(`(()=>{const p=window.__capturePano,l=p.getLocation();return {pano_id:p.getPano(),position:p.getPosition()?.toJSON(),pov:p.getPov(),zoom:p.getZoom(),description:l?.description};})()`);
         const shot = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
         const bytes = Buffer.from(shot.data, 'base64');
+        assertFreshPixels(sha256(bytes), view.fingerprint, seenPixels);
+        seenPixels.set(sha256(bytes), view.fingerprint);
         await writeFile(imageFile, bytes);
         const durationMs = Math.round(performance.now() - frameStarted);
-        await writeFile(manifestFile, JSON.stringify({ source: 'Google Maps JavaScript Street View; owner-authorized browser reference', credential: 'GOOGLE_MAPS_DEMO_API_KEY', sourceMetadata: view.sourceMetadata, copyright: source.copyright, sourceDate: source.date, ...actual, width: plan.width, height: plan.height, capturedAt: new Date().toISOString(), file: imageFile, fingerprint: view.fingerprint, sha256: sha256(bytes), bytes: bytes.length, durationMs, staticApiRequests: staticRequests, attribution: 'Retained in screenshot', visualReview: 'pending' }, null, 2) + '\n');
+        await writeFile(manifestFile, JSON.stringify({ source: 'Google Maps JavaScript Street View; owner-authorized browser reference', credential: 'GOOGLE_MAPS_DEMO_API_KEY', sourceMetadata: view.sourceMetadata, copyright: source.copyright, sourceDate: source.date, ...actual, width: plan.width, height: plan.height, capturedAt: new Date().toISOString(), file: imageFile, fingerprint: view.fingerprint, sha256: sha256(bytes), bytes: bytes.length, durationMs, staticApiRequests: staticRequests, attribution: 'Retained in screenshot', readinessCheck: 'foreground-pov-repaint-v2', visualReview: 'pending' }, null, 2) + '\n');
         report.captured++; report.bytes += bytes.length; report.views.push({ id: view.id, status: 'captured', durationMs, bytes: bytes.length });
         console.log(`Saved ${imageFile} using demo key; zero Static API requests. Inspect image before accepting.`);
         return new Response('Screenshot saved', { status: 200 });
       });
-      } catch (error) { report.failed++; report.views.push({ id: view.id, status: 'failed', durationMs: Math.round(performance.now() - frameStarted), reason: 'Capture stopped; inspect setup/permissions/cache. No automatic retry.' }); throw error; }
+      } catch (error) { report.failed++; report.views.push({ id: view.id, status: 'failed', durationMs: Math.round(performance.now() - frameStarted), reason: captureFailureCode(error) }); throw error; }
       }
     }, undefined, plan.region || 'marina-bay');
     report.staticApiRequests = staticRequests;
@@ -151,4 +167,4 @@ async function main() {
     await saveReport();
   }
 }
-main().catch(() => { console.error('Browser capture stopped. Check local Chrome/Vite setup, demo-key permissions, and the ledger. Raw errors withheld to protect the key.'); process.exitCode = 1; });
+main().catch(error => { console.error(`Browser capture stopped (${captureFailureCode(error)}). Check local Chrome/Vite setup, demo-key permissions, and the ledger. Raw errors withheld to protect the key.`); process.exitCode = 1; });

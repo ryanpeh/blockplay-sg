@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "downtown-green-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "5UDZ9rBDWRaZDRU1y2ljhw",
+  "position": {
+    "lat": 1.2794937936736568,
+    "lng": 103.8527557209538
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "15 Central Blvd, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:23.303Z",
+  "file": "reconstruction/marina-bay/references/downtown-green-03-90.png",
+  "fingerprint": "82a2f24682d8190595d89b9ec7620994bb87f7ca2fb63d1112691ee812c6847d",
+  "sha256": "71366117d3147ab6f42fd542e429197306b2b9f91f24d4f743c13705f9a1230e",
+  "bytes": 1839390,
+  "durationMs": 3104,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: reflective blue glazing, horizontal facade bands, planted podium and broad road"
+}

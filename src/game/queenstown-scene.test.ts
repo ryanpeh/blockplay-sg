@@ -1,13 +1,14 @@
 import { expect, it } from 'vitest';
-import { buildQueenstownScene, QUEENSTOWN_SPAWN, QUEENSTOWN_STAMPS } from './queenstown-scene';
+import { buildQueenstownScene, QUEENSTOWN_MAP_ROADS, QUEENSTOWN_SPAWN, QUEENSTOWN_STAMPS } from './queenstown-scene';
 import { canOccupy, moveInQueenstown, QUEENSTOWN_BOUNDS } from './queenstown-collision';
 
 it('creates a distinct estate with safe spawn and reachable driving collectibles', () => {
   const world = buildQueenstownScene();
   try {
-    expect(world.scene.userData.authoredMeshCount).toBeGreaterThan(500);
+    expect(world.scene.userData.authoredMeshCount).toBeGreaterThan(2000);
     expect(world.scene.children.length).toBeLessThan(100);
-    expect(world.stamps).toHaveLength(5);
+    expect(world.stamps).toHaveLength(8);
+    expect((QUEENSTOWN_BOUNDS.maxX-QUEENSTOWN_BOUNDS.minX)*(QUEENSTOWN_BOUNDS.maxZ-QUEENSTOWN_BOUNDS.minZ)/(368*288)).toBeGreaterThan(2);
     expect(canOccupy(QUEENSTOWN_SPAWN.x, QUEENSTOWN_SPAWN.z, 1.35, world.obstacles)).toBe(true);
     const seen = new Set<string>(); const queue = [{ x: -18, z: 82 }];
     for (let index = 0; index < queue.length; index++) {
@@ -26,12 +27,29 @@ it('creates a distinct estate with safe spawn and reachable driving collectibles
   } finally { world.dispose(); }
 });
 
+it('keeps the road loop and sheltered waiting areas open while furniture is solid', () => {
+  const world = buildQueenstownScene();
+  try {
+    for (let x = -132; x <= 132; x += 4) for (const z of [-122, 116, 17, 28]) expect(canOccupy(x,z,1.35,world.obstacles), `road ${x},${z}`).toBe(true);
+    for (let z = -114; z <= 108; z += 4) for (const x of [-140,140]) expect(canOccupy(x,z,1.35,world.obstacles), `loop ${x},${z}`).toBe(true);
+    expect(canOccupy(-88,4.5,0.65,world.obstacles)).toBe(true);
+    for (let x=-232;x<=232;x+=4) for (const z of [-185,185]) expect(canOccupy(x,z,1.35,world.obstacles), `outer ${x},${z}`).toBe(true);
+    for (let z=-180;z<=180;z+=4) for (const x of [-235,235]) expect(canOccupy(x,z,1.35,world.obstacles), `outer ${x},${z}`).toBe(true);
+    expect(canOccupy(-99,97,0.65,world.obstacles)).toBe(false);
+    expect(world.scene.userData.detailFeatures).toContain('bus-shelters');
+    for (const road of QUEENSTOWN_MAP_ROADS.slice(3)) for (let i=1;i<road.points.length;i++) {
+      const a=road.points[i-1],b=road.points[i],distance=Math.hypot(b.x-a.x,b.z-a.z);
+      for (let d=0;d<=distance;d+=3) {const x=a.x+(b.x-a.x)*d/distance,z=a.z+(b.z-a.z)*d/distance;expect(canOccupy(x,z,1.35,world.obstacles),`connector ${x},${z}`).toBe(true);}
+    }
+  } finally { world.dispose(); }
+});
+
 it('allows passage through open void decks but stops at estate columns', () => {
   const world = buildQueenstownScene();
   try {
     expect(canOccupy(-73, -44, 1.35, world.obstacles)).toBe(true);
     expect(canOccupy(-73, -38.2, 0.65, world.obstacles)).toBe(false);
     expect(canOccupy(QUEENSTOWN_BOUNDS.maxX, 0, 1, [])).toBe(false);
-    expect(moveInQueenstown({ x: 180, z: 0 }, 30, 0, 1, []).x).toBeLessThanOrEqual(183);
+    expect(moveInQueenstown({ x: 250, z: 0 }, 30, 0, 1, []).x).toBeLessThanOrEqual(259);
   } finally { world.dispose(); }
 });

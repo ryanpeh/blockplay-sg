@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "skyville-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "de74bBdAaN7BW4CZYx56XQ",
+  "position": {
+    "lat": 1.2967019757350113,
+    "lng": 103.80866656167389
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "499 Margaret Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:48.759Z",
+  "file": "reconstruction/queenstown/references/skyville-road-90.png",
+  "fingerprint": "e92d0a49ab71a7d2462d8cece41873e6d981f5c952b8fc6c99104f2d0b18ce6b",
+  "sha256": "e872059272b879528ac1f4ed26df489ee584ae5b3708de3a9b745e16d86252b2",
+  "bytes": 2309262,
+  "durationMs": 3091,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: red traffic-calming paving and tall residential backdrop"
+}

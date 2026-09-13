@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "conservatory-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2014-05",
+  "pano_id": "v8Wz5OAE66zLVyDElJY5jA",
+  "position": {
+    "lat": 1.2850350592561106,
+    "lng": 103.86479823848322
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:41:52.180Z",
+  "file": "reconstruction/marina-bay/references/conservatory-road-03-90.png",
+  "fingerprint": "78ce5d901bc364b410e0619c276b3b97d8f75af31a3875344ccfaff67552a788",
+  "sha256": "4c5a61044102d5c8f9f384785b05087ad212e988974855419bc8073dd6e29312",
+  "bytes": 1335325,
+  "durationMs": 3096,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: grey-green glazing, white inclined ribs, curved asphalt path, yellow edge line and purple bollards"
+}

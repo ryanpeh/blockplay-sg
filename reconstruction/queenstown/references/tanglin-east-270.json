@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "tanglin-east.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "PNqOZS90Z4fuqMUza34HFA",
+  "position": {
+    "lat": 1.2990438013148715,
+    "lng": 103.80200878181631
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:04.406Z",
+  "file": "reconstruction/queenstown/references/tanglin-east-270.png",
+  "fingerprint": "d49c2ea97728ebda74d734f38b634c9b4ff9d813012dbafa0f7a88990e7c5737",
+  "sha256": "d2367f8a78e975aff3944bb461c2d310b5e838b891735c7e1dde2ee7699df8b7",
+  "bytes": 2313906,
+  "durationMs": 3054,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: large street-tree canopy and side access lane"
+}

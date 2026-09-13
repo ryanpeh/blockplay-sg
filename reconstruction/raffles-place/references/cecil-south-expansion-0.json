@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "cecil-south-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "blXMZWStANYc-azwZrlM1g",
+  "position": {
+    "lat": 1.2797671722655701,
+    "lng": 103.84836596692045
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 10,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "156 Cecil St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:39:33.424Z",
+  "file": "reconstruction/raffles-place/references/cecil-south-expansion-0.png",
+  "fingerprint": "875162bb22055abd8c259b260b865fcf6a31181924e13056949bb54c12110562",
+  "sha256": "7b8450d94bb92492c67b7ae93026305545b531d730b0a3a8c869a741cbde2504",
+  "bytes": 1826351,
+  "durationMs": 3292,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

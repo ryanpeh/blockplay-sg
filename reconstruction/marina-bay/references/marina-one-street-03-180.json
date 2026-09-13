@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "marina-one-street-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "dlFatS0d3HyUpwje4d54Vw",
+  "position": {
+    "lat": 1.2776617136881363,
+    "lng": 103.852375851504
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:39.679Z",
+  "file": "reconstruction/marina-bay/references/marina-one-street-03-180.png",
+  "fingerprint": "b632c90666e4df80bc95fd2faac88a17a3264212b03800a2f703486bb98e9667",
+  "sha256": "cfb265ca212b0e33d9825e5bd82e541ae2c9461b9f4d4f5714f283bcf5b8ac4f",
+  "bytes": 1305382,
+  "durationMs": 3117,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: hoarding masks entrance; retain canopy, large columns, paving and bollard rhythm"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "UMbGGEkDkczQEniHAGu11w",
+  "location": {
+    "lat": 1.2896887364818257,
+    "lng": 103.858838819201
+  },
+  "description": "Raffles Ave., Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2895,
+    "lng": 103.8588
+  },
+  "selectedGoogle": true
+}

@@ -1,0 +1,191 @@
+{
+  "name": "queenstown-detail-batch-02",
+  "region": "queenstown",
+  "width": 1280,
+  "height": 900,
+  "maxNewImages": 20,
+  "sources": {
+    "station-clear.json": {
+      "lat": 1.29382,
+      "lng": 103.80675
+    },
+    "stirling.json": {
+      "lat": 1.29254,
+      "lng": 103.80434
+    },
+    "mei-ling.json": {
+      "lat": 1.29344,
+      "lng": 103.8026
+    },
+    "margaret.json": {
+      "lat": 1.29794,
+      "lng": 103.80416
+    },
+    "library.json": {
+      "lat": 1.29876,
+      "lng": 103.80501
+    }
+  },
+  "views": [
+    {
+      "id": "station-clear-0",
+      "source": "station-clear.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review station-clear facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "station-clear-90",
+      "source": "station-clear.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review station-clear facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "station-clear-180",
+      "source": "station-clear.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review station-clear facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "station-clear-270",
+      "source": "station-clear.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review station-clear facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "stirling-0",
+      "source": "stirling.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review stirling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "stirling-90",
+      "source": "stirling.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review stirling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "stirling-180",
+      "source": "stirling.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review stirling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "stirling-270",
+      "source": "stirling.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review stirling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "mei-ling-0",
+      "source": "mei-ling.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review mei-ling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "mei-ling-90",
+      "source": "mei-ling.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review mei-ling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "mei-ling-180",
+      "source": "mei-ling.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review mei-ling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "mei-ling-270",
+      "source": "mei-ling.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review mei-ling facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "margaret-0",
+      "source": "margaret.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review margaret facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "margaret-90",
+      "source": "margaret.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review margaret facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "margaret-180",
+      "source": "margaret.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review margaret facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "margaret-270",
+      "source": "margaret.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review margaret facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "library-0",
+      "source": "library.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review library facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "library-90",
+      "source": "library.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review library facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "library-180",
+      "source": "library.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review library facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    },
+    {
+      "id": "library-270",
+      "source": "library.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Review library facade rhythm, public-space furniture, street vegetation and relative street scale; authored composite reference only"
+    }
+  ]
+}

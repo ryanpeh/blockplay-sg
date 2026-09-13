@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "commonwealth-close.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-11",
+  "pano_id": "kua04M-UYqOfC7GWIuoOmg",
+  "position": {
+    "lat": 1.305275700985338,
+    "lng": 103.80098624453116
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "83 Commonwealth Cl, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:18.961Z",
+  "file": "reconstruction/queenstown/references/commonwealth-close-90.png",
+  "fingerprint": "d59f528bd8352f3dceb0da09711a16ab170c7e4d328ead9c24e0e3643e070dd0",
+  "sha256": "581bd7af4607d28d863807bd0b6795f371da4a4758e0d220d88419701795e913",
+  "bytes": 2328556,
+  "durationMs": 3102,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: pale curved garden benches, red tile shelter and sloping greenery"
+}

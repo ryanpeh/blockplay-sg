@@ -1,6 +1,6 @@
 export interface Obstacle { minX: number; maxX: number; minZ: number; maxZ: number }
 export interface Position2D { x: number; z: number }
-export const MARINA_BOUNDS = { minX: -268, maxX: 288, minZ: -258, maxZ: 208 };
+export const MARINA_BOUNDS = { minX: -338, maxX: 388, minZ: -328, maxZ: 288 };
 
 export function canOccupy(x: number, z: number, radius: number, obstacles: readonly Obstacle[]) {
   const b = MARINA_BOUNDS;

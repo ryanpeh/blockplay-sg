@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "mei-ling-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "E1Xe9ch6n0YfXDKmDPjPpA",
+  "position": {
+    "lat": 1.2905699969235567,
+    "lng": 103.80337011347143
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:26:47.336Z",
+  "file": "reconstruction/queenstown/references/mei-ling-road-270.png",
+  "fingerprint": "39754358bb7c8f30f15c1032b1814d4e4ba857230c76fb3f40efbd1ea1425acb",
+  "sha256": "71264b99229ece3d7da9690387cf383b67fef2bb9a86c0de5513f9a163fe224e",
+  "bytes": 1918059,
+  "durationMs": 3102,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: sheltered exterior gateway with timber louvers and clear passage"
+}

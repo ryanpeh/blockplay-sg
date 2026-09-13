@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "float-waterfront-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "UMbGGEkDkczQEniHAGu11w",
+  "position": {
+    "lat": 1.2896887364818257,
+    "lng": 103.858838819201
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Raffles Ave., Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:45.249Z",
+  "file": "reconstruction/marina-bay/references/float-waterfront-03-90.png",
+  "fingerprint": "7be44ffaa3fd7ff284792ba8642cdd9053416c1b945a5bc3d88fb6d213d6ede6",
+  "sha256": "75c1fc31e6a18790c76dc4ace02d77f5ffe88cb589098e09a0e3854995ab77e6",
+  "bytes": 1765276,
+  "durationMs": 3086,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: broad lane markings, street lights and clear distant observation-wheel silhouette; construction edge is temporary"
+}

@@ -1,5 +1,22 @@
 # Marina Bay expansion — 13 September 2026
 
+## Third-ring milestone (current)
+
+The playable area is now **726 × 616 game units**, 447,216 square units: **1.73×** the preceding 556 × 466 map, and 3.57× the initial 396 × 316 map. All existing landmarks, routes and nine stamps remain. Five new stamps bring the total to **14**.
+
+- Third road circuit: x = −310 / 350, z = −295 / 252. Four new connectors join the previous circuit. The minimap consumes the same `MARINA_MAP_ROADS` data as road traversal tests.
+- Eastern garden avenue: canopy structures, ribbed conservatory-inspired shells, entrances, planting, bicycle racks and bins.
+- Northern forecourt: a modeled observation wheel with paired rims, spokes, glazed capsules and splayed supports.
+- Southern harbour promenade: arcaded retail frontages, glazed shop windows, canopy supports, benches and street lighting. Western civic offices have repeated windows and covered arcades.
+- Four decorative pedestrian figures stroll along short paths. They are ambient animation, not traffic/collision AI. Repeated static details continue to share instanced batches.
+- New destinations: Garden canopy walk, Conservatory avenue, Observation wheel, Harbour promenade and Civic arcade.
+
+These are authored, compressed interpretations. The new district features do not imply exact geographic placement or measured reconstruction. The dedicated 40-frame browser reference plan is `reconstruction/marina-district-browser-plan.json`; capture and review notes will be appended after the serialized reference batch completes. No Static API requests are needed.
+
+Validation: the seven focused Marina collision/scene tests pass, including car traversal of every road segment and collision-aware reachability of all 14 stamps. The scene currently has 9,227 static instances in 36 batches, 202 direct scene children and 374 ground colliders. The existing limit of fewer than 60 instanced batches still passes. Browser QA must run after the shared Chrome capture queue is released.
+
+The sections below describe the previous expansion milestone and are retained as history.
+
 ## Game changes
 
 - The modeled playable bounds grew from 396 × 316 to 556 × 466 game units (2.07× the area). The inner bay and its original five stamps remain; four district stamps bring the total to nine.

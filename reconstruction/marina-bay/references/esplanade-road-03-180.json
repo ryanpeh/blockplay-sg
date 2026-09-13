@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "esplanade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-11",
+  "pano_id": "zRv-u0DQNcflwiBnZxFYCw",
+  "position": {
+    "lat": 1.2911211162247562,
+    "lng": 103.85500638517166
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:01.030Z",
+  "file": "reconstruction/marina-bay/references/esplanade-road-03-180.png",
+  "fingerprint": "0a05e3a3413a73a6268e881632722a19f22c059cb90fab391e115d44cad66859",
+  "sha256": "90a191a1c214c429f2e03e065e71487ddbfa4c947ed755061029937c3f5e57a6",
+  "bytes": 2013911,
+  "durationMs": 3093,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: slab paving, inspection covers, gullies, layered planting and partial Esplanade shell"
+}

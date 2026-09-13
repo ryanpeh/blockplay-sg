@@ -1,0 +1,253 @@
+{
+  "plan": "marina-district-detail-batch-03",
+  "startedAt": "2026-09-13T04:41:32.787Z",
+  "cached": 0,
+  "captured": 40,
+  "failed": 0,
+  "panoramaLoads": 10,
+  "staticApiRequests": 0,
+  "totalMs": 130121,
+  "bytes": 67316134,
+  "views": [
+    {
+      "id": "gardens-grove-03-0",
+      "status": "captured",
+      "durationMs": 3524,
+      "bytes": 1687051
+    },
+    {
+      "id": "gardens-grove-03-90",
+      "status": "captured",
+      "durationMs": 3129,
+      "bytes": 1995079
+    },
+    {
+      "id": "gardens-grove-03-180",
+      "status": "captured",
+      "durationMs": 3053,
+      "bytes": 1505153
+    },
+    {
+      "id": "gardens-grove-03-270",
+      "status": "captured",
+      "durationMs": 3047,
+      "bytes": 1666071
+    },
+    {
+      "id": "conservatory-road-03-0",
+      "status": "captured",
+      "durationMs": 3468,
+      "bytes": 1184621
+    },
+    {
+      "id": "conservatory-road-03-90",
+      "status": "captured",
+      "durationMs": 3096,
+      "bytes": 1335325
+    },
+    {
+      "id": "conservatory-road-03-180",
+      "status": "captured",
+      "durationMs": 3183,
+      "bytes": 1443569
+    },
+    {
+      "id": "conservatory-road-03-270",
+      "status": "captured",
+      "durationMs": 3146,
+      "bytes": 1487185
+    },
+    {
+      "id": "barrage-approach-03-0",
+      "status": "captured",
+      "durationMs": 3242,
+      "bytes": 1544296
+    },
+    {
+      "id": "barrage-approach-03-90",
+      "status": "captured",
+      "durationMs": 4107,
+      "bytes": 1689949
+    },
+    {
+      "id": "barrage-approach-03-180",
+      "status": "captured",
+      "durationMs": 3084,
+      "bytes": 2465047
+    },
+    {
+      "id": "barrage-approach-03-270",
+      "status": "captured",
+      "durationMs": 3115,
+      "bytes": 2155638
+    },
+    {
+      "id": "east-garden-03-0",
+      "status": "captured",
+      "durationMs": 3325,
+      "bytes": 1980732
+    },
+    {
+      "id": "east-garden-03-90",
+      "status": "captured",
+      "durationMs": 3130,
+      "bytes": 2220375
+    },
+    {
+      "id": "east-garden-03-180",
+      "status": "captured",
+      "durationMs": 3101,
+      "bytes": 1607115
+    },
+    {
+      "id": "east-garden-03-270",
+      "status": "captured",
+      "durationMs": 3100,
+      "bytes": 1916231
+    },
+    {
+      "id": "flyer-road-03-0",
+      "status": "captured",
+      "durationMs": 3716,
+      "bytes": 1402476
+    },
+    {
+      "id": "flyer-road-03-90",
+      "status": "captured",
+      "durationMs": 4288,
+      "bytes": 1598926
+    },
+    {
+      "id": "flyer-road-03-180",
+      "status": "captured",
+      "durationMs": 3020,
+      "bytes": 902590
+    },
+    {
+      "id": "flyer-road-03-270",
+      "status": "captured",
+      "durationMs": 3106,
+      "bytes": 1516898
+    },
+    {
+      "id": "float-waterfront-03-0",
+      "status": "captured",
+      "durationMs": 3298,
+      "bytes": 2016304
+    },
+    {
+      "id": "float-waterfront-03-90",
+      "status": "captured",
+      "durationMs": 3086,
+      "bytes": 1765276
+    },
+    {
+      "id": "float-waterfront-03-180",
+      "status": "captured",
+      "durationMs": 3214,
+      "bytes": 1330838
+    },
+    {
+      "id": "float-waterfront-03-270",
+      "status": "captured",
+      "durationMs": 3056,
+      "bytes": 1738951
+    },
+    {
+      "id": "esplanade-road-03-0",
+      "status": "captured",
+      "durationMs": 3308,
+      "bytes": 1682929
+    },
+    {
+      "id": "esplanade-road-03-90",
+      "status": "captured",
+      "durationMs": 3103,
+      "bytes": 1932818
+    },
+    {
+      "id": "esplanade-road-03-180",
+      "status": "captured",
+      "durationMs": 3093,
+      "bytes": 2013911
+    },
+    {
+      "id": "esplanade-road-03-270",
+      "status": "captured",
+      "durationMs": 3119,
+      "bytes": 1719275
+    },
+    {
+      "id": "promenade-road-03-0",
+      "status": "captured",
+      "durationMs": 3298,
+      "bytes": 1934307
+    },
+    {
+      "id": "promenade-road-03-90",
+      "status": "captured",
+      "durationMs": 3075,
+      "bytes": 1689596
+    },
+    {
+      "id": "promenade-road-03-180",
+      "status": "captured",
+      "durationMs": 3276,
+      "bytes": 1801280
+    },
+    {
+      "id": "promenade-road-03-270",
+      "status": "captured",
+      "durationMs": 3094,
+      "bytes": 2119780
+    },
+    {
+      "id": "downtown-green-03-0",
+      "status": "captured",
+      "durationMs": 3297,
+      "bytes": 1786015
+    },
+    {
+      "id": "downtown-green-03-90",
+      "status": "captured",
+      "durationMs": 3104,
+      "bytes": 1839390
+    },
+    {
+      "id": "downtown-green-03-180",
+      "status": "captured",
+      "durationMs": 3727,
+      "bytes": 1617903
+    },
+    {
+      "id": "downtown-green-03-270",
+      "status": "captured",
+      "durationMs": 3333,
+      "bytes": 1839589
+    },
+    {
+      "id": "marina-one-street-03-0",
+      "status": "captured",
+      "durationMs": 3218,
+      "bytes": 1515521
+    },
+    {
+      "id": "marina-one-street-03-90",
+      "status": "captured",
+      "durationMs": 2972,
+      "bytes": 1025704
+    },
+    {
+      "id": "marina-one-street-03-180",
+      "status": "captured",
+      "durationMs": 3117,
+      "bytes": 1305382
+    },
+    {
+      "id": "marina-one-street-03-270",
+      "status": "captured",
+      "durationMs": 3214,
+      "bytes": 1337038
+    }
+  ]
+}

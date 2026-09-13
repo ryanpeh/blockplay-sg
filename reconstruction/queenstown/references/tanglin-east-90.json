@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "tanglin-east.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "PNqOZS90Z4fuqMUza34HFA",
+  "position": {
+    "lat": 1.2990438013148715,
+    "lng": 103.80200878181631
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:58.289Z",
+  "file": "reconstruction/queenstown/references/tanglin-east-90.png",
+  "fingerprint": "01b0a65124344a823e1efaf126f3d5aeeb0acded18e7f1d8ba9505df44faf2b7",
+  "sha256": "33395d99b706b89c0fbcea1be0c0791792432af6cce47ee09962f2adeb00c280",
+  "bytes": 1866515,
+  "durationMs": 3076,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: concrete piers, viaduct rail and street vegetation"
+}

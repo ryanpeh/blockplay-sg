@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "battery.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-07",
+  "pano_id": "iXuBrsYTpdFBENgzJvgXRw",
+  "position": {
+    "lat": 1.2847765093148913,
+    "lng": 103.85175288205832
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 12,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:16:22.020Z",
+  "file": "reconstruction/raffles-place/references/battery-270.png",
+  "fingerprint": "c5d2f36863bab7d5327ad84b301769126607a2460bd93bc5da6b68c6048a3d0f",
+  "sha256": "5cea3ef6e8944c15ea60285c1872c1ae2cbea38f43af948da9eefb357e39c555",
+  "bytes": 1376853,
+  "durationMs": 2425,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "detail-only: exterior loading entrance or close wall; not accepted for street scale"
+}

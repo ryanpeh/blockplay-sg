@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "skyville-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "de74bBdAaN7BW4CZYx56XQ",
+  "position": {
+    "lat": 1.2967019757350113,
+    "lng": 103.80866656167389
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "499 Margaret Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:45.667Z",
+  "file": "reconstruction/queenstown/references/skyville-road-0.png",
+  "fingerprint": "028640bbd633f8db218c51305f907c6b58242c87a7aaf1d60fabfa94ee3510ea",
+  "sha256": "96e6d90216e76714ad1198d30a34797c4115ee47970757e27915b32aea5a0e57",
+  "bytes": 1777725,
+  "durationMs": 3279,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: large pale steel sheltered crossing, red tile low-rise context"
+}

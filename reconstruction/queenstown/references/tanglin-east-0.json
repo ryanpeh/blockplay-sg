@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "tanglin-east.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "PNqOZS90Z4fuqMUza34HFA",
+  "position": {
+    "lat": 1.2990438013148715,
+    "lng": 103.80200878181631
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:55.212Z",
+  "file": "reconstruction/queenstown/references/tanglin-east-0.png",
+  "fingerprint": "e9863408bffc49e2aaf702f7c0c49691c0b0a85523f4c9c81d0c3260e8d2dfb2",
+  "sha256": "9d0a34c82d3c22e9f53302862bfd0bd7053ecf8e807e751c347e47a370fc2792",
+  "bytes": 2084708,
+  "durationMs": 3449,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: concrete viaduct profile and layered median hedges"
+}

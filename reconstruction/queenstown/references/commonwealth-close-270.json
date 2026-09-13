@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "commonwealth-close.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-11",
+  "pano_id": "kua04M-UYqOfC7GWIuoOmg",
+  "position": {
+    "lat": 1.305275700985338,
+    "lng": 103.80098624453116
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "83 Commonwealth Cl, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:25.360Z",
+  "file": "reconstruction/queenstown/references/commonwealth-close-270.png",
+  "fingerprint": "f863ca4448b354f52d1d8e566d856296debfc976b149a17d664a5cd330e40c15",
+  "sha256": "9c382f6b235343299785a86cc92aaa554a2caceef61baeda7a285ece97b3cb23",
+  "bytes": 2194104,
+  "durationMs": 3104,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: cyan gallery end, pale rails, curved sheltered path"
+}

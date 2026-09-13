@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "muBswkkDOQ3Z4Ysb9u2twQ",
+  "location": {
+    "lat": 1.3010032948928667,
+    "lng": 103.79763349435201
+  },
+  "description": "Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2022-03",
+  "requested": {
+    "lat": 1.3013,
+    "lng": 103.7975
+  },
+  "selectedGoogle": true
+}

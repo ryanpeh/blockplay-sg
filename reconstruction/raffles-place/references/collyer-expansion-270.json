@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "collyer-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "2Gf-qpSG9KEtCp8xXaLKTg",
+  "position": {
+    "lat": 1.2836004501027491,
+    "lng": 103.8528586061318
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "60 Collyer Quay, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:40:21.423Z",
+  "file": "reconstruction/raffles-place/references/collyer-expansion-270.png",
+  "fingerprint": "703e04e38c83865d87b3161eaa8f0b2557eb0f0c3269cbfa7a7fa612fe8bfb41",
+  "sha256": "f8e108e2481600fc7ce453b00f400675cfd4b75267b3d10a3167bd41c5e6eda8",
+  "bytes": 2152362,
+  "durationMs": 3067,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

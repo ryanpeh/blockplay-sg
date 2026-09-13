@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "gardens-grove-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2014-05",
+  "pano_id": "_N7MeyeTNKS6QuaodKBazw",
+  "position": {
+    "lat": 1.2816274048719476,
+    "lng": 103.8636480042419
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:41:36.381Z",
+  "file": "reconstruction/marina-bay/references/gardens-grove-03-0.png",
+  "fingerprint": "6d499f5bca4dbe7172e1e33347e08e6cccf38abf140896952191444dafc3684e",
+  "sha256": "d16d09188501505e71a8bdfcda282d628fc7cc34fc281bdbd58b4b89395d1d9e",
+  "bytes": 1687051,
+  "durationMs": 3524,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: elevated exterior view of wine-purple branching steel, planted cores, golden guardrails and grey decking; 2014 reference, not current surveyed dimensions"
+}

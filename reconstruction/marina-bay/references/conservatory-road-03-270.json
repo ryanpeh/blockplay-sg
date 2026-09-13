@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "conservatory-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2014-05",
+  "pano_id": "v8Wz5OAE66zLVyDElJY5jA",
+  "position": {
+    "lat": 1.2850350592561106,
+    "lng": 103.86479823848322
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:41:58.512Z",
+  "file": "reconstruction/marina-bay/references/conservatory-road-03-270.png",
+  "fingerprint": "a406186a9326e2b0f8bb4c9bbc533d51f373b5f8b5f9edd6abbc4b0ea0e4eb78",
+  "sha256": "7c331daabf399fc65da88aabfc70a8761c0b2807b224c892221eb8f8769abb91",
+  "bytes": 1487185,
+  "durationMs": 3146,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: repeated white ribs and glazing beside broad pedestrian/service path; partial cart occlusion"
+}

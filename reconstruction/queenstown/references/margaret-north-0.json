@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "margaret-north.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "oYo0Soiunb4X9ufcvNez5Q",
+  "position": {
+    "lat": 1.3015371149188608,
+    "lng": 103.80636510910301
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:58.117Z",
+  "file": "reconstruction/queenstown/references/margaret-north-0.png",
+  "fingerprint": "b12657aa993e6432ce7208a22d5c63fba53442196999f80efe55ee10de0479b4",
+  "sha256": "2220b797842bd71ba0fb090a85024cad35a0496fbf9daa1f9d3b5e22a4b651e1",
+  "bytes": 2243019,
+  "durationMs": 3249,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: selected landed enclave, planted white terraces only; not HDB sizing"
+}

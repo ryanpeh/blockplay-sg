@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "downtown-green-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "5UDZ9rBDWRaZDRU1y2ljhw",
+  "position": {
+    "lat": 1.2794937936736568,
+    "lng": 103.8527557209538
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "15 Central Blvd, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:30.367Z",
+  "file": "reconstruction/marina-bay/references/downtown-green-03-270.png",
+  "fingerprint": "4cd392571fadbdb23feedb588938d00520b08f5271db87928c02e415df30b03c",
+  "sha256": "f5a65afd4f6ef90a0e494be2345449e5551e6f58d4c0d8555d5f678ab02cd349",
+  "bytes": 1839589,
+  "durationMs": 3333,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: tower facade fins, sheltered pavement, street width and glazing; temporary barriers not used as permanent geometry"
+}

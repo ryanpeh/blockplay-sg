@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "JRP1H9pbZ5q2zznzrqE5CQ",
+  "location": {
+    "lat": 1.292756887361008,
+    "lng": 103.80401408454576
+  },
+  "description": "160 Mei Ling St, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.29254,
+    "lng": 103.80434
+  },
+  "selectedGoogle": true
+}

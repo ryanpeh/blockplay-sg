@@ -1,6 +1,6 @@
 export interface Obstacle { minX: number; maxX: number; minZ: number; maxZ: number }
 export interface Position2D { x: number; z: number }
-export const QUEENSTOWN_BOUNDS = { minX: -184, maxX: 184, minZ: -144, maxZ: 144 };
+export const QUEENSTOWN_BOUNDS = { minX: -260, maxX: 260, minZ: -212, maxZ: 212 };
 
 export function canOccupy(x: number, z: number, radius: number, obstacles: readonly Obstacle[]) {
   const b = QUEENSTOWN_BOUNDS;

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "marina-one-street-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "dlFatS0d3HyUpwje4d54Vw",
+  "position": {
+    "lat": 1.2776617136881363,
+    "lng": 103.852375851504
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:33.586Z",
+  "file": "reconstruction/marina-bay/references/marina-one-street-03-0.png",
+  "fingerprint": "5934e5b717ddcba9704bbb8824213a93ef27a2d49a02236e9dae9470b44884be",
+  "sha256": "4fbbbf7ee02995812e4fb03d5c06f431e11386283db0373864f2b6d2fbcaf779",
+  "bytes": 1515521,
+  "durationMs": 3218,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: construction hoarding covers ground frontage; glass canopy grid, grey paving and columns remain useful"
+}

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "barrage-approach-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "qztNrbidNC3mmuzic2M89A",
+  "position": {
+    "lat": 1.2799132377151001,
+    "lng": 103.86925195993112
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Marina Gardens Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:01.755Z",
+  "file": "reconstruction/marina-bay/references/barrage-approach-03-0.png",
+  "fingerprint": "a75d5ee10d037df0fa87624847ffd00a5bc710a365896222cb55f519910eca66",
+  "sha256": "d0e58973bdae4bff0439b9cc1d592aef06b1660255f075b5910fce2aed62f8d7",
+  "bytes": 1544296,
+  "durationMs": 3242,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: temporary construction barriers and hoarding dominate; not evidence of permanent barrage layout"
+}

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "commonwealth-crescent.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-11",
+  "pano_id": "q5fhXSwiqWvXuUVRmeSYUA",
+  "position": {
+    "lat": 1.306946267957519,
+    "lng": 103.80127426622778
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:34.910Z",
+  "file": "reconstruction/queenstown/references/commonwealth-crescent-180.png",
+  "fingerprint": "65518152e067feeebbc45f2f63da74402f109c7185c598c82c786f7cff24662d",
+  "sha256": "697647925298ab79c2dec9521bf4911dee1fb15ee975ab9b55e5e0c7ea9f0160",
+  "bytes": 1864054,
+  "durationMs": 3285,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: older slab and blue-roof utility block, parking court"
+}

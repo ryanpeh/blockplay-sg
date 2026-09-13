@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "margaret.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "rawGq7vugQAsCwX_SL6jQg",
+  "position": {
+    "lat": 1.2976944022246522,
+    "lng": 103.80396040543337
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "38 Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:52.023Z",
+  "file": "reconstruction/queenstown/references/margaret-90.png",
+  "fingerprint": "b309fbfb5e28ba5659731db7b71d2e6f8f04092e29de0ce7bac6634532c2542a",
+  "sha256": "76d0fdffe94485505f10735575012164a1dbbe8060b011c24c9ca082134dc1d8",
+  "bytes": 1929435,
+  "durationMs": 2765,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: blue barrel-roof neighbourhood hall, pale colonnade, high-rise context"
+}

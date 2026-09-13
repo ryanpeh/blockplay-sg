@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "market.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "EB_GmjwNeRqJlEMCxmdSLg",
+  "position": {
+    "lat": 1.2827531938541776,
+    "lng": 103.85201111059746
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 12,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "10 Collyer Quay, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:16:54.569Z",
+  "file": "reconstruction/raffles-place/references/market-270.png",
+  "fingerprint": "158f58a50d3e1560c799817c1707befb53a82c1c1762c3d74713e4c51114265b",
+  "sha256": "1f6b7f6f1c1a098eb170fd274e50bedb897c7a513455df7127527c784fea2acb",
+  "bytes": 891394,
+  "durationMs": 2425,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "rejected: Vite development error overlay obscures reference; retain for audit, do not derive geometry"
+}

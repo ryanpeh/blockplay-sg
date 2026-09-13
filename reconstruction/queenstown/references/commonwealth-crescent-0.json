@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "commonwealth-crescent.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-11",
+  "pano_id": "q5fhXSwiqWvXuUVRmeSYUA",
+  "position": {
+    "lat": 1.306946267957519,
+    "lng": 103.80127426622778
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:28.587Z",
+  "file": "reconstruction/queenstown/references/commonwealth-crescent-0.png",
+  "fingerprint": "7b13f15296c85a91048fa003fa90bd9f1ad94b51f506d9664bedd604e3bcb381",
+  "sha256": "77ce82e7e901deb66f0669126be59e7e40b09d0b9a4f67e7b0ec1f617e996320",
+  "bytes": 1759258,
+  "durationMs": 3225,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: peach gallery grid and orange red-roof gateway"
+}

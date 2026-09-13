@@ -1,0 +1,41 @@
+{
+  "name": "queenstown-detail-retries-03",
+  "region": "queenstown",
+  "width": 1280,
+  "height": 900,
+  "maxNewImages": 4,
+  "views": [
+    {
+      "id": "station-clear-0-retry",
+      "source": "station-clear.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Replacement for rejected overlay/stale frame; review before use"
+    },
+    {
+      "id": "station-clear-90-retry",
+      "source": "station-clear.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Replacement for rejected overlay/stale frame; review before use"
+    },
+    {
+      "id": "stirling-180-retry",
+      "source": "stirling.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Replacement for rejected overlay/stale frame; review before use"
+    },
+    {
+      "id": "stirling-270-retry",
+      "source": "stirling.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Replacement for rejected overlay/stale frame; review before use"
+    }
+  ]
+}

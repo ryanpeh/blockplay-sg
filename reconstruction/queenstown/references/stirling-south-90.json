@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling-south.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-02",
+  "pano_id": "vY61TPGngejtp1nZU3iMVQ",
+  "position": {
+    "lat": 1.2890636123963841,
+    "lng": 103.80556848878837
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:23.035Z",
+  "file": "reconstruction/queenstown/references/stirling-south-90.png",
+  "fingerprint": "22cc1e5827272a475d8c0b6641fa39cf1ba361b12dd8f157575bbe595e9f2e17",
+  "sha256": "8ef58edfde1f69795ea70bef0d79908387d2464de8ab53aba40cefbba7996015",
+  "bytes": 1903379,
+  "durationMs": 3088,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: dark external rail/door trim and landscaped low-rise entry"
+}

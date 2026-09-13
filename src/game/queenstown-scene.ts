@@ -2,12 +2,25 @@ import * as THREE from 'three';
 import type { Obstacle } from './queenstown-collision';
 
 export const QUEENSTOWN_SPAWN = { x: -18, z: 83, yaw: -0.35 };
+export const QUEENSTOWN_MAP_ROADS = [
+  { points: [{x:-140,z:-122},{x:140,z:-122},{x:140,z:116},{x:-140,z:116},{x:-140,z:-122}] },
+  { points: [{x:-150,z:22},{x:150,z:22}] },
+  { points: [{x:-15,z:32},{x:-15,z:116}] },
+  { points: [{x:-235,z:-185},{x:235,z:-185},{x:235,z:185},{x:-235,z:185},{x:-235,z:-185}] },
+  { points: [{x:0,z:-122},{x:0,z:-185}] },
+  { points: [{x:-15,z:116},{x:-15,z:185}] },
+  { points: [{x:150,z:22},{x:235,z:22}] },
+  { points: [{x:-235,z:-122},{x:-140,z:-122}] },
+];
 export const QUEENSTOWN_STAMPS = [
   { name: 'Queenstown station', x: 0, z: 41 },
   { name: 'Void deck', x: -73, z: -44 },
   { name: 'Community court', x: 85, z: -40 },
   { name: 'Library garden', x: 34, z: -88 },
   { name: 'Green corridor', x: -157, z: 65 },
+  { name: 'Commonwealth gardens', x: -193, z: -135 },
+  { name: 'Dawson courtyard', x: 182, z: 139 },
+  { name: 'Neighbourhood gateway', x: 0, z: -162 },
 ];
 
 /** Compressed heritage-inspired estate, not a surveyed model or exact present-day streets. */
@@ -16,7 +29,7 @@ export function buildQueenstownScene() {
   scene.fog = new THREE.Fog('#bcd9e7', 240, 650);
   scene.add(new THREE.HemisphereLight('#eff8ff', '#747454', 1.8));
   const sun = new THREE.DirectionalLight('#fff0dc', 2); sun.position.set(-70, 150, 85); sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -190, right: 190, top: 150, bottom: -150, far: 420 });
+  sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -275, right: 275, top: 230, bottom: -230, far: 650 });
   sun.shadow.normalBias = 0.2; scene.add(sun);
   const geometries: THREE.BufferGeometry[] = [], materials: THREE.Material[] = [], textures: THREE.Texture[] = [];
   const obstacles: Obstacle[] = [];
@@ -27,6 +40,7 @@ export function buildQueenstownScene() {
   const concrete = mat('#b6b5a7'), grass = mat('#75915e'), leaf = mat('#487743'), white = mat('#f4f1df'), asphalt = mat('#555957');
   const red = mat('#b36655'), orange = mat('#f09a43'), wood = mat('#846b52');
   const stationBlue = mat('#668faa'), walkwayBlue = mat('#36799b'), corridorGray = mat('#c5c8c3');
+  const paving = mat('#d6c7b2'), yellow = mat('#e2c566'), shrub = mat('#628548'), blue = mat('#729eaf');
   function box(x: number, y: number, z: number, w: number, h: number, d: number, material: THREE.Material, parent: THREE.Object3D = scene, shadow = false) {
     const mesh = new THREE.Mesh(unit, material); mesh.position.set(x, y, z); mesh.scale.set(w, h, d); mesh.castShadow = shadow; mesh.receiveShadow = true; parent.add(mesh); return mesh;
   }
@@ -40,7 +54,14 @@ export function buildQueenstownScene() {
     const material = new THREE.MeshBasicMaterial({ map: texture }); materials.push(material);
     const panel = new THREE.Mesh(geo(new THREE.PlaneGeometry(w, h)), material); panel.position.set(x, y, z); scene.add(panel);
   }
-  box(0, -0.6, 0, 380, 1, 300, grass);
+  box(0, -0.6, 0, 540, 1, 444, grass);
+  // Connected outer district circuit doubles explorable area, not just backdrop size.
+  for (const road of QUEENSTOWN_MAP_ROADS.slice(3)) for (let i=1;i<road.points.length;i++) {
+    const a=road.points[i-1],b=road.points[i],horizontal=a.z===b.z,length=Math.hypot(a.x-b.x,a.z-b.z);
+    box((a.x+b.x)/2,0,(a.z+b.z)/2,horizontal?length:14,0.12,horizontal?14:length,asphalt);
+    for (const side of [-1,1]) box((a.x+b.x)/2+(horizontal?0:side*9),0.1,(a.z+b.z)/2+(horizontal?side*9:0),horizontal?length:3,0.2,horizontal?3:length,concrete);
+    for (let d=6;d<length-4;d+=12) box(a.x+(b.x-a.x)*d/length,0.09,a.z+(b.z-a.z)*d/length,horizontal?5:0.18,0.02,horizontal?0.18:5,white);
+  }
   // Continuous estate loop and Commonwealth Avenue-inspired central arterial.
   for (const z of [-122, 116, 22]) {
     box(0, 0, z, 300, 0.12, z === 22 ? 24 : 14, asphalt);
@@ -66,6 +87,10 @@ export function buildQueenstownScene() {
       box(x + dx, 1.7, z + dz, 0.85, 3.4, 0.85, cream, scene, true); solid(x + dx, z + dz, 0.85, 0.85);
     }
     box(x + 19, 1.7, z, 7, 3.4, 6, accent); solid(x + 19, z, 7, 6);
+    // Lift-lobby doors, mailbox banks and ceiling beams give the open decks depth.
+    box(x + 19, 1.4, z + 3.05, 2.1, 2.8, 0.1, glass);
+    for (const dx of [-25, -13, 0, 13, 25]) box(x + dx, 3.25, z, 0.85, 0.3, 15, concrete);
+    for (let row = 0; row < 3; row++) for (let col = 0; col < 6; col++) box(x + 17 + col * 0.65, 0.65 + row * 0.48, z - 3.12, 0.55, 0.38, 0.15, dark);
     for (let floor = 0; floor < floors; floor++) {
       const y = 4.8 + floor * 2.8;
       for (const dz of [-7.6, 7.6]) {
@@ -81,12 +106,21 @@ export function buildQueenstownScene() {
       box(x + 4, y - 0.18, z + 7.98, 46, 0.12, 0.12, white);
       for (let dx = -17; dx < 28; dx += 9) box(x + dx, y, z + 8.02, 0.3, 2.7, 0.25, cream);
       box(x - 25, y, z + 7.85, 3.8, 1.6, 0.1, white);
+      for (const side of [-1, 1]) {
+        box(x + side * 29.6, y, z, 0.12, 1.5, 3.2, glass);
+        box(x + side * 29.8, y - 1.1, z, 0.55, 0.16, 4.5, concrete);
+      }
     }
+    for (const dx of [-24, 24]) { box(x + dx, height + 5, z, 6, 2.2, 7, cream); box(x + dx, height + 6.2, z, 6.5, 0.25, 7.5, concrete); }
     box(x - 13, 0.65, z, 4, 0.16, 1.2, coral); // void-deck seating
     sign(label, x - 25, 7, z + 8.02, 5, 2.4);
   }
   block(-73, -44, 10, teal, 'ESTATE'); block(-73, -83, 12, coral, 'QUEENS');
   block(78, 76, 16, teal, 'HDB'); block(-76, 77, 9, coral, 'HOME');
+  block(-91,-153,11,blue,'COMMONWEALTH'); block(78,151,13,teal,'DAWSON');
+  // commonwealth-close-0 and crescent-0: cyan/peach gallery parapets rather
+  // than the same gray palette on every generation of residential block.
+  for (let floor=0;floor<11;floor++) box(-87,4.15+floor*2.8,-145.08,46,0.8,0.2,floor%3===0?coral:blue);
   // Covered walkways connect open decks, estate paths and the station entrance.
   function shelter(x: number, z: number, width: number) {
     box(x, 3.05, z, width, 0.3, 4.2, concrete, scene, true);
@@ -100,9 +134,15 @@ export function buildQueenstownScene() {
   box(0, 7.8, 22, 360, 1.4, 9, concrete, scene, true);
   for (const z of [18, 26]) box(0, 8.7, z, 360, 0.6, 0.35, concrete);
   for (const z of [20.2, 23.8]) box(0, 8.55, z, 360, 0.1, 0.12, dark);
+  for (let x = -175; x < 175; x += 2) box(x, 8.4, 22, 0.4, 0.1, 5.5, dark);
   for (let x = -164; x <= 170; x += 28) { box(x, 3.6, 22, 1.6, 7.2, 2.2, concrete, scene, true); solid(x, 22, 1.6, 2.2); }
   box(0, 9.2, 22, 74, 0.8, 19, cream, scene, true);
   for (const z of [14, 30]) for (let x = -32; x <= 32; x += 8) box(x, 11.2, z, 0.35, 4, 0.35, cream);
+  for (const z of [14, 30]) {
+    box(0, 9.75, z, 71, 0.15, 0.3, yellow);
+    box(0, 10.25, z, 72, 0.7, 0.12, glass);
+    for (let x = -35; x <= 35; x += 3.5) box(x, 10.2, z, 0.13, 1.2, 0.16, concrete);
+  }
   const roofSection = new THREE.Shape(); roofSection.moveTo(-10.4, 0); roofSection.quadraticCurveTo(0, 7, 10.4, 0); roofSection.lineTo(10.4, -0.3); roofSection.quadraticCurveTo(0, 6.6, -10.4, -0.3); roofSection.closePath();
   const roofGeo = geo(new THREE.ExtrudeGeometry(roofSection, { depth: 78, bevelEnabled: false, curveSegments: 12 }));
   const stationRoof = new THREE.Mesh(roofGeo, teal); stationRoof.rotation.y = Math.PI / 2; stationRoof.position.set(-39, 13, 22); stationRoof.castShadow = true; scene.add(stationRoof);
@@ -129,6 +169,11 @@ export function buildQueenstownScene() {
     sign(shopNames[i], x, 4.9, -6.25, 12, 1.2);
     for (const dx of [-3, 3]) { box(x + dx, 0.8, -1, 1.7, 0.12, 1.7, cream); box(x + dx, 0.4, -1, 0.25, 0.8, 0.25, dark); solid(x + dx, -1, 1.7, 1.7); }
   }
+  // margaret-90: blue barrel-roof neighbourhood hall and pale colonnaded frontage.
+  // Reuse the authored station roof section, scaled to the compact market pavilion.
+  const marketRoof = new THREE.Mesh(roofGeo, blue); marketRoof.rotation.y = Math.PI / 2;
+  marketRoof.scale.set(0.67,0.48,0.88); marketRoof.position.set(38.7,6.4,-13); marketRoof.castShadow = true; scene.add(marketRoof);
+  for (let x = 44; x < 104; x += 8) box(x,2.8,-6.2,0.45,5.6,0.7,white);
   // Community court with accurately marked game-scale basketball half circles.
   box(85, 0.08, -53, 32, 0.16, 45, red);
   box(85, 0.18, -53, 27, 0.02, 40, mat('#729888'));
@@ -137,6 +182,11 @@ export function buildQueenstownScene() {
   const ringGeo = geo(new THREE.TorusGeometry(4, 0.075, 4, 32));
   const centerRing = new THREE.Mesh(ringGeo, white); centerRing.rotation.x = Math.PI / 2; centerRing.position.set(85, 0.22, -53); scene.add(centerRing);
   for (const z of [-76, -30]) { box(85, 1.6, z, 0.2, 3.2, 0.2, dark); solid(85, z, 0.4, 0.4); box(85, 3, z, 2.5, 1.4, 0.1, white); }
+  // Permeable court fencing leaves the north/south entries and collectible unobstructed.
+  for (const x of [66, 104]) {
+    for (let z = -76; z <= -30; z += 4) { box(x, 1.4, z, 0.1, 2.8, 0.1, dark); solid(x, z, 0.15, 0.15); }
+    for (const y of [0.4, 1.4, 2.6]) box(x, y, -53, 0.08, 0.07, 48, dark);
+  }
   // Heritage-inspired library: low profile, red roof, long window wall and garden.
   box(23, 3.4, -103, 44, 6.8, 17, cream, scene, true); solid(23, -103, 44, 17);
   box(23, 3.4, -94.4, 35, 4.5, 0.15, glass);
@@ -148,8 +198,114 @@ export function buildQueenstownScene() {
     box(x, height / 2, z, 0.65, height, 0.65, wood, scene, true); solid(x, z, 0.8, 0.8);
     for (let j = 0; j < 3; j++) { const crown = new THREE.Mesh(crownGeo, leaf); crown.position.set(x + (j - 1) * 1.5, height + j % 2, z); crown.scale.set(3.3, 2.3, 3); crown.castShadow = true; scene.add(crown); }
   }
-  for (let z = -126; z <= 126; z += 21) for (const x of [-170, 168]) tree(x, z, 6 + Math.abs(z % 3));
+  for (let z = -126; z <= 126; z += 21) for (const x of [-170, 168]) {
+    if (x===168 && Math.abs(z-22)<10) continue; // new eastern road connector
+    tree(x, z, 6 + Math.abs(z % 3));
+  }
   for (const [x, z] of [[-116,-103],[-119,-64],[-115,62],[119,79],[114,-97],[2,-75],[49,-85],[-29,92]]) tree(x, z);
+  // Dense roadside canopy and planted pocket spaces still leave road and deck routes clear.
+  for (const x of [-122, -100, -77, -54, 58, 82, 108, 123]) tree(x, -111, 6.5);
+  for (const x of [-115, -91, -65, 61, 88, 117]) tree(x, 48, 6);
+  for (const x of [-124, 124]) for (const z of [-83, -44, 63, 91]) tree(x, z, 7.5);
+  function bench(x: number, z: number) {
+    box(x, 0.6, z, 3, 0.16, 0.8, wood); box(x, 1, z - 0.4, 3, 0.65, 0.12, wood);
+    for (const dx of [-1, 1]) box(x + dx, 0.28, z, 0.15, 0.56, 0.65, dark);
+    solid(x, z, 3, 0.95);
+  }
+  for (const [x,z] of [[-112,-13],[-43,-13],[55,58],[110,58],[52,-87],[-160,92],[-160,-55]]) bench(x,z);
+  for (const [x,z] of [[-120,42],[-100,42],[-78,42],[-57,42],[60,42],[80,42],[100,42],[120,42],[9,-88],[22,-88]]) {
+    box(x, 0.3, z, 8, 0.6, 1.8, concrete); box(x, 0.8, z, 7.6, 0.7, 1.5, shrub); solid(x,z,8,1.8);
+  }
+  // Small estate playground and sheltered community pavilion in the western pocket.
+  box(-50, 0.12, 57, 24, 0.22, 18, paving);
+  box(-52, 0.26, 56, 17, 0.06, 12, blue);
+  for (const dx of [-2, 2]) for (const dz of [-2, 2]) { box(-52 + dx, 1.6, 56 + dz, 0.22, 3.2, 0.22, yellow); solid(-52 + dx,56 + dz,0.3,0.3); }
+  box(-52, 1.8, 56, 4.4, 0.2, 4.4, coral); box(-52, 3.3, 56, 5, 0.3, 5, teal);
+  const slide = box(-52, 1.1, 61, 1.4, 0.12, 5.8, yellow); slide.rotation.x = 0.3;
+  solid(-52,60,1.8,5);
+  for (let i = 0; i < 4; i++) box(-49.5, 0.45 + i * 0.35, 53 + i * 0.65, 1.3, 0.16, 0.6, teal);
+  shelter(15, -63, 24); bench(10,-62); bench(20,-62);
+  sign('COMMUNITY GARDEN',15,2.5,-60.8,17,1.1);
+  // stirling-90: warm red covered links and teal rails, distinct from station blue.
+  for (const side of [-1,1]) { const canopy = box(15,3.4,-63+side,25,0.16,2.2,coral); canopy.rotation.x = side*0.13; }
+  for (const z of [-66,-60]) { box(15,1.05,z,22,0.1,0.12,teal); for (let x=5;x<=25;x+=2) box(x,0.6,z,0.09,1.2,0.09,teal); }
+  // margaret-0 and library-270: planted verges, pale kerbs and red parallel paths.
+  // These frame the spawn approach without narrowing its twelve-unit lane.
+  for (const x of [-25,-5]) {
+    box(x,0.08,85,2.4,0.14,48,coral);
+    for (const z of [66,78,90,102]) {
+      box(x+(x< -15?-3:3),0.45,z,2.1,0.8,5,shrub); solid(x+(x< -15?-3:3),z,2.1,5);
+      for (const dz of [-1.5,0,1.5]) box(x+(x< -15?-3:3),0.92,z+dz,0.35,0.25,0.35,orange);
+    }
+    box(x,3.3,72,0.14,6.6,0.14,dark); box(x,6.6,72,0.7,0.12,0.5,white); solid(x,72,0.25,0.25);
+  }
+  sign('MRT  ↑   ESTATE  ←',-3,2.5,92,10,1.2);
+  box(-3,1.2,92,0.18,2.4,0.18,dark); solid(-3,92,0.25,0.25);
+  // Newer Dawson towers form solid buildings in the expanded district.
+  // margaret-0/90 and library-270 inform white fins, gray recesses, planted podiums.
+  for (const [x,z,height] of [[-210,-75,90],[208,-75,105],[208,72,84],[95,-155,100]]) {
+    solid(x,z,32,29);
+    box(x,height/2,z,25,height,22,white,scene,true);
+    for (let dx=-9;dx<=9;dx+=6) {
+      box(x+dx,height/2,z+11.1,3.8,height-4,0.15,glass);
+      box(x+dx+2.2,height/2,z+11.5,0.55,height,1,concrete);
+    }
+    for (let y=6;y<height;y+=3.2) box(x,y,z+11.8,25,0.25,1.4,white);
+    box(x,7,z,32,2,29,concrete); box(x,8.2,z,31,0.6,28,shrub);
+  }
+  // A sheltered western residential garden and eastern civic forecourt create
+  // destinations between the old estate circuit and the new outer district road.
+  box(-194,0.08,-143,44,0.15,45,paving); shelter(-194,-153,36);
+  for (const side of [-1,1]) { const roof=box(-194,3.45,-153+side*1.1,38,0.16,2.5,red); roof.rotation.x=side*0.12; }
+  for (const x of [-211,-177]) { tree(x,-130,8); bench(x,-141); }
+  for (const x of [-212,-176]) for (const z of [-165,-117]) tree(x,z,7);
+  sign('COMMONWEALTH GARDENS',-194,3.3,-150.6,28,1.4);
+  // commonwealth-close-90: segmented pale garden benches around a planted pocket.
+  for (let i=0;i<6;i++) {
+    const a=i*Math.PI/7,x=-194+Math.cos(a)*8,z=-131+Math.sin(a)*5;
+    const seat=box(x,0.55,z,3,0.25,1.2,cream);seat.rotation.y=-a;
+    box(x,0.22,z,1.8,0.45,0.75,blue);solid(x,z,3,1.5);
+  }
+  box(184,0.07,132,69,0.15,60,paving);
+  shelter(184,108,58); bench(161,127); bench(207,127);
+  for (const x of [158,210]) for (const z of [109,150]) tree(x,z,7.5);
+  // Mei Ling courtyard references show gateway roofs, palms and open shop colonnades.
+  for (const x of [-7,7]) { box(x,3.2,-162,0.7,6.4,0.7,cream); solid(x,-162,0.8,0.8); }
+  for (const side of [-1,1]) { const roof=box(0,6.7,-162+side*2,18,0.25,4.4,coral,scene,true);roof.rotation.x=side*0.14; }
+  sign('QUEENSTOWN DISTRICT',0,5.7,-159.7,14,1.1);
+  // tanglin-market-road-90/180: older two-storey service row contrasts with
+  // modern tower podiums. Shop identities and placement remain generic.
+  box(-197,3.7,45,45,7.4,13,cream,scene,true);solid(-197,45,45,13);
+  for (const side of [-1,1]) {const roof=box(-197,7.7,45+side*3.5,47,0.24,7.4,red);roof.rotation.x=side*0.15;}
+  shelter(-197,54,44);
+  for(let x=-214;x<=-178;x+=9) {
+    box(x,5.6,51.6,3.5,1.8,0.15,glass);box(x+2.5,4.5,51.9,1.2,0.8,0.7,concrete);
+    box(x,1.6,51.6,4.6,3.2,0.15,teal);
+  }
+  sign('NEIGHBOURHOOD SHOPS',-197,3.9,51.85,33,1.1);
+  box(-197,0.09,69,44,0.15,21,paving);bench(-210,67);bench(-184,67);
+  // Southern garden loop, community exercise posts and shaded outdoor seating.
+  box(-93,0.08,149,60,0.15,37,paving); shelter(-96,137,48);
+  for (const x of [-115,-95,-75]) { bench(x,145); tree(x,164,7); }
+  for (const x of [-112,-100,-88,-76]) {
+    box(x,1.3,155,0.16,2.6,0.16,blue); box(x+1.5,1.3,155,0.16,2.6,0.16,blue);
+    box(x+0.75,2.6,155,1.7,0.12,0.12,yellow); solid(x+0.75,155,1.9,0.4);
+  }
+  // Boundary planting and lamps preserve the full 14-unit outer road clearance.
+  for (let x=-215;x<=215;x+=24) for (const z of [-202,202]) tree(x,z,7);
+  for (let z=-166;z<=166;z+=24) for (const x of [-252,252]) tree(x,z,7.5);
+  for (let x=-210;x<=210;x+=42) for (const z of [-175,175]) {
+    if (x===0 && z===-175) continue; // northern gateway road connector
+    box(x,3.5,z,0.15,7,0.15,dark);box(x,7,z,1,0.15,0.6,white);solid(x,z,0.25,0.25);
+  }
+  // Bus waiting areas and street furniture: playable open shelters rather than solid boxes.
+  for (const x of [-88, 85]) {
+    box(x, 0.12, 4, 19, 0.24, 5, paving);
+    box(x, 3.2, 3, 18, 0.3, 4, walkwayBlue, scene, true);
+    for (const dx of [-7,7]) { box(x+dx,1.55,2,0.22,3.1,0.22,concrete); solid(x+dx,2,0.3,0.3); }
+    bench(x,2); box(x+10,1.8,4,0.12,3.6,0.12,dark); box(x+10,3,4,1.2,0.9,0.12,orange);
+    sign('BUS',x+10,3,4.08,1.1,0.65);
+  }
   for (let x = -114; x < 130; x += 40) {
     box(x, 4, 6, 0.16, 8, 0.16, dark); box(x, 8, 5, 0.2, 0.2, 2, dark); solid(x, 6, 0.3, 0.3);
   }
@@ -162,6 +318,13 @@ export function buildQueenstownScene() {
   box(-75, 0.08, 99, 70, 0.12, 15, mat('#a99789'));
   for (let x = -105; x <= -46; x += 6) box(x, 0.16, 97, 0.12, 0.02, 9, white);
   for (const z of [106, 106.4]) box(-75, 0.16, z, 70, 0.02, 0.13, orange);
+  // Parked vehicles stay wholly within marked bays, outside the estate loop.
+  for (const [x,paint] of [[-99,teal],[-81,white],[-57,blue]] as const) {
+    box(x,0.65,97,2.2,0.9,4.6,paint,scene,true); box(x,1.28,97,1.9,0.75,2.5,glass); box(x,1.68,97,2,0.12,2.6,paint);
+    for (const dx of [-1.1,1.1]) for (const dz of [-1.4,1.4]) box(x+dx,0.38,97+dz,0.25,0.6,0.65,dark);
+    solid(x,97,2.4,4.6);
+  }
+  for (const [x,z] of [[-115,90],[114,55],[-40,-16],[52,-90]]) { box(x,0.6,z,0.7,1.2,0.7,teal); box(x,1.22,z,0.8,0.1,0.8,dark); solid(x,z,0.8,0.8); }
   sign('QUEENSTOWN · ESTATE LOOP', -53, 3.2, 101, 34, 2);
   const car = new THREE.Group(); scene.add(car);
   box(0, 0.7, 0, 1.8, 0.65, 3.4, coral, car, true); box(0, 1.18, 0.1, 1.5, 0.62, 1.65, glass, car); box(0, 1.51, 0.1, 1.6, 0.13, 1.85, cream, car);
@@ -171,7 +334,8 @@ export function buildQueenstownScene() {
   car.visible = false;
   const stampGeo = geo(new THREE.TorusGeometry(1.15, 0.16, 5, 20));
   const stamps = QUEENSTOWN_STAMPS.map(point => { const stamp = new THREE.Mesh(stampGeo, orange); stamp.position.set(point.x, 2.2, point.z); scene.add(stamp); return stamp; });
-  scene.userData.referenceFeatures = ['station-east', 'estate-north', 'estate-south'];
+  scene.userData.referenceFeatures = ['station-east', 'estate-north', 'estate-south', 'stirling-90', 'stirling-270-retry', 'margaret-0', 'margaret-90', 'library-270'];
+  scene.userData.detailFeatures = ['open-deck-lobbies', 'station-platform-edges', 'bus-shelters', 'playground', 'community-pavilion', 'court-fence', 'parked-cars', 'layered-roadside-planting'];
   scene.userData.authoredMeshCount = scene.children.filter(child => child instanceof THREE.Mesh).length;
   // Batch static details while leaving car, train and collectible animation independent.
   const batches = new Map<string, THREE.Mesh[]>(), instances: THREE.InstancedMesh[] = [];

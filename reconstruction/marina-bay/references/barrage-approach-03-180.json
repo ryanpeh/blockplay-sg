@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "barrage-approach-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "qztNrbidNC3mmuzic2M89A",
+  "position": {
+    "lat": 1.2799132377151001,
+    "lng": 103.86925195993112
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Marina Gardens Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:08.949Z",
+  "file": "reconstruction/marina-bay/references/barrage-approach-03-180.png",
+  "fingerprint": "96fbd5045c84a49152dd0658fee3edd29be7edf53e14e566f33f5d0dec991542",
+  "sha256": "8f2620cc4adff5377bfc12b462841636c028e211542f9676913e13344844a56b",
+  "bytes": 2465047,
+  "durationMs": 3084,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: black-white kerb, dense layered shrubs and broad rain-tree canopy along Marina Gardens Drive"
+}

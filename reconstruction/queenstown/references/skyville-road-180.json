@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "skyville-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "de74bBdAaN7BW4CZYx56XQ",
+  "position": {
+    "lat": 1.2967019757350113,
+    "lng": 103.80866656167389
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "499 Margaret Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:51.778Z",
+  "file": "reconstruction/queenstown/references/skyville-road-180.png",
+  "fingerprint": "709de4b83af0915d95bf961a535f8bbfec9fc58166ec74b755be8d8393842733",
+  "sha256": "7d9321f139063ae37e002b9fa88afd6892b10633a4122450dd16ee8306079445",
+  "bytes": 1845124,
+  "durationMs": 3017,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: hoarding hides lower facade; skyline and streetlamp only"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "8vqvLSs6Rb1BYuRk_R7BIA",
+  "location": {
+    "lat": 1.2802098374474813,
+    "lng": 103.85017105497431
+  },
+  "description": "Boon Tat St, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2022-03",
+  "requested": {
+    "lat": 1.2803,
+    "lng": 103.8502
+  },
+  "selectedGoogle": true
+}

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "esplanade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-11",
+  "pano_id": "zRv-u0DQNcflwiBnZxFYCw",
+  "position": {
+    "lat": 1.2911211162247562,
+    "lng": 103.85500638517166
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:57.935Z",
+  "file": "reconstruction/marina-bay/references/esplanade-road-03-90.png",
+  "fingerprint": "54ec8467f2f09daa3124bca9b2181ae1fa053904e4da27077775ab5ed45f07b1",
+  "sha256": "590457e3582a67f0912a2abfd9aadbf9ca0a1f5c21af5b45f49e3bd77317945f",
+  "bytes": 1932818,
+  "durationMs": 3103,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: broad road, double yellow zigzag markings, slab pavement and planted street edge"
+}

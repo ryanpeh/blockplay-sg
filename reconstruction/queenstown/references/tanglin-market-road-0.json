@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "tanglin-market-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "muBswkkDOQ3Z4Ysb9u2twQ",
+  "position": {
+    "lat": 1.3010032948928667,
+    "lng": 103.79763349435201
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:42.418Z",
+  "file": "reconstruction/queenstown/references/tanglin-market-road-0.png",
+  "fingerprint": "6e71dd4b6e05948002da31b712644cbed7613713eb908745d800d5917d9d66f0",
+  "sha256": "8db693883644df65d0c77754b39e3dc45a56cc7163e1aa5d7dbcf8b788bfdc06",
+  "bytes": 2532475,
+  "durationMs": 3446,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: older pale slab with mature canopy and green verge"
+}

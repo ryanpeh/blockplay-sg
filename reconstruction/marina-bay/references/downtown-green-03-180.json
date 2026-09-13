@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "downtown-green-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "5UDZ9rBDWRaZDRU1y2ljhw",
+  "position": {
+    "lat": 1.2794937936736568,
+    "lng": 103.8527557209538
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "15 Central Blvd, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:27.032Z",
+  "file": "reconstruction/marina-bay/references/downtown-green-03-180.png",
+  "fingerprint": "ad0df362e1201550af30328f56b14ab47021d03c95d3552cef5686c6197c6996",
+  "sha256": "7389f9cbb795fa2ed15f2f4d8779dfb83dfe544d8a003349f1a95bd9b348c450",
+  "bytes": 1617903,
+  "durationMs": 3727,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: long shaded bus shelter, silver louvers, bollards and yellow bus-bay markings"
+}

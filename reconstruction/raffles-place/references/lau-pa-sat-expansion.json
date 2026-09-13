@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "YH0O4Z8IPSeMTTLJWWoOjA",
+  "location": {
+    "lat": 1.280497800941725,
+    "lng": 103.85087443098827
+  },
+  "description": "1 Raffles Quay, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2805,
+    "lng": 103.8509
+  },
+  "selectedGoogle": true
+}

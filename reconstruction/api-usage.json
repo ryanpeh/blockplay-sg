@@ -512,6 +512,1861 @@
       "kind": "browser-screenshot-estate-south",
       "location": "queenstown",
       "result": "HTTP 200"
+    },
+    {
+      "id": "15e59307-a775-4444-9c01-c34c31881e09",
+      "date": "2026-09-13T04:15:33.765Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e549b664-b15a-41e3-aaee-fd428543f81e",
+      "date": "2026-09-13T04:15:34.047Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d4fb43ed-4c95-4ac1-b699-a3e055d407a2",
+      "date": "2026-09-13T04:15:34.241Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e3497ad3-4f68-4b53-94cb-41d4cdb1cd88",
+      "date": "2026-09-13T04:15:34.403Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "366867a6-72f6-4e0e-ae78-1a1b447c16c3",
+      "date": "2026-09-13T04:15:34.571Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "504b8d7e-f798-4dcd-a2ab-4850bd351248",
+      "date": "2026-09-13T04:15:34.757Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3e8e7c4a-ac17-40a7-ab24-d02e7a5a4aa7",
+      "date": "2026-09-13T04:15:50.177Z",
+      "kind": "browser-screenshot-square-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e35c7664-74e0-4e3c-86fc-ebe2d03c9fd5",
+      "date": "2026-09-13T04:15:50.177Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d153223f-152e-4648-b615-305898e99138",
+      "date": "2026-09-13T04:15:53.072Z",
+      "kind": "browser-screenshot-square-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6eff000e-2f9c-41e7-8931-a9018b994fe9",
+      "date": "2026-09-13T04:15:55.730Z",
+      "kind": "browser-screenshot-square-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bb12908a-1f06-4808-bc29-48f2aea4bd26",
+      "date": "2026-09-13T04:15:58.214Z",
+      "kind": "browser-screenshot-square-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "05d475b8-418a-4cd7-aad8-e272f3e9ed82",
+      "date": "2026-09-13T04:16:00.698Z",
+      "kind": "browser-screenshot-chulia-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e23e8fe4-430c-4df8-9e6b-72ba09b8c7b4",
+      "date": "2026-09-13T04:16:00.698Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "149bc789-7b54-4344-8592-2c96d813dd80",
+      "date": "2026-09-13T04:16:03.360Z",
+      "kind": "browser-screenshot-chulia-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "08d66dc5-944b-4e13-8303-072b66e567b6",
+      "date": "2026-09-13T04:16:05.858Z",
+      "kind": "browser-screenshot-chulia-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "424677f9-505b-4094-908b-10d7b30347a8",
+      "date": "2026-09-13T04:16:08.345Z",
+      "kind": "browser-screenshot-chulia-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ed6e42fa-6944-48e3-be09-d37112e92464",
+      "date": "2026-09-13T04:16:10.820Z",
+      "kind": "browser-screenshot-battery-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "684fee68-5093-424e-a62c-12bc1e61a294",
+      "date": "2026-09-13T04:16:10.820Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6777e570-7fc7-42e6-a58b-e3d303319e6b",
+      "date": "2026-09-13T04:16:13.479Z",
+      "kind": "browser-screenshot-battery-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "84c35226-4e1c-455a-93bd-169b96eded7e",
+      "date": "2026-09-13T04:16:15.944Z",
+      "kind": "browser-screenshot-battery-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "fd772b38-e7bf-4887-8a25-210a1e14c9b5",
+      "date": "2026-09-13T04:16:19.595Z",
+      "kind": "browser-screenshot-battery-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "960dcecb-ee35-4e92-a779-53d3389678f7",
+      "date": "2026-09-13T04:16:22.021Z",
+      "kind": "browser-screenshot-boat-quay-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "17b517af-d712-4408-b14f-ee10fd56ec52",
+      "date": "2026-09-13T04:16:22.021Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "dc54a05e-f439-400a-8ef3-23d3376c6fe3",
+      "date": "2026-09-13T04:16:24.888Z",
+      "kind": "browser-screenshot-boat-quay-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7488cc8c-36eb-4f34-b008-425b2c94af42",
+      "date": "2026-09-13T04:16:27.354Z",
+      "kind": "browser-screenshot-boat-quay-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e4603100-5668-41af-9e64-194ecea14814",
+      "date": "2026-09-13T04:16:29.834Z",
+      "kind": "browser-screenshot-boat-quay-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4e713904-d92a-40fd-882a-c720a9fb3d88",
+      "date": "2026-09-13T04:16:32.307Z",
+      "kind": "browser-screenshot-cecil-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2d28c817-4a62-4d27-b1ac-04a22f1666ae",
+      "date": "2026-09-13T04:16:32.308Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6b3a8e92-463a-4736-8cab-9cfee46c9364",
+      "date": "2026-09-13T04:16:35.179Z",
+      "kind": "browser-screenshot-cecil-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "64b678d0-f32b-4c08-9939-21140a17155b",
+      "date": "2026-09-13T04:16:37.652Z",
+      "kind": "browser-screenshot-cecil-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "22355958-7426-4def-8e0b-57678844aba7",
+      "date": "2026-09-13T04:16:40.117Z",
+      "kind": "browser-screenshot-cecil-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c6942f99-4ee6-46c9-8d70-ef3f0f4078db",
+      "date": "2026-09-13T04:16:42.597Z",
+      "kind": "browser-screenshot-market-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "173cd123-8879-4ab8-8836-3dc98f0d14df",
+      "date": "2026-09-13T04:16:42.597Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b574d8cf-0add-4f63-bc92-bbf0fa75c3c1",
+      "date": "2026-09-13T04:16:47.087Z",
+      "kind": "browser-screenshot-market-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6fa1baac-17b9-4f8d-b809-ceaed7e4f98c",
+      "date": "2026-09-13T04:16:49.539Z",
+      "kind": "browser-screenshot-market-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c1c65f23-2eb4-4d93-b2d6-5f7b3fd72372",
+      "date": "2026-09-13T04:16:52.144Z",
+      "kind": "browser-screenshot-market-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9430cb9b-7075-4d68-b2c2-6a1dec98cd0a",
+      "date": "2026-09-13T04:19:03.354Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e32a68ac-8b96-4846-92e6-4989a0f52c15",
+      "date": "2026-09-13T04:19:03.511Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "208f0c06-0d6a-48fd-9b95-05a9d474f472",
+      "date": "2026-09-13T04:19:03.663Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a734c871-9ee1-4b1a-97e3-677a200bb9dd",
+      "date": "2026-09-13T04:19:03.786Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ca937da4-0370-4a88-b6d9-da26f37e8edc",
+      "date": "2026-09-13T04:19:03.879Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3fa09957-28f4-4df8-848e-a807a057a420",
+      "date": "2026-09-13T04:19:12.868Z",
+      "kind": "browser-screenshot-station-clear-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3771ceea-4ac7-4a56-bfdc-948e64dd3a35",
+      "date": "2026-09-13T04:19:12.870Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1e3c7749-6a41-4c24-94a1-a1ff6cddd1b3",
+      "date": "2026-09-13T04:19:15.701Z",
+      "kind": "browser-screenshot-station-clear-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "5a0f3813-2f22-41c3-ac90-cedc7a4466ed",
+      "date": "2026-09-13T04:19:18.102Z",
+      "kind": "browser-screenshot-station-clear-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a84cbbd6-86d3-4a3e-b9a6-15e9ca206911",
+      "date": "2026-09-13T04:19:20.561Z",
+      "kind": "browser-screenshot-station-clear-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f95edcc1-5e9d-41e1-a5fe-9f4413d10d90",
+      "date": "2026-09-13T04:19:23.064Z",
+      "kind": "browser-screenshot-stirling-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b4f1e755-8170-4330-a5a6-e280391665da",
+      "date": "2026-09-13T04:19:23.065Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "52206198-30bb-49ad-9091-4ad4aea64478",
+      "date": "2026-09-13T04:19:26.161Z",
+      "kind": "browser-screenshot-stirling-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3f618baa-43ff-4bae-88db-daad6d9ec774",
+      "date": "2026-09-13T04:19:28.673Z",
+      "kind": "browser-screenshot-stirling-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "33011d22-e4c5-42bf-934f-020e234e7303",
+      "date": "2026-09-13T04:19:30.963Z",
+      "kind": "browser-screenshot-stirling-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3a3ec995-ede5-451e-864a-9d579d51f238",
+      "date": "2026-09-13T04:19:33.236Z",
+      "kind": "browser-screenshot-mei-ling-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f99447b5-0567-4fd9-9512-f9ef8431748d",
+      "date": "2026-09-13T04:19:33.237Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bb4d7d31-7343-45df-a604-adb40d53cb04",
+      "date": "2026-09-13T04:19:35.727Z",
+      "kind": "browser-screenshot-mei-ling-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7815e48a-685a-43bb-9100-846161e265aa",
+      "date": "2026-09-13T04:19:38.194Z",
+      "kind": "browser-screenshot-mei-ling-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "5ad4d3d7-4dc0-4340-a1ed-b63e6a43474b",
+      "date": "2026-09-13T04:19:42.970Z",
+      "kind": "browser-screenshot-mei-ling-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b4157ea6-7c63-4598-b7ab-e5721cfc917e",
+      "date": "2026-09-13T04:19:45.636Z",
+      "kind": "browser-screenshot-margaret-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f329c75d-e494-4ea2-8ba2-7f231dd71273",
+      "date": "2026-09-13T04:19:45.636Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f4acede3-3cc3-45fd-a2ab-14af5c63860a",
+      "date": "2026-09-13T04:19:49.258Z",
+      "kind": "browser-screenshot-margaret-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7b4cc690-d072-44f7-bce1-1756f66bff7b",
+      "date": "2026-09-13T04:19:52.025Z",
+      "kind": "browser-screenshot-margaret-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "64467491-302f-4b93-a6fc-a6ebefd9be40",
+      "date": "2026-09-13T04:19:54.484Z",
+      "kind": "browser-screenshot-margaret-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3de35045-84b2-447a-92fa-6d85b6825e1c",
+      "date": "2026-09-13T04:19:58.348Z",
+      "kind": "browser-screenshot-library-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "255e870c-c400-49a4-bd23-5d78df627f39",
+      "date": "2026-09-13T04:19:58.348Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "98eda75d-adb1-4ae0-93c8-de4761fe5ab1",
+      "date": "2026-09-13T04:20:01.178Z",
+      "kind": "browser-screenshot-library-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e65ca6e8-39a2-422d-8bf1-55cd6d7d2b42",
+      "date": "2026-09-13T04:20:03.767Z",
+      "kind": "browser-screenshot-library-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ea0dbadf-b776-47a2-8b02-e24e1d9492b6",
+      "date": "2026-09-13T04:20:06.294Z",
+      "kind": "browser-screenshot-library-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ac157282-18a4-4d4d-b696-566e95719b47",
+      "date": "2026-09-13T04:22:49.319Z",
+      "kind": "browser-screenshot-station-clear-0-retry",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ee666f25-e226-40ff-8fd6-e5fa6135d1c0",
+      "date": "2026-09-13T04:22:49.321Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "cde480a8-255a-4823-995c-6ec8f006765f",
+      "date": "2026-09-13T04:22:52.841Z",
+      "kind": "browser-screenshot-station-clear-90-retry",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ec770f26-9edd-4b54-905a-087b25b23776",
+      "date": "2026-09-13T04:22:56.018Z",
+      "kind": "browser-screenshot-stirling-180-retry",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3f448dd6-750f-4bf2-ab5c-3edfee7f5b72",
+      "date": "2026-09-13T04:22:56.021Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a94d24f7-a10d-48dc-a770-43edd180c5df",
+      "date": "2026-09-13T04:22:59.313Z",
+      "kind": "browser-screenshot-stirling-270-retry",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "daff143c-a514-4ce2-8d94-914a99bc15f7",
+      "date": "2026-09-13T04:25:49.220Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c71f6d0f-0646-4da2-b1e6-d7677bc3e7c3",
+      "date": "2026-09-13T04:25:49.691Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "510ba5e7-28d9-4b8c-bbb0-d5592f48c221",
+      "date": "2026-09-13T04:25:49.789Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b82e1683-e72c-4e72-97c1-3932f47acbf5",
+      "date": "2026-09-13T04:26:34.530Z",
+      "kind": "browser-screenshot-mei-ling-road-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "5a981a04-0660-4f3c-b88b-b6bdb79f0372",
+      "date": "2026-09-13T04:26:34.532Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "954b9f84-97d4-4ac5-8a77-e4b0ff94c675",
+      "date": "2026-09-13T04:26:38.052Z",
+      "kind": "browser-screenshot-mei-ling-road-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b16305e5-75f2-462f-a487-4a3fc3703eff",
+      "date": "2026-09-13T04:26:41.128Z",
+      "kind": "browser-screenshot-mei-ling-road-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "804f5108-bd52-419c-92e5-0619d2646a1c",
+      "date": "2026-09-13T04:26:44.234Z",
+      "kind": "browser-screenshot-mei-ling-road-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a169a4d1-3bc1-461e-968f-d35200136262",
+      "date": "2026-09-13T04:26:47.338Z",
+      "kind": "browser-screenshot-dawson-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "dc7ad4ea-cccc-4fdb-b013-8f36f529c864",
+      "date": "2026-09-13T04:26:47.339Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a5f2a0f1-cefc-4771-812d-babbf0758728",
+      "date": "2026-09-13T04:26:50.588Z",
+      "kind": "browser-screenshot-dawson-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0154f570-fc62-47da-83e0-de91790f0689",
+      "date": "2026-09-13T04:26:53.643Z",
+      "kind": "browser-screenshot-dawson-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "08aabc98-fa6d-4bf3-b521-734dd177634d",
+      "date": "2026-09-13T04:26:56.682Z",
+      "kind": "browser-screenshot-dawson-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2307d1d5-0012-4584-af7c-b3952525184f",
+      "date": "2026-09-13T04:26:59.985Z",
+      "kind": "browser-screenshot-tanglin-halt-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "feb6f6ba-7aa4-4a77-8569-8f1ed7378984",
+      "date": "2026-09-13T04:26:59.993Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1516f259-3a7f-4d4f-9e2a-76709af9b360",
+      "date": "2026-09-13T04:27:03.280Z",
+      "kind": "browser-screenshot-tanglin-halt-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8c499a4d-4d38-4063-99a4-5d8b404b42f1",
+      "date": "2026-09-13T04:27:06.327Z",
+      "kind": "browser-screenshot-tanglin-halt-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f077f201-5947-4e1e-acb3-dec21d25eb02",
+      "date": "2026-09-13T04:27:09.344Z",
+      "kind": "browser-screenshot-tanglin-halt-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d133221e-6e4d-421d-bed7-cf9caa6e5ced",
+      "date": "2026-09-13T04:30:19.361Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0fa7887c-47b0-4215-8ce3-db459a798dd8",
+      "date": "2026-09-13T04:30:20.649Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "af72c2d9-07a9-4bc9-b929-74b38f801e4b",
+      "date": "2026-09-13T04:30:20.747Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b9cd6b56-dd15-45db-af04-0658894e3060",
+      "date": "2026-09-13T04:30:20.856Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ad86097b-c74d-4f29-a7bb-82f37f2ec460",
+      "date": "2026-09-13T04:30:20.986Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "dcea1992-6d24-4329-823d-18e535d85fc0",
+      "date": "2026-09-13T04:30:21.057Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bd83a2b4-c7b0-4065-8b37-16c3ca681c8e",
+      "date": "2026-09-13T04:30:21.175Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e5287c00-dd39-48b8-bfe0-20141baad1e2",
+      "date": "2026-09-13T04:30:21.282Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "dd81df5c-9dea-463d-92be-4716f5376bc4",
+      "date": "2026-09-13T04:30:21.372Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4452350e-06f4-45b5-8a92-6f029d5968c9",
+      "date": "2026-09-13T04:30:21.488Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "85bbf738-b672-47eb-b802-8ca5766ac561",
+      "date": "2026-09-13T04:32:12.309Z",
+      "kind": "browser-screenshot-commonwealth-close-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1caf7e50-8be9-4eef-9fca-48f63959faa0",
+      "date": "2026-09-13T04:32:12.316Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c9233e38-73d2-4560-9f9d-48f0ba1f2829",
+      "date": "2026-09-13T04:32:15.858Z",
+      "kind": "browser-screenshot-commonwealth-close-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ca2448b9-1dda-4e51-aec6-63ed2e0e8bda",
+      "date": "2026-09-13T04:32:18.963Z",
+      "kind": "browser-screenshot-commonwealth-close-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "fc7fe7fa-1a24-497f-815e-b121fc8dbc7f",
+      "date": "2026-09-13T04:32:22.256Z",
+      "kind": "browser-screenshot-commonwealth-close-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "07abb8b6-7f0e-43fc-b172-aadf3d9f2f2f",
+      "date": "2026-09-13T04:32:25.362Z",
+      "kind": "browser-screenshot-commonwealth-crescent-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7088f141-78a2-4212-93e3-71a9ba709485",
+      "date": "2026-09-13T04:32:25.364Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2dac75e5-bb35-4473-9d8f-b10d980309ca",
+      "date": "2026-09-13T04:32:28.588Z",
+      "kind": "browser-screenshot-commonwealth-crescent-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2d3bf457-aa6d-4f9e-86e7-e716e61bc873",
+      "date": "2026-09-13T04:32:31.625Z",
+      "kind": "browser-screenshot-commonwealth-crescent-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b2f95aab-92a6-4593-b8ae-10f6eb88b353",
+      "date": "2026-09-13T04:32:34.911Z",
+      "kind": "browser-screenshot-commonwealth-crescent-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d5c0cf7b-c116-4590-a00c-4fbe12c552c7",
+      "date": "2026-09-13T04:32:38.972Z",
+      "kind": "browser-screenshot-tanglin-market-road-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "19a9270a-19ff-4b55-a456-ca10b680e2c4",
+      "date": "2026-09-13T04:32:38.973Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f4552071-8b16-4c4e-ab02-0fb49389e2df",
+      "date": "2026-09-13T04:32:42.420Z",
+      "kind": "browser-screenshot-tanglin-market-road-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "087da22e-65f3-4ce3-aa31-0d46ed6dfb0a",
+      "date": "2026-09-13T04:32:45.468Z",
+      "kind": "browser-screenshot-tanglin-market-road-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1031bdaf-14bf-44d5-9517-193401eb8336",
+      "date": "2026-09-13T04:32:48.714Z",
+      "kind": "browser-screenshot-tanglin-market-road-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ac191c95-a57c-46e1-910b-f3243de383f6",
+      "date": "2026-09-13T04:32:51.762Z",
+      "kind": "browser-screenshot-tanglin-east-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4eac9a98-c781-4192-9b56-9544de951942",
+      "date": "2026-09-13T04:32:51.769Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "612994a5-1864-4eaa-850a-c4901f08953d",
+      "date": "2026-09-13T04:32:55.213Z",
+      "kind": "browser-screenshot-tanglin-east-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e6a1a521-d7fe-4228-8de6-736b4a84f7c6",
+      "date": "2026-09-13T04:32:58.290Z",
+      "kind": "browser-screenshot-tanglin-east-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1d1c4168-e195-47b7-9686-b84d69343ef7",
+      "date": "2026-09-13T04:33:01.352Z",
+      "kind": "browser-screenshot-tanglin-east-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "aed227a4-48fc-4592-883e-21b2780e4775",
+      "date": "2026-09-13T04:33:04.408Z",
+      "kind": "browser-screenshot-stirling-west-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1001d66f-5387-4744-9695-3cc774e8c747",
+      "date": "2026-09-13T04:33:04.409Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0a54ba00-2fbc-4628-b2d1-e1b647a94a72",
+      "date": "2026-09-13T04:33:07.645Z",
+      "kind": "browser-screenshot-stirling-west-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a51c68b1-d6b9-4279-891f-0e4a1aa44535",
+      "date": "2026-09-13T04:33:10.695Z",
+      "kind": "browser-screenshot-stirling-west-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c05cd1fe-c44c-41ca-8bdc-abe1bec7b973",
+      "date": "2026-09-13T04:33:13.744Z",
+      "kind": "browser-screenshot-stirling-west-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e048ed69-880d-46b7-8aae-3c2067981bc8",
+      "date": "2026-09-13T04:33:16.764Z",
+      "kind": "browser-screenshot-stirling-south-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7b4440d2-9eb0-4d50-b39e-f5d37072d160",
+      "date": "2026-09-13T04:33:16.767Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3fa6ae1c-47ff-4412-9fdf-d77b8ecd8893",
+      "date": "2026-09-13T04:33:20.045Z",
+      "kind": "browser-screenshot-stirling-south-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ec8f1de6-561b-4878-aa2f-9dbb8efbe113",
+      "date": "2026-09-13T04:33:23.037Z",
+      "kind": "browser-screenshot-stirling-south-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "001c021a-3eeb-4e23-b324-904d75bf4aa1",
+      "date": "2026-09-13T04:33:26.107Z",
+      "kind": "browser-screenshot-stirling-south-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2d1af6f0-391a-4a43-a460-af6d6faaf222",
+      "date": "2026-09-13T04:33:29.183Z",
+      "kind": "browser-screenshot-dawson-east-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "70fe1bbd-6a98-422c-90a4-4672567e286e",
+      "date": "2026-09-13T04:33:29.184Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c5b2f2a5-c88d-4571-a2f3-532338971060",
+      "date": "2026-09-13T04:33:33.235Z",
+      "kind": "browser-screenshot-dawson-east-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "987525bd-b9ea-42bf-9760-aa30f28e05ab",
+      "date": "2026-09-13T04:33:36.287Z",
+      "kind": "browser-screenshot-dawson-east-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "46f29639-2ae1-4a65-8517-e980f57a2eb3",
+      "date": "2026-09-13T04:33:39.336Z",
+      "kind": "browser-screenshot-dawson-east-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b4246838-1ca9-410b-9a38-9f8780c3037b",
+      "date": "2026-09-13T04:33:42.387Z",
+      "kind": "browser-screenshot-skyville-road-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "33d048fc-0ddb-4f5c-86d5-5df4c4348bc3",
+      "date": "2026-09-13T04:33:42.389Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c47d6f67-8a21-4b21-8905-2046480202bb",
+      "date": "2026-09-13T04:33:45.668Z",
+      "kind": "browser-screenshot-skyville-road-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2ea720ae-e67c-4af7-96cf-0fbe32e72fae",
+      "date": "2026-09-13T04:33:48.761Z",
+      "kind": "browser-screenshot-skyville-road-180",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "374b7d40-bdec-4512-a9ea-a5e023dca9fd",
+      "date": "2026-09-13T04:33:51.779Z",
+      "kind": "browser-screenshot-skyville-road-270",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "226649d7-df74-4e3c-976a-c18e837bebcb",
+      "date": "2026-09-13T04:33:54.868Z",
+      "kind": "browser-screenshot-margaret-north-0",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "26cbe819-9771-457d-adfb-db829505fb41",
+      "date": "2026-09-13T04:33:54.870Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c70f5cd3-dc95-4abb-8504-ba5a629affd8",
+      "date": "2026-09-13T04:33:58.118Z",
+      "kind": "browser-screenshot-margaret-north-90",
+      "location": "queenstown",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "aa3de633-6e88-4ce9-8c31-7d2a7ebd260c",
+      "date": "2026-09-13T04:34:01.192Z",
+      "kind": "browser-screenshot-margaret-north-180",
+      "location": "queenstown",
+      "result": "network failure or interrupted request"
+    },
+    {
+      "id": "04bf3d0e-f8dd-4766-bbd2-d9397ae8f164",
+      "date": "2026-09-13T04:37:24.887Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "28d255d7-c6a2-4d99-8da9-a5f2730023f6",
+      "date": "2026-09-13T04:37:25.150Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a6b257d7-f77f-4cfb-9510-c100c4413111",
+      "date": "2026-09-13T04:37:25.329Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6de51b79-1857-43b6-9053-f1169bb4a7b8",
+      "date": "2026-09-13T04:37:25.523Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6b2c4812-2144-4351-bcce-84116f15f40d",
+      "date": "2026-09-13T04:37:25.678Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "fef358ce-ebb6-484b-ab09-48f4412c4a42",
+      "date": "2026-09-13T04:37:25.817Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3842e1d9-0ae0-4ab4-9702-3cfe6ed6fa23",
+      "date": "2026-09-13T04:37:25.987Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "868e44d9-5fda-486e-af92-6d34eb01f3b0",
+      "date": "2026-09-13T04:37:26.129Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "46556b84-b401-4118-ab04-50f40a3c78e5",
+      "date": "2026-09-13T04:37:26.257Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "09621e35-2c0a-401e-b6c5-dc349740254b",
+      "date": "2026-09-13T04:37:26.405Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8e4d7c67-f9af-47a9-a53a-e5067a357877",
+      "date": "2026-09-13T04:38:11.216Z",
+      "kind": "browser-screenshot-church-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "38630566-11ba-4cf3-9dd0-2e3a5d202c3a",
+      "date": "2026-09-13T04:38:11.220Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6bb8ec20-e555-42a9-88b1-d319436aef72",
+      "date": "2026-09-13T04:38:14.766Z",
+      "kind": "browser-screenshot-church-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "54280670-59a9-40da-93c7-2a6a7da2e368",
+      "date": "2026-09-13T04:38:17.857Z",
+      "kind": "browser-screenshot-church-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c883a0ad-fe5d-42cc-b350-942e951fe738",
+      "date": "2026-09-13T04:38:20.973Z",
+      "kind": "browser-screenshot-church-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "26187f7e-ca51-4938-a7a9-eaf016836c24",
+      "date": "2026-09-13T04:38:24.129Z",
+      "kind": "browser-screenshot-cross-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b4f38352-c0c1-4717-bab8-f712d175f571",
+      "date": "2026-09-13T04:38:24.131Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "4d0f71ce-5f3b-493a-b5e9-ae1b8d176ae9",
+      "date": "2026-09-13T04:38:27.693Z",
+      "kind": "browser-screenshot-cross-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f9e83217-6139-4c2e-8622-cdacecae0b47",
+      "date": "2026-09-13T04:38:30.872Z",
+      "kind": "browser-screenshot-cross-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ff0ee8c8-81eb-478d-bf79-4f6fade512a0",
+      "date": "2026-09-13T04:38:33.968Z",
+      "kind": "browser-screenshot-cross-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "39d29307-95d0-476d-a5a0-617a001086b2",
+      "date": "2026-09-13T04:38:37.075Z",
+      "kind": "browser-screenshot-telok-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "77c229d3-8603-478e-a27a-7b6d70b73957",
+      "date": "2026-09-13T04:38:37.077Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1d1406ff-618e-45c6-b63e-0504d9f35695",
+      "date": "2026-09-13T04:38:40.155Z",
+      "kind": "browser-screenshot-telok-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c409e76f-5926-4bf9-954d-342fdc2f0586",
+      "date": "2026-09-13T04:38:43.323Z",
+      "kind": "browser-screenshot-telok-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6c9a828b-be47-4df3-bc32-1f035e5f57de",
+      "date": "2026-09-13T04:39:01.469Z",
+      "kind": "browser-screenshot-telok-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7c152d7d-af98-4a74-a068-7317be9b8ec5",
+      "date": "2026-09-13T04:39:04.592Z",
+      "kind": "browser-screenshot-robinson-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7a767bff-e371-4466-b9d1-7f9fe31d4cc6",
+      "date": "2026-09-13T04:39:04.593Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c6d9e4d2-a472-432d-8d1c-9f95794a2090",
+      "date": "2026-09-13T04:39:07.971Z",
+      "kind": "browser-screenshot-robinson-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8a9dd2ad-bccd-4884-95aa-75f70c16da90",
+      "date": "2026-09-13T04:39:11.130Z",
+      "kind": "browser-screenshot-robinson-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "dea648bc-768a-4441-a351-d9903669a860",
+      "date": "2026-09-13T04:39:14.271Z",
+      "kind": "browser-screenshot-robinson-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9814c332-5b0a-45e3-bb9e-81797b8f8e54",
+      "date": "2026-09-13T04:39:17.384Z",
+      "kind": "browser-screenshot-lau-pa-sat-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ee06b957-c108-46d1-a8f6-1fc28054524e",
+      "date": "2026-09-13T04:39:17.386Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "abe5443f-77bd-4f40-a26b-7f7a3fa96a5c",
+      "date": "2026-09-13T04:39:20.859Z",
+      "kind": "browser-screenshot-lau-pa-sat-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ba4ded83-786e-4296-a17d-8b78f02e02e0",
+      "date": "2026-09-13T04:39:23.934Z",
+      "kind": "browser-screenshot-lau-pa-sat-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ad2c1646-81df-4fb7-aa28-45d51f84e044",
+      "date": "2026-09-13T04:39:27.046Z",
+      "kind": "browser-screenshot-lau-pa-sat-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1a606929-bb41-4a47-a73a-3e98f023c8b0",
+      "date": "2026-09-13T04:39:30.132Z",
+      "kind": "browser-screenshot-cecil-south-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0d95ce45-e9bb-4e64-b6e7-4cc921e0cf94",
+      "date": "2026-09-13T04:39:30.135Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "30a2683b-36fe-4099-9d85-a190f0b50637",
+      "date": "2026-09-13T04:39:33.426Z",
+      "kind": "browser-screenshot-cecil-south-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8e9810d9-9ead-4afb-b26f-b50e98c48446",
+      "date": "2026-09-13T04:39:36.515Z",
+      "kind": "browser-screenshot-cecil-south-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e0ba3192-a4b0-493e-acb1-02c19386592a",
+      "date": "2026-09-13T04:39:39.920Z",
+      "kind": "browser-screenshot-cecil-south-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ed70c04d-2114-4a09-bd93-3d2a4898f5bd",
+      "date": "2026-09-13T04:39:42.998Z",
+      "kind": "browser-screenshot-quay-west-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bbdbb399-b81a-4c0f-ae28-dd910467b968",
+      "date": "2026-09-13T04:39:43.001Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "de4077f6-5d8f-4124-80b8-5e960cf22d50",
+      "date": "2026-09-13T04:39:46.281Z",
+      "kind": "browser-screenshot-quay-west-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8daaec8e-91b9-4caf-9e68-c3593c7160a3",
+      "date": "2026-09-13T04:39:49.394Z",
+      "kind": "browser-screenshot-quay-west-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e6a2b356-be52-4b36-ab52-dbae1515da6c",
+      "date": "2026-09-13T04:39:52.471Z",
+      "kind": "browser-screenshot-quay-west-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "53dc8177-de5f-4e19-be14-e0591650a6ce",
+      "date": "2026-09-13T04:39:55.511Z",
+      "kind": "browser-screenshot-circular-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9a19dc89-fdcb-434d-975e-ecdbbcce7f88",
+      "date": "2026-09-13T04:39:55.512Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "62435f5b-251f-41da-98ec-5c18526ec38e",
+      "date": "2026-09-13T04:39:59.595Z",
+      "kind": "browser-screenshot-circular-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2a9a4477-e157-40f1-a836-9baeb30d4a9e",
+      "date": "2026-09-13T04:40:02.718Z",
+      "kind": "browser-screenshot-circular-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "422f63b4-a1f3-4219-8b62-da57c2d1fa67",
+      "date": "2026-09-13T04:40:05.821Z",
+      "kind": "browser-screenshot-circular-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "467dc310-7c46-40a5-b7b5-0c3291f8779c",
+      "date": "2026-09-13T04:40:08.893Z",
+      "kind": "browser-screenshot-collyer-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "eaa15c33-ed7a-436e-8d16-ac71870de688",
+      "date": "2026-09-13T04:40:08.894Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1888ad65-9224-438f-9a75-e375348fe737",
+      "date": "2026-09-13T04:40:12.192Z",
+      "kind": "browser-screenshot-collyer-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d564dd22-674a-477c-b8cc-dbff7d51cc6d",
+      "date": "2026-09-13T04:40:15.244Z",
+      "kind": "browser-screenshot-collyer-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bfc400dc-a21b-4bab-bc16-b464f5c98076",
+      "date": "2026-09-13T04:40:18.356Z",
+      "kind": "browser-screenshot-collyer-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f461e2a8-ec86-449e-a6c2-77292ed77061",
+      "date": "2026-09-13T04:40:21.425Z",
+      "kind": "browser-screenshot-fullerton-road-expansion-0",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6f686d31-5725-47ff-a12f-2a0910da5f8f",
+      "date": "2026-09-13T04:40:21.426Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "54559dff-7ea9-4438-a6bb-cc8f0891e986",
+      "date": "2026-09-13T04:40:24.966Z",
+      "kind": "browser-screenshot-fullerton-road-expansion-90",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "aa038b8d-e880-4969-870a-7b52ac066b00",
+      "date": "2026-09-13T04:40:28.107Z",
+      "kind": "browser-screenshot-fullerton-road-expansion-180",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d50c4412-0282-48aa-a1fa-9af72ae728a8",
+      "date": "2026-09-13T04:40:31.211Z",
+      "kind": "browser-screenshot-fullerton-road-expansion-270",
+      "location": "raffles-place",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "23362d44-0cb1-44b5-899c-8bda4325f92d",
+      "date": "2026-09-13T04:41:07.216Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ea31c169-f09e-4fa5-bbe9-312fb4e90fd0",
+      "date": "2026-09-13T04:41:07.509Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9ad8fcee-7539-429d-9232-9d601bea88f5",
+      "date": "2026-09-13T04:41:08.401Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "301a8ee4-956d-47ad-868f-c846bb02c436",
+      "date": "2026-09-13T04:41:08.499Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "network failure or interrupted request"
+    },
+    {
+      "id": "1462e994-ec5a-45f2-818d-d1ae14c6dd87",
+      "date": "2026-09-13T04:41:23.176Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "78d1a0ff-108d-4f3f-bd48-a71d63788714",
+      "date": "2026-09-13T04:41:23.332Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bf963405-63d4-45aa-8e63-02cca20a576a",
+      "date": "2026-09-13T04:41:23.440Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7f38313f-8918-42a8-b221-e79d56e542d6",
+      "date": "2026-09-13T04:41:23.556Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "bb113188-e18b-467f-8c96-284b1d9d2c28",
+      "date": "2026-09-13T04:41:23.692Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "392b9266-98d4-4619-aef1-a6433b8f2c82",
+      "date": "2026-09-13T04:41:23.783Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "2541cdb5-09aa-4eeb-b47a-60196bac8a93",
+      "date": "2026-09-13T04:41:23.888Z",
+      "kind": "maps-javascript-reference-selection",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "3b1e4871-cca8-4f80-9d23-22c7af587d5d",
+      "date": "2026-09-13T04:41:32.857Z",
+      "kind": "browser-screenshot-gardens-grove-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9c7b9543-ce4d-4cf1-be7b-b631144fdbc9",
+      "date": "2026-09-13T04:41:32.861Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f7ba147e-5b91-4911-a00d-34f9ff18e2e9",
+      "date": "2026-09-13T04:41:36.382Z",
+      "kind": "browser-screenshot-gardens-grove-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c0dd4bed-f27f-4d31-8984-5f8d38083e5b",
+      "date": "2026-09-13T04:41:39.513Z",
+      "kind": "browser-screenshot-gardens-grove-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "13c755a2-972d-4aae-82b7-a8b0add9ce70",
+      "date": "2026-09-13T04:41:42.567Z",
+      "kind": "browser-screenshot-gardens-grove-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "e87362b8-3bd3-4c07-a117-152cabd64a7a",
+      "date": "2026-09-13T04:41:45.615Z",
+      "kind": "browser-screenshot-conservatory-road-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "743d808b-43a7-4bfd-a456-51a11db545b4",
+      "date": "2026-09-13T04:41:45.617Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "89b23b9a-5fe8-41cc-ba04-cbd753fa28f9",
+      "date": "2026-09-13T04:41:49.084Z",
+      "kind": "browser-screenshot-conservatory-road-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "da9aff65-af17-4436-ac43-e032c5ff1b2b",
+      "date": "2026-09-13T04:41:52.182Z",
+      "kind": "browser-screenshot-conservatory-road-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f861a689-5b18-4f4e-99e5-fd3846555e3a",
+      "date": "2026-09-13T04:41:55.365Z",
+      "kind": "browser-screenshot-conservatory-road-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b5640a52-1bbe-4ffe-8f96-43a7a50796ad",
+      "date": "2026-09-13T04:41:58.513Z",
+      "kind": "browser-screenshot-barrage-approach-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "94a15277-a483-4c80-a456-88999633da17",
+      "date": "2026-09-13T04:41:58.517Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "af5ee7ac-148e-4364-84e8-7d1a24d298dc",
+      "date": "2026-09-13T04:42:01.757Z",
+      "kind": "browser-screenshot-barrage-approach-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "49348a26-9962-4f56-8357-495c0b692e31",
+      "date": "2026-09-13T04:42:05.865Z",
+      "kind": "browser-screenshot-barrage-approach-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "da16c16a-0b41-402c-963a-4da8ceeffb55",
+      "date": "2026-09-13T04:42:08.950Z",
+      "kind": "browser-screenshot-barrage-approach-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9a76c69d-13ba-41df-b75a-ff1b49eeb4e1",
+      "date": "2026-09-13T04:42:12.066Z",
+      "kind": "browser-screenshot-east-garden-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "f3c80419-8bae-4c66-8c32-346fc7f0b8ab",
+      "date": "2026-09-13T04:42:12.071Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "d4c26b08-6d34-4453-9459-45670594e920",
+      "date": "2026-09-13T04:42:15.393Z",
+      "kind": "browser-screenshot-east-garden-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9eb8bba1-5777-4168-8a9a-3cf0c27cca68",
+      "date": "2026-09-13T04:42:18.524Z",
+      "kind": "browser-screenshot-east-garden-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "076e414b-34fa-4a4f-a1a0-c8b3fc5c0d8c",
+      "date": "2026-09-13T04:42:21.627Z",
+      "kind": "browser-screenshot-east-garden-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8d23227b-5980-4583-8089-085ab94fd76d",
+      "date": "2026-09-13T04:42:24.728Z",
+      "kind": "browser-screenshot-flyer-road-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "7a2c319a-7dcd-4225-a810-415bb47b9522",
+      "date": "2026-09-13T04:42:24.730Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "372ae937-d7aa-4b19-b55b-61e98f87e004",
+      "date": "2026-09-13T04:42:28.446Z",
+      "kind": "browser-screenshot-flyer-road-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "60ed2e3d-fb4c-4ab0-82b1-40ca0e0e86ea",
+      "date": "2026-09-13T04:42:32.735Z",
+      "kind": "browser-screenshot-flyer-road-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "edb16271-8aef-4870-8c4e-a91ad5c47afd",
+      "date": "2026-09-13T04:42:35.756Z",
+      "kind": "browser-screenshot-flyer-road-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ff7495b2-fe1d-4253-972e-49b39ef47db9",
+      "date": "2026-09-13T04:42:38.863Z",
+      "kind": "browser-screenshot-float-waterfront-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "6bc38fa4-33c9-40a7-a258-eb0ae909d3ef",
+      "date": "2026-09-13T04:42:38.871Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "ed1def81-78d5-4a7c-95b1-0cdad8bf0b19",
+      "date": "2026-09-13T04:42:42.163Z",
+      "kind": "browser-screenshot-float-waterfront-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9ebde0b7-ec75-4f18-b1e5-1e984b7c1368",
+      "date": "2026-09-13T04:42:45.251Z",
+      "kind": "browser-screenshot-float-waterfront-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "067725d6-beea-4faf-abba-f0af707722b3",
+      "date": "2026-09-13T04:42:48.466Z",
+      "kind": "browser-screenshot-float-waterfront-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "06181aa0-3683-43db-8be9-d4f0736771e8",
+      "date": "2026-09-13T04:42:51.523Z",
+      "kind": "browser-screenshot-esplanade-road-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1f0528e6-418f-4c5a-8d56-ffe6f9863458",
+      "date": "2026-09-13T04:42:51.525Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "babf0ec2-1652-42d3-8846-2e0257e6df94",
+      "date": "2026-09-13T04:42:54.832Z",
+      "kind": "browser-screenshot-esplanade-road-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "8ecaba77-448d-4f5a-8ced-07b1824f84b2",
+      "date": "2026-09-13T04:42:57.937Z",
+      "kind": "browser-screenshot-esplanade-road-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "54f6c8bd-2fc0-4ace-9a5e-02e23e0649d0",
+      "date": "2026-09-13T04:43:01.031Z",
+      "kind": "browser-screenshot-esplanade-road-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c6147efd-3c66-4853-b538-761fa8f68f27",
+      "date": "2026-09-13T04:43:04.152Z",
+      "kind": "browser-screenshot-promenade-road-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "b854abc4-3710-49f5-9102-0d7fa5828733",
+      "date": "2026-09-13T04:43:04.154Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "08f90205-de22-4b49-9d7d-eacdcf5b55ce",
+      "date": "2026-09-13T04:43:07.451Z",
+      "kind": "browser-screenshot-promenade-road-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "0904f311-afa5-495d-9ddb-de282499a5f1",
+      "date": "2026-09-13T04:43:10.528Z",
+      "kind": "browser-screenshot-promenade-road-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a43f6659-bd2c-429d-b4c6-8be27fc04c9d",
+      "date": "2026-09-13T04:43:13.805Z",
+      "kind": "browser-screenshot-promenade-road-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "a390f244-eb8a-4c8f-8e02-b9a5b02d11cc",
+      "date": "2026-09-13T04:43:16.901Z",
+      "kind": "browser-screenshot-downtown-green-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "c8c65864-559f-4bf7-9cf9-47c3c08025d2",
+      "date": "2026-09-13T04:43:16.903Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "594bd26b-465c-4b78-bb3f-0438789bb75e",
+      "date": "2026-09-13T04:43:20.199Z",
+      "kind": "browser-screenshot-downtown-green-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "225162ac-fd39-473c-a0ff-53d972a7da35",
+      "date": "2026-09-13T04:43:23.304Z",
+      "kind": "browser-screenshot-downtown-green-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "01edf865-c35d-41f5-8661-31fe613280ba",
+      "date": "2026-09-13T04:43:27.033Z",
+      "kind": "browser-screenshot-downtown-green-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "312c4e74-4720-4298-8f31-f048174d0b2f",
+      "date": "2026-09-13T04:43:30.369Z",
+      "kind": "browser-screenshot-marina-one-street-03-0",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "84cbd928-5cf7-4758-9184-3a87d6e82aa6",
+      "date": "2026-09-13T04:43:30.371Z",
+      "kind": "maps-javascript-panorama-load",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "1f094faf-f60a-4eab-b090-d37530337e83",
+      "date": "2026-09-13T04:43:33.588Z",
+      "kind": "browser-screenshot-marina-one-street-03-90",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "015d157e-952f-42fe-a0a4-5602389cdd34",
+      "date": "2026-09-13T04:43:36.563Z",
+      "kind": "browser-screenshot-marina-one-street-03-180",
+      "location": "marina-bay",
+      "result": "HTTP 200"
+    },
+    {
+      "id": "9cc19baa-c593-43b5-ae04-bda397d11b2f",
+      "date": "2026-09-13T04:43:39.681Z",
+      "kind": "browser-screenshot-marina-one-street-03-270",
+      "location": "marina-bay",
+      "result": "HTTP 200"
     }
   ]
 }

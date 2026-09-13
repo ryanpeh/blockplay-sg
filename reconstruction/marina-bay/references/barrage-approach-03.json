@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "qztNrbidNC3mmuzic2M89A",
+  "location": {
+    "lat": 1.2799132377151001,
+    "lng": 103.86925195993112
+  },
+  "description": "Marina Gardens Dr, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2805,
+    "lng": 103.8696
+  },
+  "selectedGoogle": true
+}

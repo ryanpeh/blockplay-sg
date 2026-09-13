@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "station-clear.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "uPOEK2v2dHe1SNAXoJmchw",
+  "position": {
+    "lat": 1.2937781641813975,
+    "lng": 103.80671115578087
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:23.059Z",
+  "file": "reconstruction/queenstown/references/station-clear-270.png",
+  "fingerprint": "2b74d5b3756b05dff11851c60c410a2d969efafb0fc2f6897b6b30ca7d0a7f7f",
+  "sha256": "08c335fa68102cd5fbfe480b67a0052548223fdb905e50d7364741e0bb1b8df8",
+  "bytes": 2085473,
+  "durationMs": 2498,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "limited: foreground pier obstructs proportions; use only concrete and planting palette"
+}

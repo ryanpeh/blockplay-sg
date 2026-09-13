@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "conservatory-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2014-05",
+  "pano_id": "v8Wz5OAE66zLVyDElJY5jA",
+  "position": {
+    "lat": 1.2850350592561106,
+    "lng": 103.86479823848322
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:41:55.364Z",
+  "file": "reconstruction/marina-bay/references/conservatory-road-03-180.png",
+  "fingerprint": "1a0d811fc9c8382192abbbca734b2b5e1207d6a60e9f0a53872cd7f89f6d12f6",
+  "sha256": "264f4bfab19ed07558c204ad8d893c4d721f6f9ca184d2985636ba92969abafa",
+  "bytes": 1443569,
+  "durationMs": 3183,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: shuttle cart and people obscure lower facade; retain for glass-grid and bench materials only"
+}

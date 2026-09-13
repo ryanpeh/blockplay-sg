@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "5UDZ9rBDWRaZDRU1y2ljhw",
+  "location": {
+    "lat": 1.2794937936736568,
+    "lng": 103.8527557209538
+  },
+  "description": "15 Central Blvd, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2794,
+    "lng": 103.8527
+  },
+  "selectedGoogle": true
+}

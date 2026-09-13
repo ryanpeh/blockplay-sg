@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "float-waterfront-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "UMbGGEkDkczQEniHAGu11w",
+  "position": {
+    "lat": 1.2896887364818257,
+    "lng": 103.858838819201
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Raffles Ave., Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:42.161Z",
+  "file": "reconstruction/marina-bay/references/float-waterfront-03-0.png",
+  "fingerprint": "ec19b8a5ff7427debf571b5a964752fe8df028eb987b9f5a294275283e44d3b2",
+  "sha256": "2f6da171795835be40be0121520c987cf9d88e913becb189be53683fb43eb9e3",
+  "bytes": 2016304,
+  "durationMs": 3298,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: white mall facade, external stair flights, planted edge and black-white kerb; actual source on Raffles Avenue"
+}

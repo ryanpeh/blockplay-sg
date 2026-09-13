@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "flyer-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2010-02",
+  "pano_id": "mTfQri_6OmDtNU47vbF1iw",
+  "position": {
+    "lat": 1.2896817804377636,
+    "lng": 103.86312654904567
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:28.444Z",
+  "file": "reconstruction/marina-bay/references/flyer-road-03-0.png",
+  "fingerprint": "11694e5e5091df40ce88833bed009241d284db4d22f8bb2d3530785464cb1601",
+  "sha256": "066c20823ec2e6849dda7ad42f9b80a6679ae788e3fb38697431c098b8b01961",
+  "bytes": 1402476,
+  "durationMs": 3716,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: coaches obscure much of forecourt; useful stone paving and palm context, dated 2010"
+}

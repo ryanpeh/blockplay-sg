@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "esplanade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-11",
+  "pano_id": "zRv-u0DQNcflwiBnZxFYCw",
+  "position": {
+    "lat": 1.2911211162247562,
+    "lng": 103.85500638517166
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:04.150Z",
+  "file": "reconstruction/marina-bay/references/esplanade-road-03-270.png",
+  "fingerprint": "7c070fcbf9b8d4b534f6c4652e0d629a05a86e4e1416a8c7496d481b1848ce1e",
+  "sha256": "050abdd8fc71c95241537ab29a01461f7aa92fd3116695da628c36b64ad3dfe6",
+  "bytes": 1719275,
+  "durationMs": 3119,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: lane markings, median kerb, bus shelter and broad park planting"
+}

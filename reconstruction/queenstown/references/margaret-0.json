@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "margaret.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "rawGq7vugQAsCwX_SL6jQg",
+  "position": {
+    "lat": 1.2976944022246522,
+    "lng": 103.80396040543337
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "38 Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:49.254Z",
+  "file": "reconstruction/queenstown/references/margaret-0.png",
+  "fingerprint": "ea7a7428dddd8b67bb1c2af3377e268d35640ddcbd20c1a12b9b70bc5a9a73df",
+  "sha256": "c9fba8c8bef91c98934e52856daeb25e06aaf3d71f29a20c720f8f2354132c4f",
+  "bytes": 2010391,
+  "durationMs": 3618,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: white Dawson facades, planting verges and red path"
+}

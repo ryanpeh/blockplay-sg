@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "_7E763z20DuvVk0jyMJO6w",
+  "position": {
+    "lat": 1.2959333863881268,
+    "lng": 103.80888721098805
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:26:56.679Z",
+  "file": "reconstruction/queenstown/references/dawson-180.png",
+  "fingerprint": "16b448a664a0a072a4ef8bd558a699e2581e70cfd3c9d5b84b9b0514689b0845",
+  "sha256": "7783c9c373e43dc96ebbf48d50eecb6c9f2f30c3246e5fbfec493f85f927a46d",
+  "bytes": 2083932,
+  "durationMs": 3036,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: low planted parking podium contrasting tall residential slabs"
+}

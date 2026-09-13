@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "promenade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-08",
+  "pano_id": "x8L7_sxIVdllJJ8VLOyeSw",
+  "position": {
+    "lat": 1.2920129560275748,
+    "lng": 103.86163810359794
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:16.899Z",
+  "file": "reconstruction/marina-bay/references/promenade-road-03-270.png",
+  "fingerprint": "325183986b98844caf08075f919eaed5f1f31b3e1969b0ae5546e090e40a075f",
+  "sha256": "a5689ac5a3e6868d8ab018713628a24d6cef03d1a8c7a9728951a60d8c1d5032",
+  "bytes": 2119780,
+  "durationMs": 3094,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: yellow parking outlines, patched asphalt, grass bank and surrounding tower massing"
+}

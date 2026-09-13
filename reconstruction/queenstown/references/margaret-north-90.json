@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "margaret-north.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "oYo0Soiunb4X9ufcvNez5Q",
+  "position": {
+    "lat": 1.3015371149188608,
+    "lng": 103.80636510910301
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:34:01.189Z",
+  "file": "reconstruction/queenstown/references/margaret-north-90.png",
+  "fingerprint": "4128207db6bf0c0f3effa0bbc7515b37e27e02bdd667a444a062fdd2868a6a1a",
+  "sha256": "fe6622f31593f6195a1cac47b1ad91f08582bb2a7f8cb537fe1021f93483ba48",
+  "bytes": 2186235,
+  "durationMs": 3071,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: selected landed enclave and service access, not Margaret Drive estate layout"
+}

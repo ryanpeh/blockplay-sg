@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "_7E763z20DuvVk0jyMJO6w",
+  "position": {
+    "lat": 1.2959333863881268,
+    "lng": 103.80888721098805
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:26:53.642Z",
+  "file": "reconstruction/queenstown/references/dawson-90.png",
+  "fingerprint": "bb08159403c4a400b7f132c6b00f818b049b09bfea7444125727621b2c0b1fad",
+  "sha256": "45c7e8735d6845809379971061f037fdf728732cb969e9802d1db09de08edd56",
+  "bytes": 2181001,
+  "durationMs": 3053,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: pale fins, deep entrance recess and planted car-park podium"
+}

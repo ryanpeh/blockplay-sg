@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "rawGq7vugQAsCwX_SL6jQg",
+  "location": {
+    "lat": 1.2976944022246522,
+    "lng": 103.80396040543337
+  },
+  "description": "38 Commonwealth Ave, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.29794,
+    "lng": 103.80416
+  },
+  "selectedGoogle": true
+}

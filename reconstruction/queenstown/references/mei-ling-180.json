@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "mei-ling.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2019-11",
+  "pano_id": "zr72CIv3ZoAAAARFRemblQ",
+  "position": {
+    "lat": 1.293394281974789,
+    "lng": 103.802584211159
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Mei Ling Market",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:42.968Z",
+  "file": "reconstruction/queenstown/references/mei-ling-180.png",
+  "fingerprint": "96e09c51c86546b38cc63bee41efd72992c1ed8ebe00120cd9a458600339f033",
+  "sha256": "e5eec1cd20afae9c05eb8a09173742fd15ed4fb166abdfc82f3b43f3a10d7fd9",
+  "bytes": 1259879,
+  "durationMs": 4774,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "rejected for exterior modeling: indoor market corridor"
+}

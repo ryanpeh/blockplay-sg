@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "marina-one-street-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "dlFatS0d3HyUpwje4d54Vw",
+  "position": {
+    "lat": 1.2776617136881363,
+    "lng": 103.852375851504
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:36.561Z",
+  "file": "reconstruction/marina-bay/references/marina-one-street-03-90.png",
+  "fingerprint": "91956600ed5d23f5e4052c78df412fca865da9f33b2502eebfecd7b235dcbb2c",
+  "sha256": "c2ad990bdd1f3a885919a9cc37aaf5c66a41b5e31d311e753ef1a1d5e3a9bee5",
+  "bytes": 1025704,
+  "durationMs": 2972,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: hoarding obscures courtyard; retain bronze vertical fins and dark glass-canopy grid only"
+}

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "flyer-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2010-02",
+  "pano_id": "mTfQri_6OmDtNU47vbF1iw",
+  "position": {
+    "lat": 1.2896817804377636,
+    "lng": 103.86312654904567
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:32.734Z",
+  "file": "reconstruction/marina-bay/references/flyer-road-03-90.png",
+  "fingerprint": "5bd893e3daa18914c26b42430a6e9f9f4b49f982415579ca04e9b70f1b9f18ee",
+  "sha256": "0c0064c15ca1a48a7fef86f598dc6a0cf7c9c1ca5f9fcd251a9d1af939136c51",
+  "bytes": 1598926,
+  "durationMs": 4288,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: light irregular stone paving, pale facade louvers, awnings and palm beds; dated 2010"
+}

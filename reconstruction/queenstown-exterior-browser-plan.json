@@ -1,0 +1,119 @@
+{
+  "name": "queenstown-exterior-batch-04",
+  "region": "queenstown",
+  "width": 1280,
+  "height": 900,
+  "maxNewImages": 12,
+  "sources": {
+    "mei-ling-road.json": {
+      "lat": 1.2906,
+      "lng": 103.8034
+    },
+    "dawson.json": {
+      "lat": 1.29585,
+      "lng": 103.8092
+    },
+    "tanglin-halt.json": {
+      "lat": 1.2993,
+      "lng": 103.7988
+    }
+  },
+  "views": [
+    {
+      "id": "mei-ling-road-0",
+      "source": "mei-ling-road.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "mei-ling-road-90",
+      "source": "mei-ling-road.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "mei-ling-road-180",
+      "source": "mei-ling-road.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "mei-ling-road-270",
+      "source": "mei-ling-road.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "dawson-0",
+      "source": "dawson.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "dawson-90",
+      "source": "dawson.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "dawson-180",
+      "source": "dawson.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "dawson-270",
+      "source": "dawson.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "tanglin-halt-0",
+      "source": "tanglin-halt.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "tanglin-halt-90",
+      "source": "tanglin-halt.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "tanglin-halt-180",
+      "source": "tanglin-halt.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    },
+    {
+      "id": "tanglin-halt-270",
+      "source": "tanglin-halt.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Additional street exterior references for estate facades, public realm, planting and sheltered links"
+    }
+  ]
+}

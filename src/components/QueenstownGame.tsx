@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { defaultDriveLook, dragDriveLook, driveCameraOffset, settleDriveLook } from '../game/drive-camera';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, CarFront, Footprints, RotateCcw, Flag } from 'lucide-react';
-import { buildQueenstownScene, QUEENSTOWN_SPAWN, QUEENSTOWN_STAMPS } from '../game/queenstown-scene';
-import { moveInQueenstown } from '../game/queenstown-collision';
+import { buildQueenstownScene, QUEENSTOWN_MAP_ROADS, QUEENSTOWN_SPAWN, QUEENSTOWN_STAMPS } from '../game/queenstown-scene';
+import { moveInQueenstown, QUEENSTOWN_BOUNDS } from '../game/queenstown-collision';
+import { minimapProjection } from '../game/minimap';
 
 const initialHud = { distance: 0, speed: 0, x: QUEENSTOWN_SPAWN.x as number, z: QUEENSTOWN_SPAWN.z as number, collected: [] as number[] };
+const map = minimapProjection(QUEENSTOWN_BOUNDS);
 
 export default function QueenstownGame() {
   const host = useRef<HTMLDivElement>(null);
@@ -28,24 +31,36 @@ export default function QueenstownGame() {
     renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.9;
     const canvas = renderer.domElement; canvas.tabIndex = 0; container.appendChild(canvas);
     canvas.setAttribute('aria-label', 'Modeled Queenstown game. Click and use WASD to move; drag to look.');
-    const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 800); camera.rotation.order = 'YXZ';
+    const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 1400); camera.rotation.order = 'YXZ';
     let position = { x: QUEENSTOWN_SPAWN.x as number, z: QUEENSTOWN_SPAWN.z as number };
     let yaw = QUEENSTOWN_SPAWN.yaw, pitch = 0.14, speed = 0, distance = 0;
+    let driveLook = defaultDriveLook(), lastLookAt = 0;
+    let lastTravel = travelRef.current;
     const collected = new Set<number>();
     const report = () => setHud({ distance, speed, ...position, collected: [...collected] });
     reset.current = () => {
       position = { x: QUEENSTOWN_SPAWN.x, z: QUEENSTOWN_SPAWN.z }; yaw = QUEENSTOWN_SPAWN.yaw; pitch = 0.14; speed = 0; distance = 0; collected.clear();
+      driveLook = defaultDriveLook(); drag = undefined; lastLookAt = 0;
       world.stamps.forEach(stamp => { stamp.visible = true; }); keys.current.clear(); report();
     };
     let drag: { x: number; y: number; pointerId: number } | undefined;
-    const pointerDown = (event: PointerEvent) => { canvas.focus(); canvas.setPointerCapture(event.pointerId); drag = { x: event.clientX, y: event.clientY, pointerId: event.pointerId }; };
+    const pointerDown = (event: PointerEvent) => {
+      if (!event.isPrimary || event.button !== 0 || drag) return;
+      canvas.focus(); canvas.setPointerCapture(event.pointerId);
+      drag = { x: event.clientX, y: event.clientY, pointerId: event.pointerId };
+    };
     const pointerMove = (event: PointerEvent) => {
       if (!drag || drag.pointerId !== event.pointerId) return;
-      yaw -= (event.clientX - drag.x) * 0.004;
-      pitch = THREE.MathUtils.clamp(pitch - (event.clientY - drag.y) * 0.003, -0.7, 1.1);
+      if (travelRef.current === 'drive') {
+        driveLook = dragDriveLook(driveLook, event.clientX - drag.x, event.clientY - drag.y);
+        lastLookAt = performance.now();
+      } else {
+        yaw -= (event.clientX - drag.x) * 0.004;
+        pitch = THREE.MathUtils.clamp(pitch - (event.clientY - drag.y) * 0.003, -0.7, 1.1);
+      }
       drag.x = event.clientX; drag.y = event.clientY;
     };
-    const pointerUp = () => { drag = undefined; };
+    const pointerUp = (event: PointerEvent) => { if (drag?.pointerId === event.pointerId) { drag = undefined; lastLookAt = performance.now(); } };
     const supported = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', 'shift'];
     const keyDown = (event: KeyboardEvent) => { const key = event.key.toLowerCase(); if (supported.includes(key)) { event.preventDefault(); keys.current.add(key); } };
     const keyUp = (event: KeyboardEvent) => keys.current.delete(event.key.toLowerCase());
@@ -61,6 +76,10 @@ export default function QueenstownGame() {
       const forward = Number(held.has('w') || held.has('arrowup')) - Number(held.has('s') || held.has('arrowdown'));
       const side = Number(held.has('d') || held.has('arrowright')) - Number(held.has('a') || held.has('arrowleft'));
       const driving = travelRef.current === 'drive';
+      if (lastTravel !== travelRef.current) {
+        driveLook = defaultDriveLook(); drag = undefined; lastLookAt = 0;
+        lastTravel = travelRef.current;
+      }
       let dx = 0, dz = 0;
       if (driving) {
         speed = held.has(' ') ? THREE.MathUtils.damp(speed, 0, 15, dt) : forward ? THREE.MathUtils.clamp(speed + forward * 10 * dt, -5, 18) : THREE.MathUtils.damp(speed, 0, 2, dt);
@@ -77,8 +96,10 @@ export default function QueenstownGame() {
       distance += step; position = next;
       world.car.visible = driving; world.car.position.set(position.x, 0.12, position.z); world.car.rotation.y = yaw;
       if (driving) {
-        camera.position.set(position.x + Math.sin(yaw) * 8, 4.8 + pitch * 2, position.z + Math.cos(yaw) * 8);
-        camera.lookAt(position.x - Math.sin(yaw) * 12, 1.3 + pitch * 9, position.z - Math.cos(yaw) * 12);
+        if (!drag && Math.abs(speed) > 0.5 && now - lastLookAt > 800) driveLook = settleDriveLook(driveLook, dt);
+        const offset = driveCameraOffset(yaw, driveLook);
+        camera.position.set(position.x + offset.x, 1.3 + offset.y, position.z + offset.z);
+        camera.lookAt(position.x, 1.3, position.z);
       } else {
         camera.position.set(position.x, 1.75, position.z); camera.rotation.set(pitch, yaw, 0, 'YXZ');
       }
@@ -101,23 +122,25 @@ export default function QueenstownGame() {
   return <div className="marina-reconstruction marina-game queenstown-game">
     <div className="viewport marina-viewport"><div ref={host} className="world" />
       {error ? <div className="viewer-message" role="alert"><p>{error}</p></div> : <>
-        <div className="scene-top"><span className="scene-badge"><span className="status-dot" /> QUEENSTOWN · GAME WORLD</span><span className="marina-stamp-count"><Flag size={14} />{hud.collected.length} / 5 stamps</span></div>
-        <div className="marina-map" aria-label="Game map showing player position and collectible stamps"><span>THE ESTATE LOOP</span>
+        <div className="scene-top"><span className="scene-badge"><span className="status-dot" /> QUEENSTOWN · GAME WORLD</span><span className="marina-stamp-count"><Flag size={14} />{hud.collected.length} / {QUEENSTOWN_STAMPS.length} stamps</span></div>
+        <div className="marina-map" aria-label="Game map showing player position and collectible stamps"><span>ESTATE & DISTRICTS</span>
           <svg viewBox="0 0 200 160" role="img" aria-label="Schematic game map">
             <rect x="6" y="6" width="188" height="148" rx="5" fill="#d7dfc8" />
-            <path d="M38 35 H162 V131 H38 Z M38 94 H162" fill="none" stroke="#929f8d" strokeWidth="7" />
-            <path d="M26 94 H174" stroke="#ddd5c5" strokeWidth="4" />
-            <rect x="83" y="89" width="35" height="10" fill="#498877" />
-            {[[54,48],[122,48],[54,112],[122,112]].map(([x,y]) => <rect key={x + y} x={x} y={y} width="23" height="9" fill="#eee7ce" />)}
-            <rect x="34" y="44" width="5" height="80" fill="#5d9b57" />
-            {QUEENSTOWN_STAMPS.map((stamp, i) => <circle key={stamp.name} cx={100 + stamp.x * 0.44} cy={85 + stamp.z * 0.4} r="3" fill={hud.collected.includes(i) ? '#4f7960' : '#d78853'} />)}
-            <circle cx={100 + hud.x * 0.44} cy={85 + hud.z * 0.4} r="4" stroke="#fffdf0" strokeWidth="2" fill="#244832" />
+            <g transform={map.transform}>
+              {QUEENSTOWN_MAP_ROADS.map((road, i) => <polyline key={i} points={road.points.map(point => `${point.x},${point.z}`).join(' ')} fill="none" stroke="#929f8d" strokeWidth="14" />)}
+              <path d="M-180 22 H180" stroke="#ddd5c5" strokeWidth="5" />
+              <rect x="-44" y="12" width="88" height="20" fill="#498877" />
+              {[[-73,-44],[73,-44],[-73,64],[73,64]].map(([x,y]) => <rect key={`${x},${y}`} x={x-23} y={y-9} width="46" height="18" fill="#eee7ce" />)}
+              <path d="M-157 -133 V133" stroke="#5d9b57" strokeWidth="5" />
+            </g>
+            {QUEENSTOWN_STAMPS.map((stamp, i) => <circle key={stamp.name} cx={map.x(stamp.x)} cy={map.y(stamp.z)} r="3" fill={hud.collected.includes(i) ? '#4f7960' : '#d78853'} />)}
+            <circle cx={map.x(hud.x)} cy={map.y(hud.z)} r="4" stroke="#fffdf0" strokeWidth="2" fill="#244832" />
           </svg>
         </div>
-        <div className="marina-objective">{hud.collected.length === 5 ? 'All five stamps. Shiok! Keep exploring or reset to play again.' : 'Find the orange rings · Explore the estate and collect 5 stamps.'}</div>
+        <div className="marina-objective">{hud.collected.length === QUEENSTOWN_STAMPS.length ? 'All estate stamps. Shiok! Keep exploring or reset to play again.' : `Find the orange rings · Explore the estate and collect ${QUEENSTOWN_STAMPS.length} stamps.`}</div>
       </>}
     </div>
     <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon">{travel === 'walk' ? <Footprints size={20} /> : <CarFront size={20} />}</span><div><h3>Queenstown · the neighborhood loop</h3><p>Low-poly game map · authored heritage-inspired neighborhood</p></div></div><div className="toolbar-actions"><button className="session-button" aria-pressed={travel === 'walk'} onClick={() => setTravel('walk')}>Walk</button><button className="session-button" aria-pressed={travel === 'drive'} onClick={() => setTravel('drive')}>Drive</button><button className="icon-button" aria-label="Reset Queenstown position" onClick={() => reset.current()}><RotateCcw size={16} /></button></div></div>
-    <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · Drag to look · {travel === 'walk' ? 'Shift to run' : `${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Queenstown ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
+    <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · {travel === 'walk' ? 'Drag to look' : 'Drag to orbit · A/D steer'} · {travel === 'walk' ? 'Shift to run' : `${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Queenstown ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
   </div>;
 }

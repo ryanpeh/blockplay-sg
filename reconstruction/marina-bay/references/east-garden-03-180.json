@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "east-garden-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-08",
+  "pano_id": "iduMyfsnpN4RFDiBXyHdTQ",
+  "position": {
+    "lat": 1.282544470598347,
+    "lng": 103.86184822255551
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:21.625Z",
+  "file": "reconstruction/marina-bay/references/east-garden-03-180.png",
+  "fingerprint": "8f3adc62aae44ecba43bcbfafe77cf540fe0ff06e835be4142313f4cec8ac1e8",
+  "sha256": "ed61e6f09187c069049f5ecd3f45bd08ea99f883fc51d03ccc1472e54c7d3a11",
+  "bytes": 1607115,
+  "durationMs": 3101,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: white circular canopy supports, purple wayfinding and grey paving; escalator geometry is reference only"
+}

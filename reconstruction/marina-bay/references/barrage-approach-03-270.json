@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "barrage-approach-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "qztNrbidNC3mmuzic2M89A",
+  "position": {
+    "lat": 1.2799132377151001,
+    "lng": 103.86925195993112
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Marina Gardens Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:12.065Z",
+  "file": "reconstruction/marina-bay/references/barrage-approach-03-270.png",
+  "fingerprint": "f4f15468b73c0f6dc0a9ea1cd8d240777a79264242e11d66d3652caf9da30a46",
+  "sha256": "e87fcd4ef420382c920bf0314a1c70b80e4527e5e4a30467ba6d8223063cdfa9",
+  "bytes": 2155638,
+  "durationMs": 3115,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: clear road width context, white dashes, tree canopy and planted black-white kerb"
+}

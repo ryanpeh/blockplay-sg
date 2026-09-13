@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "library.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "CUXme4r0XEEC9WkKQA2d3Q",
+  "position": {
+    "lat": 1.2985824282387217,
+    "lng": 103.80489108222561
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "74 Margaret Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:20:01.177Z",
+  "file": "reconstruction/queenstown/references/library-0.png",
+  "fingerprint": "985f5022d5ac9f0ad79e70ec0d63b337a0c798438576af07d403846ffe83961a",
+  "sha256": "f1cd860819ee61f51597a3957ac594ae49c3672fa992cd43642f8e776a3f2118",
+  "bytes": 1522299,
+  "durationMs": 2829,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: low ancillary buildings and black-white kerbs; not confirmed library facade"
+}

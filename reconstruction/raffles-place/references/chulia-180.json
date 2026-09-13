@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "chulia.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "dt-aE0Y2CEmD2V0vGIuT4g",
+  "position": {
+    "lat": 1.2848682166629297,
+    "lng": 103.8501320425262
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 12,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:16:08.344Z",
+  "file": "reconstruction/raffles-place/references/chulia-180.png",
+  "fingerprint": "a542cadd7b9255bcda4853804a9002984fd484a1e892896fd2659468b09fee27",
+  "sha256": "dcae9449bc642e3240b3d9441e3338cd6f463c3d3b64f703732cf1eeb5b5a8f0",
+  "bytes": 1732471,
+  "durationMs": 2486,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: visually inspected outdoor view, distinct heading, useful material/detail or street context"
+}

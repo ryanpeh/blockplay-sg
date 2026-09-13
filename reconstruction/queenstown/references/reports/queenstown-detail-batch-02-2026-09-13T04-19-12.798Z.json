@@ -1,0 +1,133 @@
+{
+  "plan": "queenstown-detail-batch-02",
+  "startedAt": "2026-09-13T04:19:12.798Z",
+  "cached": 0,
+  "captured": 20,
+  "failed": 0,
+  "panoramaLoads": 5,
+  "staticApiRequests": 0,
+  "totalMs": 55951,
+  "bytes": 39124155,
+  "views": [
+    {
+      "id": "station-clear-0",
+      "status": "captured",
+      "durationMs": 2832,
+      "bytes": 882615
+    },
+    {
+      "id": "station-clear-90",
+      "status": "captured",
+      "durationMs": 2400,
+      "bytes": 858008
+    },
+    {
+      "id": "station-clear-180",
+      "status": "captured",
+      "durationMs": 2457,
+      "bytes": 1978752
+    },
+    {
+      "id": "station-clear-270",
+      "status": "captured",
+      "durationMs": 2498,
+      "bytes": 2085473
+    },
+    {
+      "id": "stirling-0",
+      "status": "captured",
+      "durationMs": 3093,
+      "bytes": 2259121
+    },
+    {
+      "id": "stirling-90",
+      "status": "captured",
+      "durationMs": 2507,
+      "bytes": 2423890
+    },
+    {
+      "id": "stirling-180",
+      "status": "captured",
+      "durationMs": 2286,
+      "bytes": 2423890
+    },
+    {
+      "id": "stirling-270",
+      "status": "captured",
+      "durationMs": 2272,
+      "bytes": 2423890
+    },
+    {
+      "id": "mei-ling-0",
+      "status": "captured",
+      "durationMs": 2486,
+      "bytes": 2422828
+    },
+    {
+      "id": "mei-ling-90",
+      "status": "captured",
+      "durationMs": 2463,
+      "bytes": 2422828
+    },
+    {
+      "id": "mei-ling-180",
+      "status": "captured",
+      "durationMs": 4774,
+      "bytes": 1259879
+    },
+    {
+      "id": "mei-ling-270",
+      "status": "captured",
+      "durationMs": 2665,
+      "bytes": 1780854
+    },
+    {
+      "id": "margaret-0",
+      "status": "captured",
+      "durationMs": 3618,
+      "bytes": 2010391
+    },
+    {
+      "id": "margaret-90",
+      "status": "captured",
+      "durationMs": 2765,
+      "bytes": 1929435
+    },
+    {
+      "id": "margaret-180",
+      "status": "captured",
+      "durationMs": 2457,
+      "bytes": 1955767
+    },
+    {
+      "id": "margaret-270",
+      "status": "captured",
+      "durationMs": 3863,
+      "bytes": 2072374
+    },
+    {
+      "id": "library-0",
+      "status": "captured",
+      "durationMs": 2829,
+      "bytes": 1522299
+    },
+    {
+      "id": "library-90",
+      "status": "captured",
+      "durationMs": 2587,
+      "bytes": 1905223
+    },
+    {
+      "id": "library-180",
+      "status": "captured",
+      "durationMs": 2526,
+      "bytes": 2374910
+    },
+    {
+      "id": "library-270",
+      "status": "captured",
+      "durationMs": 2449,
+      "bytes": 2131728
+    }
+  ]
+}

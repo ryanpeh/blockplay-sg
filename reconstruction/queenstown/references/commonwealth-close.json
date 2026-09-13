@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "kua04M-UYqOfC7GWIuoOmg",
+  "location": {
+    "lat": 1.305275700985338,
+    "lng": 103.80098624453116
+  },
+  "description": "83 Commonwealth Cl, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2021-11",
+  "requested": {
+    "lat": 1.305,
+    "lng": 103.801
+  },
+  "selectedGoogle": true
+}

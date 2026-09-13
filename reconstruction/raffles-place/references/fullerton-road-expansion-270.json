@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "fullerton-road-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2012-02",
+  "pano_id": "b8oO9QOmBPG8G3ybW3qsUg",
+  "position": {
+    "lat": 1.285087602147062,
+    "lng": 103.85341531979964
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:40:34.349Z",
+  "file": "reconstruction/raffles-place/references/fullerton-road-expansion-270.png",
+  "fingerprint": "aa607b63187ddce1bfa4ebf88fd30f439164184169349057f28a26f0cbd6d487",
+  "sha256": "86ae3934f4833ae21ab14bef19d715c859fa5bb1b24c25a2ab14451d7baea4ed",
+  "bytes": 1710397,
+  "durationMs": 3138,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

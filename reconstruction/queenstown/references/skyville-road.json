@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "de74bBdAaN7BW4CZYx56XQ",
+  "location": {
+    "lat": 1.2967019757350113,
+    "lng": 103.80866656167389
+  },
+  "description": "499 Margaret Dr, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.2969,
+    "lng": 103.8087
+  },
+  "selectedGoogle": true
+}

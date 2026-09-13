@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling-west.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "93OFQuZZAAIW5GlEz10u_Q",
+  "position": {
+    "lat": 1.2926195913722338,
+    "lng": 103.80074305813037
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "19 Queen's Cl, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:07.643Z",
+  "file": "reconstruction/queenstown/references/stirling-west-0.png",
+  "fingerprint": "cea097008ac99135d1c9d11d79d71947b3f03a6be412abec0232d50bbe3c0d90",
+  "sha256": "558b27620870db82e4d7616a95121798c212817620c124182443f67d8f103087",
+  "bytes": 2283136,
+  "durationMs": 3236,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: pale open parking structure, sloping street and large trees"
+}

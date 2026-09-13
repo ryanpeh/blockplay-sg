@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson-east.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "iVUgjepDr1eKbbI4-k6sSg",
+  "position": {
+    "lat": 1.2949005713223212,
+    "lng": 103.81139043414261
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:36.286Z",
+  "file": "reconstruction/queenstown/references/dawson-east-90.png",
+  "fingerprint": "67b6d849f1df6507259e8ad0e0444c9043fd42bef8cda3de6a25759148decd79",
+  "sha256": "81fc103109da40f7705e0bc77d898b014a8fd2aadbf2475cc43853d55fc73eaa",
+  "bytes": 2271546,
+  "durationMs": 3051,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: gray tower piers, paved court and open path"
+}

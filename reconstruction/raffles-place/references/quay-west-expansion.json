@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "location": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "description": "27 Circular Rd, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-03",
+  "requested": {
+    "lat": 1.2871,
+    "lng": 103.849
+  },
+  "selectedGoogle": true
+}

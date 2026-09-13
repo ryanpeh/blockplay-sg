@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "x-yEYc02g45kEqGGAixkkA",
+  "location": {
+    "lat": 1.2837148661510418,
+    "lng": 103.85109276049249
+  },
+  "description": "22 Malacca St, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.28375,
+    "lng": 103.8511
+  },
+  "selectedGoogle": true
+}

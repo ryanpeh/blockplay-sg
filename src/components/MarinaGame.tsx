@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { defaultDriveLook, dragDriveLook, driveCameraOffset, settleDriveLook } from '../game/drive-camera';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, CarFront, Footprints, RotateCcw, Flag } from 'lucide-react';
 import { buildMarinaScene, MARINA_MAP_ROADS, MARINA_SPAWN, MARINA_STAMPS } from '../game/marina-scene';
 import { MARINA_BOUNDS, moveInMarina } from '../game/marina-collision';
@@ -33,21 +34,33 @@ export default function MarinaGame() {
     const camera = new THREE.PerspectiveCamera(65, 1, 0.1, 1400); camera.rotation.order = 'YXZ';
     let position = { x: MARINA_SPAWN.x as number, z: MARINA_SPAWN.z as number };
     let yaw = MARINA_SPAWN.yaw, pitch = 0.14, speed = 0, distance = 0;
+    let driveLook = defaultDriveLook(), lastLookAt = 0;
+    let lastTravel = travelRef.current;
     const collected = new Set<number>();
     const report = () => setHud({ distance, speed, ...position, collected: [...collected] });
     reset.current = () => {
       position = { x: MARINA_SPAWN.x, z: MARINA_SPAWN.z }; yaw = MARINA_SPAWN.yaw; pitch = 0.14; speed = 0; distance = 0; collected.clear();
+      driveLook = defaultDriveLook(); drag = undefined; lastLookAt = 0;
       world.stamps.forEach(stamp => { stamp.visible = true; }); keys.current.clear(); report();
     };
     let drag: { x: number; y: number; pointerId: number } | undefined;
-    const pointerDown = (event: PointerEvent) => { canvas.focus(); canvas.setPointerCapture(event.pointerId); drag = { x: event.clientX, y: event.clientY, pointerId: event.pointerId }; };
+    const pointerDown = (event: PointerEvent) => {
+      if (!event.isPrimary || event.button !== 0 || drag) return;
+      canvas.focus(); canvas.setPointerCapture(event.pointerId);
+      drag = { x: event.clientX, y: event.clientY, pointerId: event.pointerId };
+    };
     const pointerMove = (event: PointerEvent) => {
       if (!drag || drag.pointerId !== event.pointerId) return;
-      yaw -= (event.clientX - drag.x) * 0.004;
-      pitch = THREE.MathUtils.clamp(pitch - (event.clientY - drag.y) * 0.003, -0.7, 1.1);
+      if (travelRef.current === 'drive') {
+        driveLook = dragDriveLook(driveLook, event.clientX - drag.x, event.clientY - drag.y);
+        lastLookAt = performance.now();
+      } else {
+        yaw -= (event.clientX - drag.x) * 0.004;
+        pitch = THREE.MathUtils.clamp(pitch - (event.clientY - drag.y) * 0.003, -0.7, 1.1);
+      }
       drag.x = event.clientX; drag.y = event.clientY;
     };
-    const pointerUp = () => { drag = undefined; };
+    const pointerUp = (event: PointerEvent) => { if (drag?.pointerId === event.pointerId) { drag = undefined; lastLookAt = performance.now(); } };
     const supported = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', 'shift'];
     const keyDown = (event: KeyboardEvent) => { const key = event.key.toLowerCase(); if (supported.includes(key)) { event.preventDefault(); keys.current.add(key); } };
     const keyUp = (event: KeyboardEvent) => keys.current.delete(event.key.toLowerCase());
@@ -63,6 +76,10 @@ export default function MarinaGame() {
       const forward = Number(held.has('w') || held.has('arrowup')) - Number(held.has('s') || held.has('arrowdown'));
       const side = Number(held.has('d') || held.has('arrowright')) - Number(held.has('a') || held.has('arrowleft'));
       const driving = travelRef.current === 'drive';
+      if (lastTravel !== travelRef.current) {
+        driveLook = defaultDriveLook(); drag = undefined; lastLookAt = 0;
+        lastTravel = travelRef.current;
+      }
       let dx = 0, dz = 0;
       if (driving) {
         speed = held.has(' ') ? THREE.MathUtils.damp(speed, 0, 15, dt) : forward ? THREE.MathUtils.clamp(speed + forward * 10 * dt, -5, 18) : THREE.MathUtils.damp(speed, 0, 2, dt);
@@ -79,8 +96,10 @@ export default function MarinaGame() {
       distance += step; position = next;
       world.car.visible = driving; world.car.position.set(position.x, 0.12, position.z); world.car.rotation.y = yaw;
       if (driving) {
-        camera.position.set(position.x + Math.sin(yaw) * 8, 4.8 + pitch * 2, position.z + Math.cos(yaw) * 8);
-        camera.lookAt(position.x - Math.sin(yaw) * 12, 1.3 + pitch * 9, position.z - Math.cos(yaw) * 12);
+        if (!drag && Math.abs(speed) > 0.5 && now - lastLookAt > 800) driveLook = settleDriveLook(driveLook, dt);
+        const offset = driveCameraOffset(yaw, driveLook);
+        camera.position.set(position.x + offset.x, 1.3 + offset.y, position.z + offset.z);
+        camera.lookAt(position.x, 1.3, position.z);
       } else {
         camera.position.set(position.x, 1.75, position.z); camera.rotation.set(pitch, yaw, 0, 'YXZ');
       }
@@ -121,6 +140,6 @@ export default function MarinaGame() {
       </>}
     </div>
     <div className="experience-toolbar"><div className="experience-title"><span className="mode-icon">{travel === 'walk' ? <Footprints size={20} /> : <CarFront size={20} />}</span><div><h3>Marina Bay · waterfront & gardens</h3><p>Expanded low-poly map · inner and outer road loops</p></div></div><div className="toolbar-actions"><button className="session-button" aria-pressed={travel === 'walk'} onClick={() => setTravel('walk')}>Walk</button><button className="session-button" aria-pressed={travel === 'drive'} onClick={() => setTravel('drive')}>Drive</button><button className="icon-button" aria-label="Reset Marina position" onClick={() => reset.current()}><RotateCcw size={16} /></button></div></div>
-    <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · Drag to look · {travel === 'walk' ? 'Shift to run' : `${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Marina ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
+    <div className="session-strip"><div><span>EXPLORED</span><strong>{Math.round(hud.distance)}<small>m</small></strong></div><p className="marina-hint">Click scene, then WASD · {travel === 'walk' ? 'Drag to look' : 'Drag to orbit · A/D steer'} · {travel === 'walk' ? 'Shift to run' : `${Math.round(Math.abs(hud.speed) * 3.6)} km/h · Space to brake`}</p><div className="touch-controls">{(['a', 'w', 's', 'd'] as const).map((key, index) => { const Icon = [ArrowLeft, ArrowUp, ArrowDown, ArrowRight][index]; return <button key={key} disabled={!!error} aria-label={`Marina ${['left', 'forward', 'backward', 'right'][index]}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); keys.current.add(key); }} onPointerUp={() => keys.current.delete(key)} onPointerCancel={() => keys.current.delete(key)} onLostPointerCapture={() => keys.current.delete(key)}><Icon size={15} /></button>; })}</div></div>
   </div>;
 }

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "tanglin-market-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "muBswkkDOQ3Z4Ysb9u2twQ",
+  "position": {
+    "lat": 1.3010032948928667,
+    "lng": 103.79763349435201
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:45.466Z",
+  "file": "reconstruction/queenstown/references/tanglin-market-road-90.png",
+  "fingerprint": "edd0cdf00259d1f32e67225686ad5a50bc97e656f3af1efda5d7657f024d7cb3",
+  "sha256": "07683ddebb007f21cfb766290a02cbd72d20f6285e93aefd02e62ccf8b1ebb42",
+  "bytes": 2197144,
+  "durationMs": 3046,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: two-storey red-roof service row, rear aircon rhythm and parking"
+}

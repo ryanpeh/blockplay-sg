@@ -2,7 +2,31 @@
 
 Last updated: 2026-09-13 (Singapore time).
 
-## Current milestone: expanded Marina and first Queenstown region
+## Expanded scope: larger maps and large reference batches for all three regions
+
+Completed the user's further expansion request using three modeling agents, one per region; the former camera-QA agent was reassigned to Marina after completing the regression checks. The latest pass saved **114 additional browser images: Marina 40, Raffles 40, Queenstown 34**, beyond the earlier Raffles 24/Queenstown 36 pass. Queenstown's final batch stopped after 34 successful captures; the remaining six were not retried. Modeling ran in parallel; Chrome capture/selection/visual-QA used a serialized queue. **Zero Static requests** were used; the 50-image remaining Static allowance is unchanged.
+
+Implemented worlds: **Marina 726 × 616 with 14 stamps; Raffles 580 × 399 with 11 stamps; Queenstown 520 × 424 with eight stamps.** Roads connect the existing districts to new outer districts. Collision-aware reachability, road-clearance and instancing tests pass. Minimap roads and bounds are exported by each scene/collision module, and HUD/objective counts derive from stamp arrays. These remain authored, compressed interpretations rather than surveyed replicas.
+
+Portable cache totals: **210 images** — Marina 72, Raffles 64, Queenstown 74. Machine-readable reviews: 142 accepted, 32 limited, 12 rejected, 24 older Marina images pending manifest annotations (historical reviews exist separately). All checksums pass. Newly captured Marina 40, Raffles 40 and all saved Queenstown frames have been reviewed; rejected captures are retained and explicitly excluded from reference use.
+
+Final verification: **41 tests passed; production build passed; all three region browser checks passed** (walk/drive/reset, stationary and moving camera orbit without steering, recenter/mode switching, mobile width, zero Maps requests and no uncaught exceptions). Final gameplay screenshots were reviewed; Marina's additional aerial/garden/wheel/south views were also reviewed. Credential scan across all tracked/untracked candidate files found no environment-key values. The existing nonblocking Three.js bundle-size warning remains. User requested commit and push of this completed milestone.
+
+Next: human play-through of all 33 objectives, actual-phone performance, camera occlusion handling near buildings, richer NPC/traffic behavior and geographically coherent reference refinements, then deployment/video. Do not mistake stylized landmark placement or decorative pedestrians for surveyed geography or traffic simulation. The historical milestones below are superseded by this section.
+
+New offline command `pnpm references:inventory` counts cached images/bytes, visual acceptance categories and checksum failures across all three regions (including legacy multi-frame Static manifests). It performs no requests. Pending means the image lacks a machine-readable acceptance record; some older Marina reviews live only in historical documents. Never infer visual acceptance from a successful download or checksum.
+
+## Earlier milestone: Raffles Place, richer Queenstown and independent car camera
+
+User requested a new Raffles Place region, many more browser references for it and Queenstown, and substantially richer game worlds. Dedicated region agents implemented Raffles creation and Queenstown detail work; a third agent checked driving-camera behavior. Captures are serialized, cached and reviewed, with no Static downloads. Previous remaining Static allowance stays 50.
+
+Driving-camera diagnosis: pointer drag previously modified the same yaw used to steer/move the car. Both existing controllers now keep camera orbit separate from vehicle heading, clamp vertical orbit, and gently recenter while moving after a short idle delay. Stationary views persist; reset/mode switching restore the chase view. Walking controls are unchanged. Shared implementation: `src/game/drive-camera.ts`; three unit tests cover orbit/clamping/damping. Final regional verification follows integration.
+
+- **Raffles Place:** integrated independent 420 × 294-unit walk/drive region, seven stamps, plaza/MRT shelters, six detailed towers, red louvered entrance motif, planted wall, fan palms, quayside shophouses, river promenade and animated pedestrians. `reconstruction/raffles-place/REGION.md` maps references to authored geometry. Of 24 cached screenshots, 19 are accepted, three are limited detail references and two are rejected due to a development overlay. Rejected files/history remain preserved, not used as visual truth.
+- **Queenstown:** richer instanced estate details include open-deck lobbies/mailboxes, facade and rooftop services, platform screens, playground/pavilion, bus shelters, seating/bins, parked cars, court fence and denser greenery. All five stamps remain reachable by car. Expanded reference review and replacement capture details are recorded in its region document.
+- **Capture issue found and fixed:** metadata/POV can update while background Street View pixels are stale. Concurrent browser QA can steal the capture tab's foreground rendering. Captures now require foreground visibility, matching POV/zoom, no Vite overlay, two animation frames plus a composited warm-up frame, and reject exact duplicate pixels for different views. Visual acceptance is still required: changed UI text can conceal stale underlying pixels from hash comparisons. Serialize **all** capture/selection/browser-QA activity, not just ledger writes. New helper/tests: `scripts/capture-readiness.mjs`, `src/game/capture-readiness.test.ts`. Rejected frames are retained and replacements use new IDs.
+
+## Earlier milestone: expanded Marina and first Queenstown region
 
 The user requested parallel subagents for both regions, then authorized further delegation. Marina modeling and new viewpoint capture ran in parallel with Queenstown construction; shared capture/ledger operations were serialized. This explicitly expands the earlier Marina-only implementation focus to include Queenstown.
 

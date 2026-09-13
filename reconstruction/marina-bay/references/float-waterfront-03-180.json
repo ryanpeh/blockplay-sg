@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "float-waterfront-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "UMbGGEkDkczQEniHAGu11w",
+  "position": {
+    "lat": 1.2896887364818257,
+    "lng": 103.858838819201
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Raffles Ave., Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:48.465Z",
+  "file": "reconstruction/marina-bay/references/float-waterfront-03-180.png",
+  "fingerprint": "1a0d046f55c1ca208387608ffa1a285592acc6c9d74e7b710ff0784ab31f9fac",
+  "sha256": "4eb37a60a015919d76ad7fbd8339f8f7f6a0f44ee7ffb9e65d6f368f397455aa",
+  "bytes": 1330838,
+  "durationMs": 3214,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: large coach and construction obscure waterfront; only upper Sands/museum silhouette is useful"
+}

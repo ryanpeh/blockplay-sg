@@ -4,6 +4,7 @@ import World, { type GameStats } from './game/World';
 import StreetView from './components/StreetView';
 import MarinaGame from './components/MarinaGame';
 import QueenstownGame from './components/QueenstownGame';
+import RafflesGame from './components/RafflesGame';
 import { hasRegionGame, regionModeLabel } from './game/region-selection';
 import { locations, type Location, type Mode } from './data/locations';
 
@@ -15,7 +16,7 @@ const modes = [
 ];
 
 export default function App() {
-  const [location, setLocation] = useState<Location>(locations[3]);
+  const [location, setLocation] = useState<Location>(locations.find(place => place.id === 'marina-bay')!);
   const [regionOpen, setRegionOpen] = useState(true);
   const [mode, setMode] = useState<Mode>(import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim() ? 'explore' : 'drive');
   const [running, setRunning] = useState(false);
@@ -70,7 +71,7 @@ export default function App() {
         </aside>
 
         <div className="experience">
-          {regionOpen && hasRegionGame(location.id) ? (location.id === 'queenstown' ? <QueenstownGame key={location.id} /> : <MarinaGame key={location.id} />) : <>
+          {regionOpen && hasRegionGame(location.id) ? (location.id === 'raffles-place' ? <RafflesGame key={location.id} /> : location.id === 'queenstown' ? <QueenstownGame key={location.id} /> : <MarinaGame key={location.id} />) : <>
           <div className={`viewport ${mode === 'training' && running ? 'training-active' : ''}`}>
             {mode === 'explore' ? <StreetView key={location.id} location={location} /> : <>
               <World key={epoch} location={location} mode={mode} running={running} controls={controls} onStats={onStats} onFinish={onFinish} />
@@ -114,7 +115,7 @@ export default function App() {
 
     {dialog && <div className="modal-backdrop" onClick={() => setDialog(null)}><dialog open aria-labelledby="dialog-title" onCancel={() => setDialog(null)} onClick={event => event.stopPropagation()}><button autoFocus className="icon-button modal-close" aria-label="Close dialog" onClick={() => setDialog(null)}><X size={20} /></button>
       <span className="eyebrow">BLOCKPLAY / SINGAPORE</span><h2 id="dialog-title">{dialog === 'about' ? 'The whole island deserves to be playable.' : dialog === 'privacy' ? 'Privacy' : 'Prototype terms'}</h2>
-      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through playable 3D scenes.</p><p>Marina 3D and Queenstown 3D are distinct walkable and driveable game regions: a growing waterfront with gardens and landmarks, and an estate with open void decks, sheltered paths and an elevated station. References inform authored geometry; geography is compressed, not automatically reconstructed or surveyed.</p><p>Collect each region’s orange stamps on foot or in the car. Live Street View remains available separately. Astra assists engineering; there are no live model or image API calls while playing either region.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Session progress stays in memory and resets when the page reloads.</p><p>Each region builds its game geometry locally in your browser. Live Street View and Google Fonts connect your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Its game maps are stylized interpretations with approximate or fictional layouts, not navigation tools. Target practice has no affiliation to the Singapore Armed Forces.</p><p>The owner confirmed permission for the saved imagery used as reference and in the earlier depth experiment; its source credits are preserved with those assets. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
+      {dialog === 'about' ? <><p>Singapore is more than its postcards. Blockplay explores the places we know through playable 3D scenes.</p><p>Marina 3D, Queenstown 3D and Raffles 3D are distinct walkable and driveable game regions: a waterfront with gardens and landmarks, a detailed estate with an elevated station, and a city core of towers, plazas and riverfront streets. References inform authored geometry; geography is compressed, not automatically reconstructed or surveyed.</p><p>Collect each region’s orange stamps on foot or in the car. Live Street View remains available separately. Astra assists engineering; there are no live model or image API calls while playing these regions.</p></> : dialog === 'privacy' ? <><p>This prototype has no accounts, analytics, or application database. Session progress stays in memory and resets when the page reloads.</p><p>Each region builds its game geometry locally in your browser. Live Street View and Google Fonts connect your browser to Google, which processes connection and usage data under its <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>. Your hosting provider may also retain standard access logs.</p></> : <><p>Blockplay is an experimental hackathon prototype, provided as available. Its game maps are stylized interpretations with approximate or fictional layouts, not navigation tools. Target practice has no affiliation to the Singapore Armed Forces.</p><p>The owner confirmed permission for the saved imagery used as reference and in the earlier depth experiment; its source credits are preserved with those assets. The separate live Street View mode uses Google's official viewer. Google Maps features are also subject to <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noreferrer">Google Maps / Google Earth Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Privacy Policy</a>.</p></>}
     </dialog></div>}
   </div>;
 }

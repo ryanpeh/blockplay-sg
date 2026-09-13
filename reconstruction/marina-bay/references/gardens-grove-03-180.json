@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "gardens-grove-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2014-05",
+  "pano_id": "_N7MeyeTNKS6QuaodKBazw",
+  "position": {
+    "lat": 1.2816274048719476,
+    "lng": 103.8636480042419
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:41:42.565Z",
+  "file": "reconstruction/marina-bay/references/gardens-grove-03-180.png",
+  "fingerprint": "7c582123d0ffc3607a2f9821be9fda57346c71d9f57593507a995cd6e7b666aa",
+  "sha256": "c593cb8ab83468fccdf53957c55e2d93c652e7c9f58b1c29f9c29d25b7ada776",
+  "bytes": 1505153,
+  "durationMs": 3053,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: open branching canopy silhouette and dense garden planting; elevated historic view"
+}

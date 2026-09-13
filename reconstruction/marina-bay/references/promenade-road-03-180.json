@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "promenade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-08",
+  "pano_id": "x8L7_sxIVdllJJ8VLOyeSw",
+  "position": {
+    "lat": 1.2920129560275748,
+    "lng": 103.86163810359794
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:13.804Z",
+  "file": "reconstruction/marina-bay/references/promenade-road-03-180.png",
+  "fingerprint": "15116889fdd735f37d43356c380d1a5bc8976f511556da664ec725ae758cef97",
+  "sha256": "b55e63d0abab766ea3c494b3fede935172608c21a9454d97ec4ffdc362004bd7",
+  "bytes": 1801280,
+  "durationMs": 3276,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: splayed flyover columns, overhead beams, marked coach bays and wheel silhouette"
+}

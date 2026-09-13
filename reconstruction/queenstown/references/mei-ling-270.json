@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "mei-ling.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2019-11",
+  "pano_id": "zr72CIv3ZoAAAARFRemblQ",
+  "position": {
+    "lat": 1.293394281974789,
+    "lng": 103.802584211159
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Mei Ling Market",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:45.634Z",
+  "file": "reconstruction/queenstown/references/mei-ling-270.png",
+  "fingerprint": "04da1abe5efb70c070ced8c216c86174b66f8db9a85fea8e595090ffde21123e",
+  "sha256": "088e95d152f8e349806caca1b818e18669af2c3973fc67c761e9b3528c31d626",
+  "bytes": 1780854,
+  "durationMs": 2665,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "limited: outside view from covered market, wall occlusion; no sizing"
+}

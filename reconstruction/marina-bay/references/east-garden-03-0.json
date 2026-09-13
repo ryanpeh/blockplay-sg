@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "east-garden-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-08",
+  "pano_id": "iduMyfsnpN4RFDiBXyHdTQ",
+  "position": {
+    "lat": 1.282544470598347,
+    "lng": 103.86184822255551
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:15.391Z",
+  "file": "reconstruction/marina-bay/references/east-garden-03-0.png",
+  "fingerprint": "46e21669a47eab2c7e14f54a81afb07ecb590f607c4f86cfd4b942004b593b0d",
+  "sha256": "eda12c816cc663d2f5623e4bc20ae8cd781ccf3f6948d32e17649e14671679c0",
+  "bytes": 1980732,
+  "durationMs": 3325,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: garden access path, purple rail posts, drainage grating and distant wheel/Sands; source is Bayfront garden access, not Bay East"
+}

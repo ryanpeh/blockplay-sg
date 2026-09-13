@@ -1,0 +1,85 @@
+{
+  "plan": "queenstown-exterior-batch-04",
+  "startedAt": "2026-09-13T04:26:34.446Z",
+  "cached": 0,
+  "captured": 12,
+  "failed": 0,
+  "panoramaLoads": 3,
+  "staticApiRequests": 0,
+  "totalMs": 37944,
+  "bytes": 23448768,
+  "views": [
+    {
+      "id": "mei-ling-road-0",
+      "status": "captured",
+      "durationMs": 3521,
+      "bytes": 2256450
+    },
+    {
+      "id": "mei-ling-road-90",
+      "status": "captured",
+      "durationMs": 3074,
+      "bytes": 1913311
+    },
+    {
+      "id": "mei-ling-road-180",
+      "status": "captured",
+      "durationMs": 3105,
+      "bytes": 1646359
+    },
+    {
+      "id": "mei-ling-road-270",
+      "status": "captured",
+      "durationMs": 3102,
+      "bytes": 1918059
+    },
+    {
+      "id": "dawson-0",
+      "status": "captured",
+      "durationMs": 3249,
+      "bytes": 1925655
+    },
+    {
+      "id": "dawson-90",
+      "status": "captured",
+      "durationMs": 3053,
+      "bytes": 2181001
+    },
+    {
+      "id": "dawson-180",
+      "status": "captured",
+      "durationMs": 3036,
+      "bytes": 2083932
+    },
+    {
+      "id": "dawson-270",
+      "status": "captured",
+      "durationMs": 3297,
+      "bytes": 2318536
+    },
+    {
+      "id": "tanglin-halt-0",
+      "status": "captured",
+      "durationMs": 3294,
+      "bytes": 2017729
+    },
+    {
+      "id": "tanglin-halt-90",
+      "status": "captured",
+      "durationMs": 3046,
+      "bytes": 1977830
+    },
+    {
+      "id": "tanglin-halt-180",
+      "status": "captured",
+      "durationMs": 3015,
+      "bytes": 1712943
+    },
+    {
+      "id": "tanglin-halt-270",
+      "status": "captured",
+      "durationMs": 3040,
+      "bytes": 1496963
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "JRP1H9pbZ5q2zznzrqE5CQ",
+  "position": {
+    "lat": 1.292756887361008,
+    "lng": 103.80401408454576
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "160 Mei Ling St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:23:02.695Z",
+  "file": "reconstruction/queenstown/references/stirling-270-retry.png",
+  "fingerprint": "956bea0103cf09eac9ffa74158429297db817d92433cb4bf1e9d3208f97b7af1",
+  "sha256": "c9d0b12244d786fcc9c30c02cca46014f4884b6c9150941600cc512fb0481b0f",
+  "bytes": 2201361,
+  "durationMs": 3383,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: clean distinct replacement, coral end walls, cream slabs and dense canopy"
+}

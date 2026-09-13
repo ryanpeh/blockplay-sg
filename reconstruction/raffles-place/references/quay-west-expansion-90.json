@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "quay-west-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-03",
+  "pano_id": "padbFR5YKG8jjsbMNd2AZQ",
+  "position": {
+    "lat": 1.2869980796410718,
+    "lng": 103.84891248896692
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "27 Circular Rd, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:39:49.393Z",
+  "file": "reconstruction/raffles-place/references/quay-west-expansion-90.png",
+  "fingerprint": "3adaac2b3a6980b83f5b227cc6869dff9147623ff7906ddd7ac656e991db8fdd",
+  "sha256": "53b2a2e96a58eabd30fa4276886533053fbac25b86dfb64d75624774b965059b",
+  "bytes": 1770263,
+  "durationMs": 3111,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

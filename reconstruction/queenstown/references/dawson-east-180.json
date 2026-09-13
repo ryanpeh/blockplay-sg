@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "dawson-east.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "iVUgjepDr1eKbbI4-k6sSg",
+  "position": {
+    "lat": 1.2949005713223212,
+    "lng": 103.81139043414261
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:39.334Z",
+  "file": "reconstruction/queenstown/references/dawson-east-180.png",
+  "fingerprint": "01cc54105bdccb6ce0bcf1e76d5a22e3461b1bf92997450f2ee51b531dda9da3",
+  "sha256": "763806284664d6526705a96282d90f75c7383c3bba2cb023b450a4fd85b180e9",
+  "bytes": 2416708,
+  "durationMs": 3047,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: planted access-ramp rail rhythm; no claim of modeled elevation"
+}

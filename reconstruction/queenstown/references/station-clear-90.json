@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "station-clear.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "uPOEK2v2dHe1SNAXoJmchw",
+  "position": {
+    "lat": 1.2937781641813975,
+    "lng": 103.80671115578087
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:18.101Z",
+  "file": "reconstruction/queenstown/references/station-clear-90.png",
+  "fingerprint": "d18590578025dfbbb394fc272fb3d93c88efd1059bc37233486925e0e368385b",
+  "sha256": "d87f504c472f2af9aa8238f60f6f59244a75d50de4889d21cfd861d7538064a2",
+  "bytes": 858008,
+  "durationMs": 2400,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "rejected: Vite missing-import error overlay; superseded by station-clear-90-retry"
+}

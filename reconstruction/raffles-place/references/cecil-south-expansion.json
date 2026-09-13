@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "blXMZWStANYc-azwZrlM1g",
+  "location": {
+    "lat": 1.2797671722655701,
+    "lng": 103.84836596692045
+  },
+  "description": "156 Cecil St, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2798,
+    "lng": 103.8483
+  },
+  "selectedGoogle": true
+}

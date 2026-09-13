@@ -1,0 +1,157 @@
+{
+  "plan": "raffles-reference-batch-01",
+  "startedAt": "2026-09-13T04:15:50.105Z",
+  "cached": 0,
+  "captured": 24,
+  "failed": 0,
+  "panoramaLoads": 6,
+  "staticApiRequests": 0,
+  "totalMs": 64469,
+  "bytes": 40164640,
+  "views": [
+    {
+      "id": "square-0",
+      "status": "captured",
+      "durationMs": 2893,
+      "bytes": 2043704
+    },
+    {
+      "id": "square-90",
+      "status": "captured",
+      "durationMs": 2655,
+      "bytes": 2084921
+    },
+    {
+      "id": "square-180",
+      "status": "captured",
+      "durationMs": 2480,
+      "bytes": 1841027
+    },
+    {
+      "id": "square-270",
+      "status": "captured",
+      "durationMs": 2479,
+      "bytes": 2046659
+    },
+    {
+      "id": "chulia-0",
+      "status": "captured",
+      "durationMs": 2660,
+      "bytes": 1918408
+    },
+    {
+      "id": "chulia-90",
+      "status": "captured",
+      "durationMs": 2496,
+      "bytes": 1664630
+    },
+    {
+      "id": "chulia-180",
+      "status": "captured",
+      "durationMs": 2486,
+      "bytes": 1732471
+    },
+    {
+      "id": "chulia-270",
+      "status": "captured",
+      "durationMs": 2473,
+      "bytes": 1942054
+    },
+    {
+      "id": "battery-0",
+      "status": "captured",
+      "durationMs": 2657,
+      "bytes": 1774983
+    },
+    {
+      "id": "battery-90",
+      "status": "captured",
+      "durationMs": 2464,
+      "bytes": 1146925
+    },
+    {
+      "id": "battery-180",
+      "status": "captured",
+      "durationMs": 3649,
+      "bytes": 1242387
+    },
+    {
+      "id": "battery-270",
+      "status": "captured",
+      "durationMs": 2425,
+      "bytes": 1376853
+    },
+    {
+      "id": "boat-quay-0",
+      "status": "captured",
+      "durationMs": 2866,
+      "bytes": 1511043
+    },
+    {
+      "id": "boat-quay-90",
+      "status": "captured",
+      "durationMs": 2465,
+      "bytes": 1151821
+    },
+    {
+      "id": "boat-quay-180",
+      "status": "captured",
+      "durationMs": 2478,
+      "bytes": 1640198
+    },
+    {
+      "id": "boat-quay-270",
+      "status": "captured",
+      "durationMs": 2472,
+      "bytes": 1831168
+    },
+    {
+      "id": "cecil-0",
+      "status": "captured",
+      "durationMs": 2870,
+      "bytes": 2177700
+    },
+    {
+      "id": "cecil-90",
+      "status": "captured",
+      "durationMs": 2472,
+      "bytes": 1602898
+    },
+    {
+      "id": "cecil-180",
+      "status": "captured",
+      "durationMs": 2463,
+      "bytes": 1789046
+    },
+    {
+      "id": "cecil-270",
+      "status": "captured",
+      "durationMs": 2478,
+      "bytes": 1872379
+    },
+    {
+      "id": "market-0",
+      "status": "captured",
+      "durationMs": 4489,
+      "bytes": 2147608
+    },
+    {
+      "id": "market-90",
+      "status": "captured",
+      "durationMs": 2451,
+      "bytes": 1811056
+    },
+    {
+      "id": "market-180",
+      "status": "captured",
+      "durationMs": 2604,
+      "bytes": 923307
+    },
+    {
+      "id": "market-270",
+      "status": "captured",
+      "durationMs": 2425,
+      "bytes": 891394
+    }
+  ]
+}

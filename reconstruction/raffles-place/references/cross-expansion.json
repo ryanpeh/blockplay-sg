@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "X7cpmTZx6xNnXrPS2giAvg",
+  "location": {
+    "lat": 1.282406753583607,
+    "lng": 103.84858977707515
+  },
+  "description": "98 Telok Ayer St, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2823,
+    "lng": 103.8488
+  },
+  "selectedGoogle": true
+}

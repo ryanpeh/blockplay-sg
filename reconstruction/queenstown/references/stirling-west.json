@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "93OFQuZZAAIW5GlEz10u_Q",
+  "location": {
+    "lat": 1.2926195913722338,
+    "lng": 103.80074305813037
+  },
+  "description": "19 Queen's Cl, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-02",
+  "requested": {
+    "lat": 1.2924,
+    "lng": 103.8014
+  },
+  "selectedGoogle": true
+}

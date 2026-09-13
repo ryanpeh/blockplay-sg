@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "mei-ling-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "E1Xe9ch6n0YfXDKmDPjPpA",
+  "position": {
+    "lat": 1.2905699969235567,
+    "lng": 103.80337011347143
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:26:38.050Z",
+  "file": "reconstruction/queenstown/references/mei-ling-road-0.png",
+  "fingerprint": "e0ccf188df7d026610383a1f321e79170565b7b1c9646daf1bb2dbaf96f88110",
+  "sha256": "2a10aec207f570440413a310adf0800cd051ce4bd78ae322217ae23bbabca79e",
+  "bytes": 2256450,
+  "durationMs": 3521,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: outdoor exercise courtyard, red tiled links and pale slab facade"
+}

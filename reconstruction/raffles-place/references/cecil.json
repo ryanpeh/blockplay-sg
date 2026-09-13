@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "PUxFa-L5ilZ8j5iNcqDuvg",
+  "location": {
+    "lat": 1.2823277239636524,
+    "lng": 103.8503366589604
+  },
+  "description": "146 Market St, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2024-06",
+  "requested": {
+    "lat": 1.2823,
+    "lng": 103.8503
+  },
+  "selectedGoogle": true
+}

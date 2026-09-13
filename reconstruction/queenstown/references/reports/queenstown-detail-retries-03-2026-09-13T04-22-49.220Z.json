@@ -1,0 +1,37 @@
+{
+  "plan": "queenstown-detail-retries-03",
+  "startedAt": "2026-09-13T04:22:49.220Z",
+  "cached": 0,
+  "captured": 4,
+  "failed": 0,
+  "panoramaLoads": 2,
+  "staticApiRequests": 0,
+  "totalMs": 13482,
+  "bytes": 8478755,
+  "views": [
+    {
+      "id": "station-clear-0-retry",
+      "status": "captured",
+      "durationMs": 3518,
+      "bytes": 2077618
+    },
+    {
+      "id": "station-clear-90-retry",
+      "status": "captured",
+      "durationMs": 3175,
+      "bytes": 1905069
+    },
+    {
+      "id": "stirling-180-retry",
+      "status": "captured",
+      "durationMs": 3293,
+      "bytes": 2294707
+    },
+    {
+      "id": "stirling-270-retry",
+      "status": "captured",
+      "durationMs": 3383,
+      "bytes": 2201361
+    }
+  ]
+}

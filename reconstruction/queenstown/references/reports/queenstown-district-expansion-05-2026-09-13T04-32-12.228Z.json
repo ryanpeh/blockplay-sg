@@ -1,0 +1,223 @@
+{
+  "plan": "queenstown-district-expansion-05",
+  "startedAt": "2026-09-13T04:32:12.228Z",
+  "cached": 0,
+  "captured": 34,
+  "failed": 1,
+  "panoramaLoads": 9,
+  "staticApiRequests": 0,
+  "totalMs": 112026,
+  "bytes": 71680486,
+  "views": [
+    {
+      "id": "commonwealth-close-0",
+      "status": "captured",
+      "durationMs": 3548,
+      "bytes": 1542698
+    },
+    {
+      "id": "commonwealth-close-90",
+      "status": "captured",
+      "durationMs": 3102,
+      "bytes": 2328556
+    },
+    {
+      "id": "commonwealth-close-180",
+      "status": "captured",
+      "durationMs": 3291,
+      "bytes": 2263403
+    },
+    {
+      "id": "commonwealth-close-270",
+      "status": "captured",
+      "durationMs": 3104,
+      "bytes": 2194104
+    },
+    {
+      "id": "commonwealth-crescent-0",
+      "status": "captured",
+      "durationMs": 3225,
+      "bytes": 1759258
+    },
+    {
+      "id": "commonwealth-crescent-90",
+      "status": "captured",
+      "durationMs": 3035,
+      "bytes": 1517690
+    },
+    {
+      "id": "commonwealth-crescent-180",
+      "status": "captured",
+      "durationMs": 3285,
+      "bytes": 1864054
+    },
+    {
+      "id": "commonwealth-crescent-270",
+      "status": "captured",
+      "durationMs": 4059,
+      "bytes": 1864814
+    },
+    {
+      "id": "tanglin-market-road-0",
+      "status": "captured",
+      "durationMs": 3446,
+      "bytes": 2532475
+    },
+    {
+      "id": "tanglin-market-road-90",
+      "status": "captured",
+      "durationMs": 3046,
+      "bytes": 2197144
+    },
+    {
+      "id": "tanglin-market-road-180",
+      "status": "captured",
+      "durationMs": 3245,
+      "bytes": 2061323
+    },
+    {
+      "id": "tanglin-market-road-270",
+      "status": "captured",
+      "durationMs": 3046,
+      "bytes": 2560365
+    },
+    {
+      "id": "tanglin-east-0",
+      "status": "captured",
+      "durationMs": 3449,
+      "bytes": 2084708
+    },
+    {
+      "id": "tanglin-east-90",
+      "status": "captured",
+      "durationMs": 3076,
+      "bytes": 1866515
+    },
+    {
+      "id": "tanglin-east-180",
+      "status": "captured",
+      "durationMs": 3060,
+      "bytes": 2358438
+    },
+    {
+      "id": "tanglin-east-270",
+      "status": "captured",
+      "durationMs": 3054,
+      "bytes": 2313906
+    },
+    {
+      "id": "stirling-west-0",
+      "status": "captured",
+      "durationMs": 3236,
+      "bytes": 2283136
+    },
+    {
+      "id": "stirling-west-90",
+      "status": "captured",
+      "durationMs": 3049,
+      "bytes": 2572510
+    },
+    {
+      "id": "stirling-west-180",
+      "status": "captured",
+      "durationMs": 3047,
+      "bytes": 2491983
+    },
+    {
+      "id": "stirling-west-270",
+      "status": "captured",
+      "durationMs": 3019,
+      "bytes": 2276524
+    },
+    {
+      "id": "stirling-south-0",
+      "status": "captured",
+      "durationMs": 3279,
+      "bytes": 1949988
+    },
+    {
+      "id": "stirling-south-90",
+      "status": "captured",
+      "durationMs": 3088,
+      "bytes": 1903379
+    },
+    {
+      "id": "stirling-south-180",
+      "status": "captured",
+      "durationMs": 3069,
+      "bytes": 1471529
+    },
+    {
+      "id": "stirling-south-270",
+      "status": "captured",
+      "durationMs": 3074,
+      "bytes": 1658000
+    },
+    {
+      "id": "dawson-east-0",
+      "status": "captured",
+      "durationMs": 4051,
+      "bytes": 2435516
+    },
+    {
+      "id": "dawson-east-90",
+      "status": "captured",
+      "durationMs": 3051,
+      "bytes": 2271546
+    },
+    {
+      "id": "dawson-east-180",
+      "status": "captured",
+      "durationMs": 3047,
+      "bytes": 2416708
+    },
+    {
+      "id": "dawson-east-270",
+      "status": "captured",
+      "durationMs": 3050,
+      "bytes": 2311425
+    },
+    {
+      "id": "skyville-road-0",
+      "status": "captured",
+      "durationMs": 3279,
+      "bytes": 1777725
+    },
+    {
+      "id": "skyville-road-90",
+      "status": "captured",
+      "durationMs": 3091,
+      "bytes": 2309262
+    },
+    {
+      "id": "skyville-road-180",
+      "status": "captured",
+      "durationMs": 3017,
+      "bytes": 1845124
+    },
+    {
+      "id": "skyville-road-270",
+      "status": "captured",
+      "durationMs": 3087,
+      "bytes": 1967426
+    },
+    {
+      "id": "margaret-north-0",
+      "status": "captured",
+      "durationMs": 3249,
+      "bytes": 2243019
+    },
+    {
+      "id": "margaret-north-90",
+      "status": "captured",
+      "durationMs": 3071,
+      "bytes": 2186235
+    },
+    {
+      "id": "margaret-north-180",
+      "status": "failed",
+      "durationMs": 2955,
+      "reason": "Capture stopped; inspect setup/permissions/cache. No automatic retry."
+    }
+  ]
+}

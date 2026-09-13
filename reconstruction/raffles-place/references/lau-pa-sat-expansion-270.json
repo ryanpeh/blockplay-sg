@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "lau-pa-sat-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "YH0O4Z8IPSeMTTLJWWoOjA",
+  "position": {
+    "lat": 1.280497800941725,
+    "lng": 103.85087443098827
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "1 Raffles Quay, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:39:30.130Z",
+  "file": "reconstruction/raffles-place/references/lau-pa-sat-expansion-270.png",
+  "fingerprint": "a0f57c36acb23bd78b6c6b567d17d27c5f22d89fe05f9c7bfee4e07795e191e5",
+  "sha256": "e1832a4244f7e272fc9cf14b15378da2887618a63f3701ffba5263d747ee48b9",
+  "bytes": 1895049,
+  "durationMs": 3084,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

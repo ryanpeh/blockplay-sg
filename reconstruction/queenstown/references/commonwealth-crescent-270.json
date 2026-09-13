@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "commonwealth-crescent.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-11",
+  "pano_id": "q5fhXSwiqWvXuUVRmeSYUA",
+  "position": {
+    "lat": 1.306946267957519,
+    "lng": 103.80127426622778
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:38.970Z",
+  "file": "reconstruction/queenstown/references/commonwealth-crescent-270.png",
+  "fingerprint": "16117dd6922704b885649b50e09c19939c3bba9df83604ca0f2d8e12630e986b",
+  "sha256": "bdecfe9f9c9f64c05dff179e8f3c7a1716c3366d6fa821a49273871498d2c5be",
+  "bytes": 1864814,
+  "durationMs": 4059,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: stepped paths, low neighbourhood row and road rail"
+}

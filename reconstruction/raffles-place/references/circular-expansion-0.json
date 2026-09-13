@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "circular-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2018-07",
+  "pano_id": "CJnPGKVT9e5Z31pmK2qNkw",
+  "position": {
+    "lat": 1.2867816790253932,
+    "lng": 103.84832925501327
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 10,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:39:59.593Z",
+  "file": "reconstruction/raffles-place/references/circular-expansion-0.png",
+  "fingerprint": "46454a0d2af1e53b9f20670fdc8165ea1b8615cb58655c312eab3dcb6ea69eee",
+  "sha256": "272413efef17d11eea9f626b72236422ea72b8224ef93cd3a56ce65efe962605",
+  "bytes": 1421914,
+  "durationMs": 4082,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "telok-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "ZmJ1iYHHWCs1LEcoFbfTdw",
+  "position": {
+    "lat": 1.2812226641071858,
+    "lng": 103.84954517634714
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 10,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:38:40.154Z",
+  "file": "reconstruction/raffles-place/references/telok-expansion-0.png",
+  "fingerprint": "0cfee7258d0c4f3c3f9a7704ab645ab8513ad6bd0d55dfd64592a6be4af217c3",
+  "sha256": "cad6bbda8d0d9113a05a137d888fea0765ce7daa4a6d730b265a0df33b4aa22b",
+  "bytes": 1989515,
+  "durationMs": 3079,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: near wall and vehicle occlusion; facade material only"
+}

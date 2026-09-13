@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "conservatory-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2014-05",
+  "pano_id": "v8Wz5OAE66zLVyDElJY5jA",
+  "position": {
+    "lat": 1.2850350592561106,
+    "lng": 103.86479823848322
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 8,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:41:49.083Z",
+  "file": "reconstruction/marina-bay/references/conservatory-road-03-0.png",
+  "fingerprint": "822cf262d658742d5741ece58c8e215eb8bf287a85206c7ea602767efab6d631",
+  "sha256": "6325bca8eb7fd3967c61943673b3a149600f46e26647d0081338c37035549f82",
+  "bytes": 1184621,
+  "durationMs": 3468,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: large white angled support ribs, planted edge and distant observation wheel; historic exterior reference"
+}

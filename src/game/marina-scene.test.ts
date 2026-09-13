@@ -15,9 +15,9 @@ it('keeps spawn, collectibles and the full road loop clear for the car', () => {
   } finally { world.dispose(); }
 });
 
-it('more than doubles playable area and keeps every expanded road connector clear', () => {
-  expect((MARINA_BOUNDS.maxX - MARINA_BOUNDS.minX) * (MARINA_BOUNDS.maxZ - MARINA_BOUNDS.minZ)).toBeGreaterThan(396 * 316 * 2);
-  expect(MARINA_STAMPS).toHaveLength(9);
+it('adds over 70 percent more area and keeps all three road circuits and connectors clear', () => {
+  expect((MARINA_BOUNDS.maxX - MARINA_BOUNDS.minX) * (MARINA_BOUNDS.maxZ - MARINA_BOUNDS.minZ)).toBeGreaterThan(556 * 466 * 1.7);
+  expect(MARINA_STAMPS).toHaveLength(14);
   const world = buildMarinaScene();
   try {
     for (const route of MARINA_MAP_ROADS) for (let i = 1; i < route.points.length; i++) {
@@ -28,7 +28,7 @@ it('more than doubles playable area and keeps every expanded road connector clea
   } finally { world.dispose(); }
 });
 
-it('can reach all nine stamps from spawn without crossing a collider', () => {
+it('can reach all fourteen stamps from spawn without crossing a collider', () => {
   const world = buildMarinaScene();
   try {
     const queue = [{ x: MARINA_SPAWN.x, z: MARINA_SPAWN.z }];
@@ -55,8 +55,8 @@ it('uses published SkyPark proportions and batches static details', () => {
     expect(MARINA_LANDMARKS.skyParkLength / MARINA_LANDMARKS.towerHeight).toBeCloseTo(340 / 200);
     expect(MARINA_LANDMARKS.skyParkWidth / MARINA_LANDMARKS.skyParkLength).toBeCloseTo(38 / 340);
     const instances = world.scene.children.filter((child): child is InstancedMesh => child instanceof InstancedMesh);
-    expect(instances.reduce((sum, mesh) => sum + mesh.count, 0)).toBeGreaterThan(2000);
+    expect(instances.reduce((sum, mesh) => sum + mesh.count, 0)).toBeGreaterThan(8000);
     expect(instances.length).toBeLessThan(60);
-    expect(world.scene.userData.referenceFeatures).toHaveLength(11);
+    expect(world.scene.userData.referenceFeatures).toHaveLength(21);
   } finally { world.dispose(); }
 });

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "cross-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-06",
+  "pano_id": "X7cpmTZx6xNnXrPS2giAvg",
+  "position": {
+    "lat": 1.282406753583607,
+    "lng": 103.84858977707515
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 10,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "98 Telok Ayer St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:38:37.074Z",
+  "file": "reconstruction/raffles-place/references/cross-expansion-270.png",
+  "fingerprint": "71e94b4f5e511d48fb27fcf77e4d5159dc5caf263c9afeaf94d1d0d0c11ce98d",
+  "sha256": "4575ae667ce25114582fa6abff274c2f581b52791a729114d6b0139408b62c2c",
+  "bytes": 1684932,
+  "durationMs": 3106,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

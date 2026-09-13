@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "library.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "CUXme4r0XEEC9WkKQA2d3Q",
+  "position": {
+    "lat": 1.2985824282387217,
+    "lng": 103.80489108222561
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "74 Margaret Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:20:03.765Z",
+  "file": "reconstruction/queenstown/references/library-90.png",
+  "fingerprint": "2d56d8ebbe18b77bc10af6ae90e2f3076c06ed39161df2dae71feaebc46e1dc4",
+  "sha256": "43604456271f11f44514de66f007666883ad7dd8231278bafdd265db7f50b2a8",
+  "bytes": 1905223,
+  "durationMs": 2587,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: Margaret Drive street scale, perforated pale facade and canopy"
+}

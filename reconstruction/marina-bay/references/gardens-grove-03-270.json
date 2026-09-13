@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "gardens-grove-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2014-05",
+  "pano_id": "_N7MeyeTNKS6QuaodKBazw",
+  "position": {
+    "lat": 1.2816274048719476,
+    "lng": 103.8636480042419
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:41:45.613Z",
+  "file": "reconstruction/marina-bay/references/gardens-grove-03-270.png",
+  "fingerprint": "f25d18e68dd285da3354f51fb57e67e3292497872ba0307c458affd4d103c886",
+  "sha256": "f60a7004f116056afca9ad67fb45fccce1c0b50ba3e8919e47c7685b8ebd1115",
+  "bytes": 1666071,
+  "durationMs": 3047,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: rear Sands pale facade grids, SkyPark silhouette and garden planting; elevated historic view"
+}

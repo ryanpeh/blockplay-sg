@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "library.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "CUXme4r0XEEC9WkKQA2d3Q",
+  "position": {
+    "lat": 1.2985824282387217,
+    "lng": 103.80489108222561
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "74 Margaret Dr, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:20:06.293Z",
+  "file": "reconstruction/queenstown/references/library-180.png",
+  "fingerprint": "124ff1230fda839aff6d418a0e51d1ea1886ca8ee912eca0fea100eb49584612",
+  "sha256": "d02c8927f4013f0c66a2fc84c6e1e76a1f9ee07d7b046729e567d914813ff7db",
+  "bytes": 2374910,
+  "durationMs": 2526,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "limited: foreground tree obscures tower, use canopy/planting only"
+}

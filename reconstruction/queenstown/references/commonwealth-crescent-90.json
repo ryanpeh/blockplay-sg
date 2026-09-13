@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "commonwealth-crescent.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-11",
+  "pano_id": "q5fhXSwiqWvXuUVRmeSYUA",
+  "position": {
+    "lat": 1.306946267957519,
+    "lng": 103.80127426622778
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:31.623Z",
+  "file": "reconstruction/queenstown/references/commonwealth-crescent-90.png",
+  "fingerprint": "d3ccfecb653702aa2656ee3a9663aea926c825846c93d4c30bf62909342cfb45",
+  "sha256": "18422f7e2df5d44fff0145f543309a16e9665e4d82162acec4b6a13b0baa376f",
+  "bytes": 1517690,
+  "durationMs": 3035,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: red tiled shelter supports, peach parapets and planting"
+}

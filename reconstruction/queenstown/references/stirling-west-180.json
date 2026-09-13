@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling-west.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "93OFQuZZAAIW5GlEz10u_Q",
+  "position": {
+    "lat": 1.2926195913722338,
+    "lng": 103.80074305813037
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "19 Queen's Cl, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:13.742Z",
+  "file": "reconstruction/queenstown/references/stirling-west-180.png",
+  "fingerprint": "0b3271d02eb150e240806727afee84fcd91d8e82601461343d70a5e952e3078c",
+  "sha256": "7676479accb8332dafe6fc378e383129825611be24282f02af1ac1aeacc0e0cb",
+  "bytes": 2491983,
+  "durationMs": 3047,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: long shaded street corridor and mature trees"
+}

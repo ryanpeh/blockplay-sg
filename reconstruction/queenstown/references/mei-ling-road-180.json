@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "mei-ling-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2024-02",
+  "pano_id": "E1Xe9ch6n0YfXDKmDPjPpA",
+  "position": {
+    "lat": 1.2905699969235567,
+    "lng": 103.80337011347143
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:26:44.233Z",
+  "file": "reconstruction/queenstown/references/mei-ling-road-180.png",
+  "fingerprint": "b5e6603ffff93e65b9d040fcbc766931dd8780b787c143dddd8721ca30660033",
+  "sha256": "93248d4a92f1c9138bb24c64e95265982b0c88f7782a0e167f6df5844fe8113b",
+  "bytes": 1646359,
+  "durationMs": 3105,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: close exterior access-gallery lattice and kopitiam frontage"
+}

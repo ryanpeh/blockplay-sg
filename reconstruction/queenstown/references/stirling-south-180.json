@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling-south.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-02",
+  "pano_id": "vY61TPGngejtp1nZU3iMVQ",
+  "position": {
+    "lat": 1.2890636123963841,
+    "lng": 103.80556848878837
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:33:26.106Z",
+  "file": "reconstruction/queenstown/references/stirling-south-180.png",
+  "fingerprint": "4af40cf8fbe753bdfac820f51a1140ae120485c2191bcd7fcf00f7b487adcced",
+  "sha256": "3385ad7e4e604a23845d63ec5940c7e51f67301593bcafb99078e519bc3f2699",
+  "bytes": 1471529,
+  "durationMs": 3069,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: black-white external stairs and heritage-style retail facade"
+}

@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "church-expansion.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-10",
+  "pano_id": "h2EekuqVJ9IDDfqTUtJBZA",
+  "position": {
+    "lat": 1.28354127765295,
+    "lng": 103.84861525430189
+  },
+  "pov": {
+    "heading": 0,
+    "pitch": 10,
+    "zoom": 0.9999999999999997
+  },
+  "zoom": 0.9999999999999997,
+  "description": "12 Pekin St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:38:14.765Z",
+  "file": "reconstruction/raffles-place/references/church-expansion-0.png",
+  "fingerprint": "6ffbbf45d3179fefe9f1fbc554e3257d9db6369faf402125b35daf0f54103ea6",
+  "sha256": "06d3297a3fcd4d10e41d3737876fa4580b0e17d40bd7102f67befbf234704dfa",
+  "bytes": 1732608,
+  "durationMs": 3550,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: individually visually inspected distinct outdoor reference; no stale pixels or development overlay; useful street/facade/detail context"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "h2EekuqVJ9IDDfqTUtJBZA",
+  "location": {
+    "lat": 1.28354127765295,
+    "lng": 103.84861525430189
+  },
+  "description": "12 Pekin St, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2021-10",
+  "requested": {
+    "lat": 1.2835,
+    "lng": 103.8485
+  },
+  "selectedGoogle": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "uY8gAahj6K8aF8A8a5lU8w",
+  "location": {
+    "lat": 1.2956515841150684,
+    "lng": 103.79955392715505
+  },
+  "description": "Queensway, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.2956,
+    "lng": 103.7997
+  },
+  "selectedGoogle": true
+}

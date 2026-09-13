@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "pano_id": "uPOEK2v2dHe1SNAXoJmchw",
+  "location": {
+    "lat": 1.2937781641813975,
+    "lng": 103.80671115578087
+  },
+  "description": "Commonwealth Ave, Singapore",
+  "copyright": "© 2026 Google",
+  "date": "2025-03",
+  "requested": {
+    "lat": 1.29382,
+    "lng": 103.80675
+  },
+  "selectedGoogle": true
+}

@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "station-clear.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "uPOEK2v2dHe1SNAXoJmchw",
+  "position": {
+    "lat": 1.2937781641813975,
+    "lng": 103.80671115578087
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:22:56.016Z",
+  "file": "reconstruction/queenstown/references/station-clear-90-retry.png",
+  "fingerprint": "d18590578025dfbbb394fc272fb3d93c88efd1059bc37233486925e0e368385b",
+  "sha256": "a943a60bbb5b15697383d6692b1b345ce1bbd2276c99aa077f69d11617434417",
+  "bytes": 1905069,
+  "durationMs": 3175,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: clean replacement, layered residential towers and sheltered paths"
+}

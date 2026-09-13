@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "flyer-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2010-02",
+  "pano_id": "mTfQri_6OmDtNU47vbF1iw",
+  "position": {
+    "lat": 1.2896817804377636,
+    "lng": 103.86312654904567
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:42:35.755Z",
+  "file": "reconstruction/marina-bay/references/flyer-road-03-180.png",
+  "fingerprint": "70d58688feb7ffce5a50b67d5517f2deb445c9ee13a89f6108f8b3af94e70504",
+  "sha256": "a4d4caa5f42c5d08e4c4925f8fb3d291cdb12720ba79cf6340211eeaf96a1b3f",
+  "bytes": 902590,
+  "durationMs": 3020,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "limited: close utility wall only; retain vent/louver and paving materials, not wheel geometry"
+}

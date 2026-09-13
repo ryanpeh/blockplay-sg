@@ -1,0 +1,371 @@
+{
+  "name": "marina-district-detail-batch-03",
+  "region": "marina-bay",
+  "width": 1280,
+  "height": 900,
+  "maxNewImages": 40,
+  "sources": {
+    "gardens-grove-03.json": {
+      "lat": 1.2816,
+      "lng": 103.8636
+    },
+    "conservatory-road-03.json": {
+      "lat": 1.285,
+      "lng": 103.8648
+    },
+    "barrage-approach-03.json": {
+      "lat": 1.2805,
+      "lng": 103.8696
+    },
+    "east-garden-03.json": {
+      "lat": 1.283,
+      "lng": 103.8619
+    },
+    "flyer-road-03.json": {
+      "lat": 1.2898,
+      "lng": 103.8631
+    },
+    "float-waterfront-03.json": {
+      "lat": 1.2895,
+      "lng": 103.8588
+    },
+    "esplanade-road-03.json": {
+      "lat": 1.291,
+      "lng": 103.855
+    },
+    "promenade-road-03.json": {
+      "lat": 1.292,
+      "lng": 103.8617
+    },
+    "downtown-green-03.json": {
+      "lat": 1.2794,
+      "lng": 103.8527
+    },
+    "marina-one-street-03.json": {
+      "lat": 1.2774,
+      "lng": 103.8527
+    }
+  },
+  "views": [
+    {
+      "id": "gardens-grove-03-0",
+      "source": "gardens-grove-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Supertree grove and garden paths; 0 degree context"
+    },
+    {
+      "id": "gardens-grove-03-90",
+      "source": "gardens-grove-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Supertree grove and garden paths; 90 degree context"
+    },
+    {
+      "id": "gardens-grove-03-180",
+      "source": "gardens-grove-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Supertree grove and garden paths; 180 degree context"
+    },
+    {
+      "id": "gardens-grove-03-270",
+      "source": "gardens-grove-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Supertree grove and garden paths; 270 degree context"
+    },
+    {
+      "id": "conservatory-road-03-0",
+      "source": "conservatory-road-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Conservatory silhouette and service road; 0 degree context"
+    },
+    {
+      "id": "conservatory-road-03-90",
+      "source": "conservatory-road-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Conservatory silhouette and service road; 90 degree context"
+    },
+    {
+      "id": "conservatory-road-03-180",
+      "source": "conservatory-road-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Conservatory silhouette and service road; 180 degree context"
+    },
+    {
+      "id": "conservatory-road-03-270",
+      "source": "conservatory-road-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Conservatory silhouette and service road; 270 degree context"
+    },
+    {
+      "id": "barrage-approach-03-0",
+      "source": "barrage-approach-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Barrage approach landscape and waterfront; 0 degree context"
+    },
+    {
+      "id": "barrage-approach-03-90",
+      "source": "barrage-approach-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Barrage approach landscape and waterfront; 90 degree context"
+    },
+    {
+      "id": "barrage-approach-03-180",
+      "source": "barrage-approach-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Barrage approach landscape and waterfront; 180 degree context"
+    },
+    {
+      "id": "barrage-approach-03-270",
+      "source": "barrage-approach-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Barrage approach landscape and waterfront; 270 degree context"
+    },
+    {
+      "id": "east-garden-03-0",
+      "source": "east-garden-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Eastern bay garden and distant skyline; 0 degree context"
+    },
+    {
+      "id": "east-garden-03-90",
+      "source": "east-garden-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Eastern bay garden and distant skyline; 90 degree context"
+    },
+    {
+      "id": "east-garden-03-180",
+      "source": "east-garden-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Eastern bay garden and distant skyline; 180 degree context"
+    },
+    {
+      "id": "east-garden-03-270",
+      "source": "east-garden-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Eastern bay garden and distant skyline; 270 degree context"
+    },
+    {
+      "id": "flyer-road-03-0",
+      "source": "flyer-road-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Singapore Flyer structure and street edge; 0 degree context"
+    },
+    {
+      "id": "flyer-road-03-90",
+      "source": "flyer-road-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Singapore Flyer structure and street edge; 90 degree context"
+    },
+    {
+      "id": "flyer-road-03-180",
+      "source": "flyer-road-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Singapore Flyer structure and street edge; 180 degree context"
+    },
+    {
+      "id": "flyer-road-03-270",
+      "source": "flyer-road-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Singapore Flyer structure and street edge; 270 degree context"
+    },
+    {
+      "id": "float-waterfront-03-0",
+      "source": "float-waterfront-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Northern bay waterfront and seating; 0 degree context"
+    },
+    {
+      "id": "float-waterfront-03-90",
+      "source": "float-waterfront-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Northern bay waterfront and seating; 90 degree context"
+    },
+    {
+      "id": "float-waterfront-03-180",
+      "source": "float-waterfront-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Northern bay waterfront and seating; 180 degree context"
+    },
+    {
+      "id": "float-waterfront-03-270",
+      "source": "float-waterfront-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Northern bay waterfront and seating; 270 degree context"
+    },
+    {
+      "id": "esplanade-road-03-0",
+      "source": "esplanade-road-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Esplanade exterior road-side architecture; 0 degree context"
+    },
+    {
+      "id": "esplanade-road-03-90",
+      "source": "esplanade-road-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Esplanade exterior road-side architecture; 90 degree context"
+    },
+    {
+      "id": "esplanade-road-03-180",
+      "source": "esplanade-road-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Esplanade exterior road-side architecture; 180 degree context"
+    },
+    {
+      "id": "esplanade-road-03-270",
+      "source": "esplanade-road-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Esplanade exterior road-side architecture; 270 degree context"
+    },
+    {
+      "id": "promenade-road-03-0",
+      "source": "promenade-road-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Promenade district streets and paving; 0 degree context"
+    },
+    {
+      "id": "promenade-road-03-90",
+      "source": "promenade-road-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Promenade district streets and paving; 90 degree context"
+    },
+    {
+      "id": "promenade-road-03-180",
+      "source": "promenade-road-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Promenade district streets and paving; 180 degree context"
+    },
+    {
+      "id": "promenade-road-03-270",
+      "source": "promenade-road-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Promenade district streets and paving; 270 degree context"
+    },
+    {
+      "id": "downtown-green-03-0",
+      "source": "downtown-green-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Downtown tower bases and green space; 0 degree context"
+    },
+    {
+      "id": "downtown-green-03-90",
+      "source": "downtown-green-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Downtown tower bases and green space; 90 degree context"
+    },
+    {
+      "id": "downtown-green-03-180",
+      "source": "downtown-green-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Downtown tower bases and green space; 180 degree context"
+    },
+    {
+      "id": "downtown-green-03-270",
+      "source": "downtown-green-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Downtown tower bases and green space; 270 degree context"
+    },
+    {
+      "id": "marina-one-street-03-0",
+      "source": "marina-one-street-03.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Marina One perimeter and landscape; 0 degree context"
+    },
+    {
+      "id": "marina-one-street-03-90",
+      "source": "marina-one-street-03.json",
+      "heading": 90,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Marina One perimeter and landscape; 90 degree context"
+    },
+    {
+      "id": "marina-one-street-03-180",
+      "source": "marina-one-street-03.json",
+      "heading": 180,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Marina One perimeter and landscape; 180 degree context"
+    },
+    {
+      "id": "marina-one-street-03-270",
+      "source": "marina-one-street-03.json",
+      "heading": 270,
+      "pitch": 0,
+      "zoom": 1,
+      "purpose": "Marina One perimeter and landscape; 270 degree context"
+    }
+  ]
+}

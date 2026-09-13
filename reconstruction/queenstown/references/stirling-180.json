@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "stirling.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "JRP1H9pbZ5q2zznzrqE5CQ",
+  "position": {
+    "lat": 1.292756887361008,
+    "lng": 103.80401408454576
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "160 Mei Ling St, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:30.959Z",
+  "file": "reconstruction/queenstown/references/stirling-180.png",
+  "fingerprint": "34cd4d8f96202f0e99cd52469955fc6caba3660eac0e62af913fba2396af27ec",
+  "sha256": "7f44bca849daa89c0e3511ebd36348398458f7c3b76ece4c82d96eacff12a2bc",
+  "bytes": 2423890,
+  "durationMs": 2286,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "rejected: stale pixels repeat stirling-90; superseded by stirling-180-retry"
+}

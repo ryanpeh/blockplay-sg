@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "tanglin-halt.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "yWsAohnyGeYj1ArH3FXN4w",
+  "position": {
+    "lat": 1.2993470539405965,
+    "lng": 103.79901856960791
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "57 Tanglin Halt Rd, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:27:06.326Z",
+  "file": "reconstruction/queenstown/references/tanglin-halt-90.png",
+  "fingerprint": "e10f9b9633b3159ccb788400ebb3c8deda98b4e4e92806a5f198a98eed3038eb",
+  "sha256": "3fdd225095576fe0694633e2bbc4e122fa03021c13cb527973bf559afabf2b63",
+  "bytes": 1977830,
+  "durationMs": 3046,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "rejected: near-total construction hoarding occlusion"
+}

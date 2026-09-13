@@ -1,5 +1,16 @@
 export const locations = [
   {
+    id: 'raffles-place', name: 'Raffles Place', subtitle: 'Between towers and the river', district: 'CITY CORE',
+    description: 'Explore a low-poly business district of glass towers, shaded plazas and riverfront streets. An authored, compressed game world informed by street-level references.',
+    lat: 1.2840, lng: 103.8510, heading: 0, color: '#879caa', block: 1,
+    tags: ['City plaza', 'Riverfront streets'],
+    viewpoints: [
+      { label: 'Raffles Place plaza', lat: 1.2840, lng: 103.8510, heading: 0 },
+      { label: 'Battery Road', lat: 1.2853, lng: 103.8520, heading: 180 },
+      { label: 'Boat Quay', lat: 1.2863, lng: 103.8495, heading: 90 },
+    ],
+  },
+  {
     id: 'tampines', name: 'Tampines', subtitle: 'The heartland circuit', district: 'EAST SIDE',
     description: 'Pastel blocks, shady streets, and the long way home. A little everyday Singapore, ready to play.',
     lat: 1.3545, lng: 103.9453, heading: 90, color: '#dd997f', block: 218,

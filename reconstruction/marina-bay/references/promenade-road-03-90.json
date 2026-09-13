@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "promenade-road-03.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2021-08",
+  "pano_id": "x8L7_sxIVdllJJ8VLOyeSw",
+  "position": {
+    "lat": 1.2920129560275748,
+    "lng": 103.86163810359794
+  },
+  "pov": {
+    "heading": 90,
+    "pitch": 0,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:43:10.526Z",
+  "file": "reconstruction/marina-bay/references/promenade-road-03-90.png",
+  "fingerprint": "20eddbfdb2dd83fe03fbf8a197fd6982184fdb5b1b8784543b4dedc62541572d",
+  "sha256": "7177bc438d98d57951e31567ad00c4842c504cedd3cc3c61f97e71867c9e4d1b",
+  "bytes": 1689596,
+  "durationMs": 3075,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: planted flyover support, grass verge, road-edge double yellow lines and parking signage"
+}

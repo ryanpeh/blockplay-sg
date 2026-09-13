@@ -1,0 +1,30 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "margaret.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2025-03",
+  "pano_id": "rawGq7vugQAsCwX_SL6jQg",
+  "position": {
+    "lat": 1.2976944022246522,
+    "lng": 103.80396040543337
+  },
+  "pov": {
+    "heading": 270,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "38 Commonwealth Ave, Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:19:58.346Z",
+  "file": "reconstruction/queenstown/references/margaret-270.png",
+  "fingerprint": "63c58a58b22752fd5be825789dff2ae4c7bbe8a6b54596bdbb5e1c83522bb45f",
+  "sha256": "e780b7ce303e74c6b7fce54b86e779401319ac1577465baf120039599a84c560",
+  "bytes": 2072374,
+  "durationMs": 3863,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "visualReview": "accepted: roadside hedge, concrete viaduct, green fence"
+}

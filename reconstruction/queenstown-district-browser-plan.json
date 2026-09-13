@@ -1,0 +1,371 @@
+{
+  "name": "queenstown-district-expansion-05",
+  "region": "queenstown",
+  "width": 1280,
+  "height": 900,
+  "maxNewImages": 40,
+  "sources": {
+    "commonwealth-close.json": {
+      "lat": 1.305,
+      "lng": 103.801
+    },
+    "commonwealth-crescent.json": {
+      "lat": 1.307,
+      "lng": 103.8019
+    },
+    "tanglin-market-road.json": {
+      "lat": 1.3013,
+      "lng": 103.7975
+    },
+    "tanglin-east.json": {
+      "lat": 1.299,
+      "lng": 103.802
+    },
+    "stirling-west.json": {
+      "lat": 1.2924,
+      "lng": 103.8014
+    },
+    "stirling-south.json": {
+      "lat": 1.2891,
+      "lng": 103.8055
+    },
+    "dawson-east.json": {
+      "lat": 1.2951,
+      "lng": 103.8114
+    },
+    "skyville-road.json": {
+      "lat": 1.2969,
+      "lng": 103.8087
+    },
+    "margaret-north.json": {
+      "lat": 1.3016,
+      "lng": 103.8064
+    },
+    "queensway-west.json": {
+      "lat": 1.2956,
+      "lng": 103.7997
+    }
+  },
+  "views": [
+    {
+      "id": "commonwealth-close-0",
+      "source": "commonwealth-close.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "commonwealth-close-90",
+      "source": "commonwealth-close.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "commonwealth-close-180",
+      "source": "commonwealth-close.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "commonwealth-close-270",
+      "source": "commonwealth-close.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "commonwealth-crescent-0",
+      "source": "commonwealth-crescent.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "commonwealth-crescent-90",
+      "source": "commonwealth-crescent.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "commonwealth-crescent-180",
+      "source": "commonwealth-crescent.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "commonwealth-crescent-270",
+      "source": "commonwealth-crescent.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-market-road-0",
+      "source": "tanglin-market-road.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-market-road-90",
+      "source": "tanglin-market-road.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-market-road-180",
+      "source": "tanglin-market-road.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-market-road-270",
+      "source": "tanglin-market-road.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-east-0",
+      "source": "tanglin-east.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-east-90",
+      "source": "tanglin-east.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-east-180",
+      "source": "tanglin-east.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "tanglin-east-270",
+      "source": "tanglin-east.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-west-0",
+      "source": "stirling-west.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-west-90",
+      "source": "stirling-west.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-west-180",
+      "source": "stirling-west.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-west-270",
+      "source": "stirling-west.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-south-0",
+      "source": "stirling-south.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-south-90",
+      "source": "stirling-south.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-south-180",
+      "source": "stirling-south.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "stirling-south-270",
+      "source": "stirling-south.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "dawson-east-0",
+      "source": "dawson-east.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "dawson-east-90",
+      "source": "dawson-east.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "dawson-east-180",
+      "source": "dawson-east.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "dawson-east-270",
+      "source": "dawson-east.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "skyville-road-0",
+      "source": "skyville-road.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "skyville-road-90",
+      "source": "skyville-road.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "skyville-road-180",
+      "source": "skyville-road.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "skyville-road-270",
+      "source": "skyville-road.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "margaret-north-0",
+      "source": "margaret-north.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "margaret-north-90",
+      "source": "margaret-north.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "margaret-north-180",
+      "source": "margaret-north.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "margaret-north-270",
+      "source": "margaret-north.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "queensway-west-0",
+      "source": "queensway-west.json",
+      "heading": 0,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "queensway-west-90",
+      "source": "queensway-west.json",
+      "heading": 90,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "queensway-west-180",
+      "source": "queensway-west.json",
+      "heading": 180,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    },
+    {
+      "id": "queensway-west-270",
+      "source": "queensway-west.json",
+      "heading": 270,
+      "pitch": 8,
+      "zoom": 1,
+      "purpose": "Wider Queenstown district street structure, residential massing, covered links, paving and landscape reference; validate exterior and imagery date"
+    }
+  ]
+}

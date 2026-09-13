@@ -1,0 +1,31 @@
+{
+  "source": "Google Maps JavaScript Street View; owner-authorized browser reference",
+  "credential": "GOOGLE_MAPS_DEMO_API_KEY",
+  "sourceMetadata": "tanglin-market-road.json",
+  "copyright": "© 2026 Google",
+  "sourceDate": "2022-03",
+  "pano_id": "muBswkkDOQ3Z4Ysb9u2twQ",
+  "position": {
+    "lat": 1.3010032948928667,
+    "lng": 103.79763349435201
+  },
+  "pov": {
+    "heading": 180,
+    "pitch": 8,
+    "zoom": 1
+  },
+  "zoom": 1,
+  "description": "Singapore",
+  "width": 1280,
+  "height": 900,
+  "capturedAt": "2026-09-13T04:32:48.713Z",
+  "file": "reconstruction/queenstown/references/tanglin-market-road-180.png",
+  "fingerprint": "6c0ab1771af4afa580c696027e7eee32f0f06e991ec0aaeff43c9c21c9ca6eb6",
+  "sha256": "b0716b8269dd2f0817e4e53f556dc2cbb1f8047199fb4f35c9cd8bc679005423",
+  "bytes": 2061323,
+  "durationMs": 3245,
+  "staticApiRequests": 0,
+  "attribution": "Retained in screenshot",
+  "readinessCheck": "foreground-pov-repaint-v2",
+  "visualReview": "accepted: low red-roof row and window/aircon rhythm"
+}
