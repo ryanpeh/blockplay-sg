@@ -2,7 +2,7 @@
 
 Updated after FPS minimap integration (2026-09-13). The region Walk/Drive views and the FPS engine share authored scenery and collision data, but use separate controllers and HUDs. The Singapore locator is an island-level district selector/route planner; it is not the local minimap.
 
-| Feature | Region Walk/Drive | Marina FPS practice | Open-world FPS | LAN arena |
+| Feature | Region Walk/Drive | Regional FPS practice | Open-world FPS | LAN arena |
 | --- | --- | --- | --- | --- |
 | Authored districts | All three, selected separately | Marina | All three, connected | Marina |
 | Local minimap | Roads, player position, collectible stamps | Local roads, facing arrow, remaining targets, parked vehicles | Local roads, facing arrow, remaining loot, checkpoint/route markers | Local roads and own facing arrow; opponents hidden |
@@ -34,3 +34,5 @@ Updated after FPS minimap integration (2026-09-13). The region Walk/Drive views 
 - District locator and checkpoint graph: `src/components/SingaporeMap.tsx`, `src/game/world-zones.ts`.
 
 This is a source-level feature audit, not a claim that the missing parity features have been implemented. The FPS minimap now has unit and browser coverage. Physical UTM mouse delivery and cross-device LAN routing still require user hardware testing.
+
+Regional practice now includes Marina Bay, Queenstown and Raffles Place with their own range layouts, vehicle spawns, minimaps and bounds. See [FPS districts](FPS-DISTRICTS.md).

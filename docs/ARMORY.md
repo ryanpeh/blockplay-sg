@@ -4,7 +4,7 @@ The Armory sidebar offers 27 permanent items: six weapon variants across two pla
 
 ## Play loop
 
-1. Enter Marina FPS and clear the eight targets. Each elimination earns 25 XP immediately, including kills in an unfinished exercise.
+1. Enter any region’s FPS range and clear the eight targets. Each elimination earns 25 XP immediately, including kills in an unfinished exercise.
 2. Completion earns `250 + round(accuracy × 100) + max(0, 100 − floor(seconds))` credits. Accuracy counts successful damage hits divided by shots, rather than kills divided by shots. Counter-fire adds 100 credits.
 3. Completion also adds `200 + round(accuracy × 100)` XP, plus 100 XP in counter-fire. A fully cleared practice drill earns 400–500 XP in total, including its eight eliminations.
 4. Level 2 begins at 300 XP, level 3 at 800, level 4 at 1,500 and level 5 at 2,400. The threshold for level `L` is `100 × (L − 1) × (L + 1)`, capped at level 50. Rank titles are Recruit, Operator, Specialist, Veteran, Elite and Legend.

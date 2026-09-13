@@ -14,7 +14,7 @@ Explore familiar Singapore neighborhoods as stylized 3D game worlds, created usi
 
 - Walk or drive around **Marina Bay**, **Queenstown** and **Raffles Place**, collecting stamps.
 - Explore connected districts in **Open world**, finding equipment and facing bots.
-- Try **Marina FPS**, its armory, vehicles and target range.
+- Play **Marina FPS**, **Queenstown FPS** or **Raffles FPS**, with a shared armory, vehicles and target ranges.
 - Play **Solo arena** against configurable bots.
 
 The public demo is game-only: AI companions, multiplayer host/join and live Street View are unavailable. These optional features are supported in the local project with additional setup.

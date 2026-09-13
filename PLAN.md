@@ -4,6 +4,13 @@ User authorized 25 additional Raffles Place Static API image attempts after docu
 
 # Blockplay project plan
 
+## Completed: regional FPS practice (2026-09-13)
+
+- Direct FPS entry now exists on Marina Bay, Queenstown and Raffles Place, with eight targets and regional vehicles/minimaps. Shared scene adapters, range configuration and physics retain Marina defaults.
+- FPS mode survives map selection; range progress resets, while permanent loadout/XP persist. Shop/deploy returns to the selected region.
+- Rebased onto upstream `e2f2de1`; 236 tests and build pass. Browser clears all 24 targets using captured mouse input and checks map/armory return, vehicles, fullscreen and mobile on both new maps.
+- Queenstown AI pilot stalled at 5/8 in exploratory testing; its aiming/reacquisition remains follow-up work. See [FPS districts](docs/FPS-DISTRICTS.md).
+
 ## Completed: recorded Encik voice pack (2026-09-13)
 
 - User chose round 4 candidate 3 after four small auditions, then approved all 48 callouts. Bundled MP3s preserve the subtitle script and need no runtime TTS key.

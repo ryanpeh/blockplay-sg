@@ -5,6 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@11.22.0",
   "scripts": {
+    "test:fps:districts": "node scripts/fps-district-smoke.mjs",
     "test:fps:voice": "node scripts/encik-playback-smoke.mjs",
     "voice:batch": "node --experimental-strip-types --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/encik-batch.mjs",
     "voice:audition": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/encik-audition.mjs",

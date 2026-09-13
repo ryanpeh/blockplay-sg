@@ -23,9 +23,11 @@ Marina includes waterfront landmarks, gardens and road circuits. Queenstown incl
 
 Water and buildings block movement. Layouts are deliberately compressed and handling is arcade-style. Distances are game coordinates, not surveyed distances. Playing these worlds makes no Google API requests.
 
-### Marina FPS and armory
+### Regional FPS and armory
 
-Select Marina Bay → Marina FPS → Enter range. Practice against eight targets, with optional counter-fire.
+[Map setup and validation](FPS-DISTRICTS.md).
+
+Select Marina Bay, Queenstown or Raffles Place → its FPS mode → Enter range. Each map has eight practice targets, optional counter-fire, a car and a helicopter. Switching regions while in FPS starts a fresh range on the selected map; the armory returns to that same map.
 
 WASD moves, mouse looks, left mouse fires, Q toggles aim, right mouse holds aim, R reloads and 1/2 switches weapons. Shift sprints, C crouches and Space jumps. Escape pauses and releases the pointer. Desktop play requires pointer capture; touch devices use drag-look controls.
 
@@ -43,7 +45,7 @@ Use Fullscreen or F for immersive play. A denied fullscreen request falls back t
 
 Approach Utility 01 or Falcon 01 and press E to enter or exit. Drive with WASD and Space brake; fly with WASD, Space climb, C/Ctrl descend and Shift boost. Land before leaving the helicopter.
 
-The armory is accessed from Marina FPS, not regional exploration. It includes equipment, attachments, armor and cosmetic vehicle wraps. Purchases, equipped loadouts, credits and XP persist in this browser. There are no real payments. See [armory details](ARMORY.md).
+The armory is accessed from each region’s FPS briefing or pause screen. It includes equipment, attachments, armor and cosmetic vehicle wraps. Purchases, equipped loadouts, credits and XP persist in this browser. There are no real payments. See [armory details](ARMORY.md).
 
 ### Open world and solo arena
 

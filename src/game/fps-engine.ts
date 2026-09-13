@@ -1,9 +1,7 @@
 import * as THREE from 'three';
 import { requestFpsPointerLock, requiresFpsPointerLock, turnFpsLook } from './fps-pointer';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { buildMarinaScene } from './marina-scene';
-import { moveInMarina } from './marina-collision';
-import { advanceWeapon, beginReload, createLoadout, fireWeapon, FPS_SPAWN, FPS_TARGETS, FPS_WEAPONS, movementInput, type WeaponState } from './fps-rules';
+import { advanceWeapon, beginReload, createLoadout, fireWeapon, FPS_SPAWN, FPS_WEAPONS, movementInput, type WeaponState } from './fps-rules';
 import { firstVisibleHit } from './fps-raycast';
 import { applyArmorDamage, createProfile, resolveLoadout, rewardAmount, completionXp, type ResolvedLoadout, type ExerciseReward, type ArmoryProfile } from './armory-state';
 import { registerElimination, ELIMINATION_XP, type KillChain } from './progression';
@@ -14,7 +12,8 @@ import { dressWeapon } from './armory-visuals';
 import { createArenaRuntime } from './arena-runtime';
 import type { ArenaActor, ArenaEnvironment, ArenaSnapshot, ArenaVitals } from './arena-rules';
 import { createSoloSession, type LanSession } from './lan-peer';
-import { buildExpeditionWorld } from './expedition-world';
+import { buildDistrictWorld } from './district-world';
+import { getFpsDistrict } from './fps-districts';
 import { createExpeditionMarkers } from './expedition-visuals';
 import { findWorldGateway, resolveWorldTransition, getWorldZone, type WorldZoneId, type WorldTransition, type ZoneSpawn } from './world-zones';
 import type { ExpeditionLoot, FieldLoot } from './expedition-loot';
@@ -72,8 +71,10 @@ function disposeAssets(roots: THREE.Object3D[]) {
   textures.forEach(t => { t.dispose(); if (typeof ImageBitmap !== 'undefined' && t.source.data instanceof ImageBitmap) t.source.data.close(); });
 }
 
-export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => void, options: { playerPilot?: PlayerPilot; loadout?: ResolvedLoadout; combat?: boolean; arena?: FpsArenaOptions; expedition?: FpsExpeditionOptions; onComplete?: (reward: ExerciseReward) => void; onElimination?: (id: string) => void; onFullscreen?: () => void } = {}) {
+export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => void, options: { region?: WorldZoneId; playerPilot?: PlayerPilot; loadout?: ResolvedLoadout; combat?: boolean; arena?: FpsArenaOptions; expedition?: FpsExpeditionOptions; onComplete?: (reward: ExerciseReward) => void; onElimination?: (id: string) => void; onFullscreen?: () => void } = {}) {
   const expedition = options.expedition;
+  const region = expedition?.zone ?? options.region ?? 'marina-bay';
+  const district = getFpsDistrict(region), spawn = district.spawn, targetPositions = district.targets;
   const copyProfile = (profile: ArmoryProfile): ArmoryProfile => JSON.parse(JSON.stringify(profile));
   let fieldProfile = copyProfile(expedition?.profile ?? options.arena?.profile ?? createProfile());
   let equipment = expedition ? resolveLoadout(fieldProfile) : options.loadout || resolveLoadout(createProfile()), specs = equipment.weapons;
@@ -85,14 +86,14 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   // Shadow-map rendering doubles work on this VM; the existing map still supplies its lighting.
   renderer.shadowMap.enabled = false; renderer.autoClear = false;
   const canvas = renderer.domElement; canvas.tabIndex = 0;
-  canvas.setAttribute('aria-label', `${expedition ? getWorldZone(expedition.zone).name + ' expedition' : 'Marina FPS range'}. WASD to move, mouse to look, click to fire.`);
+  canvas.setAttribute('aria-label', `${expedition ? getWorldZone(expedition.zone).name + ' expedition' : district.label + ' range'}. WASD to move, mouse to look, click to fire.`);
   host.append(canvas);
-  const zoneWorld = expedition ? buildExpeditionWorld(expedition.zone, expedition.spawn) : null;
-  const world = zoneWorld ?? buildMarinaScene(); world.stamps.forEach(o => o.visible = false);
-  const footMove = zoneWorld?.move ?? moveInMarina;
+  const zoneWorld = buildDistrictWorld(region, expedition?.spawn);
+  const world = zoneWorld; world.stamps.forEach(o => o.visible = false);
+  const footMove = zoneWorld.move;
   const expeditionSession = expedition ? createSoloSession('Explorer') : null;
   if (expedition && zoneWorld && expeditionSession) options = { ...options, arena: { session: expeditionSession, profile: fieldProfile, botCount: zoneWorld.zone.botCount, composition: zoneWorld.zone.composition, environment: zoneWorld.environment, initialVitals: expedition.checkpoint } };
-  const vehicles = createFpsVehicles(world.scene, world.obstacles, equipment.vehicleSkins);
+  const vehicles = createFpsVehicles(world.scene, world.obstacles, equipment.vehicleSkins, { spawns: district.vehicles, bounds: world.bounds, deriveFlightObstacles: region !== 'marina-bay' });
   if (options.arena) vehicles.root.visible = false;
   let arenaRuntime: ReturnType<typeof createArenaRuntime> | null = null;
   const chaseRay = new THREE.Raycaster();
@@ -134,8 +135,8 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
   let pendingAttack: { target: number; remaining: number; aim: THREE.Vector3 } | null = null;
   const attackRay = new THREE.Raycaster(), attackOrigin = new THREE.Vector3();
   const healthGeometry = new THREE.PlaneGeometry(.54, .055), healthMaterial = new THREE.MeshBasicMaterial({ color: "#e1a74e", side: THREE.DoubleSide });
-  let disposed = false, loadout = createLoadout(specs), position = { x: FPS_SPAWN.x, z: FPS_SPAWN.z };
-  let yaw: number = FPS_SPAWN.yaw, pitch: number = FPS_SPAWN.pitch, vertical = 0, velocityY = 0;
+  let disposed = false, loadout = createLoadout(specs), position = { x: spawn.x, z: spawn.z };
+  let yaw: number = spawn.yaw, pitch: number = spawn.pitch, vertical = 0, velocityY = 0;
   let trigger = false, ads = false, touchAim = false, actualAim = false, kick = 0, bob = 0, flashTime = 0, hitTime = 0, effectTime = 0, impactActive = false;
   let strategyMode: 'local' | 'llm' = expedition?.checkpoint?.pilotStrategy ?? 'local';
   let strategicPlanner = strategyMode === 'llm' ? createStrategyPlanner(llmPilotStrategy()) : null;
@@ -156,7 +157,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     const state = loadout[hud.weapon];
     onHud({ ...hud, comms: comms.snapshot(), pilotEnabled, aimProgress, reloadEmpty: emptyReload[hud.weapon], ...(!options.arena ? vehicles.hud(position) : {}), magazine: state.magazine, reserve: state.reserve, reloading: state.reloadRemaining / specs[hud.weapon].reload, aiming: actualAim, hit: hitTime > 0, locked: document.pointerLockElement === canvas, x: position.x, z: position.z, yaw,
       mapMarkers: options.arena ? [] : [
-        ...FPS_TARGETS.flatMap((point, index): MinimapMarker[] => targets[index]?.alive ? [{ ...point, id: `target-${index}`, kind: 'target', label: `Target ${index + 1}` }] : []),
+        ...targetPositions.flatMap((point, index): MinimapMarker[] => targets[index]?.alive ? [{ ...point, id: `target-${index}`, kind: 'target', label: `Target ${index + 1}` }] : []),
         ...(['car', 'helicopter'] as const).filter(kind => kind !== vehicles.active).map((kind): MinimapMarker => ({ id: kind, kind, label: kind === 'car' ? 'Utility 01' : 'Falcon 01', x: vehicles.states[kind].x, z: vehicles.states[kind].z })),
       ],
     });
@@ -284,7 +285,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     killChain = { count: 0, lastAt: -Infinity }; calloutTime = 0; stopVoice(); encik.reset(); comms.clear(); hud.encikCallout = null;
     roundId = randomRoundId(); attackTimer = 3; pendingAttack = null; hurtTime = 0;
     if (document.pointerLockElement === canvas) document.exitPointerLock();
-    vehicles.reset(); loadout = createLoadout(specs); position = { x: FPS_SPAWN.x, z: FPS_SPAWN.z }; yaw = FPS_SPAWN.yaw; pitch = FPS_SPAWN.pitch;
+    vehicles.reset(); loadout = createLoadout(specs); position = { x: spawn.x, z: spawn.z }; yaw = spawn.yaw; pitch = spawn.pitch;
     vertical = velocityY = kick = bob = hitTime = effectTime = flashTime = 0; clearInput();
     aimProgress = 0; bloom.forEach(state => { state.amount = 0; state.delay = 0; });
     targets.forEach(t => { t.alive = true; t.root.visible = true; t.health = t.maxHealth; t.bar.scale.x = 1; });
@@ -479,7 +480,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     };
     const state = loadout[hud.weapon];
     const waypoints: PilotObservation['waypoints'][number][] = expedition ? hud.fieldLoot.map(item => ({ id: item.id, x: item.x, z: item.z, kind: item.kind })) :
-      options.arena ? [] : targets.flatMap((target, i) => target.alive ? [{ id: `target-${i}`, ...FPS_TARGETS[i], kind: 'target' as const }] : []);
+      options.arena ? [] : targets.flatMap((target, i) => target.alive ? [{ id: `target-${i}`, ...targetPositions[i], kind: 'target' as const }] : []);
     if (expedition && pilotDestination) {
       const gateway = findWorldRoute(expedition.zone, pilotDestination)[0];
       if (gateway) waypoints.push({ id: gateway.id, ...gateway.position, kind: 'checkpoint' });
@@ -591,7 +592,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     const attr = tracerGeometry.getAttribute('position'); attr.setXYZ(0, muzzlePoint.x, muzzlePoint.y, muzzlePoint.z); attr.setXYZ(1, end.x, end.y, end.z); attr.needsUpdate = true;
     tracer.visible = true; impactActive = !!hit; impact.visible = impactActive; impact.position.copy(end); effectTime = 0.055;
     kick = Math.min(kick + specs[hud.weapon].recoil, 0.10); flashTime = 0.045; flash.visible = true;
-    if (!options.arena && hud.hits === FPS_TARGETS.length) {
+    if (!options.arena && hud.hits === targetPositions.length) {
       hud.phase = 'complete'; hud.incoming = false; clearInput(); radioCall('complete');
       const reward = { id: roundId, hits: hud.hits, shots: hud.shots, landed: hud.landed, elapsed: hud.elapsed, combat: !!options.combat };
       hud.earned = rewardAmount(reward); hud.earnedXp += completionXp(reward); options.onComplete?.(reward);
@@ -775,9 +776,9 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
     if (disposed) return;
     weapons.push(loaded[0], loaded[1]); weapons.forEach((w, i) => { undress.push(dressWeapon(w, specs[i])); handling.push(createWeaponHandling(w, i)); rig.add(w); w.visible = i === 0; });
     weapons[0].getObjectByName('sar21-inspired__socket_muzzle')?.add(flash);
-    if (!options.arena) FPS_TARGETS.forEach((p, i) => {
+    if (!options.arena) targetPositions.forEach((p, i) => {
       const root = new THREE.Group(); root.position.set(p.x, 0.13, p.z);
-      root.rotation.y = Math.atan2(FPS_SPAWN.x - p.x, FPS_SPAWN.z - p.z);
+      root.rotation.y = Math.atan2(spawn.x - p.x, spawn.z - p.z);
       root.add(loaded[2].clone(true));
       const hitZone = new THREE.Mesh(targetGeometry, targetMaterial); hitZone.position.set(0, 1.3, 0.026); hitZone.userData.fpsTarget = i; root.add(hitZone);
       const maxHealth = i % 2 ? 115 : 100;
@@ -785,7 +786,7 @@ export function createFpsEngine(host: HTMLDivElement, onHud: (hud: FpsHud) => vo
       world.scene.add(root); targets.push({ root, hitZone, alive: true, health: maxHealth, maxHealth, bar });
       world.obstacles.push({ minX: p.x - 0.42, maxX: p.x + 0.42, minZ: p.z - 0.42, maxZ: p.z + 0.42 });
     });
-    if (!expedition) for (const [asset, x, z, width, depth] of [[3, -48, 71, .77, .52], [4, -40, 63, 1.87, .41], [4, -52, 64, 1.87, .41], [5, -45, 72, .37, .37], [5, -43, 72, .37, .37]]) {
+    if (!expedition) for (const [asset, x, z, width, depth] of district.props) {
       const prop = loaded[asset].clone(true); prop.position.set(x, 0.14, z); decorations.add(prop);
       world.obstacles.push({ minX: x - width / 2, maxX: x + width / 2, minZ: z - depth / 2, maxZ: z + depth / 2, maxY: asset === 3 ? 0.8 : asset === 4 ? 0.9 : 0.7 });
     }
